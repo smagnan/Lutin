@@ -6,11 +6,11 @@ These lines contain the grammar matching with the Lutin language, that is used i
 
 >P &rarr; BD BI  
 BD &rarr; BD D pv | &#603;  
-BI &rarr; BI I pv | &#603;
+BI &rarr; BI I pv | &#603;  
 D &rarr; var id IDL  
-IDL &rarr; IDL vir id | &#603;
+IDL &rarr; IDL vir id | &#603;  
 D &rarr; const INI INIL  
-INIL &rarr; INIL vir INI | &#603;
+INIL &rarr; INIL vir INI | &#603;  
 INI &rarr; id eg num  
 I &rarr; ecrire E'  
 I &rarr; id aff E'  
