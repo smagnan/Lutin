@@ -4,27 +4,27 @@
 These lines contain the grammar matching with the Lutin language, that is used in the project.
 
 
->P &rarr; BD BI  
-BD &rarr; BD D pv | &#603;  
-BI &rarr; BI I pv | &#603;  
-D &rarr; var id IDL  
-IDL &rarr; IDL vir id | &#603;  
-D &rarr; const INI INIL  
-INIL &rarr; INIL vir INI | &#603;  
-INI &rarr; id eg num  
-I &rarr; ecrire E'  
-I &rarr; id aff E'  
-I &rarr; lire id  
-E' &rarr; E  
-E &rarr; E + T  
-E &rarr; E - T  
-E &rarr; T  
-T &rarr; T * F  
-T &rarr; T / F  
-T &rarr; F  
-F &rarr; (E)  
-F &rarr; id  
-F &rarr; num
+>**1)** P &rarr; BD BI  
+**2)** BD &rarr; BD D pv | &#603;  
+**3)** BI &rarr; BI I pv | &#603;  
+**4)** D &rarr; var id IDL  
+**5)** IDL &rarr; IDL vir id | &#603;  
+**6)** D &rarr; const INI INIL  
+**7)** INIL &rarr; INIL vir INI | &#603;  
+**8)** INI &rarr; id eg num  
+**9)** I &rarr; ecrire E'  
+**10)** I &rarr; id aff E'  
+**11)** I &rarr; lire id  
+**12)** E' &rarr; E  
+**13)** E &rarr; E + T  
+**14)** E &rarr; E - T  
+**15)** E &rarr; T  
+**16)** T &rarr; T * F  
+**17)** T &rarr; T / F  
+**18)** T &rarr; F  
+**19)** F &rarr; (E)  
+**20)** F &rarr; id  
+**21)** F &rarr; num  
 
 ### Indications
 
@@ -46,6 +46,12 @@ F &rarr; num
 #### Terminal symbols
  Symbol |  Meaning                      |  Regular Expression
 :------:|:------------------------------|:--------------------
++       | '+' character                 | +
+-       | '-' character                 | -
+*       | '*' character                 | *
+/       | '/' character                 | /
+(       | '(' character                 | (
+)       | ')' character                 | )
 pv      | semicolon                     | ;
 id      | identifier (variable name)    | [ a-zA-Z\_ ] [ a-zA-Z0-9\_ ]\*
 var     | 'var' keyword                 | var
