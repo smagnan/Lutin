@@ -6,4 +6,4 @@ Folder  | Content
 *src* | Source files
 *tests* | Tests scripts
 *doc* | Documentation, if done
-
+*concep* | Conception documents etc ...
