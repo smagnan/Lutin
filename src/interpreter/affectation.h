@@ -10,7 +10,9 @@
 #ifndef AFFECTATION_H
 #define AFFECTATION_H
  
-class Affectation
+#include "instruction.h"
+ 
+class Affectation : private Instruction
 {
 private:
 protected:

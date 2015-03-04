@@ -9,8 +9,10 @@
 
 #ifndef CONST_H
 #define CONST_H
+
+#include "declaration.h"
  
-class Const
+class Const : private Declaration
 {
 private:
 protected:

@@ -9,8 +9,10 @@
 
 #ifndef READ_H
 #define READ_H
+
+#include "instruction.h"
  
-class Read
+class Read : private Instruction
 {
 private:
 protected:

@@ -9,8 +9,10 @@
 
 #ifndef VAR_H
 #define VAR_H
+
+#include "declaration.h"
  
-class Var
+class Var : private Declaration
 {
 private:
 protected:

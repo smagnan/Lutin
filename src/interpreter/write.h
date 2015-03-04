@@ -10,7 +10,9 @@
 #ifndef WRITE_H
 #define WRITE_H
  
-class Write
+#include "instruction.h"
+
+class Write : private Instruction
 {
 private:
 protected:
