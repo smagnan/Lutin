@@ -62,6 +62,7 @@ var     | 'var' keyword                 | var
 vir     | comma                         | ,
 const   | 'const' keyword               | const
 eg      | '=' character                 | =
+aff     | ':=' characters               | :=
 num     | number                        | [ 0-9 ]+( ,[ 0-9 ]+ )?
 ecrire  | 'ecrire' keyword              | ecrire
 lire    | 'lire' keyword                | lire
