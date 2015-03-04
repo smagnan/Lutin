@@ -1,0 +1,13 @@
+#include "State_$numero$.h"
+
+State$numero$::State$numero$() : State("Etat$numero$")
+{}
+
+State$numero$::~State$numero$()
+{}
+
+bool State$numero$::transition(Automaton & automaton, Symbol * s)
+{
+
+
+}
