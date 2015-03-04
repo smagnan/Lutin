@@ -7,21 +7,21 @@
 #include
 
 
-class Symbol
+class default
 {
 
 public:
 
    //Default Constructor
-    Symbol();
+    default();
 
   //Deconstructor
-    virtual ~Symbol();
+    virtual ~default();
 
 
 private:
 
- //Disable the following by Symbol 
+ //Disable the following by default 
 
 };
 
