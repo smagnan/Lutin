@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 
+#include "main.h"
 #include "automaton.h"
 #include "interpreter/interpreter.h"
 

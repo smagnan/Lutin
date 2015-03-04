@@ -15,7 +15,11 @@ INTERPDIR=interpreter
 SYMBOLDIR=symbol
 
 MAINFILE=main.cpp
-CPPFILES=$(MAINFILE) automaton.cpp interpreter/interpreter.cpp
+CPPFILES_INTERPRETER=interpreter/affectation.cpp interpreter/const.cpp \
+	interpreter/declaration.cpp interpreter/instruction.cpp \
+	interpreter/interpreter.cpp interpreter/read.cpp interpreter/var.cpp \
+	interpreter/write.cpp
+CPPFILES=$(MAINFILE) $(CPPFILES_INTERPRETER) automaton.cpp 
 
 OBJ=$(CPPFILES:.cpp=.o)
 OBJS=$(addprefix $(OBJDIR)/,$(OBJ))
