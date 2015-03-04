@@ -1,0 +1,5 @@
+No make file for this : execute following line in your term, from this folder to compile the binary.
+
+g++ -I ../boost/include -L../boost/lib -lboost_regex email.cpp -o email
+
+
