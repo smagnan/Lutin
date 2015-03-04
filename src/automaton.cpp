@@ -1,5 +1,5 @@
 // ---------------------------------------------
-//  Automaton.h
+//  automaton.cpp
 //
 //	Created	 :
 //		by 	 : Samuel MAGNAN
@@ -17,5 +17,5 @@ Automaton::Automaton()
 
 Automaton::~Automaton()
 {
-	
+
 }

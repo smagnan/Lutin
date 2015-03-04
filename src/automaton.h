@@ -1,5 +1,5 @@
 // ---------------------------------------------
-//  Automaton.h
+//  automaton.h
 //
 //	Created	 :
 //		by 	 : Samuel MAGNAN
