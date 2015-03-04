@@ -1,3 +1,8 @@
+#ifndef STATE
+#define STATE
+
+#include <string>
+
 #include "../automaton.h"
 #include "../symbol/symbol.h"
 
@@ -10,4 +15,5 @@ class State
 		virtual bool transition(Automaton & automaton, Symbol * s)=0;
 	protected:
 		std::string name;
-}
+};
+#endif
