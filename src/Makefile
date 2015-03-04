@@ -15,8 +15,6 @@ INTERPDIR=interpreter
 SYMBOLDIR=symbol
 
 MAINFILE=main.cpp
-#CPPFILES=$(MAINFILE) $(addprefix $(INTERPDIR)/,$(CPPFILESINTERP)) automaton.cpp
-#CPPFILESINTERP= interperter.cpp
 CPPFILES=$(MAINFILE) automaton.cpp interpreter/interpreter.cpp
 
 OBJ=$(CPPFILES:.cpp=.o)
