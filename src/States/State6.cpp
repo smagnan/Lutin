@@ -1,4 +1,4 @@
-#include "State_6.h"
+#include "State6.h"
 
 State6::State6() : State("Etat6")
 {}

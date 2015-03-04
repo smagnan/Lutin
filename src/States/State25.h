@@ -1,8 +1,7 @@
 #ifndef STATE_25
 #define STATE_25
 
-#include "State_25.h"
-
+#include "State.h"
 
 class State25: public State
 {

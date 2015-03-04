@@ -1,7 +1,7 @@
 for f in {0..43..1}
 do
-	cp StateModel.h State$f.h
-	cp StateModel.cpp State$f.cpp
+	cp StateModelH State$f.h
+	cp StateModelCpp State$f.cpp
 	sed -i "s/numero/$f/g" State$f.h
 	sed -i "s/numero/$f/g" State$f.cpp
 done
