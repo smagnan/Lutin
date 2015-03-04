@@ -1,13 +1,6 @@
 //filecomment
 
-#ifndef
-
-#define 
-
-#include
-
-
-class Exprdivide
+class Exprdivide : public Symbol
 {
 
 public:
@@ -24,5 +17,3 @@ private:
  //Disable the following by Exprdivide 
 
 };
-
-\#endif

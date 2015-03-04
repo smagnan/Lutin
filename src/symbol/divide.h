@@ -1,13 +1,6 @@
 //filecomment
 
-#ifndef
-
-#define 
-
-#include
-
-
-class Divide
+class Divide : public Symbol
 {
 
 public:
@@ -24,5 +17,3 @@ private:
  //Disable the following by Divide 
 
 };
-
-\#endif

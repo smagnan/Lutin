@@ -1,13 +1,6 @@
 //filecomment
 
-#ifndef
-
-#define 
-
-#include
-
-
-class Mult
+class Mult : public Symbol
 {
 
 public:
@@ -24,5 +17,3 @@ private:
  //Disable the following by Mult 
 
 };
-
-\#endif

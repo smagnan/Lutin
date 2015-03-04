@@ -1,19 +1,19 @@
 //filecomment
 
-class Symbol
+class Eg : public Symbol
 {
 
 public:
 
    //Default Constructor
-    Symbol();
+    Eg();
 
   //Deconstructor
-    virtual ~Symbol();
+    virtual ~Eg();
 
 
 private:
 
- //Disable the following by Symbol 
+ //Disable the following by Eg 
 
 };

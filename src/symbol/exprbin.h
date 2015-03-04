@@ -1,13 +1,6 @@
 //filecomment
 
-#ifndef
-
-#define 
-
-#include
-
-
-class Exprbin
+class Exprbin : public Symbol
 {
 
 public:
@@ -24,5 +17,3 @@ private:
  //Disable the following by Exprbin 
 
 };
-
-\#endif
