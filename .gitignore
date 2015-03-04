@@ -26,6 +26,10 @@
 *.exe
 *.out
 *.app
+Lutin
 
 # Backup files
 *~
+
+# Misc
+scripts_notes
