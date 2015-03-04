@@ -19,3 +19,13 @@ Interpreter::~Interpreter()
 {
 
 }
+
+// ============================
+// 	run:
+//	executes the program currently loaded
+//
+// ============================
+void Interpreter::run()
+{
+
+}

@@ -25,6 +25,7 @@ protected:
 public:
     Interpreter();
     virtual ~Interpreter();
+    void run();			// XXX return value -> error code?
 };
  
 #endif

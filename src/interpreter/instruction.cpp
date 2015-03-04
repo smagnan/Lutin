@@ -19,3 +19,13 @@ Instruction::~Instruction()
 {
 
 }
+
+// ============================
+// 	execute:
+//	executes the instruction
+//
+// ============================
+void Instruction::execute()
+{
+
+}

@@ -17,6 +17,7 @@ protected:
 public:
     Instruction();
     virtual ~Instruction();
+    virtual void execute();
 };
  
 #endif
