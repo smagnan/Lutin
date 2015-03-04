@@ -7,3 +7,5 @@ Folder  | Content
 *tests* | Tests scripts
 *doc* | Documentation, if done
 *concep* | Conception documents etc ...
+*boost* | The boost lib
+*regex_example* | An example of the use of regex/boost
