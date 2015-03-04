@@ -1,12 +1,5 @@
 //filecomment
 
-#ifndef
-
-#define 
-
-#include
-
-
 class Symbol
 {
 
@@ -24,5 +17,3 @@ private:
  //Disable the following by Symbol 
 
 };
-
-\#endif
