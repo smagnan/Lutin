@@ -14,9 +14,9 @@
 
 int main( int argc, const char* argv[] )
 {
-	printf( "\nCreating Interpreter" );
+	printf( "Creating Interpreter\n" );
 	Interpreter *interpreter 	= new Interpreter();
-	printf( "\nCreating FSM" );
+	printf( "Creating FSM\n" );
 	Automaton *automaton 		= new Automaton();
 
 	return 0;
