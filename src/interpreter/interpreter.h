@@ -18,12 +18,13 @@
 #include "declaration.h"
 #include "var.h"
 #include "const.h"
+#include "value.h"
 #include "instruction.h"
 #include "read.h"
 #include "write.h"
 #include "affectation.h"
 
-enum Declar_Type {VAR,CONST,NUM};
+enum Declar_Type {VAR,CONST,VALUE};
 class Interpreter
 {
 private:
@@ -38,7 +39,7 @@ public:
     void run();			
     // I think double is the more generic type in our case
     // or ve can build a custom type ...
-    void declare(std::string name, Declar_Type type, double value); 
+    void declare(std::string name, Declar_Type type, double val); 
 
 };
  
