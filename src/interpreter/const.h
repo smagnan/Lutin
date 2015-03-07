@@ -12,7 +12,7 @@
 
 #include "declaration.h"
  
-class Const : private Declaration
+class Const : public Declaration
 {
 private:
 protected:

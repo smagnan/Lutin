@@ -12,7 +12,7 @@
  
 #include "instruction.h"
  
-class Affectation : private Instruction
+class Affectation : public Instruction
 {
 private:
 protected:

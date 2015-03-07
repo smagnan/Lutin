@@ -1,24 +1,24 @@
 // ---------------------------------------------
-//  var.h
+//  value.h
 //
 //	Created	 :
 //		by 	 : Samuel MAGNAN
-//		date : 04/03/2015
+//		date : 07/03/2015
 //
 // ---------------------------------------------
 
-#ifndef VAR_H
-#define VAR_H
+#ifndef VALUE_H
+#define VALUE_H
 
 #include "declaration.h"
  
-class Var : public Declaration
+class Value : public Declaration
 {
 private:
 protected:
 public:
-    Var();
-    virtual ~Var();
+    Value();
+    virtual ~Value();
 };
  
 #endif
