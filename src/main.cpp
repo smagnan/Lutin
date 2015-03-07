@@ -10,7 +10,7 @@
 #include <iostream>
 
 #include "main.h"
-#include "automaton.h"
+//#include "automaton.h"
 #include "interpreter/interpreter.h"
 
 using std::cout;
@@ -22,7 +22,7 @@ int main( int argc, const char* argv[] )
 	cout << "Creating Interpreter" << endl;
 	Interpreter *interpreter 	= new Interpreter();
 	cout << "Creating FSM" << endl;
-	Automaton *automaton 		= new Automaton();
+	//Automaton *automaton 		= new Automaton();
 	//===================================
 	cout << "============== DECLARE =================" << endl;
 	interpreter->declare("testVar",VAR,42);
@@ -39,7 +39,7 @@ int main( int argc, const char* argv[] )
 	cout << "================ END ==================" << endl;
 	//===================================
 	cout << "Deleting FSM" << endl;
-	delete automaton;
+	//delete automaton;
 	cout << "Deleting Interpreter" << endl;
 	delete interpreter;
 
