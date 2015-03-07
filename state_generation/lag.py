@@ -4,45 +4,49 @@ import sys
 import os
 
 templateHeader = """// ---------------------------------------------
-//  S{ns}.h
+//  State{ns}.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S{ns}_H
-#define S{ns}_H
+#ifndef STATE{ns}_H
+#define STATE{ns}_H
 
 #include "../automaton.h"
 
-class S{ns} {{
+class State{ns} {{
 private:
 public:
-    S{ns}();
-    virtual ~S{ns}();
+    State{ns}();
+    virtual ~State{ns}();
     bool transition(Automaton & automaton, Symbol * s);
 }}
 
-#endif // S{ns}_H
+#endif // STATE{ns}_H
 """
 
 templateSource = """// ---------------------------------------------
-//  S{ns}.cpp
+//  State{ns}.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "S{ns}.h"
+#include "State{ns}.h"
 
-S{ns}::S{ns}()
-    : State("S{ns}")
+State{ns}::State{ns}()
+    : State("State{ns}")
 {{
 }}
 
-bool S{ns}::transition(Automaton & automaton, Symbol * s)
+State{ns}::~State{ns}()
+{{
+}}
+
+bool State{ns}::transition(Automaton & automaton, Symbol * s)
 {{
     switch(*s)
     {{
@@ -93,8 +97,8 @@ print("Generation - Stating...")
 os.chdir(c.output_directory)
 for index, row in enumerate(automaton):
     print(" . . . state " + str(index) + "\t  " + " ".join([automaton[index][i] for i, elt in enumerate(automaton[index]) if elt ] ) )
-    fHeader = open('S' + str(index) + '.h', 'w+')
-    fSource = open('S' + str(index) + '.cpp', 'w+')
+    fHeader = open('state' + str(index) + '.h', 'w+')
+    fSource = open('state' + str(index) + '.cpp', 'w+')
     
     fHeader.write(printStateHeader(index))
     fSource.write(printStateSource(index))

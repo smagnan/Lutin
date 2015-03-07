@@ -19,3 +19,8 @@ Automaton::~Automaton()
 {
 
 }
+
+Automaton::shift(Symbol * symbol, State * state)
+{
+    
+}
