@@ -12,7 +12,7 @@
 
 #include "declaration.h"
  
-class Var : private Declaration
+class Var : public Declaration
 {
 private:
 protected:

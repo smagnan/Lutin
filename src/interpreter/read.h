@@ -12,7 +12,7 @@
 
 #include "instruction.h"
  
-class Read : private Instruction
+class Read : public Instruction
 {
 private:
 protected:
