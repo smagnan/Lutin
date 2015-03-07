@@ -7,6 +7,8 @@
 //
 // ---------------------------------------------
 
+#include <exception>
+
 #include "interpreter.h"
 
 // Interpreter constructor
@@ -17,7 +19,8 @@ Interpreter::Interpreter()
 
 Interpreter::~Interpreter()
 {
-
+	clean_declarations();
+	clean_instructions();
 }
 
 void Interpreter::run()
@@ -25,7 +28,7 @@ void Interpreter::run()
 
 }
 
-void Interpreter::declare(std::string name, Declar_Type type, double val)
+void Interpreter::declare(std::string name, Declar_Type type, double val) // TODO: exceptions
 {
 	if (this->declarations.find(name) == this->declarations.end()) { // If key not found
 		switch(type) {
@@ -46,7 +49,18 @@ void Interpreter::declare(std::string name, Declar_Type type, double val)
 	}
 }
 
-void Interpreter::clean_declarations()
+void Interpreter::update_variable(std::string name, double val)
+{
+	try {
+		this->declarations.find(name)->second->setValue(val);
+	} catch(std::exception &e) {
+		// TODO: error if: name does not exist, exist but not a variable etc ...
+		// TODO: create custom exceptions
+		// TODO: calling setValue() if not a Var throws an error
+	}
+}
+
+void Interpreter::clean_declarations() // TODO: exceptions
 {
 	typedef std::map<std::string, Declaration* >::iterator it_t;
 	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) {
@@ -54,7 +68,7 @@ void Interpreter::clean_declarations()
 	}
 }
 
-void Interpreter::clean_instructions()
+void Interpreter::clean_instructions() // TODO: exceptions
 {
 	while (!this->instructions.empty()) {
 		delete this->instructions.front();

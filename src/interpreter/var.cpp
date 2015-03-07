@@ -19,3 +19,8 @@ Var::~Var()
 {
 
 }
+
+void Var::setValue(double val)
+{
+	this->value = val; // TODO some checks ?
+}

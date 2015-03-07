@@ -14,9 +14,12 @@ class Declaration
 {
 private:
 protected:
+	double value;
 public:
     Declaration();
     virtual ~Declaration();
+    double getValue() {return this->value;};
+    virtual void setValue(double val) {};
 };
  
 #endif

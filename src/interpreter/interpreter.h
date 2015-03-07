@@ -40,9 +40,13 @@ public:
     // I think double is the more generic type in our case
     // or we can build a custom type ...
     void declare(std::string name, Declar_Type type, double val); 
+    // Change the value of a variable
+    void update_variable(std::string name, double val);
     // Delete all the declarations (free memory)
+    // Can be called independently of destructor if needed
     void clean_declarations();
     // Delete all the instructions (free memory)
+    // Can be called independently of destructor if needed
     void clean_instructions();
 
 };

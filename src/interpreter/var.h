@@ -19,6 +19,7 @@ protected:
 public:
     Var();
     virtual ~Var();
+    void setValue(double val);
 };
  
 #endif
