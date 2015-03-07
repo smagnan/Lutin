@@ -17,7 +17,7 @@ class Const : public Declaration
 private:
 protected:
 public:
-    Const();
+    Const(std::string constName, double val);
     virtual ~Const();
 };
  

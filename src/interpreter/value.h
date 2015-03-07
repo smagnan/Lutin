@@ -17,7 +17,7 @@ class Value : public Declaration
 private:
 protected:
 public:
-    Value();
+    Value(double val);
     virtual ~Value();
 };
  

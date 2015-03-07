@@ -10,9 +10,9 @@
 #include "var.h"
 
 // Var constructor
-Var::Var() 
+Var::Var(std::string varName, double val) : Declaration(val)
 {
-
+	this->name = varName;
 }
 
 Var::~Var()

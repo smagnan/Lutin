@@ -10,9 +10,9 @@
 #include "declaration.h"
 
 // Declaration constructor
-Declaration::Declaration() 
+Declaration::Declaration(double val) 
 {
-
+	this->value = val;
 }
 
 Declaration::~Declaration()

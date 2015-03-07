@@ -9,14 +9,17 @@
 
 #ifndef DECLARATION_H
 #define DECLARATION_H
+
+#include <string>
  
 class Declaration
 {
 private:
 protected:
+	std::string name;
 	double value;
 public:
-    Declaration();
+    Declaration(double val);
     virtual ~Declaration();
     double getValue() {return this->value;};
     virtual void setValue(double val) {};

@@ -33,13 +33,13 @@ void Interpreter::declare(std::string name, Declar_Type type, double val) // TOD
 	if (this->declarations.find(name) == this->declarations.end()) { // If key not found
 		switch(type) {
 			case VAR:
-				this->declarations.insert(std::make_pair(name , new Var()));
+				this->declarations.insert(std::make_pair(name , new Var(name,val)));
 				break;
 			case CONST:
-				this->declarations.insert(std::make_pair(name , new Const()));
+				this->declarations.insert(std::make_pair(name , new Const(name,val)));
 				break;
 			case VALUE:
-				this->declarations.insert(std::make_pair(name , new Value()));
+				this->declarations.insert(std::make_pair(name , new Value(val)));
 				break;
 		}
 	}

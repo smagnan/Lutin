@@ -17,7 +17,7 @@ class Var : public Declaration
 private:
 protected:
 public:
-    Var();
+    Var(std::string varName, double val);
     virtual ~Var();
     void setValue(double val);
 };

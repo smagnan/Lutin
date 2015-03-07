@@ -10,9 +10,9 @@
 #include "const.h"
 
 // Const constructor
-Const::Const() 
+Const::Const(std::string constName, double val) : Declaration(val)
 {
-
+	this->name = constName;
 }
 
 Const::~Const()
