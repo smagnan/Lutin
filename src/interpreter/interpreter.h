@@ -23,6 +23,7 @@
 #include "read.h"
 #include "write.h"
 #include "affectation.h"
+#include "printer.h"
 
 enum Declar_Type {VAR,CONST,VALUE};
 class Interpreter
@@ -30,6 +31,7 @@ class Interpreter
 private:
 	std::queue<Instruction*> instructions;
 	std::map<std::string,Declaration*> declarations;  // http://bannalia.blogspot.fr/2014/05/fast-polymorphic-collections.html instead?
+    Printer printer;
 protected:
 public:
     Interpreter();
@@ -42,6 +44,10 @@ public:
     void declare(std::string name, Declar_Type type, double val); 
     // Change the value of a variable
     void update_variable(std::string name, double val);
+    // Print all the declarations
+    void print_declarations(); // TODO not here
+    // Print all the instructions
+    void print_instructions(); // TODO not here
     // Delete all the declarations (free memory)
     // Can be called independently of destructor if needed
     void clean_declarations();

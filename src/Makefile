@@ -18,7 +18,7 @@ MAINFILE=main.cpp
 CPPFILES_INTERPRETER=interpreter/affectation.cpp interpreter/const.cpp \
 	interpreter/declaration.cpp interpreter/instruction.cpp \
 	interpreter/interpreter.cpp interpreter/read.cpp interpreter/var.cpp \
-	interpreter/write.cpp interpreter/value.cpp
+	interpreter/write.cpp interpreter/value.cpp interpreter/printer.cpp
 CPPFILES=$(MAINFILE) $(CPPFILES_INTERPRETER) automaton.cpp 
 
 OBJ=$(CPPFILES:.cpp=.o)

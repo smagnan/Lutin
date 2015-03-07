@@ -60,6 +60,20 @@ void Interpreter::update_variable(std::string name, double val)
 	}
 }
 
+void Interpreter::print_declarations()
+{
+	typedef std::map<std::string, Declaration* >::iterator it_t;
+	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) {
+	    // TODO var, const etc ...
+	    this->printer.print(iterator->first);
+	}
+}
+
+void Interpreter::print_instructions()
+{
+	// TODO
+}
+
 void Interpreter::clean_declarations() // TODO: exceptions
 {
 	typedef std::map<std::string, Declaration* >::iterator it_t;

@@ -26,6 +26,7 @@ int main( int argc, const char* argv[] )
 	//===================================
 	interpreter->declare("testVar",VAR,42);
 	interpreter->update_variable("testVar",1337);
+	interpreter->print_declarations();
 	//===================================
 	cout << "Deleting FSM" << endl;
 	delete automaton;
