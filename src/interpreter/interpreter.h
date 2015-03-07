@@ -28,7 +28,7 @@ enum Declar_Type {VAR,CONST,VALUE};
 class Interpreter
 {
 private:
-	std::queue<Instruction> instructions;
+	std::queue<Instruction*> instructions;
 	std::map<std::string,Declaration*> declarations;  // http://bannalia.blogspot.fr/2014/05/fast-polymorphic-collections.html instead?
 protected:
 public:
@@ -38,8 +38,12 @@ public:
 	// XXX return value -> error code?
     void run();			
     // I think double is the more generic type in our case
-    // or ve can build a custom type ...
+    // or we can build a custom type ...
     void declare(std::string name, Declar_Type type, double val); 
+    // Delete all the declarations (free memory)
+    void clean_declarations();
+    // Delete all the instructions (free memory)
+    void clean_instructions();
 
 };
  

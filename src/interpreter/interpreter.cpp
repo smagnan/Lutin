@@ -41,6 +41,23 @@ void Interpreter::declare(std::string name, Declar_Type type, double val)
 		}
 	}
 	else {
-	  // TODO error, already exists
+		// TODO error, already exists
+		// ERROR: Multiple definition
+	}
+}
+
+void Interpreter::clean_declarations()
+{
+	typedef std::map<std::string, Declaration* >::iterator it_t;
+	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) {
+	    delete iterator->second;
+	}
+}
+
+void Interpreter::clean_instructions()
+{
+	while (!this->instructions.empty()) {
+		delete this->instructions.front();
+		this->instructions.pop();
 	}
 }
