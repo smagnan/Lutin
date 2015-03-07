@@ -13,6 +13,7 @@
 Var::Var(std::string varName, double val) : Declaration(val)
 {
 	this->name = varName;
+	this->type = "Var";
 }
 
 Var::~Var()

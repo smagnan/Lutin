@@ -28,8 +28,8 @@ void Interpreter::run()
 
 }
 
-void Interpreter::declare(std::string name, Declar_Type type, double val) // TODO: exceptions
-{
+void Interpreter::declare(const std::string &name, Declar_Type type, double val) // TODO: exceptions
+{							// default value for VALUE type
 	if (this->declarations.find(name) == this->declarations.end()) { // If key not found
 		switch(type) {
 			case VAR:
@@ -64,8 +64,12 @@ void Interpreter::print_declarations()
 {
 	typedef std::map<std::string, Declaration* >::iterator it_t;
 	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) {
-	    // TODO var, const etc ...
+	    // TODO: this is ugly
+	    this->printer.print(iterator->second->getType());
 	    this->printer.print(iterator->first);
+	    this->printer.print("=");
+	    this->printer.print(iterator->second->getValue());
+	    this->printer.endline();
 	}
 }
 

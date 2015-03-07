@@ -24,9 +24,19 @@ int main( int argc, const char* argv[] )
 	cout << "Creating FSM" << endl;
 	Automaton *automaton 		= new Automaton();
 	//===================================
+	cout << "============== DECLARE =================" << endl;
 	interpreter->declare("testVar",VAR,42);
-	interpreter->update_variable("testVar",1337);
+	interpreter->declare("testConst",CONST,777);
+	interpreter->keep_value(100);
+	// The following line is equivalent to the previous one :) 
+	// Note that whatever the string is the name will be the value
+	interpreter->declare("",VALUE,100); // XXX does nothing here since the value il already stored
 	interpreter->print_declarations();
+	cout << "============== UPDATED ================" << endl;
+	interpreter->update_variable("testVar",1337);
+	interpreter->update_variable("testConst",1000); // Not working as you can see, quite normal (:
+	interpreter->print_declarations();
+	cout << "================ END ==================" << endl;
 	//===================================
 	cout << "Deleting FSM" << endl;
 	delete automaton;

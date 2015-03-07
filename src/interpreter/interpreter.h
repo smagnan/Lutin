@@ -41,7 +41,12 @@ public:
     void run();			
     // I think double is the more generic type in our case
     // or we can build a custom type ...
-    void declare(std::string name, Declar_Type type, double val); 
+    void declare(const std::string &name, Declar_Type type, double val); 
+    // Store a value in the declaration tree to be used 
+    // (the value name is it's value)
+    // Note that thanks to how the system is built, there are no redundancies between values (: (same value == same key)
+    // XXX KEEP IN MIND THE PREVIOUS POINT XXX
+    void keep_value(double val) {declare(std::string(),VALUE,val);}; 
     // Change the value of a variable
     void update_variable(std::string name, double val);
     // Print all the declarations

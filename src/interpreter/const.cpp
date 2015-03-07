@@ -13,6 +13,7 @@
 Const::Const(std::string constName, double val) : Declaration(val)
 {
 	this->name = constName;
+	this->type = "Const";
 }
 
 Const::~Const()

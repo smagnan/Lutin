@@ -13,7 +13,7 @@
 #include <string>
 
 const std::string STYLE_DECLAR = 	"\033[1;31m"; // Red bold
-const std::string STYLE_NAME = 		"\033[0;32m"; // Green
+const std::string STYLE_VALUE =		"\033[0;32m"; // Green
 const std::string STYLE_SYMBOL = 	"\033[1;33m"; // Blue bold
 const std::string STYLE_DEFAULT = 	"\033[0m";
  
@@ -26,6 +26,8 @@ public:
     Printer();
     virtual ~Printer();
     void print(std::string str);
+    void print(double value);
+    void endline();
 };
  
 #endif

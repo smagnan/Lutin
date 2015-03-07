@@ -17,6 +17,7 @@ Value::Value(double val) : Declaration(val)
 	std::ostringstream strs;
 	strs << this->value;
 	this->name = strs.str(); // the name is equivalent to the value
+	this->type = "Value";
 }
 
 Value::~Value()
