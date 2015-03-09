@@ -1,5 +1,0 @@
-for f in {0..43..1}
-do
-	rm State$f.h
-	rm State$f.cpp
-done

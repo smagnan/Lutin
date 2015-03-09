@@ -10,7 +10,7 @@
 #include <iostream>
 
 #include "main.h"
-//#include "automaton.h"
+#include "automaton.h"
 #include "interpreter/interpreter.h"
 
 using std::cout;

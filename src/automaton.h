@@ -10,9 +10,8 @@
 #ifndef AUTOMATON_H
 #define AUTOMATON_H
 
-#include "states/state.h"
-#include "symbol/symbol.h"
- 
+class Symbol;
+class State;
 class Automaton
 {
 private:
@@ -22,5 +21,5 @@ public:
     virtual ~Automaton();
     void shift(Symbol * symbol, State * state);
 };
- 
+
 #endif

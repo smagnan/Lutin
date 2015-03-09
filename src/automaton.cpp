@@ -20,7 +20,7 @@ Automaton::~Automaton()
 
 }
 
-Automaton::shift(Symbol * symbol, State * state)
+void Automaton::shift(Symbol * symbol, State * state)
 {
     
 }

@@ -11,6 +11,7 @@ public:
   //Deconstructor
     virtual ~Symbol();
 
+    operator int();
 
 private:
 
