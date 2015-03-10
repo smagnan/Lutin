@@ -23,6 +23,9 @@ int main( int argc, const char* argv[] )
 	Interpreter *interpreter 	= new Interpreter();
 	cout << "Creating FSM" << endl;
 	//Automaton *automaton 		= new Automaton();
+	Printer mainPrinter;
+	mainPrinter.printerr("Project not finised ","you know what to do ...");
+	mainPrinter.printwarn("Project not finised ","you know what to do ...");
 	//===================================
 	cout << "============== DECLARE =================" << endl;
 	interpreter->declare("testVar",VAR,42);
@@ -30,7 +33,7 @@ int main( int argc, const char* argv[] )
 	interpreter->keep_value(100);
 	// The following line is equivalent to the previous one :) 
 	// Note that whatever the string is the name will be the value
-	interpreter->declare("",VALUE,100); // XXX does nothing here since the value il already stored
+	interpreter->declare("",VALUE,100); // XXX does nothing here since the value is already stored
 	interpreter->print_declarations();
 	cout << "============== UPDATED ================" << endl;
 	interpreter->update_variable("testVar",1337);

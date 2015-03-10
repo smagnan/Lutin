@@ -44,6 +44,7 @@ void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 		}
 	}
 	else {
+		// this->printer.printerr("")
 		// TODO error, already exists
 		// ERROR: Multiple definition
 	}

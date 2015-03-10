@@ -11,22 +11,20 @@
 #define PRINTER_H
 
 #include <string>
-
-const std::string STYLE_DECLAR = 	"\033[1;31m"; // Red bold
-const std::string STYLE_VALUE =		"\033[0;32m"; // Green
-const std::string STYLE_SYMBOL = 	"\033[1;33m"; // Blue bold
-const std::string STYLE_DEFAULT = 	"\033[0m";
+#include <cstdarg>
  
 class Printer
 {
-// http://en.wikipedia.org/wiki/ANSI_escape_code
 private:
+	void printString(int count, ...); 	// with count the number of arguments
 protected:
 public:
     Printer();
     virtual ~Printer();
     void print(std::string str);
     void print(double value);
+    void printerr(std::string error, std::string desc);
+    void printwarn(std::string warn, std::string desc);
     void endline();
 };
  
