@@ -17,28 +17,29 @@
 
 using std::cout;
 using std::endl;
-// using boost::program_options;
+namespace po = boost::program_options;
 
 int main( int argc, const char* argv[] )
 {
-    /*
-	options_description opt("Allowed options");
+    std::string filestr;
+	po::options_description desc("Allowed options");
 	desc.add_options()
-		("file", value<std::string>(), "Lutin file to use")
-    		("print,p", "Display the program on standard output")
-    		("analyse,a", "Static analysis of the program")
+		("file", po::value<std::string>(&filestr), "Lutin input file to use")
+        ("print,p", "Display the program on standard output")
+        ("analyse,a", "Static analysis of the program")
 		("execution,e", "Program execution")
-		("optimize,o", "Simplify and transform the program");
+		("optimize,o", "Simplify and transform the program")
+        ("help,h", "produce help message");
 	
-	positional_options_description file;
+	po::positional_options_description file;
 	file.add("file",-1);
-    */
-
-    /*
-	variables_map vm;
-	store(parse_command_line(argc, argv, opt).options(opt).positional(p).run(),vm);
-	po::notify(vm);    
-
+    
+	po::variables_map vm;
+    po::store(po::command_line_parser(argc, argv).
+          options(desc).positional(file).run(), vm);
+	po::notify(vm);
+    
+    
 	if (vm.count("print")) 
 	{
 		// TODO : print the program
@@ -47,25 +48,31 @@ int main( int argc, const char* argv[] )
 	
 	if (vm.count("analyse")) 
 	{
-    		// TODO : analyse the program
+        // TODO : analyse the program
 		cout << "Hello, I'm analysing" << endl;
 	} 
 
-	if (vm.count("execution")
+	if (vm.count("execution"))
 	{
 		// TODO : execute
 		cout << "Hello, I'm executing ... with an axe" << endl;
 	}
 
-	if ("optimize")
+	if (vm.count("optimize"))
 	{
 		// TODO : simplify
 		cout << "Hello, I'm optimizing" << endl;
 	}
+
+	if (vm.count("help"))
+	{
+		// TODO : simplify
+		cout << "Hello, I'm helping" << endl;
+	}
 	
-    */
     
-	
+    
+	/*
 	Printer mainPrinter;
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	mainPrinter.printinfo("","Creating Interpreter");
@@ -96,7 +103,7 @@ int main( int argc, const char* argv[] )
 	//delete automaton;
 	mainPrinter.printinfo("","Deleting Interpreter");
 	delete interpreter;
-	
+	*/
 	
 	return 0;
 }
