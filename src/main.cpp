@@ -17,25 +17,25 @@
 
 using std::cout;
 using std::endl;
-using boost::program_options;
+namespace op =  boost::program_options;
 
 int main( int argc, const char* argv[] )
 {
 
-	options_description opt("Allowed options");
-	desc.add_options()
-		("file", value<std::string>(), "Lutin file to use")
+	op::options_description opt("Allowed options");
+	opt.add_options()
+		("file", op::value<std::string>(), "Lutin file to use")
     		("print,p", "Display the program on standard output")
     		("analyse,a", "Static analysis of the program")
 		("execution,e", "Program execution")
 		("optimize,o", "Simplify and transform the program");
 	
-	positional_options_description file;
+	op::positional_options_description file;
 	file.add("file",-1);
 
-	variables_map vm;
-	store(parse_command_line(argc, argv, opt).options(opt).positional(p).run(),vm);
-	po::notify(vm);    
+	op::variables_map vm;
+	op::store(op::command_line_parser(argc, argv).options(opt).positional(file).run(),vm);
+	op::notify(vm);    
 
 	if (vm.count("print")) 
 	{
@@ -49,7 +49,7 @@ int main( int argc, const char* argv[] )
 		cout << "Hello, I'm analysing" << endl;
 	} 
 
-	if (vm.count("execution")
+	if (vm.count("execution"))
 	{
 		// TODO : execute
 		cout << "Hello, I'm executing ... with an axe" << endl;
