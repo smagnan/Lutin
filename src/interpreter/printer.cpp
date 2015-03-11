@@ -66,6 +66,11 @@ void Printer::printinfo(std::string info, std::string desc)
 	printString(NB_ARGS_PRINT_STR,STYLE_INFO_T.c_str(),MSG_INFO.c_str(),STYLE_INFO_T.c_str(),info.c_str(),STYLE_INFO.c_str(),desc.c_str());
 	cout << STYLE_DEFAULT << endl;
 }
+void Printer::print(std::string def, std::string desc)
+{
+	printString(NB_ARGS_PRINT_STR,STYLE_DEFAULT_T.c_str(),MSG_DEFAULT.c_str(),STYLE_DEFAULT_T.c_str(),def.c_str(),STYLE_DEFAULT.c_str(),desc.c_str());
+	cout << STYLE_DEFAULT << endl;
+}
 
 void Printer::endline()
 {

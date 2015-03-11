@@ -1,10 +1,10 @@
 #ifndef STATE_H
 #define STATE_H
 
+#include <string>
+
 class Automaton;
 class Symbol;
-
-#include <string>
 
 enum Symbols
 {

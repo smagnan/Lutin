@@ -13,7 +13,7 @@
 #include <string>
 #include <cstdarg>
  
-class Printer
+class Printer // TODO messages buffer 
 {
 private:
 	void printString(int count, ...); 	// with count the number of arguments
@@ -26,6 +26,7 @@ public:
     void printerr(std::string error, std::string desc);
     void printwarn(std::string warn, std::string desc);
     void printinfo(std::string info, std::string desc);
+    void print(std::string def, std::string desc);
     void endline();
 };
  
