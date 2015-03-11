@@ -1,7 +1,7 @@
 BINDIR=bin
 OBJDIR=obj
 
-BINNAME=Lutin
+BINNAME=lut
 BIN=$(BINDIR)/$(BINNAME)
 CLEAN=clean
 
@@ -9,7 +9,7 @@ DIR="./"
 
 GPP=g++
 CFLAGS=-Wall -Wextra -Wmissing-braces -pedantic -Wunused
-INCLUDE=-I"./" -I"./interpreter/" -I"./symbol/" -I"./state/"
+INCLUDE=-I"./" -I"./interpreter/" -I"./symbol/" -I"./state/" -I"../boost/include"
 
 INTERPDIR=interpreter
 SYMBOLDIR=symbol
@@ -45,7 +45,7 @@ OBJS=$(addprefix $(OBJDIR)/,$(OBJ))
 
 FLAGS=-O2
 
-LIBS=
+LIBS=-L../boost/lib -lboost_regex -lprogram_options
 
 all: $(OBJS)
 	$(GPP) $(CFLAGS) $(FLAGS) $(LIBS) -o $(BIN) $(OBJS)

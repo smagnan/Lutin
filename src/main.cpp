@@ -8,16 +8,60 @@
 // ---------------------------------------------
 
 #include <iostream>
+#include <string>
 
-#include "main.h"
+#include <boost/program_options.hpp>
+
 #include "automaton.h"
 #include "interpreter/interpreter.h"
 
 using std::cout;
 using std::endl;
+using boost::program_options;
 
 int main( int argc, const char* argv[] )
 {
+	options_description opt("Allowed options");
+	desc.add_options()
+		("file", value<std::string>(), "Lutin file to use")
+    		("print,p", "Display the program on standard output")
+    		("analyse,a", "Static analysis of the program")
+		("execution,e", "Program execution")
+		("optimize,o", "Simplify and transform the program");
+	
+	positional_options_description file;
+	file.add("file",-1);
+
+	variables_map vm;
+	store(parse_command_line(argc, argv, opt).options(opt).positional(p).run(),vm);
+	po::notify(vm);    
+
+	if (vm.count("print")) 
+	{
+		// TODO : print the program
+		cout << "Hello, I'm printing" << endl;
+	}
+	
+	if (vm.count("analyse")) 
+	{
+    		// TODO : analyse the program
+		cout << "Hello, I'm analysing" << endl;
+	} 
+
+	if (vm.count("execution")
+	{
+		// TODO : execute
+		cout << "Hello, I'm executing ... with an axe" << endl;
+	}
+
+	if ("optimize")
+	{
+		// TODO : simplify
+		cout << "Hello, I'm optimizing" << endl;
+	}
+	
+	/*
+
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	cout << "Creating Interpreter" << endl;
 	Interpreter *interpreter 	= new Interpreter();
@@ -45,6 +89,7 @@ int main( int argc, const char* argv[] )
 	//delete automaton;
 	cout << "Deleting Interpreter" << endl;
 	delete interpreter;
-
+	*/
+	
 	return 0;
 }
