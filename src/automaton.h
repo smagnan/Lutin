@@ -26,6 +26,8 @@ public:
     void read(); //utilisera Lexer pour faire le café
     void shift(Symbol * symbol, State * state);
     void reduce(int numeroRegle);
+    void error();
+    void accept();
 };
 
 #endif

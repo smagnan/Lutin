@@ -41,7 +41,7 @@ void Automaton::read()
 void Automaton::shift(Symbol * symbol, State * state)
 {
     symbolStack.push(symbol);
-    stateStack.push(symbol);
+    stateStack.push(state);
 }
 
 void Automaton::reduce(int numeroRegle)
