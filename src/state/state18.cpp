@@ -41,6 +41,10 @@ bool State18::transition(Automaton & automaton, Symbol * s)
             automaton.shift(s, new State21());
             break;
 
+        case END:
+            automaton.reduce(1);
+            break;
+
     }
     
     return false;

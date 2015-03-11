@@ -69,6 +69,12 @@ templateShiftInstruction = """
             break;
 """
 
+templateReduceInstruction = """
+        case {symbolname}:
+            automaton.reduce({rulenumber});
+            break;
+"""
+
 templateInclude = """
 #include "state{ns}.h" """
 
@@ -76,6 +82,9 @@ def translateToSwitchCase(str, symbolname):
     m = re.match(r'd(\d+)', str)
     if m:
         return templateShiftInstruction.format(symbolname=symbolname, shiftstate=m.group(1))
+    m = re.match(r'r(\d+)', str)
+    if m:
+        return templateReduceInstruction.format(symbolname=symbolname, rulenumber=m.group(1))
     return ""
     
 def printStateIncludes(numState):

@@ -26,6 +26,10 @@ bool State22::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case PV:
+            automaton.reduce(11);
+            break;
+
     }
     
     return false;

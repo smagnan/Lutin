@@ -26,6 +26,30 @@ bool State33::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case PLUS:
+            automaton.reduce(21);
+            break;
+
+        case MINUS:
+            automaton.reduce(21);
+            break;
+
+        case MULT:
+            automaton.reduce(21);
+            break;
+
+        case DIVIDE:
+            automaton.reduce(21);
+            break;
+
+        case CLOSEBY:
+            automaton.reduce(21);
+            break;
+
+        case PV:
+            automaton.reduce(21);
+            break;
+
     }
     
     return false;

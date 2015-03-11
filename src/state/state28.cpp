@@ -36,6 +36,10 @@ bool State28::transition(Automaton & automaton, Symbol * s)
             automaton.shift(s, new State35());
             break;
 
+        case PV:
+            automaton.reduce(12);
+            break;
+
     }
     
     return false;
