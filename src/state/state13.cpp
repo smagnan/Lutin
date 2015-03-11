@@ -31,6 +31,10 @@ bool State13::transition(Automaton & automaton, Symbol * s)
             automaton.shift(s, new State14());
             break;
 
+        default:
+            automaton.error();
+            break;
+
     }
     
     return false;
