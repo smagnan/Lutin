@@ -3,17 +3,17 @@
 class Read : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Read();
+		//Default Constructor
+		Read();
 
-  //Deconstructor
-    virtual ~Read();
+		//Deconstructor
+		~Read();
 
 
-private:
+	private:
 
- //Disable the following by Read 
+		//Disable the following by Read 
 
 };

@@ -3,17 +3,17 @@
 class Aff : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Aff();
+		//Default Constructor
+		Aff();
 
-  //Deconstructor
-    virtual ~Aff();
+		//Deconstructor
+		~Aff();
 
 
-private:
+	private:
 
- //Disable the following by Aff 
+		//Disable the following by Aff 
 
 };

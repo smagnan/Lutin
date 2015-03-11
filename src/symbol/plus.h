@@ -3,17 +3,17 @@
 class Plus : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Plus();
+		//Default Constructor
+		Plus();
 
-  //Deconstructor
-    virtual ~Plus();
+		//Deconstructor
+		~Plus();
 
 
-private:
+	private:
 
- //Disable the following by Plus 
+		//Disable the following by Plus 
 
 };

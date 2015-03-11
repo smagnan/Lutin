@@ -1,19 +1,19 @@
 //filecomment
 
-class Exprminus : public Symbol
+class Exprminus : public ExprBin
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Exprminus();
+		//Default Constructor
+		Exprminus();
 
-  //Deconstructor
-    virtual ~Exprminus();
+		//Deconstructor
+		~Exprminus();
 
 
-private:
+	private:
 
- //Disable the following by Exprminus 
+		//Disable the following by Exprminus 
 
 };

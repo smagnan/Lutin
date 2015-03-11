@@ -1,19 +1,19 @@
 //filecomment
 
-class Exprbin : public Symbol
+class Exprbin : public Expr
 {
+	public:
 
-public:
+		//Default Constructor
+		Exprbin();
 
-   //Default Constructor
-    Exprbin();
-
-  //Deconstructor
-    virtual ~Exprbin();
+		//Deconstructor
+		~Exprbin();
 
 
-private:
+	private:
 
- //Disable the following by Exprbin 
+	protected:
 
+		Expr * expr1,expr2;
 };

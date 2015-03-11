@@ -1,19 +1,19 @@
 //filecomment
 
-class Var : public Symbol
+class Var : public Expr
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Var();
+		//Default Constructor
+		Var();
 
-  //Deconstructor
-    virtual ~Var();
+		//Deconstructor
+		~Var();
 
 
-private:
+	private:
 
- //Disable the following by Var 
+		//Disable the following by Var 
 
 };

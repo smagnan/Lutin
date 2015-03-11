@@ -1,19 +1,19 @@
 //filecomment
 
-class Eg : public Symbol
+class Id : public Expr
 {
 
 	public:
 
 		//Default Constructor
-		Eg();
+		Id();
 
 		//Deconstructor
-		~Eg();
+		~Id();
 
 
 	private:
 
-		//Disable the following by Eg 
+		//Disable the following by Id 
 
 };

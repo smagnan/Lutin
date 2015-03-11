@@ -42,6 +42,8 @@ public:
     // I think double is the more generic type in our case
     // or we can build a custom type ...
     void declare(const std::string &name, Declar_Type type, double val); 
+    // To declare an uninitialised var
+    void declare(const std::string &name);
     // Store a value in the declaration tree to be used 
     // (the value name is it's value)
     // Note that thanks to how the system is built, there are no redundancies between values (: (same value == same key)

@@ -3,17 +3,17 @@
 class Pv : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Pv();
+		//Default Constructor
+		Pv();
 
-  //Deconstructor
-    virtual ~Pv();
+		//Deconstructor
+		~Pv();
 
 
-private:
+	private:
 
- //Disable the following by Pv 
+		//Disable the following by Pv 
 
 };

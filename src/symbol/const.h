@@ -1,19 +1,19 @@
 //filecomment
 
-class Const : public Symbol
+class Const : public Expr
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Const();
+		//Default Constructor
+		Const();
 
-  //Deconstructor
-    virtual ~Const();
+		//Deconstructor
+		~Const();
 
 
-private:
+	private:
 
- //Disable the following by Const 
+		//Disable the following by Const 
 
 };
