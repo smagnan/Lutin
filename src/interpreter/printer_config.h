@@ -12,6 +12,7 @@ const std::string STYLE_WARN_T =	"\033[1;33m"; 	// Yellow bold (Title)
 const std::string STYLE_DECLAR = 	"\033[1;34m"; 	// Blue bold
 const std::string STYLE_SYMBOL = 	"\033[1;35m"; 	// Magenta bold
 const std::string STYLE_INFO = 		"\033[0;36m"; 	// Cyan	
+const std::string STYLE_INFO_T =	"\033[1;36m"; 	// Cyan (Title)
 
 // ================================ MESSAGES
 
