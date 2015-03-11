@@ -1,6 +1,6 @@
 //filecomment
 
-class Const : public Symbol
+class Const : public Expr
 {
 
 public:

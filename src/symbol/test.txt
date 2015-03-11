@@ -1,6 +1,6 @@
 //filecomment
 
-class default : public Symbol
+class default : public ExprBin
 {
 
 public:
