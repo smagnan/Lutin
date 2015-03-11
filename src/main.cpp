@@ -26,9 +26,12 @@ int main( int argc, const char* argv[] )
 	Printer mainPrinter;
 	mainPrinter.printerr("Project not finised ","you know what to do ...");
 	mainPrinter.printwarn("Project not finised ","you know what to do ...");
+	mainPrinter.printinfo("Project not finised ","you know what to do ...");
 	//===================================
 	cout << "============== DECLARE =================" << endl;
 	interpreter->declare("testVar",VAR,42);
+	interpreter->declare("testVar2"); // not initialised var
+	interpreter->declare("testVar3");
 	interpreter->declare("testConst",CONST,777);
 	interpreter->keep_value(100);
 	// The following line is equivalent to the previous one :) 
@@ -37,6 +40,7 @@ int main( int argc, const char* argv[] )
 	interpreter->print_declarations();
 	cout << "============== UPDATED ================" << endl;
 	interpreter->update_variable("testVar",1337);
+	interpreter->update_variable("testVar2",8080);
 	interpreter->update_variable("testConst",1000); // Not working as you can see, quite normal (:
 	interpreter->print_declarations();
 	cout << "================ END ==================" << endl;

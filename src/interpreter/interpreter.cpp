@@ -50,11 +50,24 @@ void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 	}
 }
 
+void Interpreter::declare(const std::string &name)
+{
+	if (this->declarations.find(name) == this->declarations.end()) {
+		this->declarations.insert(std::make_pair(name , new Var(name)));
+	}
+	else {
+		this->printer.printerr("Declaration problem ","multiple definition of "+name);
+		// TODO error, already exists
+		// ERROR: Multiple definition
+	}
+}
+
 void Interpreter::update_variable(std::string name, double val)
 {
 	try {
 		this->declarations.find(name)->second->setValue(val);
 	} catch(std::exception &e) {
+		this->printer.printerr("Affectation problem ","problem with "+name);
 		// TODO: error if: name does not exist, exist but not a variable etc ...
 		// TODO: create custom exceptions
 		// TODO: calling setValue() if not a Var throws an error
@@ -69,7 +82,11 @@ void Interpreter::print_declarations()
 	    this->printer.print(iterator->second->getType());
 	    this->printer.print(iterator->first);
 	    this->printer.print("=");
-	    this->printer.print(iterator->second->getValue());
+	    try {
+	    	this->printer.print(iterator->second->getValue());
+	    } catch(NoInitException &e) {
+	    	this->printer.print(e.what());
+	    }
 	    this->printer.endline();
 	}
 }

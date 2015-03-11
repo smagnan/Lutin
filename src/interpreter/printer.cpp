@@ -52,13 +52,19 @@ void Printer::print(double value)
 void Printer::printerr(std::string error, std::string desc)
 {
 	printString(NB_ARGS_PRINT_STR,STYLE_ERROR_T.c_str(),MSG_ERROR.c_str(),STYLE_ERROR_T.c_str(),error.c_str(),STYLE_ERROR.c_str(),desc.c_str());
-	endline();
+	cout << STYLE_DEFAULT << endl;
 }
 
 void Printer::printwarn(std::string warn, std::string desc)
 {
 	printString(NB_ARGS_PRINT_STR,STYLE_WARN_T.c_str(),MSG_WARN.c_str(),STYLE_WARN_T.c_str(),warn.c_str(),STYLE_WARN.c_str(),desc.c_str());
-	endline();
+	cout << STYLE_DEFAULT << endl;
+}
+
+void Printer::printinfo(std::string info, std::string desc)
+{
+	printString(NB_ARGS_PRINT_STR,STYLE_INFO_T.c_str(),MSG_INFO.c_str(),STYLE_INFO_T.c_str(),info.c_str(),STYLE_INFO.c_str(),desc.c_str());
+	cout << STYLE_DEFAULT << endl;
 }
 
 void Printer::endline()

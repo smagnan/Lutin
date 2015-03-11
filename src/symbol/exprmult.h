@@ -1,6 +1,6 @@
 //filecomment
 
-class Exprmult : public Symbol
+class Exprmult : public ExprBin
 {
 
 public:

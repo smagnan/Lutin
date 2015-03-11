@@ -1,6 +1,6 @@
 //filecomment
 
-class Num : public Symbol
+class Num : public Expr
 {
 
 public:

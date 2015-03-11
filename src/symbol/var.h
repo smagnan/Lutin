@@ -1,6 +1,6 @@
 //filecomment
 
-class Var : public Symbol
+class Var : public Expr
 {
 
 public:
