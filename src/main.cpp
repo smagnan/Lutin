@@ -17,11 +17,11 @@
 
 using std::cout;
 using std::endl;
-using boost::program_options;
+// using boost::program_options;
 
 int main( int argc, const char* argv[] )
 {
-
+    /*
 	options_description opt("Allowed options");
 	desc.add_options()
 		("file", value<std::string>(), "Lutin file to use")
@@ -32,7 +32,9 @@ int main( int argc, const char* argv[] )
 	
 	positional_options_description file;
 	file.add("file",-1);
+    */
 
+    /*
 	variables_map vm;
 	store(parse_command_line(argc, argv, opt).options(opt).positional(p).run(),vm);
 	po::notify(vm);    
@@ -61,7 +63,9 @@ int main( int argc, const char* argv[] )
 		cout << "Hello, I'm optimizing" << endl;
 	}
 	
-	/*
+    */
+    
+	
 	Printer mainPrinter;
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	mainPrinter.printinfo("","Creating Interpreter");
@@ -92,7 +96,7 @@ int main( int argc, const char* argv[] )
 	//delete automaton;
 	mainPrinter.printinfo("","Deleting Interpreter");
 	delete interpreter;
-	*/
+	
 	
 	return 0;
 }

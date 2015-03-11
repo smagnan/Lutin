@@ -51,3 +51,14 @@ void Automaton::reduce(int numeroRegle)
 	//Passer à l'état qui correspond au symbol non terminal
 }
 
+void Automaton::error()
+{
+    
+}
+
+void Automaton::accept()
+{
+    
+}
+
+
