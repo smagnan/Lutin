@@ -3,17 +3,17 @@
 class Mult : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Mult();
+		//Default Constructor
+		Mult();
 
-  //Deconstructor
-    virtual ~Mult();
+		//Deconstructor
+		~Mult();
 
 
-private:
+	private:
 
- //Disable the following by Mult 
+		//Disable the following by Mult 
 
 };

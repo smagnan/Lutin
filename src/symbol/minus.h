@@ -3,17 +3,16 @@
 class Minus : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Minus();
+		//Default Constructor
+		Minus();
 
-  //Deconstructor
-    virtual ~Minus();
+		//Deconstructor
+		~Minus();
 
+	private:
 
-private:
-
- //Disable the following by Minus 
+		//Disable the following by Minus 
 
 };

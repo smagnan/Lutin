@@ -3,17 +3,17 @@
 class Write : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Write();
+		//Default Constructor
+		Write();
 
-  //Deconstructor
-    virtual ~Write();
+		//Deconstructor
+		~Write();
 
 
-private:
+	private:
 
- //Disable the following by Write 
+		//Disable the following by Write 
 
 };

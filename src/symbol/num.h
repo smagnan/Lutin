@@ -3,17 +3,17 @@
 class Num : public Expr
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Num();
+		//Default Constructor
+		Num();
 
-  //Deconstructor
-    virtual ~Num();
+		//Deconstructor
+		~Num();
 
 
-private:
+	private:
 
- //Disable the following by Num 
+		//Disable the following by Num 
 
 };

@@ -3,18 +3,24 @@
 class Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Symbol();
+		//Default Constructor
+		Symbol(int id) : ident(id) {}
 
-  //Deconstructor
-    virtual ~Symbol();
+		//Deconstructor
+		virtual ~Symbol() {};
 
-    operator int();
+		void print();
 
-private:
+		// overload int() to cast symbol into integer
+		operator int() const {return ident;}
 
- //Disable the following by Symbol 
+	protected:
+		int ident;
+
+	private:
+
+		//Disable the following by Symbol 
 
 };

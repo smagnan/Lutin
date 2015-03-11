@@ -3,17 +3,17 @@
 class Eg : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Eg();
+		//Default Constructor
+		Eg();
 
-  //Deconstructor
-    virtual ~Eg();
+		//Deconstructor
+		~Eg();
 
 
-private:
+	private:
 
- //Disable the following by Eg 
+		//Disable the following by Eg 
 
 };
