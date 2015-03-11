@@ -4,6 +4,7 @@
 // ================================ COLORS
 
 const std::string STYLE_DEFAULT = 	"\033[0m";	  	// Default: white
+const std::string STYLE_DEFAULT_T =	"\033[1m";	  	// White bold
 const std::string STYLE_ERROR = 	"\033[0;31m"; 	// Red
 const std::string STYLE_ERROR_T = 	"\033[1;31m"; 	// Red bold (Title)
 const std::string STYLE_VALUE =		"\033[0;32m"; 	// Green
@@ -19,6 +20,7 @@ const std::string STYLE_INFO_T =	"\033[1;36m"; 	// Cyan (Title)
 const std::string MSG_ERROR = 		"ERROR: ";
 const std::string MSG_WARN = 		"WARNING: ";
 const std::string MSG_INFO = 		"INFO: ";
+const std::string MSG_DEFAULT = 	"";
 
 // ================================ ARG COUNT
 
