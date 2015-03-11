@@ -22,7 +22,7 @@ protected:
 public:
     Declaration(double val);
     virtual ~Declaration();
-    double getValue() {return this->value;};
+    virtual double getValue() {return this->value;};
     std::string getType() {return this->type;};
     virtual void setValue(double val) {};
 };
