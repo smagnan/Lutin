@@ -1,6 +1,6 @@
 PLUS,MINUS,MULT,DIVIDE,OPENBY,CLOSEBY,ID,NUM,VAR,CONST,PV,VIR,EQ,WRITE,READ,AFF,END
 ,,,,,,,,r22,r22,,,,,,,r22
-,,,,,,,,,,,,,,,,Acc.
+,,,,,,,,,,,,,,,,acc
 ,,,,,,,,d13,d3,,,,,,,r23
 ,,,,,,d4,,,,,,,,,,
 ,,,,,,,,,,,,d5,,,,

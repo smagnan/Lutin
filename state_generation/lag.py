@@ -75,6 +75,18 @@ templateReduceInstruction = """
             break;
 """
 
+templateAcceptInstruction = """
+        case {symbolname}:
+            automaton.accept();
+            break;
+"""
+
+templateErrorInstruction = """
+        default:
+            automaton.error();
+            break;
+"""
+
 templateInclude = """
 #include "state{ns}.h" """
 
@@ -85,6 +97,9 @@ def translateToSwitchCase(str, symbolname):
     m = re.match(r'r(\d+)', str)
     if m:
         return templateReduceInstruction.format(symbolname=symbolname, rulenumber=m.group(1))
+    m = re.match(r'acc', str)
+    if m:
+        return templateAcceptInstruction.format(symbolname=symbolname);
     return ""
     
 def printStateIncludes(numState):
@@ -106,6 +121,7 @@ def printStateSource(numState):
     for index, cell in enumerate(automaton[numState]):
         switchCaseElement = translateToSwitchCase(cell, header[index])
         switchCode = switchCode + switchCaseElement
+    switchCode = switchCode + templateErrorInstruction
     state = templateSource.format(ns=numState, switchcode=switchCode, stateincludes=includeCode)
     # print(state)
     return state

@@ -34,6 +34,10 @@ bool State17::transition(Automaton & automaton, Symbol * s)
             automaton.reduce(5);
             break;
 
+        default:
+            automaton.error();
+            break;
+
     }
     
     return false;
