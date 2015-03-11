@@ -3,17 +3,17 @@
 class Exprdivide : public ExprBin
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Exprdivide();
+		//Default Constructor
+		Exprdivide();
 
-  //Deconstructor
-    virtual ~Exprdivide();
+		//Deconstructor
+		~Exprdivide();
 
 
-private:
+	private:
 
- //Disable the following by Exprdivide 
+		//Disable the following by Exprdivide 
 
 };

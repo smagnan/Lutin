@@ -3,17 +3,17 @@
 class Openby : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Openby();
+		//Default Constructor
+		Openby();
 
-  //Deconstructor
-    virtual ~Openby();
+		//Deconstructor
+		~Openby();
 
 
-private:
+	private:
 
- //Disable the following by Openby 
+		//Disable the following by Openby 
 
 };

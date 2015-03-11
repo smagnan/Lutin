@@ -3,17 +3,17 @@
 class Divide : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Divide();
+		//Default Constructor
+		Divide();
 
-  //Deconstructor
-    virtual ~Divide();
+		//Deconstructor
+		~Divide();
 
 
-private:
+	private:
 
- //Disable the following by Divide 
+		//Disable the following by Divide 
 
 };

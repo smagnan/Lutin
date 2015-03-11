@@ -3,17 +3,17 @@
 class Id : public Expr
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Id();
+		//Default Constructor
+		Id();
 
-  //Deconstructor
-    virtual ~Id();
+		//Deconstructor
+		~Id();
 
 
-private:
+	private:
 
- //Disable the following by Id 
+		//Disable the following by Id 
 
 };

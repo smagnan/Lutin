@@ -3,17 +3,17 @@
 class Exprmult : public ExprBin
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Exprmult();
+		//Default Constructor
+		Exprmult();
 
-  //Deconstructor
-    virtual ~Exprmult();
+		//Deconstructor
+		~Exprmult();
 
 
-private:
+	private:
 
- //Disable the following by Exprmult 
+		//Disable the following by Exprmult 
 
 };

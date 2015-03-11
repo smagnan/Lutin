@@ -3,17 +3,17 @@
 class Closeby : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Closeby();
+		//Default Constructor
+		Closeby();
 
-  //Deconstructor
-    virtual ~Closeby();
+		//Deconstructor
+		~Closeby();
 
 
-private:
+	private:
 
- //Disable the following by Closeby 
+		//Disable the following by Closeby 
 
 };

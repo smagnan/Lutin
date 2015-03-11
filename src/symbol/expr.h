@@ -3,17 +3,17 @@
 class Expr : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Expr();
+		//Default Constructor
+		Expr() : Symbole(EXPR){}
 
-  //Deconstructor
-    virtual ~Expr();
+		//Deconstructor
+		virtual ~Expr() {}
+		virtual double eval (const map<string,double> &vals) = 0;
 
+	private:
 
-private:
-
- //Disable the following by Expr 
+		//Disable the following by Expr 
 
 };

@@ -3,17 +3,17 @@
 class Vir : public Symbol
 {
 
-public:
+	public:
 
-   //Default Constructor
-    Vir();
+		//Default Constructor
+		Vir();
 
-  //Deconstructor
-    virtual ~Vir();
+		//Deconstructor
+		~Vir();
 
 
-private:
+	private:
 
- //Disable the following by Vir 
+		//Disable the following by Vir 
 
 };
