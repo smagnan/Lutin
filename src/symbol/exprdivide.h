@@ -1,6 +1,6 @@
 //filecomment
 
-class Exprdivide : public Symbol
+class Exprdivide : public ExprBin
 {
 
 public:

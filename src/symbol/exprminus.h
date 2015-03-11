@@ -1,6 +1,6 @@
 //filecomment
 
-class Exprminus : public Symbol
+class Exprminus : public ExprBin
 {
 
 public:

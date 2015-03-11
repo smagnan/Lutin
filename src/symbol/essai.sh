@@ -1,6 +1,6 @@
 #! /bin/bash
 
-for file in *.h;
+for file in expr*.h;
 do
 filename="$(tr '[:lower:]' '[:upper:]' <<< ${file:0:1})${file:1}"
 rm $file
