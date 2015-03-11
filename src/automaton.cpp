@@ -19,16 +19,16 @@ Automaton::~Automaton()
 	Symbol* currentSymbol;
 	State* currentState;
 	
-	while(symbolStack.empty())
-	{
-		currentSymbol = symbolStack.pop();
-		delete currentSymbol;
+	while(!this->symbolStack.empty())
+	{	
+		delete this->symbolStack.top();
+		this->symbolStack.pop();
 	}
 	
-	while(symbolState.empty())
-	{
-		currentState = symbolState.pop();
-		delete currentState;
+	while(!stateStack.empty())
+	{		
+		delete this->stateStack.top();
+		this->stateStack.pop();
 	}
 }
 
@@ -41,7 +41,7 @@ void Automaton::read()
 void Automaton::shift(Symbol * symbol, State * state)
 {
     symbolStack.push(symbol);
-    stateStack.push(symbol);
+    stateStack.push(state);
 }
 
 void Automaton::reduce(int numeroRegle)
@@ -50,3 +50,4 @@ void Automaton::reduce(int numeroRegle)
 	//Ajouter l'instruction qui va correspond
 	//Passer à l'état qui correspond au symbol non terminal
 }
+
