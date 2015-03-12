@@ -13,66 +13,66 @@
 #include <boost/program_options.hpp>
 
 #include "automaton.h"
+#include "argsmanager.h"
 #include "interpreter/interpreter.h"
 
 using std::cout;
 using std::endl;
 namespace po = boost::program_options;
 
+
+
+//// Main function :
+
 int main( int argc, const char* argv[] )
 {
-    std::string filestr;
-	po::options_description desc("Allowed options");
-	desc.add_options()
-		("file", po::value<std::string>(&filestr), "Lutin input file to use")
-        ("print,p", "Display the program on standard output")
-        ("analyse,a", "Static analysis of the program")
-		("execution,e", "Program execution")
-		("optimize,o", "Simplify and transform the program")
-        ("help,h", "produce help message");
+    
+    ArgsManager am(argc, argv);
+    
+    
+    if (am.isError() || am.count("help"))
+    {
+        //TODO: HELP
+        // Display the help message
+        cout << "help" << endl;
+        return EXIT_FAILURE;
+    }
 	
-	po::positional_options_description file;
-	file.add("file",-1);
-    
-	po::variables_map vm;
-    po::store(po::command_line_parser(argc, argv).
-          options(desc).positional(file).run(), vm);
-	po::notify(vm);
-    
-    
-	if (vm.count("print")) 
+	if (am.count("analyze")) 
 	{
-		// TODO : print the program
-		cout << "Hello, I'm printing" << endl;
-	}
-	
-	if (vm.count("analyse")) 
-	{
-        // TODO : analyse the program
-		cout << "Hello, I'm analysing" << endl;
-	} 
-
-	if (vm.count("execution"))
-	{
-		// TODO : execute
-		cout << "Hello, I'm executing ... with an axe" << endl;
+        //TODO: ANALYZE 
+        // Fill with that kind of line :
+        // interpreter.static_analysis();
+        cout << "analyze" << endl;
 	}
 
-	if (vm.count("optimize"))
+	if (am.count("optimize"))
 	{
-		// TODO : simplify
-		cout << "Hello, I'm optimizing" << endl;
+        //TODO: OPTIMIZE 
+        // Fill with that kind of line :
+        // interpreter.optimize();
+        cout << "optimize" << endl;
 	}
-
-	if (vm.count("help"))
+    
+	if (am.count("print")) 
 	{
-		// TODO : simplify
-		cout << "Hello, I'm helping" << endl;
+        //TODO: PRINT 
+        // Fill with that kind of line :
+        // cout << interpreter << endl;
+        cout << "print" << endl;
+	}
+    
+	if (am.count("execute"))
+	{
+        //TODO: OPTIMIZE 
+        // Fill with that kind of line :
+        // interpreter.execute();
+        cout << "execute" << endl;
 	}
 	
     
     
-	/*
+	
 	Printer mainPrinter;
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	mainPrinter.printinfo("","Creating Interpreter");
@@ -103,7 +103,7 @@ int main( int argc, const char* argv[] )
 	//delete automaton;
 	mainPrinter.printinfo("","Deleting Interpreter");
 	delete interpreter;
-	*/
+	
 	
 	return 0;
 }
