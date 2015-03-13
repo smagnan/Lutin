@@ -1,5 +1,5 @@
 #include "argsmanager.h"
-
+#include <fstream>
 
 const std::string OPTION_ANALYZE_LABEL =    "analyze,a";
 const std::string OPTION_EXECUTE_LABEL =    "execute,e";
@@ -9,11 +9,12 @@ const std::string OPTION_OPTIMIZE_LABEL =   "optimize,o";
 const std::string OPTION_PRINT_LABEL =      "print,p";
 const std::string OPTION_ANALYZE_MESSAGE =  "Static analysis of the program";
 const std::string OPTION_EXECUTE_MESSAGE =  "Execute the program";
-const std::string OPTION_FILE_MESSAGE =     "Filepath to the Lutin input file";
+const std::string OPTION_FILE_MESSAGE =     "Path to the Lutin input file";
 const std::string OPTION_HELP_MESSAGE =     "Print this help message and exit";
 const std::string OPTION_OPTIMIZE_MESSAGE = "Simplify and transform the program";
 const std::string OPTION_PRINT_MESSAGE =    "Display the code program on the standard output";
 const std::string OPTION_ERROR_MESSAGE =    "Error";
+const std::string OPTION_ERROR_FILE =       "Cannot open the file : ";
 const std::string OPTION_ERROR_SEPARATOR =  " : ";
 const std::string OPTION_SHORT_TEXT =       " lut - The LUTin language interpreter";
 const std::string OPTION_USAGE_TEXT =       "    Usage: lut [options] <input_file>";
@@ -23,7 +24,7 @@ const std::string STYLE_IMPORTANT =         "\033[0;32m";
 
 
 ArgsManager::ArgsManager(int argc, const char* argv[]) :
-    desc("Allowed options"), vm(NULL), error(false)
+    desc("Allowed options"), vm(NULL), error(false), input_file_text("")
 {
     
     try
@@ -48,45 +49,57 @@ ArgsManager::ArgsManager(int argc, const char* argv[]) :
               run(), // Parse the options
               vm); // Variable map
         po::notify(vm);
+        
+        
+        // load the input file
+        std::string file_path(vm[OPTION_FILE_LABEL.c_str()].as<std::string>());
+        std::ifstream input_file(file_path.c_str());
+        std::string line;
+        if (input_file.is_open())
+        {
+            while ( getline (input_file,line) )
+            {
+                input_file_text += line + "\n";
+            }
+            input_file.close();
+        }
+        
+        // ERROR : Cannot open file
+        else
+        {
+            manageError(OPTION_ERROR_FILE + file_path);
+        }
+        
     }
     
     // ERROR : too many "input_file" arguments
     catch (po::too_many_positional_options_error e)
     {
-        std::cerr << STYLE_ERROR;
-        std::cerr << OPTION_ERROR_MESSAGE << OPTION_ERROR_SEPARATOR
-                << e.what() << std::endl;
-        std::cerr << STYLE_DEFAULT;
-        error = true;
+        manageError(e.what());
     }
     
     // ERROR : Unknown option
     catch (po::unknown_option e)
     {
-        std::cerr << STYLE_ERROR;
-        std::cerr << OPTION_ERROR_MESSAGE << OPTION_ERROR_SEPARATOR
-                << e.what() << std::endl;
-        std::cerr << STYLE_DEFAULT;
-        error = true;
+        manageError(e.what());
     }
     
     // ERROR : Required "input_file" argument
     catch (po::required_option e)
     {
-        std::cerr << STYLE_ERROR;
-        std::cerr << OPTION_ERROR_MESSAGE << OPTION_ERROR_SEPARATOR
-                << e.what() << std::endl;
-        std::cerr << STYLE_DEFAULT;
-        error = true;
+        manageError(e.what());
+    }
+    
+    // ERROR : Required "input_file" argument
+    catch (po::multiple_occurrences e)
+    {
+        manageError(e.what());
     }
     
     // ERROR : Default
     catch (po::error e)
     {
-        std::cerr << STYLE_ERROR;
-        std::cerr << OPTION_ERROR_MESSAGE << std::endl;
-        std::cerr << STYLE_DEFAULT;
-        error = true;
+        manageError(e.what());
     }
     
 }
@@ -96,6 +109,10 @@ ArgsManager::~ArgsManager()
 {
 }
 
+const std::string& ArgsManager::getInputText() const
+{
+    return input_file_text;
+}
 
 po::variable_value ArgsManager::operator[] (std::string option)
 {
@@ -112,6 +129,16 @@ bool ArgsManager::isError()
     return error;
 }
 
+void ArgsManager::manageError(std::string what)
+{
+    std::cerr << STYLE_ERROR;
+    std::cerr << OPTION_ERROR_MESSAGE << OPTION_ERROR_SEPARATOR
+            << what << std::endl;
+    std::cerr << STYLE_DEFAULT;
+    error = true;
+}
+
+
 std::ostream& operator<< (std::ostream& out, const ArgsManager& am)
 {
     return out << std::endl
@@ -121,3 +148,4 @@ std::ostream& operator<< (std::ostream& out, const ArgsManager& am)
     << std::endl
     << am.desc;
 }
+

@@ -28,6 +28,7 @@ extern const std::string OPTION_PRINT_MESSAGE;
 // ================================ ERROR
 
 extern const std::string OPTION_ERROR_MESSAGE;
+extern const std::string OPTION_ERROR_FILE;
 extern const std::string OPTION_ERROR_SEPARATOR;
 
 // ================================ HELP MESSAGE
@@ -50,6 +51,7 @@ class ArgsManager
     public:
         ArgsManager(int argc, const char* argv[]);
         virtual ~ArgsManager();
+        const std::string& getInputText() const;
         po::variable_value operator[] (std::string option);
         po::variables_map::size_type count(std::string option);
         friend std::ostream& operator<< (std::ostream& out, const ArgsManager& am);
@@ -58,9 +60,12 @@ class ArgsManager
     protected:
     
     private:
+        void manageError(std::string what);
+    
         po::options_description desc;
         po::variables_map vm;
         bool error;
+        std::string input_file_text;
 };
 
 #endif // ARGS_MANAGER_H
