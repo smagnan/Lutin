@@ -8,10 +8,13 @@
 // ---------------------------------------------
 
 #include "automaton.h"
+#include "state/state0.h"
 
 // Automaton constructor
 Automaton::Automaton() 
 {
+    // Stack initialization :
+    stateStack.push(new State0());
 }
 
 Automaton::~Automaton()
