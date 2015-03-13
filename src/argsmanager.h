@@ -1,26 +1,46 @@
 #ifndef ARGS_MANAGER_H
 #define ARGS_MANAGER_H
 
+#include <iostream>
 #include <string>
 #include <map>
 #include <boost/program_options.hpp>
 
-#define OPTION_ANALYZE_LABEL "analyze,a"
-#define OPTION_EXECUTE_LABEL "execute,e"
-#define OPTION_FILE_LABEL "file"
-#define OPTION_HELP_LABEL "help,h"
-#define OPTION_OPTIMIZE_LABEL "optimize,o"
-#define OPTION_PRINT_LABEL "print,p"
 
-#define OPTION_ANALYZE_MESSAGE "Static analysis of the program"
-#define OPTION_EXECUTE_MESSAGE "Execute the program"
-#define OPTION_FILE_MESSAGE "Lutin input file path"
-#define OPTION_HELP_MESSAGE "Display the help message"
-#define OPTION_OPTIMIZE_MESSAGE "Simplify and transform the program"
-#define OPTION_PRINT_MESSAGE "Display the code program on the standard output"
+// ================================ OPTION LABEL
 
-#define OPTION_ERROR_MESSAGE "Error"
-#define OPTION_ERROR_MESSAGE_SEP " : "
+extern const std::string OPTION_ANALYZE_LABEL;
+extern const std::string OPTION_EXECUTE_LABEL;
+extern const std::string OPTION_FILE_LABEL;
+extern const std::string OPTION_HELP_LABEL;
+extern const std::string OPTION_OPTIMIZE_LABEL;
+extern const std::string OPTION_PRINT_LABEL;
+
+// ================================ OPTION DESCRIPTION
+
+extern const std::string OPTION_ANALYZE_MESSAGE;
+extern const std::string OPTION_EXECUTE_MESSAGE;
+extern const std::string OPTION_FILE_MESSAGE;
+extern const std::string OPTION_HELP_MESSAGE;
+extern const std::string OPTION_OPTIMIZE_MESSAGE;
+extern const std::string OPTION_PRINT_MESSAGE;
+
+// ================================ ERROR
+
+extern const std::string OPTION_ERROR_MESSAGE;
+extern const std::string OPTION_ERROR_SEPARATOR;
+
+// ================================ HELP MESSAGE
+
+extern const std::string OPTION_SHORT_TEXT;
+extern const std::string OPTION_USAGE_TEXT;
+
+// ================================ STYLE
+
+extern const std::string STYLE_DEFAULT; // Default: white
+extern const std::string STYLE_ERROR; // Red
+extern const std::string STYLE_IMPORTANT; // White Bold
+
 
 
 namespace po = boost::program_options;
@@ -32,10 +52,13 @@ class ArgsManager
         virtual ~ArgsManager();
         po::variable_value operator[] (std::string option);
         po::variables_map::size_type count(std::string option);
+        friend std::ostream& operator<< (std::ostream& out, const ArgsManager& am);
         bool isError();
+        
     protected:
     
     private:
+        po::options_description desc;
         po::variables_map vm;
         bool error;
 };
