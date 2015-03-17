@@ -30,7 +30,7 @@ class Automaton
 	    virtual ~Automaton();
 	    void read(); //utilisera Lexer pour faire le café
 	    void shift(Symbol * symbol, State * state);
-	    void reduce(int numeroRegle);
+	    void reduce(int numRule);
 	    void error();
 	    void accept();
 };
