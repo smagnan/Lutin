@@ -9,6 +9,7 @@
 
 #include "automaton.h"
 #include "state/state0.h"
+#include "symbol/symbol.h"
 
 using namespace std;
 
