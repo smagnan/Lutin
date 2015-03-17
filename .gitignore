@@ -25,6 +25,7 @@
 *.out
 *.app
 Lutin
+lut
 
 # Backup files
 *~
