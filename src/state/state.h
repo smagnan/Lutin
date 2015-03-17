@@ -33,7 +33,7 @@ enum Symbols
     IDENLIST,
     INIT,
     INITLIST,
-    EXPR,
+    EXPRGLOBAL,
     EXPRBIN,
     TERM,
     FINAL
