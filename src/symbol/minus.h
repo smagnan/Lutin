@@ -1,4 +1,4 @@
-//filecomment
+#include "symbol.h" 
 
 class Minus : public Symbol
 {

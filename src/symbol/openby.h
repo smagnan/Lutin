@@ -1,4 +1,4 @@
-//filecomment
+#include "symbol.h" 
 
 class Openby : public Symbol
 {

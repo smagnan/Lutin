@@ -1,6 +1,7 @@
 #! /bin/bash
 
-for file in *.h;
+for file in expr*.h;
 do
-sed -i "s/virtual/""/g" $file
+sed -i 1d $file
+echo "#include \"exprbin.h\" $(cat $file)" > $file
 done

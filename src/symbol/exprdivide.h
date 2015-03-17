@@ -1,10 +1,8 @@
-//filecomment
+#include "exprbin.h" 
 
-class Exprdivide : public ExprBin
+class Exprdivide : public Exprbin
 {
-
 	public:
-
 		//Default Constructor
 		Exprdivide();
 

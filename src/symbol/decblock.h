@@ -1,4 +1,4 @@
-//filecomment
+#include "symbol.h" 
 
 class Decblock : public Symbol
 {
