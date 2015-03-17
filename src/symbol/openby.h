@@ -1,3 +1,6 @@
+#ifndef OPEN_BY_H
+#define OPEN_BY_H
+
 #include "symbol.h" 
 
 class Openby : public Symbol
@@ -17,3 +20,5 @@ class Openby : public Symbol
 		//Disable the following by Openby 
 
 };
+
+#endif

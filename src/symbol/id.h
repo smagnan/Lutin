@@ -1,3 +1,6 @@
+#ifndef ID_H
+#define ID_H
+
 #include "expr.h" 
 
 class Id : public Expr
@@ -17,3 +20,5 @@ class Id : public Expr
 		//Disable the following by Id 
 
 };
+
+#endif

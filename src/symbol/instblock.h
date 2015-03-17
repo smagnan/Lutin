@@ -1,3 +1,6 @@
+#ifndef INSTBLOCK_H
+#define INSTBLOCK_H
+
 #include "symbol.h" 
 
 class Instblock : public Symbol
@@ -16,3 +19,5 @@ class Instblock : public Symbol
 		//Disable the following by Minus 
 
 };
+
+#endif

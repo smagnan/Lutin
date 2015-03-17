@@ -1,4 +1,7 @@
-#include "symbol.h" 
+#ifndef NUM_H
+#define NUM_H
+
+#include "expr.h" 
 
 class Num : public Expr
 {
@@ -17,3 +20,5 @@ class Num : public Expr
 		//Disable the following by Num 
 
 };
+
+#endif

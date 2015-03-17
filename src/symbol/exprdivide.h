@@ -1,3 +1,6 @@
+#ifndef EXPRDIVIDE_H
+#define EXPRDIVIDE_H
+
 #include "exprbin.h" 
 
 class Exprdivide : public Exprbin
@@ -15,3 +18,5 @@ class Exprdivide : public Exprbin
 		//Disable the following by Exprdivide 
 
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef EXPRBIN_H
+#define EXPRBIN_H
+
 #include "expr.h" 
 
 class Exprbin : public Expr {
@@ -15,3 +18,5 @@ class Exprbin : public Expr {
 
 	
 };
+
+#endif

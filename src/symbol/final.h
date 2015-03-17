@@ -1,3 +1,6 @@
+#ifndef FINAL_H
+#define FINAL_H
+
 #include "symbol.h" 
 
 class Final : public Symbol
@@ -16,3 +19,5 @@ class Final : public Symbol
 		//Disable the following by Minus 
 
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef MULT_H
+#define MULT_H
+
 #include "symbol.h" 
 
 class Mult : public Symbol
@@ -17,3 +20,5 @@ class Mult : public Symbol
 		//Disable the following by Mult 
 
 };
+
+#endif

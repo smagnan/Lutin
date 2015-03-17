@@ -1,3 +1,6 @@
+#ifndef VAR_H
+#define VAR_H
+
 #include "expr.h" 
 
 class Var : public Expr
@@ -17,3 +20,5 @@ class Var : public Expr
 		//Disable the following by Var 
 
 };
+
+#endif

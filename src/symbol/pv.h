@@ -1,3 +1,6 @@
+#ifndef PV_H
+#define PV_H
+
 #include "symbol.h" 
 
 class Pv : public Symbol
@@ -17,3 +20,5 @@ class Pv : public Symbol
 		//Disable the following by Pv 
 
 };
+
+#endif

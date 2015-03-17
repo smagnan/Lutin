@@ -1,3 +1,6 @@
+#ifndef READ_H
+#define READ_H
+
 #include "symbol.h" 
 
 class Read : public Symbol
@@ -5,11 +8,11 @@ class Read : public Symbol
 
 	public:
 
-		//Default Constructor
+		// Default Constructor
 		Read();
 
-		//Deconstructor
-		~Read();
+		// Destructor
+		virtual ~Read();
 
 
 	private:
@@ -17,3 +20,5 @@ class Read : public Symbol
 		//Disable the following by Read 
 
 };
+
+#endif

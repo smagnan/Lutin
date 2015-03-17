@@ -1,3 +1,6 @@
+#ifndef DECBLOCK_H
+#define DECBLOCK_H
+
 #include "symbol.h" 
 
 class Decblock : public Symbol
@@ -16,3 +19,5 @@ class Decblock : public Symbol
 		//Disable the following by Minus 
 
 };
+
+#endif

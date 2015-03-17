@@ -1,3 +1,6 @@
+#ifndef EXPRMULT_H
+#define EXPRMULT_H
+
 #include "exprbin.h" 
 
 class Exprmult : public Expr {
@@ -16,3 +19,5 @@ class Exprmult : public Expr {
 		//Disable the following by Exprmult 
 
 };
+
+#endif

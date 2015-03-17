@@ -1,3 +1,6 @@
+#ifndef DIVIDE_H
+#define DIVIDE_H
+
 #include "symbol.h" 
 
 class Divide : public Symbol
@@ -17,3 +20,5 @@ class Divide : public Symbol
 		//Disable the following by Divide 
 
 };
+
+#endif

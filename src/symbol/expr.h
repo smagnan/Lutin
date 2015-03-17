@@ -1,3 +1,6 @@
+#ifndef EXPR_H
+#define EXPR_H
+
 #include "symbol.h"
 #include <map>
 #include <string>
@@ -20,3 +23,5 @@ class Expr : public Symbol {
 		//Disable the following by Expr 
 
 };
+
+#endif

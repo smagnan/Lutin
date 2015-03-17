@@ -1,3 +1,6 @@
+#ifndef EXPRMINUS_H
+#define EXPRMINUS_H
+
 #include "exprbin.h" 
 
 class Exprminus : public Exprbin 
@@ -16,3 +19,5 @@ class Exprminus : public Exprbin
 		//Disable the following by Exprminus 
 
 };
+
+#endif
