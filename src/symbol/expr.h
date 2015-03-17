@@ -4,14 +4,15 @@
 using namespace std;
 
 class Expr : public Symbol {
- 
+
 	public:
 
 		//Default Constructor
-		Expr() : Symbol(EXPR){}
+		Expr();
 
 		//Deconstructor
 		virtual ~Expr() {}
+
 		virtual double eval (const map<string,double> &vals) = 0;
 
 	private:

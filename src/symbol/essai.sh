@@ -1,7 +1,10 @@
 #! /bin/bash
 
-for file in expr*.h;
+for file in eg.h;
 do
-sed -i 1d $file
-echo "#include \"exprbin.h\" $(cat $file)" > $file
+
+STRINGIN=""
+STRINGOUT="
+
+#echo "#include \"exprbin.h\" $(cat $file)" > $file
 done

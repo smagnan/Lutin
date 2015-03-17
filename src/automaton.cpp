@@ -9,6 +9,7 @@
 
 #include "automaton.h"
 #include "state/state0.h"
+#include "symbol/symbol.h"
 
 using namespace std;
 
@@ -77,7 +78,7 @@ void Automaton::shift(Symbol * symbol, State * state)
     stateStack.push(state);
 }
 
-void Automaton::reduce(int numeroRegle)
+void Automaton::reduce(int numRule)
 {
 	//Depiler les symboles à droite de la règle
 	//Ajouter l'instruction qui va correspond

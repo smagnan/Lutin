@@ -1,4 +1,38 @@
-const int EXPR = 1000;
+#ifndef SYMBOL_H
+#define SYMBOL_H
+
+enum Symbols
+{
+    PLUS,
+    MINUS,
+    MULT,
+    DIVIDE,
+    OPENBY,
+    CLOSEBY,
+    ID,
+    NUM,
+    VAR,
+    CONST,
+    PV,
+    VIR,
+    EQ,
+    WRITE,
+    READ,
+    AFF,
+    END,
+    PROG,
+    DECBLOCK,
+    INSTBLOCK,
+    DECL,
+    INSTR,
+    IDENLIST,
+    INIT,
+    INITLIST,
+    EXPRGLOBAL,
+    EXPRIME,
+    TERM,
+    FINAL
+};
 
 class Symbol
 {
@@ -24,3 +58,5 @@ class Symbol
 		//Disable the following by Symbol 
 
 };
+
+#endif // SYMBOL_H
