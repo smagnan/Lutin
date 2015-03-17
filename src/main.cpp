@@ -35,7 +35,7 @@ int main( int argc, const char* argv[] )
 	//Automaton *automaton 		= new Automaton();
 	mainPrinter.printerr("Project not finised ","you know what to do ...");
 	mainPrinter.printwarn("Project not finised ","you know what to do ...");	
-	//===================================
+	//=================================== TEST STUFF ==========================================
 	mainPrinter.print("","============== DECLARE =================");
 	interpreter->declare("testVar",VAR,42);
 	interpreter->declare("testVar2"); // not initialised var
@@ -45,23 +45,13 @@ int main( int argc, const char* argv[] )
 	// The following line is equivalent to the previous one :) 
 	// Note that whatever the string is the name will be the value
 	interpreter->declare("",VALUE,100); // XXX does nothing here since the value is already stored
-	interpreter->print_declarations();
 	mainPrinter.print("","============== UPDATED ================");
 	interpreter->update_variable("testVar",1337);
 	interpreter->update_variable("testVar2",8080);
 	interpreter->update_variable("testConst",1000); // Not working as you can see, quite normal (:
-	interpreter->print_declarations();
 	mainPrinter.print("","================ END ==================");
-	//===================================
-	mainPrinter.printinfo("","Deleting FSM");
-	//delete automaton;
-	mainPrinter.printinfo("","Deleting Interpreter");
-	delete interpreter;
-	
-    
-    cout << endl << endl;
-    
-    
+	//=================================== END TEST STUFF ======================================
+    cout << endl;
     
     ArgsManager am(argc, argv);
     
@@ -79,7 +69,7 @@ int main( int argc, const char* argv[] )
 	
 	if (am.count("analyze")) 
 	{
-        //TODO: ANALYZE 
+        // TODO: ANALYZE 
         // Fill with that kind of line :
         // interpreter.static_analysis();
         cout << "analyze" << endl;
@@ -87,7 +77,7 @@ int main( int argc, const char* argv[] )
 
 	if (am.count("optimize"))
 	{
-        //TODO: OPTIMIZE 
+        // TODO: OPTIMIZE 
         // Fill with that kind of line :
         // interpreter.optimize();
         cout << "optimize" << endl;
@@ -95,15 +85,17 @@ int main( int argc, const char* argv[] )
     
 	if (am.count("print")) 
 	{
-        //TODO: PRINT 
+        // TODO: PRINT 
         // Fill with that kind of line :
         // cout << interpreter << endl;
-        cout << "print" << endl;
+		interpreter->print_declarations(cout);
+		interpreter->print_instructions(cout);
+        //cout << "print" << endl;
 	}
     
 	if (am.count("execute"))
 	{
-        //TODO: OPTIMIZE 
+        // TODO: OPTIMIZE 
         // Fill with that kind of line :
         // interpreter.execute();
         cout << "execute" << endl;
@@ -112,6 +104,12 @@ int main( int argc, const char* argv[] )
     // Get the input file content
     cout << "Input file content : " << endl << endl;
     cout << am.getInputText();
+
+    // delete FSM
+    mainPrinter.printinfo("","Deleting FSM");
+	// delete automaton;
+	mainPrinter.printinfo("","Deleting Interpreter");
+	delete interpreter;
 	
 	return EXIT_SUCCESS;
 }

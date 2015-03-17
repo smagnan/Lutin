@@ -74,24 +74,24 @@ void Interpreter::update_variable(std::string name, double val)
 	}
 }
 
-void Interpreter::print_declarations()
+void Interpreter::print_declarations(std::ostream& out)
 {
 	typedef std::map<std::string, Declaration* >::iterator it_t;
 	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) {
 	    // TODO: this is ugly
-	    this->printer.print(iterator->second->getType());
-	    this->printer.print(iterator->first);
-	    this->printer.print("=");
+	    this->printer.print(out,iterator->second->getType());
+	    this->printer.print(out,iterator->first);
+	    this->printer.print(out,"=");
 	    try {
-	    	this->printer.print(iterator->second->getValue());
+	    	this->printer.print(out,iterator->second->getValue());
 	    } catch(NoInitException &e) {
-	    	this->printer.print(e.what());
+	    	this->printer.print(out,e.what()); // TODO fix
 	    }
 	    this->printer.endline();
 	}
 }
 
-void Interpreter::print_instructions()
+void Interpreter::print_instructions(std::ostream& out)
 {
 	// TODO
 }

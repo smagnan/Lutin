@@ -21,8 +21,8 @@ protected:
 public:
     Printer();
     virtual ~Printer();
-    void print(std::string str);
-    void print(double value);
+    void print(std::ostream& out,std::string str);
+    void print(std::ostream& out,double value);
     void printerr(std::string error, std::string desc);
     void printwarn(std::string warn, std::string desc);
     void printinfo(std::string info, std::string desc);

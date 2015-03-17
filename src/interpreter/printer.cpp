@@ -28,25 +28,25 @@ Printer::~Printer()
 
 }
 
-void Printer::print(std::string str)
+void Printer::print(std::ostream& out,std::string str)
 {
 	// TODO to change, will depens on an external file and will not be hardcoded
 	// I know it's ugly but just wanted something working
 	if(!str.compare("Var") || !str.compare("Const") || !str.compare("Value")) {
-		cout << STYLE_DECLAR << str << ' ';
+		out << STYLE_DECLAR << str << ' ';
 	} else if(!str.compare("+") || !str.compare("-") \
 				|| !str.compare("*") || !str.compare("/") \
 				|| !str.compare("=")) {
-		cout << STYLE_SYMBOL << str << ' ';
+		out << STYLE_SYMBOL << str << ' ';
 	} else {
-		cout << STYLE_DEFAULT << str << ' ';
+		out << STYLE_DEFAULT << str << ' ';
 	}
 	
 }
 
-void Printer::print(double value)
+void Printer::print(std::ostream& out,double value)
 {
-	cout << STYLE_VALUE << value << ' ';
+	out << STYLE_VALUE << value << ' ';
 }
 
 void Printer::printerr(std::string error, std::string desc)

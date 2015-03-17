@@ -6,7 +6,6 @@
 #include <map>
 #include <boost/program_options.hpp>
 
-
 // ================================ OPTION LABEL
 
 extern const std::string OPTION_ANALYZE_LABEL;
@@ -41,8 +40,6 @@ extern const std::string OPTION_USAGE_TEXT;
 extern const std::string STYLE_DEFAULT; // Default: white
 extern const std::string STYLE_ERROR; // Red
 extern const std::string STYLE_IMPORTANT; // White Bold
-
-
 
 namespace po = boost::program_options;
 

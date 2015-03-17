@@ -52,9 +52,9 @@ public:
     // Change the value of a variable
     void update_variable(std::string name, double val);
     // Print all the declarations
-    void print_declarations(); // TODO not here
+    void print_declarations(std::ostream& out); // TODO not here
     // Print all the instructions
-    void print_instructions(); // TODO not here
+    void print_instructions(std::ostream& out); // TODO not here
     // Delete all the declarations (free memory)
     // Can be called independently of destructor if needed
     void clean_declarations();
