@@ -25,7 +25,7 @@
 #include "affectation.h"
 #include "printer.h"
 
-enum Declar_Type {VAR,CONST,VALUE};
+enum Declar_Type {D_VAR,D_CONST,D_VALUE};
 class Interpreter
 {
 private:
@@ -48,7 +48,7 @@ public:
     // (the value name is it's value)
     // Note that thanks to how the system is built, there are no redundancies between values (: (same value == same key)
     // XXX KEEP IN MIND THE PREVIOUS POINT XXX
-    void keep_value(double val) {declare(std::string(),VALUE,val);}; 
+    void keep_value(double val) {declare(std::string(),D_VALUE,val);}; 
     // Change the value of a variable
     void update_variable(std::string name, double val);
     // Print all the declarations

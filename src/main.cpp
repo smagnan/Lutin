@@ -37,14 +37,14 @@ int main( int argc, const char* argv[] )
 	mainPrinter.printwarn("Project not finised ","you know what to do ...");	
 	//=================================== TEST STUFF ==========================================
 	mainPrinter.print("","============== DECLARE =================");
-	interpreter->declare("testVar",VAR,42);
+	interpreter->declare("testVar",D_VAR,42);
 	interpreter->declare("testVar2"); // not initialised var
 	interpreter->declare("testVar3");
-	interpreter->declare("testConst",CONST,777);
+	interpreter->declare("testConst",D_CONST,777);
 	interpreter->keep_value(100);
 	// The following line is equivalent to the previous one :) 
 	// Note that whatever the string is the name will be the value
-	interpreter->declare("",VALUE,100); // XXX does nothing here since the value is already stored
+	interpreter->declare("",D_VALUE,100); // XXX does nothing here since the value is already stored
 	mainPrinter.print("","============== UPDATED ================");
 	interpreter->update_variable("testVar",1337);
 	interpreter->update_variable("testVar2",8080);
