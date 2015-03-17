@@ -32,7 +32,7 @@ int main( int argc, const char* argv[] )
 	mainPrinter.printinfo("","Creating Interpreter");
 	Interpreter *interpreter 	= new Interpreter();
 	mainPrinter.printinfo("","Creating FSM");
-	//Automaton *automaton 		= new Automaton();
+	Automaton *automaton 		= new Automaton();
 	mainPrinter.printerr("Project not finised ","you know what to do ...");
 	mainPrinter.printwarn("Project not finised ","you know what to do ...");	
 	//=================================== TEST STUFF ==========================================
@@ -105,9 +105,8 @@ int main( int argc, const char* argv[] )
     cout << "Input file content : " << endl << endl;
     cout << am.getInputText();
 
-    // delete FSM
     mainPrinter.printinfo("","Deleting FSM");
-	// delete automaton;
+    delete automaton;
 	mainPrinter.printinfo("","Deleting Interpreter");
 	delete interpreter;
 	
