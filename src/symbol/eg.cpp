@@ -1,2 +1,2 @@
 #include "eg.h"
-Eg::Eg() : Symbol(EG){}
+Eg::Eg() : Symbol(EQ){}

@@ -1,2 +1,5 @@
 #include "num.h" 
-Num::Num() : Expr(){}
+Num::Num()
+{
+	
+}

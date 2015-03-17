@@ -1,4 +1,5 @@
 #include "symbol.h" 
+#include "expr.h"
 
 class Num : public Expr
 {
