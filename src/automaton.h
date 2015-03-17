@@ -23,7 +23,7 @@ class Automaton
 	private:
 		std::stack<Symbol*> symbolStack;
 		std::stack<State*> stateStack;
-		std::pair<Symbol*,int>* rules;
+		std::pair<Symbols,int>* rules;
 	protected:
 	public:
 	    Automaton();

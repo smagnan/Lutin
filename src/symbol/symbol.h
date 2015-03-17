@@ -28,7 +28,7 @@ enum Symbols
     IDENLIST,
     INIT,
     INITLIST,
-    EXPRGLOBAL,
+    EXPR,
     EXPRIME,
     TERM,
     FINAL
