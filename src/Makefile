@@ -48,7 +48,7 @@ FLAGS=-O2
 LIBS=-L"/usr/lib" -lboost_program_options -lboost_regex
 
 all: $(OBJS)
-	$(GPP) $(CFLAGS) $(FLAGS) $(LIBS) -o $(BIN) $(OBJS)
+	$(GPP) $(CFLAGS) $(FLAGS) -o $(BIN) $(OBJS) $(LIBS)
 
 $(CLEAN):
 	rm -f $(OBJS) $(BIN)

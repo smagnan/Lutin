@@ -10,24 +10,29 @@
 #ifndef AUTOMATON_H
 #define AUTOMATON_H
 
-#include <stack>
 
-class Symbol;
+#include <stack>
+#include <utility>
+#include "symbol/symbol.h"
+
+#define RULES_NUMBER 25
+
 class State;
 class Automaton
 {
-private:
-	std::stack<Symbol*> symbolStack;
-	std::stack<State*> stateStack;
-protected:
-public:
-    Automaton();
-    virtual ~Automaton();
-    void read(); //utilisera Lexer pour faire le café
-    void shift(Symbol * symbol, State * state);
-    void reduce(int numeroRegle);
-    void error();
-    void accept();
+	private:
+		std::stack<Symbol*> symbolStack;
+		std::stack<State*> stateStack;
+		std::pair<Symbol*,int>* rules;
+	protected:
+	public:
+	    Automaton();
+	    virtual ~Automaton();
+	    void read(); //utilisera Lexer pour faire le café
+	    void shift(Symbol * symbol, State * state);
+	    void reduce(int numRule);
+	    void error();
+	    void accept();
 };
 
 #endif

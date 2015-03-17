@@ -24,7 +24,19 @@ enum Symbols
     WRITE,
     READ,
     AFF,
-    END
+    END,
+    PROG,
+    DECBLOCK,
+    INSTBLOCK,
+    DECL,
+    INSTR,
+    IDENLIST,
+    INIT,
+    INITLIST,
+    EXPRGLOBAL,
+    EXPRBIN,
+    TERM,
+    FINAL
 };
 
 class State
