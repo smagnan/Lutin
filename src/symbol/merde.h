@@ -1,3 +1,6 @@
+#ifndef EXPRIME_H
+#define EXPRIME_H
+
 #include "symbol.h"
 
 class Exprime : public Symbol {

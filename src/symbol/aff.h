@@ -1,3 +1,6 @@
+#ifndef AFF_H
+#define AFF_H
+
 #include "symbol.h" 
 
 class Aff : public Symbol
@@ -8,7 +11,7 @@ class Aff : public Symbol
 		//Default Constructor
 		Aff();
 
-		//Deconstructor
+		//Destructor
 		~Aff();
 
 
@@ -17,3 +20,5 @@ class Aff : public Symbol
 		//Disable the following by Aff 
 
 };
+
+#endif // AFF_H

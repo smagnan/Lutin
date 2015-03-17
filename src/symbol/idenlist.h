@@ -1,3 +1,6 @@
+#ifndef IDENLIST_H
+#define IDENLIST_H
+
 #include "symbol.h" 
 
 class IdenList : public Symbol
@@ -16,3 +19,5 @@ class IdenList : public Symbol
 		//Disable the following by Minus 
 
 };
+
+#endif

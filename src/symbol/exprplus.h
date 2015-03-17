@@ -1,3 +1,6 @@
+#ifndef EXPRPLUS_H
+#define EXPRPLUS_H
+
 #include "exprbin.h" 
 
 class Exprplus : public Exprbin {
@@ -15,3 +18,5 @@ class Exprplus : public Exprbin {
 		//Disable the following by Exprplus 
 
 };
+
+#endif

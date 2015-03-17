@@ -1,47 +1,52 @@
-
+using namespace std;
 
 
 // Constructors - destructors :
 Lexer::Lexer()
 {
-    // All regexes are compiled in constructors
-    const string regular1 = 
+    const char* re = 
         // Var
-        "(var\s)|"
+        "(var\s)"
         // Const
-        "(const\s)|"
+        "(const\s)"
         // read 
-        "(lire\s)|"
+        "(lire\s)"
         // write
-        "(ecrire\s)|"
+        "(ecrire\s)"
         // Plus symbol
-        "(+)|"
+        "(+)"
         // Minus symbol
-        "(-)|"
+        "(-)"
         // Multiply symbol
-        "(*)|"
+        "(*)"
         // Divide symbol
-        "(/)|"
+        "(/)"
         // openby left
-        "(\()|"
+        "(\()"
         // openby right
-        "(\))|"
+        "(\))"
         // semicolon
-        "(;)|"
+        "(;)"
         // Id
         "([a-zA-Z_][a-zA-Z0-9_]*)"
         // vir 
-        "(,)|"
+        "(,)"
         // egal
-        "(=)|"
+        "(=)"
         // affectation
-        "(:=)|"
+        "(:=)"
         // num 
-        "(-?\d+(,\d+)?"
-    ;
+        "(-?\d+(,\d+)?";
     
-    boost::regex re1(regular1, boost::regex::extended);
+    boost::regex main_regex(re);
 }
+
+private bool regex_callback(const boost::match_results<std::string::const_iterator>& str_found)
+{
+
+    return true;
+}
+
 
 Lexer::~Lexer()
 {

@@ -1,3 +1,6 @@
+#ifndef VIR_H
+#define VIR_H
+
 #include "symbol.h" 
 
 class Vir : public Symbol
@@ -17,3 +20,5 @@ class Vir : public Symbol
 		//Disable the following by Vir 
 
 };
+
+#endif

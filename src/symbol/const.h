@@ -1,3 +1,6 @@
+#ifndef CONST_H
+#define CONST_H
+
 #include "expr.h" 
 
 class Const : public Expr
@@ -17,3 +20,5 @@ class Const : public Expr
 		//Disable the following by Const 
 
 };
+
+#endif

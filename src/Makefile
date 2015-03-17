@@ -28,11 +28,11 @@ CPPFILES_STATE=state/state.cpp state/state0.cpp state/state1.cpp \
 	state/state38.cpp state/state39.cpp state/state40.cpp state/state41.cpp \
 	state/state42.cpp state/state43.cpp
 CPPFILES_SYMBOL=symbol/aff.cpp symbol/closeby.cpp symbol/const.cpp \
-	symbol/divide.cpp symbol/eg.cpp symbol/expr.cpp symbol/exprbin.cpp \
+	symbol/divide.cpp symbol/eq.cpp symbol/expr.cpp symbol/exprbin.cpp \
 	symbol/exprdivide.cpp symbol/exprminus.cpp symbol/exprmult.cpp \
 	symbol/exprplus.cpp symbol/minus.cpp symbol/mult.cpp symbol/num.cpp \
 	symbol/openby.cpp symbol/plus.cpp symbol/pv.cpp symbol/read.cpp \
-	symbol/symbol.cpp symbol/var.cpp symbol/write.cpp
+	symbol/symbol.cpp symbol/var.cpp symbol/write.cpp symbol/exprime.cpp
 CPPFILES_INTERPRETER=interpreter/affectation.cpp interpreter/const.cpp \
 	interpreter/declaration.cpp interpreter/instruction.cpp \
 	interpreter/interpreter.cpp interpreter/read.cpp interpreter/var.cpp \

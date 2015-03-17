@@ -1,3 +1,6 @@
+#ifndef CLOSE_BY_H
+#define CLOSE_BY_H
+
 #include "symbol.h" 
 
 class Closeby : public Symbol
@@ -17,3 +20,5 @@ class Closeby : public Symbol
 		//Disable the following by Closeby 
 
 };
+
+#endif

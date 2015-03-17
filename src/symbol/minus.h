@@ -1,3 +1,6 @@
+#ifndef MINUS_H
+#define MINUS_H
+
 #include "symbol.h" 
 
 class Minus : public Symbol
@@ -16,3 +19,5 @@ class Minus : public Symbol
 		//Disable the following by Minus 
 
 };
+
+#endif

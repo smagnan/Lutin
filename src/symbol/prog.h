@@ -1,3 +1,6 @@
+#ifndef PROG_H
+#define PROG_H
+
 #include "symbol.h" 
 
 class Prog : public Symbol
@@ -16,3 +19,5 @@ class Prog : public Symbol
 		//Disable the following by Minus 
 
 };
+
+#endif
