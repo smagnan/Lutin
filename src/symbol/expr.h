@@ -1,12 +1,14 @@
-//filecomment
+#include "symbol.h"
+#include <map>
+#include <string>
+using namespace std;
 
-class Expr : public Symbol
-{
-
+class Expr : public Symbol {
+ 
 	public:
 
 		//Default Constructor
-		Expr() : Symbole(EXPR){}
+		Expr() : Symbol(EXPR){}
 
 		//Deconstructor
 		virtual ~Expr() {}

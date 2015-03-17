@@ -1,8 +1,7 @@
-//filecomment
+#include "exprbin.h" 
 
-class Exprminus : public ExprBin
+class Exprminus : public Exprbin 
 {
-
 	public:
 
 		//Default Constructor

@@ -1,4 +1,4 @@
-//filecomment
+#include "symbol.h" 
 
 class Read : public Symbol
 {

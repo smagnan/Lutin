@@ -1,4 +1,4 @@
-//filecomment
+#include "symbol.h" 
 
 class Num : public Expr
 {

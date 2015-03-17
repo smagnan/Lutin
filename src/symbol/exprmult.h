@@ -1,7 +1,6 @@
-//filecomment
+#include "exprbin.h" 
 
-class Exprmult : public ExprBin
-{
+class Exprmult : public Expr {
 
 	public:
 

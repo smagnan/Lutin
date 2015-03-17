@@ -1,19 +1,17 @@
-//filecomment
+#include "expr.h" 
 
-class Exprbin : public Expr
-{
-	public:
+class Exprbin : public Expr {
 
-		//Default Constructor
-		Exprbin();
+	//Default Constructor
+	Exprbin();
 
-		//Deconstructor
-		~Exprbin();
+	//Deconstructor
+	~Exprbin();
 
 
 	private:
 
 	protected:
 
-		Expr * expr1,expr2;
+	
 };
