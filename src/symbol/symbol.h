@@ -1,5 +1,3 @@
-const int EXPR = 1000;
-
 class Symbol
 {
 
