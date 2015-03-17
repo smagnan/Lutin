@@ -18,9 +18,8 @@
 
 using std::cout;
 using std::endl;
-namespace po = boost::program_options;
 
-
+namespace po =  boost::program_options;
 
 //// Main function :
 
