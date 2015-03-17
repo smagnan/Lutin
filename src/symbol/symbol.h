@@ -6,15 +6,15 @@ class Symbol
 	public:
 
 		//Default Constructor
-		Symbol(int id) : ident(id) {}
+		Symbol(int id);
 
 		//Deconstructor
-		virtual ~Symbol() {};
+		virtual ~Symbol();
 
 		void print();
 
 		// overload int() to cast symbol into integer
-		operator int() const {return ident;}
+		operator int() const;
 
 	protected:
 		int ident;

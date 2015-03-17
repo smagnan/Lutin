@@ -8,7 +8,8 @@
 
 #include "symbol.h"
 
-Symbol::Symbol()
+Symbol::Symbol(int id) : 
+    ident(id)
 {
     
 }
@@ -18,7 +19,7 @@ Symbol::~Symbol()
     
 }
 
-Symbol::operator int()
+Symbol::operator int() const
 {
-    return 0;
+    return ident;
 }

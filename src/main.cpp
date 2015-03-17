@@ -13,55 +13,20 @@
 #include <boost/program_options.hpp>
 
 #include "automaton.h"
+#include "argsmanager.h"
 #include "interpreter/interpreter.h"
 
 using std::cout;
 using std::endl;
-namespace op =  boost::program_options;
+
+namespace po =  boost::program_options;
+
+//// Main function :
 
 int main( int argc, const char* argv[] )
 {
-
-	op::options_description opt("Allowed options");
-	opt.add_options()
-		("file", op::value<std::string>(), "Lutin file to use")
-    		("print,p", "Display the program on standard output")
-    		("analyse,a", "Static analysis of the program")
-		("execution,e", "Program execution")
-		("optimize,o", "Simplify and transform the program");
-	
-	op::positional_options_description file;
-	file.add("file",-1);
-
-	op::variables_map vm;
-	op::store(op::command_line_parser(argc, argv).options(opt).positional(file).run(),vm);
-	op::notify(vm);    
-
-	if (vm.count("print")) 
-	{
-		// TODO : print the program
-		cout << "Hello, I'm printing" << endl;
-	}
-	
-	if (vm.count("analyse")) 
-	{
-    		// TODO : analyse the program
-		cout << "Hello, I'm analysing" << endl;
-	} 
-
-	if (vm.count("execution"))
-	{
-		// TODO : execute
-		cout << "Hello, I'm executing ... with an axe" << endl;
-	}
-
-	if ("optimize")
-	{
-		// TODO : simplify
-		cout << "Hello, I'm optimizing" << endl;
-	}
-	
-	/*
+    
+    
 	Printer mainPrinter;
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	mainPrinter.printinfo("","Creating Interpreter");
@@ -92,7 +57,61 @@ int main( int argc, const char* argv[] )
 	//delete automaton;
 	mainPrinter.printinfo("","Deleting Interpreter");
 	delete interpreter;
-	*/
 	
-	return 0;
+    
+    cout << endl << endl;
+    
+    
+    
+    ArgsManager am(argc, argv);
+    
+    if (am.isError())
+    {
+        cout << am << endl;
+        return EXIT_FAILURE;
+    }
+    
+    if (am.count("help"))
+    {
+        cout << am << endl;
+        return EXIT_SUCCESS;
+    }
+	
+	if (am.count("analyze")) 
+	{
+        //TODO: ANALYZE 
+        // Fill with that kind of line :
+        // interpreter.static_analysis();
+        cout << "analyze" << endl;
+	}
+
+	if (am.count("optimize"))
+	{
+        //TODO: OPTIMIZE 
+        // Fill with that kind of line :
+        // interpreter.optimize();
+        cout << "optimize" << endl;
+	}
+    
+	if (am.count("print")) 
+	{
+        //TODO: PRINT 
+        // Fill with that kind of line :
+        // cout << interpreter << endl;
+        cout << "print" << endl;
+	}
+    
+	if (am.count("execute"))
+	{
+        //TODO: OPTIMIZE 
+        // Fill with that kind of line :
+        // interpreter.execute();
+        cout << "execute" << endl;
+	}
+    
+    // Get the input file content
+    cout << "Input file content : " << endl << endl;
+    cout << am.getInputText();
+	
+	return EXIT_SUCCESS;
 }

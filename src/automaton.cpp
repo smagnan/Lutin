@@ -8,10 +8,13 @@
 // ---------------------------------------------
 
 #include "automaton.h"
+#include "state/state0.h"
 
 // Automaton constructor
 Automaton::Automaton() 
 {
+    // Stack initialization :
+    stateStack.push(new State0());
 }
 
 Automaton::~Automaton()
@@ -50,4 +53,15 @@ void Automaton::reduce(int numeroRegle)
 	//Ajouter l'instruction qui va correspond
 	//Passer à l'état qui correspond au symbol non terminal
 }
+
+void Automaton::error()
+{
+    
+}
+
+void Automaton::accept()
+{
+    
+}
+
 
