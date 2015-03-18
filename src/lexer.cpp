@@ -55,7 +55,7 @@ Lexer::Lexer()
     vector<String>::iterator progStart, progEnd;
 }
 
-Lexer::~Lexer()
+virtual Lexer::~Lexer()
 {
 
 }
