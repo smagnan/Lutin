@@ -25,14 +25,15 @@ namespace po =  boost::program_options;
 
 int main( int argc, const char* argv[] )
 {
-    
-    
+
 	Printer mainPrinter;
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
+	mainPrinter.printinfo("","Creating Lexer");
+    Lexer *lexer = new Lexer();
 	mainPrinter.printinfo("","Creating Interpreter");
 	Interpreter *interpreter 	= new Interpreter();
 	mainPrinter.printinfo("","Creating FSM");
-	Automaton *automaton 		= new Automaton();
+	Automaton *automaton 		= new Automaton(interpreter,lexer);
 	mainPrinter.printerr("Project not finised ","you know what to do ...");
 	mainPrinter.printwarn("Project not finised ","you know what to do ...");	
 	//=================================== TEST STUFF ==========================================
@@ -109,6 +110,8 @@ int main( int argc, const char* argv[] )
     delete automaton;
 	mainPrinter.printinfo("","Deleting Interpreter");
 	delete interpreter;
+	mainPrinter.printinfo("","Deleting Lexer");
+	delete lexer;
 	
 	return EXIT_SUCCESS;
 }
