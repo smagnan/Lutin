@@ -3,11 +3,6 @@
 using namespace std;
 
 
-// Vector used for matched symbols :
-// - first in pair refers to position of pattern matched in regex
-// - second in pair is the content matched
-typedef std::vector<std::pair<int,std::string> > symbol_vector;
-
 
 //-------------------------------------- Constructors - destructors :
 
@@ -49,34 +44,31 @@ Lexer::Lexer()
         "(-?\\d+(.\\d+)?)";
     
     // Compile Regex:
-    boost::regex main_regex(re);
+    main_regex.assign(regex);
     // Will contain matched symbols : 
-    symbol_vector symbols;
-    // Will contains lines of program :
-    vector<String> progLines;                       // contains all lines of parsed program
-    vector<String>::iterator progStart, progEnd;    // iterator on the vector of lines
-    vector<Symbol> lineSymbols;                     // temp vector of matched symbols
+//  symbol_vector symbols;
 }
 
-virtual Lexer::~Lexer()
+Lexer::~Lexer()
 {
     if (!lineSymbols.empty())
     {
-        vector<Symbol>::iterator i;
-        while (i != lineSymbol.end())
+        vector<Symbol*>::iterator i;
+        while (i != lineSymbols.end())
         {
-            delete (*i++);
+            delete (*i);
+            i++;
         }
-        lineSymbols.erase();
+        lineSymbols.clear();
     }
 }
 
 //-------------------------------------------------- Public Methods
 
 // Set program to be analyzed by regex
-bool Lexer::setProg(String prog)
+bool Lexer::setProg(std::string prog)
 {
-    if (prog != null)
+    if (prog.size() != 0)
     {
         // split program in lines
         std::stringstream ss(prog);
@@ -94,89 +86,97 @@ bool Lexer::setProg(String prog)
 }
 
 
-vector<Symbol> Lexer::getSymbols()
+vector<Symbol*> Lexer::getSymbols()
 {
     // If lineSymbols not empty, delete everything inside
     // and emtpy it
     if (!lineSymbols.empty())
     {
-        vector<Symbol>::iterator i;
-        while (i != lineSymbol.end())
+        vector<Symbol*>::iterator i;
+        while (i != lineSymbols.end())
         {
             delete (*i);
-            ++i;
+            i++;
         }
-        lineSymbols.erase();
+        lineSymbols.clear();
     }
 
     // Find symbols
     boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), main_regex);
     boost::sregex_iterator m2;
-    std::for_each(m1, m2, &regex_callback);
+
+ // std::for_each(*m1, m2, &Lexer::regex_callback);
+    while(m1 != m2)
+    {
+        regex_callback(*m1);
+        ++m1;
+    }
+
     // increment iterator (for next loop)
-    progStart++;
-    
     // Fill symbol vector
-    symbol_vector::iterator b,e;
-    b = symbols.begin();
-    e = symbols.end();
+    pattern_vector::iterator b,e;
+    b = patterns.begin();
+    e = patterns.end();
     while(b != e)
     {
-        switch ( (*b).first ) :
+        switch (b->first)
         {
-            case 1:     // var
-                lineSymbols.push_back(new Var());
+            case 1 :     // var 
+                lineSymbols.push_back((Symbol*)(new S_Var()));
                 break;
-            case 2:     // const
-                lineSymbols.push_back(new Const());
+
+            case 2 :     // const
+                lineSymbols.push_back((Symbol*)(new S_Const()));
                 break;
-            case 3:     // lire
-                lineSymbols.push_back(new Lire());
+
+            case 3 :     // lire
+                lineSymbols.push_back((Symbol*)(new S_Read()));
                 break;  
             case 4:     // ecrire
-                lineSymbols.push_back(new Ecrire());
+                lineSymbols.push_back((Symbol*)(new S_Write()));
                 break;
             case 5:     // +
-                lineSymbols.push_back(new Plus());
+                lineSymbols.push_back((Symbol*)(new S_Plus()));
                 break;
             case 6:     // -
-                lineSymbols.push_back(new Minus());
+                lineSymbols.push_back((Symbol*)(new S_Minus()));
                 break;
             case 7:     // *
-                lineSymbols.push_back(new Mult());
+                lineSymbols.push_back((Symbol*)(new S_Mult()));
                 break;
             case 8:     // /
-                lineSymbols.push_back(new Divide());
+                lineSymbols.push_back((Symbol*)(new S_Divide()));
                 break;
             case 9:     // (
-                lineSymbols.push_back(new Openby());
+                lineSymbols.push_back((Symbol*)(new S_Openby()));
                 break;
             case 10:    // )
-                lineSymbols.push_back(new Closeby());
+                lineSymbols.push_back((Symbol*)(new S_Closeby()));
                 break;
             case 11:    // ;
-                lineSymbols.push_back(new Pv());
+                lineSymbols.push_back((Symbol*)(new S_Pv()));
                 break;
             case 12:    // id (any a-ZA-Z / 0-9 charac)
-                lineSymbols.push_back(new Id((*b).second));
+                lineSymbols.push_back((Symbol*)(new S_Id(b->second)));
                 break;  
             case 13:    // ,
-                lineSymbols.push_back(new Vir());
+                lineSymbols.push_back((Symbol*)(new S_Vir()));
                 break;
             case 14:    // =
-                lineSymbols.push_back(new Eq());
+                lineSymbols.push_back((Symbol*)(new S_Eq()));
                 break;
             case 15:    // :=
-                lineSymbols.push_back(new Aff());
+                lineSymbols.push_back((Symbol*)(new S_Aff()));
                 break;
             case 16:    // number
-                lineSymbols.push_back(new Num(std::stod ((*b).second)));
+                lineSymbols.push_back((Symbol*)(new S_Num(Utils::stringToDouble(b->second))));
                 break;
             default:
                 break;
         }
+        ++b;
     }
-    return ret; 
+    return lineSymbols; 
 }
 
 bool Lexer::hasNext()
@@ -192,11 +192,8 @@ bool Lexer::regex_callback(const boost::match_results<std::string::const_iterato
     // loop on all 16 symbols 
     for(int i = 1; i <= 16; i++)
     {
-        if (what.position(i) != -1) // symbol matched ? 
-        {
-            symbols.push_back(make_pair(i, what[i].str()));
-             // cout << "Pattern n° " << i << " matched. Value : " << what[i] << endl;
-        }
+        if (str_found.position(i) != -1) // symbol matched ? 
+            patterns.push_back(make_pair(i, str_found[i].str()));
     }
     return true;
 }

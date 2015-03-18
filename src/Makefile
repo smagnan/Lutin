@@ -37,8 +37,6 @@ CPPFILES_SYMBOL=symbol/aff.cpp symbol/bi.cpp symbol/closeby.cpp symbol/const.cpp
 	symbol/p.cpp symbol/plus.cpp symbol/pv.cpp symbol/read.cpp \
 	symbol/symbol.cpp symbol/t.cpp symbol/var.cpp symbol/vir.cpp \
 	symbol/write.cpp symbol/symbol.cpp
-	
-
 CPPFILES_INTERPRETER=interpreter/affectation.cpp interpreter/const.cpp \
 	interpreter/declaration.cpp interpreter/instruction.cpp \
 	interpreter/interpreter.cpp interpreter/read.cpp interpreter/var.cpp \
