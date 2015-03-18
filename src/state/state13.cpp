@@ -40,7 +40,9 @@ State* State13::getNextState(Symbol * s)
 {
     switch(*s)
     {
-    
+
+        default:
+            break;
     }
     
     return 0;

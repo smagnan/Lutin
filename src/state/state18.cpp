@@ -42,7 +42,12 @@ State* State18::getNextState(Symbol * s)
 {
     switch(*s)
     {
-    
+
+        case I:
+            return new State19();
+
+        default:
+            break;
     }
     
     return 0;
