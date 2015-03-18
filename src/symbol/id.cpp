@@ -14,7 +14,12 @@ S_Id::S_Id(Symbols s)
 }
 
 S_Id::S_Id()
-    : S_Expr(ID)
+    : S_Expr(ID), value(0)
+{
+}
+
+S_Id::S_Id(std::string v)
+    : S_Expr(ID), value(v)
 {
 }
 

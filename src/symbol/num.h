@@ -20,6 +20,7 @@ protected:
     S_Num(Symbols s);
 public:
     S_Num();
+    S_Num(double v);
     virtual ~S_Num();
     double getValue();
     void setValue(double v);

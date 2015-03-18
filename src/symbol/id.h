@@ -20,6 +20,7 @@ protected:
     S_Id(Symbols s);
 public:
     S_Id();
+    S_Id(std::string v);
     virtual ~S_Id();
     std::string getValue();
     void setValue(std::string v);

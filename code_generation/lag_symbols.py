@@ -77,6 +77,7 @@ protected:
     {class_name_cap}(Symbols s);
 public:
     {class_name_cap}();
+    {class_name_cap}({valueType} v);
     virtual ~{class_name_cap}();
     {valueType} getValue();
     void setValue({valueType} v);
@@ -101,7 +102,12 @@ templateSourceValue = """// ---------------------------------------------
 }}
 
 {class_name_cap}::{class_name_cap}()
-    : {parent_class_name_cap}({identifier})
+    : {parent_class_name_cap}({identifier}), value(0)
+{{
+}}
+
+{class_name_cap}::{class_name_cap}({valueType} v)
+    : {parent_class_name_cap}({identifier}), value(v)
 {{
 }}
 
