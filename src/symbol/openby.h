@@ -9,6 +9,7 @@
 #ifndef S_OPENBY_H
 #define S_OPENBY_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Openby : public Symbol

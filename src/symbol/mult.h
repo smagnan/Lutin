@@ -9,6 +9,7 @@
 #ifndef S_MULT_H
 #define S_MULT_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Mult : public Symbol

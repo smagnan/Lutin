@@ -9,6 +9,7 @@
 #ifndef S_VIR_H
 #define S_VIR_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Vir : public Symbol

@@ -9,6 +9,7 @@
 #ifndef S_EXPRDIVIDE_H
 #define S_EXPRDIVIDE_H
 
+#include <string>
 #include "exprbin.h"
 
 class S_Exprdivide : public S_Exprbin

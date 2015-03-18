@@ -9,6 +9,7 @@
 #ifndef S_MINUS_H
 #define S_MINUS_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Minus : public Symbol
