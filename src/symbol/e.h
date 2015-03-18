@@ -12,6 +12,7 @@
 #include <string>
 #include "symbol.h"
 #include <vector>
+#include <iostream>
 
 // Rule based include
 #include "t.h"
@@ -21,16 +22,17 @@
 class S_E : public Symbol
 {
 private:
-    S_Plus * plus;
-    S_Minus * minus;
-    S_T * t;
-    S_E * e;
 
 protected:
     S_E(Symbols s);
+    
+    S_Plus * plus = NULL;
+    S_Minus * minus = NULL;
+    S_T * t = NULL;
+    S_E * e = NULL;
 public:
     S_E();
-    S_E(vector<Symbol*>);
+    S_E(std::vector<Symbol*>);
     virtual ~S_E();
 };
 

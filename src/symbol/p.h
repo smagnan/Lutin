@@ -11,7 +11,7 @@
 
 #include <string>
 #include <vector>
-
+#include <iostream>
 #include "symbol.h"
 
 // Rule include :
@@ -28,7 +28,7 @@ protected:
     S_Bi * sbi;
 public:
     S_P();
-    S_P(vector<Symbol*>);
+    S_P(std::vector<Symbol*>);
     virtual ~S_P();
 };
 
