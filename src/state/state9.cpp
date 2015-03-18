@@ -40,7 +40,12 @@ State* State9::getNextState(Symbol * s)
 {
     switch(*s)
     {
-    
+
+        case INI:
+            return new State10();
+
+        default:
+            break;
     }
     
     return 0;
