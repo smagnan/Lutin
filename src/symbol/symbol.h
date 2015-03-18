@@ -37,24 +37,18 @@ class Symbol
 {
 
 	public:
+		Symbol();
 
-		//Default Constructor
-		Symbol(int id);
+		Symbol(int i);
 
-		//Deconstructor
 		virtual ~Symbol();
 
-		void print();
-
-		// overload int() to cast symbol into integer
 		operator int() const;
 
 	protected:
-		int ident;
+		int id;
 
 	private:
-
-		//Disable the following by Symbol 
 
 };
 

@@ -9,6 +9,7 @@
 #include <vector>
 
 // Include Perso
+#include "symbol/symbol.h"/*
 #include "symbol/aff.h"
 #include "symbol/closeby.h"
 #include "symbol/const.h"
@@ -21,11 +22,10 @@
 #include "symbol/plus.h"
 #include "symbol/pv.h"
 #include "symbol/read.h"
-#include "symbol/symbol.h"
 #include "symbol/var.h"
-#include "symbol/write.h"
 #include "symbol/id.h"
 #include "symbol/vir.h"
+#include "symbol/write.h"*/
 #include "utils.h"
 
 // Vector used for matched symbols :
@@ -46,7 +46,7 @@ private:
     // Will contains lines of program :
     std::vector<std::string> progLines;                       // contains all lines of parsed program
     std::vector<std::string>::iterator progStart, progEnd;    // iterator on the vector of lines
-    std::vector<Symbol*> lineSymbols;                          // temp vector of matched symbols
+    std::vector<Symbol*> lineSymbols;                         // temp vector of matched symbols
     // Compile Regex:
     boost::regex main_regex;
     // Will contain matched symbols : 

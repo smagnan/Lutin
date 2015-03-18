@@ -63,14 +63,14 @@ bool State{ns}::transition(Automaton & automaton, Symbol * s)
     return false;
 }}
 
-State* getNextState(Symbol * s)
+State* State{ns}::getNextState(Symbol * s)
 {{
     switch(*s)
     {{
     
     }}
     
-    return false;
+    return 0;
 }}
 """
 
@@ -129,9 +129,9 @@ def printStateHeader(numState):
 def printStateSource(numState):
     switchCode = "";
     includeCode = printStateIncludes(numState);
-    bool terminal = False
+    terminal = False
     for index, cell in enumerate(automaton[numState]):
-        if cell == "|"
+        if cell == "|":
             terminal = True
             continue
         if terminal:

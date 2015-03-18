@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  decl.h
+//  bd.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_DECL_H
-#define S_DECL_H
+#ifndef S_BD_H
+#define S_BD_H
 
 #include <string>
 #include "symbol.h"
 
-class S_Decl : public Symbol
+class S_Bd : public Symbol
 {
 private:
 protected:
-    S_Decl(Symbols s);
+    S_Bd(Symbols s);
 public:
-    S_Decl();
-    virtual ~S_Decl();
+    S_Bd();
+    virtual ~S_Bd();
 };
 
-#endif // S_DECL_H
+#endif // S_BD_H

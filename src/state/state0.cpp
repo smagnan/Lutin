@@ -26,18 +26,6 @@ bool State0::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
-        case VAR:
-            automaton.reduce(22);
-            break;
-
-        case CONST:
-            automaton.reduce(22);
-            break;
-
-        case END:
-            automaton.reduce(22);
-            break;
-
         default:
             automaton.error();
             break;
@@ -47,12 +35,12 @@ bool State0::transition(Automaton & automaton, Symbol * s)
     return false;
 }
 
-State* getNextState(Symbol * s)
+State* State0::getNextState(Symbol * s)
 {
     switch(*s)
     {
     
     }
     
-    return false;
+    return 0;
 }

@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  decblock.cpp
+//  bd.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "decblock.h"
+#include "bd.h"
 
-S_Decblock::S_Decblock(Symbols s)
+S_Bd::S_Bd(Symbols s)
     : Symbol(s)
 {
 }
 
-S_Decblock::S_Decblock()
-    : Symbol(DECBLOCK)
+S_Bd::S_Bd()
+    : Symbol(BD)
 {
 }
 
-S_Decblock::~S_Decblock()
+S_Bd::~S_Bd()
 {
 }

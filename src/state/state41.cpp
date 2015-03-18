@@ -26,30 +26,6 @@ bool State41::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
-        case PLUS:
-            automaton.reduce(19);
-            break;
-
-        case MINUS:
-            automaton.reduce(19);
-            break;
-
-        case MULT:
-            automaton.reduce(19);
-            break;
-
-        case DIVIDE:
-            automaton.reduce(19);
-            break;
-
-        case CLOSEBY:
-            automaton.reduce(19);
-            break;
-
-        case PV:
-            automaton.reduce(19);
-            break;
-
         default:
             automaton.error();
             break;
@@ -59,12 +35,12 @@ bool State41::transition(Automaton & automaton, Symbol * s)
     return false;
 }
 
-State* getNextState(Symbol * s)
+State* State41::getNextState(Symbol * s)
 {
     switch(*s)
     {
     
     }
     
-    return false;
+    return 0;
 }

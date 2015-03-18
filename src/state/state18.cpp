@@ -29,22 +29,6 @@ bool State18::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
-        case ID:
-            automaton.shift(s, new State23());
-            break;
-
-        case WRITE:
-            automaton.shift(s, new State24());
-            break;
-
-        case READ:
-            automaton.shift(s, new State21());
-            break;
-
-        case END:
-            automaton.reduce(1);
-            break;
-
         default:
             automaton.error();
             break;
@@ -54,12 +38,12 @@ bool State18::transition(Automaton & automaton, Symbol * s)
     return false;
 }
 
-State* getNextState(Symbol * s)
+State* State18::getNextState(Symbol * s)
 {
     switch(*s)
     {
     
     }
     
-    return false;
+    return 0;
 }

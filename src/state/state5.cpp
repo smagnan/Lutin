@@ -27,10 +27,6 @@ bool State5::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
-        case NUM:
-            automaton.shift(s, new State6());
-            break;
-
         default:
             automaton.error();
             break;
@@ -40,12 +36,12 @@ bool State5::transition(Automaton & automaton, Symbol * s)
     return false;
 }
 
-State* getNextState(Symbol * s)
+State* State5::getNextState(Symbol * s)
 {
     switch(*s)
     {
     
     }
     
-    return false;
+    return 0;
 }

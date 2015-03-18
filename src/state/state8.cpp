@@ -27,14 +27,6 @@ bool State8::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
-        case PV:
-            automaton.reduce(6);
-            break;
-
-        case VIR:
-            automaton.shift(s, new State9());
-            break;
-
         default:
             automaton.error();
             break;
@@ -44,12 +36,12 @@ bool State8::transition(Automaton & automaton, Symbol * s)
     return false;
 }
 
-State* getNextState(Symbol * s)
+State* State8::getNextState(Symbol * s)
 {
     switch(*s)
     {
     
     }
     
-    return false;
+    return 0;
 }

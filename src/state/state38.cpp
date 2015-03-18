@@ -29,18 +29,6 @@ bool State38::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
-        case PLUS:
-            automaton.shift(s, new State34());
-            break;
-
-        case MINUS:
-            automaton.shift(s, new State35());
-            break;
-
-        case CLOSEBY:
-            automaton.shift(s, new State41());
-            break;
-
         default:
             automaton.error();
             break;
@@ -50,12 +38,12 @@ bool State38::transition(Automaton & automaton, Symbol * s)
     return false;
 }
 
-State* getNextState(Symbol * s)
+State* State38::getNextState(Symbol * s)
 {
     switch(*s)
     {
     
     }
     
-    return false;
+    return 0;
 }

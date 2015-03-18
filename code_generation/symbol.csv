@@ -1,4 +1,4 @@
-aff,closeby,const,decblock,decl,divide,eq,ebin,e,eprime,edivide,eminus,emult,eplus,end,id,idl,ini,inil,bi,i,minus,mult,num,openby,plus,p,pv,read,t,var,vir,write
-AFF,CLOSEBY,CONST,DECBLOCK,DECL,DIVIDE,EQ,,E,EPRIME,,,,,END,ID,IDL,INI,INIL,BI,I,MINUS,MULT,NUM,OPENBY,PLUS,P,PV,READ,T,VAR,VIR,WRITE
+aff,closeby,const,bd,d,divide,eq,ebin,e,eprime,edivide,eminus,emult,eplus,end,id,idl,ini,inil,bi,i,minus,mult,num,openby,plus,p,pv,read,t,var,vir,write
+AFF,CLOSEBY,CONST,BD,D,DIVIDE,EQ,,E,EPRIME,,,,,END,ID,IDL,INI,INIL,BI,I,MINUS,MULT,NUM,OPENBY,PLUS,P,PV,READ,T,VAR,VIR,WRITE
 symbol,symbol,e,symbol,symbol,symbol,symbol,e,symbol,symbol,ebin,ebin,ebin,ebin,symbol,e,symbol,symbol,symbol,symbol,symbol,symbol,symbol,e,symbol,symbol,symbol,symbol,symbol,symbol,e,symbol,symbol
 ,,,,,,,,,,,,,,,std::string,,,,,,,,double,,,,,,,,,

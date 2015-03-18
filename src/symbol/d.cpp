@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  decl.cpp
+//  d.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "decl.h"
+#include "d.h"
 
-S_Decl::S_Decl(Symbols s)
+S_D::S_D(Symbols s)
     : Symbol(s)
 {
 }
 
-S_Decl::S_Decl()
-    : Symbol(DECL)
+S_D::S_D()
+    : Symbol(D)
 {
 }
 
-S_Decl::~S_Decl()
+S_D::~S_D()
 {
 }

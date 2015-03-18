@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  decblock.h
+//  d.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_DECBLOCK_H
-#define S_DECBLOCK_H
+#ifndef S_D_H
+#define S_D_H
 
 #include <string>
 #include "symbol.h"
 
-class S_Decblock : public Symbol
+class S_D : public Symbol
 {
 private:
 protected:
-    S_Decblock(Symbols s);
+    S_D(Symbols s);
 public:
-    S_Decblock();
-    virtual ~S_Decblock();
+    S_D();
+    virtual ~S_D();
 };
 
-#endif // S_DECBLOCK_H
+#endif // S_D_H
