@@ -15,7 +15,7 @@
 Const::Const(std::string constName, double val) : Declaration(val)
 {
 	this->name = constName;
-	this->type = DECLAR_TYPE_CONST;
+	this->type = KEYWORD_CONST;
 }
 
 Const::~Const()

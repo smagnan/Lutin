@@ -11,10 +11,7 @@
 #define DECLARATION_H
 
 #include <string>
-
-const std::string DECLAR_TYPE_VAR = 	"Var";
-const std::string DECLAR_TYPE_CONST = 	"Const";
-const std::string DECLAR_TYPE_VALUE = 	"Value";
+#include "keywords.h"
  
 class Declaration
 {

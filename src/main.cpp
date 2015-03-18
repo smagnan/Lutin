@@ -53,7 +53,7 @@ int main( int argc, const char* argv[] )
     
     /*
 	//=================================== TEST STUFF ==========================================
-	DEBUGINFO("============== DECLARE =================");
+	DEBUGINFO("============== DECLARE ================");
 	interpreter->declare("testVar",D_VAR,42);
 	interpreter->declare("testVar2"); // not initialised var
 	interpreter->declare("testVar3");
@@ -62,7 +62,7 @@ int main( int argc, const char* argv[] )
 	// The following line is equivalent to the previous one :) 
 	// Note that whatever the string is the name will be the value
 	interpreter->declare("",D_VALUE,100); // XXX does nothing here since the value is already stored
-	DEBUGINFO("============== UPDATE ================");
+	DEBUGINFO("=============== UPDATE ================");
 	interpreter->update_variable("testVar",1337);
 	interpreter->update_variable("testVar2",8080);
 	interpreter->update_variable("testConst",1000); // Not working as you can see, quite normal (:
@@ -99,6 +99,7 @@ int main( int argc, const char* argv[] )
         // TODO: PRINT 
         // Fill with that kind of line :
         // cout << interpreter << endl;
+        mainPrinter.print(cout,loader->string());
 		interpreter->print_declarations(cout);
 		interpreter->print_instructions(cout);
         //cout << "print" << endl;
