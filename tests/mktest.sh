@@ -4,20 +4,27 @@ nKo=0
 nTotal=0
 nMis=0
 
-for i in ??.*
+for j in originaux nouveaux
 do
-  ./test.sh $i results.csv
-  result=$?
-  if [ $result -eq 0 ]
-  then
-    let "nKo=$nKo+1"
-  elif [ $result -eq 1 ]
-  then
-    let "nOk=$nOk+1"
-  else
-    let "nMis=$nMis+1"
-  fi
-  let "nTotal=$nTotal+1"
+	rm $j/lut
+	cp lut $j
+	cd $j
+	for i in ??.*
+	do
+	  ../test.sh $i ../results.csv
+	  result=$?
+	  if [ $result -eq 0 ]
+	  then
+		let "nKo=$nKo+1"
+	  elif [ $result -eq 1 ]
+	  then
+		let "nOk=$nOk+1"
+	  else
+		let "nMis=$nMis+1"
+	  fi
+	  let "nTotal=$nTotal+1"
+	done
+	cd ..
 done
 
 echo "Passed tests     : $nOk"
