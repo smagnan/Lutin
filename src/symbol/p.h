@@ -24,11 +24,11 @@ class S_P : public Symbol
 private:
 protected:
     S_P(Symbols s);
-    S_Bd sbd;
-    S_Bi sbi;
+    S_Bd * sbd;
+    S_Bi * sbi;
 public:
     S_P();
-    S_P(vector<Symbol>);
+    S_P(vector<Symbol*>);
     virtual ~S_P();
 };
 
