@@ -45,10 +45,13 @@ int main( int argc, const char* argv[] )
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	DEBUGINFO("Creating Lexer");
     Lexer *lexer 				= new Lexer();
+    lexer->setProg(loader->string());
 	DEBUGINFO("Creating Interpreter");
 	Interpreter *interpreter 	= new Interpreter();
 	DEBUGINFO("Creating FSM");
 	Automaton *automaton 		= new Automaton(interpreter,lexer);	
+    
+    /*
 	//=================================== TEST STUFF ==========================================
 	DEBUGINFO("============== DECLARE =================");
 	interpreter->declare("testVar",D_VAR,42);
@@ -65,6 +68,7 @@ int main( int argc, const char* argv[] )
 	interpreter->update_variable("testConst",1000); // Not working as you can see, quite normal (:
 	DEBUGINFO("================ END ==================");
 	//=================================== END TEST STUFF ======================================
+    */
 
     automaton->read();
     
