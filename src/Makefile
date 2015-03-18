@@ -9,6 +9,7 @@ DIR="./"
 
 GPP=g++
 CFLAGS=-Wall -Wextra -Wmissing-braces -pedantic -Wunused
+DEBUGFLAGS=-g3 -gdwarf2 -g -DDEBUG
 INCLUDE=-I"/usr/include/boost" -I"./" -I"./interpreter/" -I"./symbol/" -I"./state/" -I"./exception/"
 
 INTERPDIR=interpreter
@@ -49,7 +50,12 @@ FLAGS=-O2
 
 LIBS=-L"/usr/lib" -lboost_program_options -lboost_regex
 
-all: $(OBJS)
+all: executable
+
+debug: FLAGS += $(DEBUGFLAGS)
+debug: executable
+
+executable: $(OBJS)
 	$(GPP) $(CFLAGS) $(FLAGS) -o $(BIN) $(OBJS) $(LIBS)
 
 $(CLEAN):

@@ -1,6 +1,8 @@
 # Lutin
 Project grammar and language: Lutin analyzer and interpreter.
 
+## Project structure
+
 Folder  | Content
 ------------- | -------------
 *src* | Source files
@@ -9,4 +11,14 @@ Folder  | Content
 *concep* | Conception documents etc ...
 *boost* | The boost lib
 *regex_example* | An example of the use of regex/boost
-*state_generation* | State generation python script
+
+## Build
+
+Release mode:
+```shell
+make
+```
+Debug mode:
+```shell
+make debug
+```
