@@ -53,12 +53,10 @@ Lexer::~Lexer()
 {
     if (!lineSymbols.empty())
     {
-        vector<Symbol*>::iterator i;
-        while (i != lineSymbols.end())
+        for (int i = 0; i < lineSymbols.size(); i++)
         {
-            delete (*i);
-            i++;
-        }
+            delete lineSymbols[i];
+        }   
         lineSymbols.clear();
     }
 }
@@ -92,20 +90,16 @@ vector<Symbol*> Lexer::getSymbols()
     // and emtpy it
     if (!lineSymbols.empty())
     {
-        vector<Symbol*>::iterator i;
-        while (i != lineSymbols.end())
+        for (int i = 0; i < lineSymbols.size(); i++)
         {
-            delete (*i);
-            i++;
-        }
+            delete lineSymbols[i];
+        }   
         lineSymbols.clear();
     }
 
     // Find symbols
     boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), main_regex);
     boost::sregex_iterator m2;
-
- // std::for_each(*m1, m2, &Lexer::regex_callback);
     while(m1 != m2)
     {
         regex_callback(*m1);

@@ -15,7 +15,7 @@
 Const::Const(std::string constName, double val) : Declaration(val)
 {
 	this->name = constName;
-	this->type = "Const";
+	this->type = DECLAR_TYPE_CONST;
 }
 
 Const::~Const()
@@ -25,5 +25,6 @@ Const::~Const()
 
 void Const::setValue(double val)
 {
-	throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
+	//throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
+	// FIXME ^ calls terminate() if not catched
 }
