@@ -53,6 +53,8 @@ int main( int argc, const char* argv[] )
 	mainPrinter.print("","================ END ==================");
 	//=================================== END TEST STUFF ======================================
     cout << endl;
+
+    automaton->read();
     
     ArgsManager am(argc, argv);
     
