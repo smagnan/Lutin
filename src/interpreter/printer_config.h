@@ -33,10 +33,10 @@ const std::string STYLE_GREEN =		"\033[0;32m"; 	// Green
 const std::string STYLE_GREEN_B =	"\033[1;32m"; 	// Green bold
 const std::string STYLE_YELLOW = 	"\033[0;33m"; 	// Yellow
 const std::string STYLE_YELLOW_B =	"\033[1;33m"; 	// Yellow bold
-const std::string STYLE_DECLAR = 	"\033[0;34m"; 	// Blue
-const std::string STYLE_DECLAR_B = 	"\033[1;34m"; 	// Blue bold
-const std::string STYLE_SYMBOL = 	"\033[0;35m"; 	// Magenta
-const std::string STYLE_SYMBOL_B = 	"\033[1;35m"; 	// Magenta bold
+const std::string STYLE_BLUE = 		"\033[0;34m"; 	// Blue
+const std::string STYLE_BLUE_B = 	"\033[1;34m"; 	// Blue bold
+const std::string STYLE_MAGEN = 	"\033[0;35m"; 	// Magenta
+const std::string STYLE_MAGEN_B = 	"\033[1;35m"; 	// Magenta bold
 const std::string STYLE_CYAN = 		"\033[0;36m"; 	// Cyan	
 const std::string STYLE_CYAN_B =	"\033[1;36m"; 	// Cyan bold
 
@@ -45,6 +45,7 @@ const std::string STYLE_CYAN_B =	"\033[1;36m"; 	// Cyan bold
 const std::string STYLE_VAR = 		STYLE_YELLOW_B;
 const std::string STYLE_CONST = 	STYLE_YELLOW_B;
 const std::string STYLE_VALUE = 	STYLE_YELLOW_B; // not a real keyword XXX
+const std::string STYLE_EQ = 		STYLE_YELLOW;
 const std::string STYLE_PLUS = 		STYLE_YELLOW;
 const std::string STYLE_MINUS = 	STYLE_YELLOW;
 const std::string STYLE_MULT = 		STYLE_YELLOW;
@@ -58,6 +59,7 @@ const std::string STYLE_END = 		STYLE_WHITE;
 const std::string STYLE_SPACE = 	STYLE_CYAN;		// ... just in case we change the spacing character
 const std::string STYLE_DOT = 		STYLE_YELLOW;
 const std::string STYLE_OTHER = 	STYLE_WHITE;
+const std::string STYLE_NUM = 		STYLE_GREEN_B;
 
 // ================================ MESSAGES
 

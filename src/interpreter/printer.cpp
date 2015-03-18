@@ -32,7 +32,46 @@ void Printer::print(std::ostream& out,std::string str)
 {
 	// TODO to change, will depens on an external file and will not be hardcoded
 	// I know it's ugly but just wanted something working
-	if(!str.compare("Var") || !str.compare("Const") || !str.compare("Value")) {
+	// There is no such thing as a switch case
+	std::string style_string;
+	if(!str.compare(KEYWORD_VAR)) {
+		style_string = STYLE_VAR;
+	} else if(!str.compare(KEYWORD_CONST)) {
+		style_string = STYLE_CONST;
+	} else if(!str.compare(KEYWORD_VALUE)) {
+		style_string = STYLE_VALUE;
+	} else if(!str.compare(KEYWORD_EQ)) {
+		style_string = STYLE_EQ;
+	} else if(!str.compare(KEYWORD_PLUS)) {
+		style_string = STYLE_PLUS;
+	} else if(!str.compare(KEYWORD_MINUS)) {
+		style_string = STYLE_MINUS;
+	} else if(!str.compare(KEYWORD_MULT)) {
+		style_string = STYLE_MULT;
+	} else if(!str.compare(KEYWORD_DIV)) {
+		style_string = STYLE_DIV;
+	} else if(!str.compare(KEYWORD_LPAR)) {
+		style_string = STYLE_LPAR;
+	} else if(!str.compare(KEYWORD_RPAR)) {
+		style_string = STYLE_RPAR;
+	} else if(!str.compare(KEYWORD_ASSIGN)) {
+		style_string = STYLE_ASSIGN;
+	} else if(!str.compare(KEYWORD_READ)) {
+		style_string = STYLE_READ;
+	} else if(!str.compare(KEYWORD_WRITE)) {
+		style_string = STYLE_WRITE;
+	} else if(!str.compare(KEYWORD_END)) {
+		style_string = STYLE_END;
+	} else if(!str.compare(KEYWORD_SPACE)) {
+		style_string = STYLE_SPACE;
+	} else if(!str.compare(KEYWORD_DOT)) {
+		style_string = STYLE_DOT;
+	} else {
+		style_string = STYLE_OTHER;
+	}
+
+	out << style_string << str << ' ';
+	/*if(!str.compare("Var") || !str.compare("Const") || !str.compare("Value")) {
 		out << STYLE_DECLAR << str << ' ';
 	} else if(!str.compare("+") || !str.compare("-") \
 				|| !str.compare("*") || !str.compare("/") \
@@ -40,13 +79,12 @@ void Printer::print(std::ostream& out,std::string str)
 		out << STYLE_SYMBOL << str << ' ';
 	} else {
 		out << STYLE_DEFAULT << str << ' ';
-	}
-	
+	}*/	
 }
 
 void Printer::print(std::ostream& out,double value)
 {
-	out << STYLE_VALUE << value << ' ';
+	out << STYLE_NUM << value << ' ';
 }
 
 void Printer::printerr(std::string error, std::string desc)
