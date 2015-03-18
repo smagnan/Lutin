@@ -24,6 +24,7 @@ public:
     State{ns}();
     virtual ~State{ns}();
     bool transition(Automaton & automaton, Symbol * s);
+    State* getNextState(Symbol * s);
 }};
 
 #endif // STATE{ns}_H
@@ -57,6 +58,16 @@ bool State{ns}::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {{
 {switchcode}
+    }}
+    
+    return false;
+}}
+
+State* getNextState(Symbol * s)
+{{
+    switch(*s)
+    {{
+    
     }}
     
     return false;

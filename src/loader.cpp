@@ -13,7 +13,7 @@
 Loader::Loader(char * filepath) 
 {	
 	this->file.open(filepath);
-	if (this->file..is_open())
+	if (this->file.is_open())
     {
         this->buffer << this->file.rdbuf();
     }
