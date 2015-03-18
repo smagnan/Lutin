@@ -112,17 +112,15 @@ vector<Symbol*> Lexer::getSymbols()
     b = patterns.begin();
     e = patterns.end();
     while(b != e)
-    {/*
+    {
         switch (b->first)
         {
             case 1 :     // var 
                 lineSymbols.push_back((Symbol*)(new S_Var()));
                 break;
-
             case 2 :     // const
                 lineSymbols.push_back((Symbol*)(new S_Const()));
                 break;
-
             case 3 :     // lire
                 lineSymbols.push_back((Symbol*)(new S_Read()));
                 break;  
@@ -168,7 +166,7 @@ vector<Symbol*> Lexer::getSymbols()
             default:
                 break;
         }
-        ++b;*/
+        ++b;
     }
     return lineSymbols; 
 }
