@@ -58,3 +58,13 @@ bool State30::transition(Automaton & automaton, Symbol * s)
     
     return false;
 }
+
+State* getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+    
+    }
+    
+    return false;
+}

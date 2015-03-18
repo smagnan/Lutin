@@ -26,14 +26,20 @@ bool State1::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
-        case END:
-            automaton.accept();
-            break;
-
         default:
             automaton.error();
             break;
 
+    }
+    
+    return false;
+}
+
+State* getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+    
     }
     
     return false;

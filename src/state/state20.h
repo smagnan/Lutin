@@ -19,6 +19,7 @@ public:
     State20();
     virtual ~State20();
     bool transition(Automaton & automaton, Symbol * s);
+    State* getNextState(Symbol * s);
 };
 
 #endif // STATE20_H

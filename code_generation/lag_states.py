@@ -129,9 +129,14 @@ def printStateHeader(numState):
 def printStateSource(numState):
     switchCode = "";
     includeCode = printStateIncludes(numState);
+    bool terminal = False
     for index, cell in enumerate(automaton[numState]):
-        switchCaseElement = translateToSwitchCase(cell, header[index])
-        switchCode = switchCode + switchCaseElement
+        if cell == "|"
+            terminal = True
+            continue
+        if terminal:
+            switchCaseElement = translateToSwitchCase(cell, header[index])
+            switchCode = switchCode + switchCaseElement
     switchCode = switchCode + templateErrorInstruction
     state = templateSource.format(ns=numState, switchcode=switchCode, stateincludes=includeCode)
     # print(state)
