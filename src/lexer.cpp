@@ -58,7 +58,15 @@ Lexer::Lexer()
 
 virtual Lexer::~Lexer()
 {
-
+    if (!lineSymbols.empty())
+    {
+        vector<Symbol>::iterator i;
+        while (i != lineSymbol.end())
+        {
+            delete (*i);
+            ++i;
+        }
+    }
 }
 
 //-------------------------------------------------- Public Methods
