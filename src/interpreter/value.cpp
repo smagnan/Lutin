@@ -16,7 +16,7 @@ Value::Value(double val) : Declaration(val)
 {
 	// the name is equivalent to the value
 	this->name = Utils::doubleToString(this->value);
-	this->type = DECLAR_TYPE_VALUE;
+	this->type = KEYWORD_VALUE;
 }
 
 Value::~Value()
