@@ -6,10 +6,6 @@
 #include <vector>
 
 
-// Key : symbol found
-// Value : vector of pairs, with pair.first : position of occurence in analyzed text and pair.second : length of pattern found
-// Number of occurences found : vector.size()
-typedef std::map<std::string, std::vector<std::pair<int, int> > > symbol_map;
 typedef std::vector<std::pair<int,std::string> > symbol_vector;
 
 
@@ -68,13 +64,6 @@ bool regex_callback(const boost::match_results<std::string::const_iterator>& wha
     }
     return true;   
 }
-
-private   lexer(symbol_vector &slist)
-{  
-    
-}
-
-
 
 
 
