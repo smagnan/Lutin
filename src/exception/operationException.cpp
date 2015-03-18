@@ -1,9 +1,9 @@
 #include "operationException.h"
 
-const char* OperationException::SETCONST = "Impossible to reassign a constant value";
+std::string OperationException::SETCONST = "Impossible to reassign a constant value : ";
 
 // Constructor
-OperationException::OperationException(const char* msg)
+OperationException::OperationException(std::string msg)
     : message(msg) 
 {
 
@@ -15,8 +15,7 @@ OperationException::~OperationException() throw()
     
 }
 
-
 const char* OperationException::what() const throw()
 { 
-    return this->message; 
+    return this->message.c_str(); 
 }

@@ -7,20 +7,24 @@
 //
 // ---------------------------------------------
 
-#include <sstream>
-
 #include "value.h"
+#include "operationException.h"
+#include "utils.h"
 
 // Value constructor
 Value::Value(double val) : Declaration(val)
 {
-	std::ostringstream strs;
-	strs << this->value;
-	this->name = strs.str(); // the name is equivalent to the value
+	// the name is equivalent to the value
+	this->name = Utils::doubleToString(this->value);
 	this->type = "Value";
 }
 
 Value::~Value()
 {
 
+}
+
+void Value::setValue(double val)
+{
+	throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
 }
