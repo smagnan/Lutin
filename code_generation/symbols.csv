@@ -1,4 +1,0 @@
-aff,closeby,const,decblock,decl,divide,eq,exprbin,expr,exprime,exprdivide,exprminus,exprmult,exprplus,final,id,idenlist,init,initlist,instblock,instr,minus,mult,num,openby,plus,prog,pv,read,term,var,vir,write
-AFF,CLOSEBY,CONST,DECBLOCK,DECL,DIVIDE,EQ,,EXPR,EXPRIME,,,,,FINAL,ID,IDENLIST,INIT,INITLIST,INSTBLOCK,INSTR,MINUS,MULT,NUM,OPENBY,PLUS,PROG,PV,READ,TERM,VAR,VIR,WRITE
-symbol,symbol,expr,symbol,symbol,symbol,symbol,expr,symbol,symbol,exprbin,exprbin,exprbin,exprbin,symbol,expr,symbol,symbol,symbol,symbol,symbol,symbol,symbol,expr,symbol,symbol,symbol,symbol,symbol,symbol,expr,symbol,symbol
-,,,,,,,,,,,,,,,std::string,,,,,,,,double,,,,,,,,,

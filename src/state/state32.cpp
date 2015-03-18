@@ -13,7 +13,7 @@
 
 
 State32::State32()
-    : State("State32")
+    : State(32)
 {
 }
 

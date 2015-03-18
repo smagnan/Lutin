@@ -13,7 +13,7 @@
 
 
 State14::State14()
-    : State("State14")
+    : State(14)
 {
 }
 

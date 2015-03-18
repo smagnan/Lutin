@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  initlist.cpp
+//  inil.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "initlist.h"
+#include "inil.h"
 
-S_Initlist::S_Initlist(Symbols s)
+S_Inil::S_Inil(Symbols s)
     : Symbol(s)
 {
 }
 
-S_Initlist::S_Initlist()
-    : Symbol(INITLIST)
+S_Inil::S_Inil()
+    : Symbol(INIL)
 {
 }
 
-S_Initlist::~S_Initlist()
+S_Inil::~S_Inil()
 {
 }

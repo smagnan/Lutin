@@ -44,7 +44,7 @@ templateSource = """// ---------------------------------------------
 {stateincludes}
 
 State{ns}::State{ns}()
-    : State("State{ns}")
+    : State({ns})
 {{
 }}
 

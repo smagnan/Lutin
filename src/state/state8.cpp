@@ -14,7 +14,7 @@
 #include "state9.h" 
 
 State8::State8()
-    : State("State8")
+    : State(8)
 {
 }
 

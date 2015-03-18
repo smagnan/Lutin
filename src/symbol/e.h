@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  instr.h
+//  e.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_INSTR_H
-#define S_INSTR_H
+#ifndef S_E_H
+#define S_E_H
 
 #include <string>
 #include "symbol.h"
 
-class S_Instr : public Symbol
+class S_E : public Symbol
 {
 private:
 protected:
-    S_Instr(Symbols s);
+    S_E(Symbols s);
 public:
-    S_Instr();
-    virtual ~S_Instr();
+    S_E();
+    virtual ~S_E();
 };
 
-#endif // S_INSTR_H
+#endif // S_E_H

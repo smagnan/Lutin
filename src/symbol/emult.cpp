@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  exprime.cpp
+//  emult.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "exprime.h"
+#include "emult.h"
 
-S_Exprime::S_Exprime(Symbols s)
-    : Symbol(s)
+S_Emult::S_Emult(Symbols s)
+    : S_Ebin(s)
 {
 }
 
-S_Exprime::S_Exprime()
-    : Symbol(EXPRIME)
+S_Emult::S_Emult()
+    : S_Ebin()
 {
 }
 
-S_Exprime::~S_Exprime()
+S_Emult::~S_Emult()
 {
 }
