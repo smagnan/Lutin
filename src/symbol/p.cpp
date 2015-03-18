@@ -19,7 +19,7 @@ S_P::S_P()
 }
 
 // Rule based constructor 
-S1_P::S_P(vector<Symbol> vectSymbol) : Symbol(P)
+S1_P::S_P(vector<Symbol*> vectSymbol) : Symbol(P)
 {
     try 
     {   // attempt to protect constructor from 

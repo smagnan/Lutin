@@ -18,7 +18,7 @@ S_E::S_E()
 {
 }
 
-S_E::S_E(vector<Symbol> vectSymbol)
+S_E::S_E(vector<Symbol*> vectSymbol)
 {
     try 
     {   // attempt to protect constructor from 
