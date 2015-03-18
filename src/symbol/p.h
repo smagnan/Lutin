@@ -22,11 +22,11 @@ class S_P : public Symbol
 private:
 protected:
     S_P(Symbols s);
-    Bd sbd;
-    Bi sbi;
+    S_Bd sbd;
+    S_Bi sbi;
 public:
     S_P();
-    S_P(Bd s_bd, Bi, s_bi);
+    S_P(S_Bd s_bd, S_Bi s_bi);
     virtual ~S_P();
 };
 
