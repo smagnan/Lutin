@@ -111,10 +111,6 @@ int main( int argc, const char* argv[] )
         // interpreter.execute();
         cout << "execute" << endl;
 	}
-    
-    // Get the input file content
-    cout << "Input file content : " << endl << endl;
-    cout << am.getInputText();
 
     DEBUGINFO("Deleting FSM");
     delete automaton;
