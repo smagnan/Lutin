@@ -1,7 +1,7 @@
 #include "syntaxException.h"
 
 // Constructor
-SyntaxException::SyntaxException(const char* msg)
+SyntaxException::SyntaxException(std::string msg)
     : message(msg) 
 {
     
@@ -16,5 +16,5 @@ SyntaxException::~SyntaxException() throw()
 
 const char* SyntaxException::what() const throw()
 { 
-    return this->message; 
+    return this->message.c_str(); 
 }

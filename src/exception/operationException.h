@@ -1,14 +1,15 @@
 #include <exception>
+#include <string>
 
 class OperationException : public std::exception
 {
     public: 
-	OperationException(const char* msg); 
+	OperationException(std::string msg); 
 	virtual ~OperationException() throw();
 	const char *what() const throw();
 	
-	static const char* SETCONST;
+	static std::string SETCONST;
     
     private:
-	const char* message;
+	std::string message;
 };

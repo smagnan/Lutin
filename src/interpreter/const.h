@@ -19,6 +19,7 @@ class Const : public Declaration
     public:
 	Const(std::string constName, double val);
 	virtual ~Const();
+	virtual void setValue(double val);
 };
  
 #endif

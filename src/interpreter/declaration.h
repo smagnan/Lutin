@@ -24,7 +24,7 @@ class Declaration
 	virtual ~Declaration();
 	virtual double getValue() {return this->value;};
 	std::string getType() {return this->type;};
-	virtual void setValue(double val) {};
+	virtual void setValue(double val) = 0;
 };
  
 #endif
