@@ -9,6 +9,7 @@
 #ifndef S_WRITE_H
 #define S_WRITE_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Write : public Symbol

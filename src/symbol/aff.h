@@ -9,6 +9,7 @@
 #ifndef S_AFF_H
 #define S_AFF_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Aff : public Symbol

@@ -9,6 +9,7 @@
 #ifndef S_INITLIST_H
 #define S_INITLIST_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Initlist : public Symbol

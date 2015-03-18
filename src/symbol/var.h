@@ -9,6 +9,7 @@
 #ifndef S_VAR_H
 #define S_VAR_H
 
+#include <string>
 #include "expr.h"
 
 class S_Var : public S_Expr

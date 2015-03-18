@@ -9,6 +9,7 @@
 #ifndef S_PROG_H
 #define S_PROG_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Prog : public Symbol

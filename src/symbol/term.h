@@ -9,6 +9,7 @@
 #ifndef S_TERM_H
 #define S_TERM_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Term : public Symbol
