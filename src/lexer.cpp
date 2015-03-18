@@ -44,7 +44,7 @@ Lexer::Lexer()
         // affectation
         "(\\s?:=\\s?)|"
         // num 
-        "(-?\\d+(,\\d+)?)";
+        "(-?\\d+(.\\d+)?)";
     
     // Compile Regex:
     boost::regex main_regex(re);
@@ -142,7 +142,7 @@ vector<Symbol> Lexer::getSymbols()
                 lineSymbols.push_back(new Pv());
                 break;
             case 12:    // id (any a-ZA-Z / 0-9 charac)
-                lineSymbols.push_back(new Id());
+                lineSymbols.push_back(new Id((*b).second));
                 break;  
             case 13:    // ,
                 lineSymbols.push_back(new Vir());
@@ -154,7 +154,7 @@ vector<Symbol> Lexer::getSymbols()
                 lineSymbols.push_back(new Aff());
                 break;
             case 16:    // number
-                lineSymbols.push_back(new Num());
+                lineSymbols.push_back(new Num(std::stod ((*b).second)));
                 break;
             default:
                 break;
