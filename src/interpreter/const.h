@@ -14,11 +14,11 @@
  
 class Const : public Declaration
 {
-private:
-protected:
-public:
-    Const(std::string constName, double val);
-    virtual ~Const();
+    private:
+    protected:
+    public:
+	Const(std::string constName, double val);
+	virtual ~Const();
 };
  
 #endif
