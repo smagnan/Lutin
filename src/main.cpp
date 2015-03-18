@@ -30,9 +30,11 @@ int main( int argc, const char* argv[] )
 	Printer mainPrinter;
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	mainPrinter.printinfo("","Creating Interpreter");
+    Lexer *lexer = new Lexer();
+	mainPrinter.printinfo("","Creating Interpreter");
 	Interpreter *interpreter 	= new Interpreter();
 	mainPrinter.printinfo("","Creating FSM");
-	Automaton *automaton 		= new Automaton();
+	Automaton *automaton 		= new Automaton(interpreter,lexer);
 	mainPrinter.printerr("Project not finised ","you know what to do ...");
 	mainPrinter.printwarn("Project not finised ","you know what to do ...");	
 	//=================================== TEST STUFF ==========================================

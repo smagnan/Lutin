@@ -12,7 +12,7 @@
 #include "closeby.h"
 #include "const.h"
 #include "divide.h"
-#include "eg.h"
+#include "eq.h"
 #include "exprbin.h"
 #include "exprdivide.h"
 #include "expr.h"
@@ -33,6 +33,6 @@
 class Lexer 
 {
 
-}
+};
 
 #endif // LEXER_H

@@ -14,6 +14,8 @@
 #include <stack>
 #include <utility>
 #include "symbol/symbol.h"
+#include "interpreter/interpreter.h"
+#include "lexer.h"
 
 #define RULES_NUMBER 25
 
@@ -24,9 +26,11 @@ class Automaton
 		std::stack<Symbol*> symbolStack;
 		std::stack<State*> stateStack;
 		std::pair<Symbols,int>* rules;
+		Interpreter *interpreter;
+		Lexer *lexer;
 	protected:
 	public:
-	    Automaton();
+	    Automaton(Interpreter *interp, Lexer *lex);
 	    virtual ~Automaton();
 	    void read(); //utilisera Lexer pour faire le café
 	    void shift(Symbol * symbol, State * state);

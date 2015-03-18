@@ -14,8 +14,10 @@
 using namespace std;
 
 // Automaton constructor
-Automaton::Automaton() 
+Automaton::Automaton(Interpreter *interp,Lexer *lex) 
 {
+	this->interpreter = interp;
+	this->lexer = lex;
 	// Stack initialization :
 	stateStack.push(new State0());
 	rules = new pair<Symbols,int>[RULES_NUMBER];
@@ -48,28 +50,28 @@ Automaton::Automaton()
 
 Automaton::~Automaton()
 {
-	Symbol* currentSymbol;
-	State* currentState;
-	
 	while(!this->symbolStack.empty())
 	{	
-		currentSymbol = this->symbolStack.top();
+		delete this->symbolStack.top();
 		this->symbolStack.pop();
-		delete currentSymbol;
 	}
 	
 	while(!stateStack.empty())
 	{		
-		currentState = this->stateStack.top();
+		delete this->stateStack.top();
 		this->stateStack.pop();
-		delete currentState;
 	}
 }
 
 void Automaton::read()
 {
 	//Prends le prochain jeton (voir si l'automate a déjà toute la liste ou pas)
-	//Appel la transition de l'état courant (sommet de la pile) avec le symnbole lu
+	//Appelle la transition de l'état courant (sommet de la pile) avec le symnbole lu
+	Symbol *symbol;
+	// TODO use lexer
+	while(/*symbol = this->lexer.getSymbol()*/ true) {
+		this->stateStack.top()->transition(*this,symbol);
+	}
 }
 
 void Automaton::shift(Symbol * symbol, State * state)
