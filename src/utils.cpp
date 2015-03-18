@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <algorithm>
 
 std::string Utils::doubleToString(double val)
 {
@@ -45,7 +46,7 @@ unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs
     while ((pos = txt.find_first_of(chars, lastPos)) != std::string::npos)
     {
         strs.push_back(txt.substr(lastPos, pos-lastPos));
-        strs.push_back(txt.substr(pos-lastPos, pos-lastPos+1));
+        strs.push_back(txt.substr(pos, 1));
         lastPos = pos+1;
     }
     strs.push_back(txt.substr(lastPos));

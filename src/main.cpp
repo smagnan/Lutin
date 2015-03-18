@@ -51,7 +51,6 @@ int main( int argc, const char* argv[] )
 	DEBUGINFO("Creating FSM");
 	Automaton *automaton 		= new Automaton(interpreter,lexer);	
     
-    /*
 	//=================================== TEST STUFF ==========================================
 	DEBUGINFO("============== DECLARE ================");
 	interpreter->declare("testVar",D_VAR,42);
@@ -68,10 +67,9 @@ int main( int argc, const char* argv[] )
 	interpreter->update_variable("testConst",1000); // Not working as you can see, quite normal (:
 	DEBUGINFO("================ END ==================");
 	//=================================== END TEST STUFF ======================================
-    */
 
-    automaton->read();
-    
+    //automaton->read();
+
     if (am.count("help"))
     {
         cout << am << endl;

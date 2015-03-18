@@ -45,9 +45,8 @@ void Printer::print(std::ostream& out,std::string str)
 	    for(std::vector<std::string>::iterator it2 = metawords.begin(); it2 != metawords.end(); ++it2) {
 	    	words.clear();
 	    	split(*it2,words,"+-*/=(),;:"); // split at special chars and keep them
-	    	//printwarn("DEBUG ",*it2);
 	    	for(std::vector<std::string>::iterator it3 = words.begin(); it3 != words.end(); ++it3) {
-	    		out << selectStyle(*it3)  <<'['<<*it3 <<']'<<' ';
+	    		out << selectStyle(*it3) <<*it3 <<' ';
 	    	}
 	    }	
 	    if (it != lines.begin())	// do not jump if one line only with no end of line char
