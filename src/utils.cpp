@@ -18,8 +18,8 @@ double Utils::stringToDouble(std::string str)
 
 unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs, char ch, bool keepChar)
 {
-	short indexKeep = (short)keepChar;
 	// thx: http://stackoverflow.com/questions/5888022/split-string-by-single-spaces
+	short indexKeep = (short)keepChar;
     unsigned int pos = txt.find( ch );
     unsigned int initialPos = 0;
     strs.clear();
@@ -40,6 +40,7 @@ unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs
 
 unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs, std::string chars)
 {
+	// thx: http://stackoverflow.com/questions/17476224/c-splitting-a-string-with-multiple-delimiters-and-keep-the-delimiters-in-the
     size_t pos = 0, lastPos = 0;
     while ((pos = txt.find_first_of(chars, lastPos)) != std::string::npos)
     {

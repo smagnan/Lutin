@@ -36,14 +36,19 @@ void Printer::print(std::ostream& out,std::string str)
 {
 	// TODO to change? will depens on an external file and will not be hardcoded?
 	std::vector<std::string> lines;
+	std::vector<std::string> metawords;
 	std::vector<std::string> words;
 	split(str,lines,'\n',false); // split text into lines
 	for(std::vector<std::string>::iterator it = lines.begin(); it != lines.end(); ++it) {
-		words.clear();
-	    split(*it,words,' ',false);	// split lines in words
-	    for(std::vector<std::string>::iterator it2 = words.begin(); it2 != words.end(); ++it2) {
-	    	out << selectStyle(*it2)  <<*it2 <<' ';
-	    	// TODO: ';' will be inside a word ... -> change that
+		metawords.clear();
+	    split(*it,metawords,' ',false);	// split lines in words by spaces (delete spaces)
+	    for(std::vector<std::string>::iterator it2 = metawords.begin(); it2 != metawords.end(); ++it2) {
+	    	words.clear();
+	    	split(*it2,words,"+-*/=(),;:"); // split at special chars and keep them
+	    	//printwarn("DEBUG ",*it2);
+	    	for(std::vector<std::string>::iterator it3 = words.begin(); it3 != words.end(); ++it3) {
+	    		out << selectStyle(*it3)  <<'['<<*it3 <<']'<<' ';
+	    	}
 	    }	
 	    if (it != lines.begin())	// do not jump if one line only with no end of line char
 	    	out << endl;    
