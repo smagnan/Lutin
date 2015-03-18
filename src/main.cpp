@@ -68,7 +68,7 @@ int main( int argc, const char* argv[] )
 	DEBUGINFO("================ END ==================");
 	//=================================== END TEST STUFF ======================================
 
-    //automaton->read();
+    automaton->read();
 
     if (am.count("help"))
     {

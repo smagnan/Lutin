@@ -12,6 +12,7 @@
 #include "symbol/symbol.h"
 #include "debugger.h"
 
+#include <iostream>
 #include <vector>
 #include <iterator>
 
@@ -89,7 +90,7 @@ void Automaton::shift(Symbol * symbol, State * state)
 
 void Automaton::reduce(int numRule)
 {
-    for (int i = 0; i < numRule; i++)
+    for (int i = 0; i < rules[numRule].second; i++)
     {
         symbolStack.pop();
         stateStack.pop();
