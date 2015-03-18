@@ -9,6 +9,7 @@
 #ifndef S_CLOSEBY_H
 #define S_CLOSEBY_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Closeby : public Symbol

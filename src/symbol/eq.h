@@ -9,6 +9,7 @@
 #ifndef S_EQ_H
 #define S_EQ_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Eq : public Symbol

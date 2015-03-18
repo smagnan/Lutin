@@ -21,3 +21,13 @@ S_Num::S_Num()
 S_Num::~S_Num()
 {
 }
+
+double S_Num::getValue()
+{
+    return value;
+}
+
+void S_Num::setValue(double v)
+{
+    value = v;
+}

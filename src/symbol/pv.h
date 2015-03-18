@@ -9,6 +9,7 @@
 #ifndef S_PV_H
 #define S_PV_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Pv : public Symbol

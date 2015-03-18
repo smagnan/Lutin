@@ -9,6 +9,7 @@
 #ifndef S_INSTBLOCK_H
 #define S_INSTBLOCK_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Instblock : public Symbol

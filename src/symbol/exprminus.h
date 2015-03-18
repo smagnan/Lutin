@@ -9,6 +9,7 @@
 #ifndef S_EXPRMINUS_H
 #define S_EXPRMINUS_H
 
+#include <string>
 #include "exprbin.h"
 
 class S_Exprminus : public S_Exprbin

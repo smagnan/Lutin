@@ -14,6 +14,7 @@ templateHeader = """// ---------------------------------------------
 #ifndef {class_name_upp}_H
 #define {class_name_upp}_H
 
+#include <string>
 #include "{parent_class_name}.h"
 
 class {class_name_cap} : public {parent_class_name_cap}
@@ -54,6 +55,71 @@ templateSource = """// ---------------------------------------------
 }}
 """
 
+templateHeaderValue = """// ---------------------------------------------
+//  {class_name}.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
+
+#ifndef {class_name_upp}_H
+#define {class_name_upp}_H
+
+#include <string>
+#include "{parent_class_name}.h"
+
+class {class_name_cap} : public {parent_class_name_cap}
+{{
+private:
+    {valueType} value;
+protected:
+    {class_name_cap}(Symbols s);
+public:
+    {class_name_cap}();
+    virtual ~{class_name_cap}();
+    {valueType} getValue();
+    void setValue({valueType} v);
+}};
+
+#endif // {class_name_upp}_H
+"""
+
+templateSourceValue = """// ---------------------------------------------
+//  {class_name}.cpp
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
+
+#include "{class_name}.h"
+
+{class_name_cap}::{class_name_cap}(Symbols s)
+    : {parent_class_name_cap}(s)
+{{
+}}
+
+{class_name_cap}::{class_name_cap}()
+    : {parent_class_name_cap}({identifier})
+{{
+}}
+
+{class_name_cap}::~{class_name_cap}()
+{{
+}}
+
+{valueType} {class_name_cap}::getValue()
+{{
+    return value;
+}}
+
+void {class_name_cap}::setValue({valueType} v)
+{{
+    value = v;
+}}
+"""
+
 # Arguments manager
 parser = argparse.ArgumentParser(prog="lag", description="LAG (Lutin Automaton Generator) is a tool for the generation of lutin automaton state classes in the current directory (by default)")
 parser.add_argument('input_csv_file', help='The input csv file used to generate the symbol classes')
@@ -77,14 +143,17 @@ for i, row in enumerate(symbols[0]):
     parent_class_name_cap = "S_" + parent_class_name.capitalize()
     if parent_class_name == "symbol":
         parent_class_name_cap = parent_class_name.capitalize()
-        
-    header = templateHeader.format(class_name=class_name,class_name_cap=class_name_cap,class_name_upp=class_name_upp,parent_class_name=parent_class_name,parent_class_name_cap=parent_class_name_cap)
-
-    #constructor = ""
-    #if identifier:
-    #    constructor = templateConstructor.format(identifier=identifier,parent_class_name_cap=parent_class_name_cap)
+    valueType = symbols[3][i]
     
-    source = templateSource.format(class_name=class_name,class_name_cap=class_name_cap,parent_class_name_cap=parent_class_name_cap,identifier=identifier)
+    header = ""
+    source = ""
+    
+    if valueType:
+        header = templateHeaderValue.format(class_name=class_name,class_name_cap=class_name_cap,class_name_upp=class_name_upp,parent_class_name=parent_class_name,parent_class_name_cap=parent_class_name_cap,valueType=valueType)
+        source = templateSourceValue.format(class_name=class_name,class_name_cap=class_name_cap,parent_class_name_cap=parent_class_name_cap,identifier=identifier,valueType=valueType)
+    else:
+        header = templateHeader.format(class_name=class_name,class_name_cap=class_name_cap,class_name_upp=class_name_upp,parent_class_name=parent_class_name,parent_class_name_cap=parent_class_name_cap)
+        source = templateSource.format(class_name=class_name,class_name_cap=class_name_cap,parent_class_name_cap=parent_class_name_cap,identifier=identifier)
     
     fHeader = open(class_name + '.h', 'w+')
     fSource = open(class_name + '.cpp', 'w+')
