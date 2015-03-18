@@ -12,13 +12,24 @@
 #include <string>
 #include "symbol.h"
 
+// Rule based include
+#include "t.h"
+#include "plus.h"
+#include "minus.h"
+
 class S_E : public Symbol
 {
 private:
+    S_Plus plus;
+    S_Minus minus;
+    S_T t;
+    S_E e;
+
 protected:
     S_E(Symbols s);
 public:
     S_E();
+    S_E(vector<Symbol>);
     virtual ~S_E();
 };
 
