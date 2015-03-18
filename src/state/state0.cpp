@@ -7,10 +7,10 @@
 // ---------------------------------------------
 
 #include "state0.h"
+#include "state1.h"
+#include "state2.h"
 #include "../symbol/symbol.h"
 #include "../automaton.h"
-
-
 
 State0::State0()
     : State(0)
