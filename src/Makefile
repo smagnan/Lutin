@@ -9,13 +9,12 @@ DIR="./"
 
 GPP=g++
 CFLAGS=-Wall -Wextra -Wmissing-braces -pedantic -Wunused
-DEBUGFLAGS=-g3 -gdwarf2 -g -DDEBUG
 INCLUDE=-I"/usr/include/boost" -I"./" -I"./interpreter/" -I"./symbol/" -I"./state/" -I"./exception/"
 
 INTERPDIR=interpreter
 SYMBOLDIR=symbol
 
-MAINFILE=main.cpp automaton.cpp argsmanager.cpp utils.cpp loader.cpp lexer.cpp 
+MAINFILE=main.cpp automaton.cpp argsmanager.cpp utils.cpp loader.cpp  debugger.cpp lexer.cpp
 CPPFILES_EXCEPTION=exception/operationException.cpp exception/syntaxException.cpp
 CPPFILES_STATE=state/state.cpp state/state0.cpp state/state1.cpp \
 	state/state2.cpp state/state3.cpp state/state4.cpp state/state5.cpp \
@@ -49,6 +48,7 @@ OBJ=$(CPPFILES:.cpp=.o)
 OBJS=$(addprefix $(OBJDIR)/,$(OBJ))
 
 FLAGS=-O2
+DEBUGFLAGS=-g3 -gdwarf-2 -g -DDEBUG
 
 LIBS=-L"/usr/lib" -lboost_program_options -lboost_regex
 

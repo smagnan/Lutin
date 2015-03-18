@@ -40,6 +40,7 @@ Allowed options:
 ## Logo
 
 TODO: ascii picture
+
 TODO: select ascii art font:
 
 ```
