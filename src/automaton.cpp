@@ -72,8 +72,8 @@ void Automaton::read()
 	//Appelle la transition de l'état courant (sommet de la pile) avec le symnbole lu
 	std::vector<Symbol> symbols;
 	// TODO use lexer
-	while(lexer->hasNext()) {
-		symbols = lexer->getSymbols();
+	while(this->lexer->hasNext()) {
+		symbols = this->lexer->getSymbols();
 		for(std::vector<Symbol>::iterator it = symbols.begin(); it != symbols.end(); ++it) {
 		    this->stateStack.top()->transition(*this,&*it);
 		}

@@ -36,12 +36,12 @@ class Lexer
 public:
     Lexer();
     virtual ~Lexer();
-    bool setProg(String prog);
-    vector<Symbol> getSymbols();
+    bool setProg(std::string prog);
+    std::vector<Symbol> getSymbols();
     bool hasNext();
 private:
-    bool regex_callback(const boost::match_results<std::string::const_iterator>& str_found)
-}
+    bool regex_callback(const boost::match_results<std::string::const_iterator>& str_found);
+};
 
 #endif // LEXER_H
 
