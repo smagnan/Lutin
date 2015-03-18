@@ -53,7 +53,7 @@ ArgsManager::ArgsManager(int argc, const char* argv[]) :
         
         // TODO use loader
         // load the input file
-        std::string file_path(vm[OPTION_FILE_LABEL.c_str()].as<std::string>());
+        /*std::string file_path(vm[OPTION_FILE_LABEL.c_str()].as<std::string>());
         std::ifstream input_file(file_path.c_str());
         std::string line;
         if (input_file.is_open())
@@ -69,7 +69,7 @@ ArgsManager::ArgsManager(int argc, const char* argv[]) :
         else
         {
             manageError(OPTION_ERROR_FILE + file_path);
-        }
+        }*/
         
     }
     

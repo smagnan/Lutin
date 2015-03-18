@@ -42,9 +42,11 @@ void Printer::print(std::ostream& out,std::string str)
 		words.clear();
 	    split(*it,words,' ');	// split lines in words
 	    for(std::vector<std::string>::iterator it2 = words.begin(); it2 != words.end(); ++it2) {
-	    	out << selectStyle(*it2) << str << ' ';
+	    	out << selectStyle(*it2)  <<*it2 <<' ';
 	    	// TODO: ';' will be inside a word ... -> change that
-	    }	    
+	    }	
+	    if (it != lines.begin())	// do not jump if one line only with no end of line char
+	    	out << endl;    
 	}	
 }
 
@@ -78,7 +80,7 @@ void Printer::print(std::string def, std::string desc)
 
 void Printer::endline()
 {
-	cout << STYLE_DEFAULT << ";" << endl;
+	cout << STYLE_END << ";" << STYLE_DEFAULT <<  endl;
 }
 
 // ==================================================== PRIVATE

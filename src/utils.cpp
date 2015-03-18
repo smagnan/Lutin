@@ -25,7 +25,7 @@ unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs
 
     // Decompose statement
     while( pos != std::string::npos ) {
-        strs.push_back( txt.substr( initialPos, pos - initialPos + 1 ) );
+        strs.push_back( txt.substr( initialPos, pos - initialPos /*+ 1*/ ) );
         initialPos = pos + 1;
 
         pos = txt.find( ch, initialPos );
