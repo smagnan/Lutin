@@ -46,7 +46,7 @@ int main( int argc, const char* argv[] )
 	// The following line is equivalent to the previous one :) 
 	// Note that whatever the string is the name will be the value
 	interpreter->declare("",D_VALUE,100); // XXX does nothing here since the value is already stored
-	mainPrinter.print("","============== UPDATED ================");
+	mainPrinter.print("","============== UPDATE ================");
 	interpreter->update_variable("testVar",1337);
 	interpreter->update_variable("testVar2",8080);
 	interpreter->update_variable("testConst",1000); // Not working as you can see, quite normal (:

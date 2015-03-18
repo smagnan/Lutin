@@ -8,8 +8,9 @@
 // ---------------------------------------------
 
 #include <exception>
-
+#include "../exception/operationException.h"
 #include "interpreter.h"
+#include "../utils.h"
 
 // Interpreter constructor
 Interpreter::Interpreter() 
@@ -65,12 +66,20 @@ void Interpreter::declare(const std::string &name)
 void Interpreter::update_variable(std::string name, double val)
 {
 	try {
-		this->declarations.find(name)->second->setValue(val);
+		Declaration * decl = this->declarations.find(name)->second;
+		if(!decl->getType().compare(DECLAR_TYPE_VAR)) { // if type is VAR
+			decl->setValue(val);
+		} else {
+			//throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
+			// TODO ^ FIXME & ugly
+		}
+
 	} catch(std::exception &e) {
 		this->printer.printerr("Affectation problem ","problem with "+name);
 		// TODO: error if: name does not exist, exist but not a variable etc ...
 		// TODO: create custom exceptions
 		// TODO: calling setValue() if not a Var throws an error
+		// TODO print what
 	}
 }
 
@@ -94,6 +103,7 @@ void Interpreter::print_declarations(std::ostream& out)
 void Interpreter::print_instructions(std::ostream& out)
 {
 	// TODO
+	this->printer.print(out,"");
 }
 
 void Interpreter::clean_declarations() // TODO: exceptions
