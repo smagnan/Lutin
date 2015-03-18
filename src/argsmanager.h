@@ -53,6 +53,7 @@ class ArgsManager
         po::variables_map::size_type count(std::string option);
         friend std::ostream& operator<< (std::ostream& out, const ArgsManager& am);
         bool isError();
+        std::string getFilePath();
         
     protected:
     

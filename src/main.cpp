@@ -15,6 +15,7 @@
 #include "automaton.h"
 #include "argsmanager.h"
 #include "interpreter/interpreter.h"
+#include "loader.h"
 
 using std::cout;
 using std::endl;
@@ -27,6 +28,16 @@ int main( int argc, const char* argv[] )
 {
 
 	Printer mainPrinter;
+
+	ArgsManager am(argc, argv);
+    
+    if (am.isError())
+    {
+        cout << am << endl;
+        return EXIT_FAILURE;
+    }
+
+    Loader *loader = new Loader(am.getFilePath().c_str()); // TODO not really clean ...
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	mainPrinter.printinfo("","Creating Lexer");
     Lexer *lexer = new Lexer();
@@ -55,14 +66,6 @@ int main( int argc, const char* argv[] )
     cout << endl;
 
     automaton->read();
-    
-    ArgsManager am(argc, argv);
-    
-    if (am.isError())
-    {
-        cout << am << endl;
-        return EXIT_FAILURE;
-    }
     
     if (am.count("help"))
     {

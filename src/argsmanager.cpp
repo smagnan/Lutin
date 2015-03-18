@@ -149,3 +149,8 @@ std::ostream& operator<< (std::ostream& out, const ArgsManager& am)
     << am.desc;
 }
 
+std::string ArgsManager::getFilePath()
+{
+    return vm[OPTION_FILE_LABEL.c_str()].as<std::string>();
+}
+

@@ -10,21 +10,23 @@
 #include "loader.h"
 
 // Loader constructor
-Loader::Loader(char * filepath) 
+Loader::Loader(const char * filepath) 
 {	
-	this->file.open(filepath);
-	if (this->file.is_open())
-    {
-        this->buffer << this->file.rdbuf();
-    }
-    else
-    {
-        // TODO error management
-    }
-	
+	load(filepath);
 }
 
 Loader::~Loader()
 {
 
+}
+
+void Loader::load(const char * filepath)
+{
+	this->file.open(filepath);
+	if (this->file.is_open()) {
+        this->buffer << this->file.rdbuf();
+    }
+    else {
+        // TODO error management
+    }
 }
