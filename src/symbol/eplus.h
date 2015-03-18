@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  exprime.h
+//  eplus.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_EXPRIME_H
-#define S_EXPRIME_H
+#ifndef S_EPLUS_H
+#define S_EPLUS_H
 
 #include <string>
-#include "symbol.h"
+#include "ebin.h"
 
-class S_Exprime : public Symbol
+class S_Eplus : public S_Ebin
 {
 private:
 protected:
-    S_Exprime(Symbols s);
+    S_Eplus(Symbols s);
 public:
-    S_Exprime();
-    virtual ~S_Exprime();
+    S_Eplus();
+    virtual ~S_Eplus();
 };
 
-#endif // S_EXPRIME_H
+#endif // S_EPLUS_H

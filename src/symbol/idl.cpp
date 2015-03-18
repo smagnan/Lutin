@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  var.cpp
+//  idl.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "var.h"
+#include "idl.h"
 
-S_Var::S_Var(Symbols s)
-    : S_E(s)
+S_Idl::S_Idl(Symbols s)
+    : Symbol(s)
 {
 }
 
-S_Var::S_Var()
-    : S_E(VAR)
+S_Idl::S_Idl()
+    : Symbol(IDL)
 {
 }
 
-S_Var::~S_Var()
+S_Idl::~S_Idl()
 {
 }

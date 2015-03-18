@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  instblock.cpp
+//  t.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "instblock.h"
+#include "t.h"
 
-S_Instblock::S_Instblock(Symbols s)
+S_T::S_T(Symbols s)
     : Symbol(s)
 {
 }
 
-S_Instblock::S_Instblock()
-    : Symbol(INSTBLOCK)
+S_T::S_T()
+    : Symbol(T)
 {
 }
 
-S_Instblock::~S_Instblock()
+S_T::~S_T()
 {
 }

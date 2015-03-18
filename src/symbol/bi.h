@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  idenlist.h
+//  bi.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_IDENLIST_H
-#define S_IDENLIST_H
+#ifndef S_BI_H
+#define S_BI_H
 
 #include <string>
 #include "symbol.h"
 
-class S_Idenlist : public Symbol
+class S_Bi : public Symbol
 {
 private:
 protected:
-    S_Idenlist(Symbols s);
+    S_Bi(Symbols s);
 public:
-    S_Idenlist();
-    virtual ~S_Idenlist();
+    S_Bi();
+    virtual ~S_Bi();
 };
 
-#endif // S_IDENLIST_H
+#endif // S_BI_H

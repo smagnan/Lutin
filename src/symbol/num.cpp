@@ -9,17 +9,17 @@
 #include "num.h"
 
 S_Num::S_Num(Symbols s)
-    : S_Expr(s)
+    : S_E(s)
 {
 }
 
 S_Num::S_Num()
-    : S_Expr(NUM), value(0)
+    : S_E(NUM), value(0)
 {
 }
 
 S_Num::S_Num(double v)
-    : S_Expr(NUM), value(v)
+    : S_E(NUM), value(v)
 {
 }
 

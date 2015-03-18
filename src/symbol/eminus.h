@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  term.h
+//  eminus.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_TERM_H
-#define S_TERM_H
+#ifndef S_EMINUS_H
+#define S_EMINUS_H
 
 #include <string>
-#include "symbol.h"
+#include "ebin.h"
 
-class S_Term : public Symbol
+class S_Eminus : public S_Ebin
 {
 private:
 protected:
-    S_Term(Symbols s);
+    S_Eminus(Symbols s);
 public:
-    S_Term();
-    virtual ~S_Term();
+    S_Eminus();
+    virtual ~S_Eminus();
 };
 
-#endif // S_TERM_H
+#endif // S_EMINUS_H

@@ -10,9 +10,9 @@
 #define S_ID_H
 
 #include <string>
-#include "expr.h"
+#include "e.h"
 
-class S_Id : public S_Expr
+class S_Id : public S_E
 {
 private:
     std::string value;

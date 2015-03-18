@@ -9,17 +9,17 @@
 #include "id.h"
 
 S_Id::S_Id(Symbols s)
-    : S_Expr(s)
+    : S_E(s)
 {
 }
 
 S_Id::S_Id()
-    : S_Expr(ID), value(0)
+    : S_E(ID), value(0)
 {
 }
 
 S_Id::S_Id(std::string v)
-    : S_Expr(ID), value(v)
+    : S_E(ID), value(v)
 {
 }
 

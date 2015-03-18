@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  init.h
+//  end.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_INIT_H
-#define S_INIT_H
+#ifndef S_END_H
+#define S_END_H
 
 #include <string>
 #include "symbol.h"
 
-class S_Init : public Symbol
+class S_End : public Symbol
 {
 private:
 protected:
-    S_Init(Symbols s);
+    S_End(Symbols s);
 public:
-    S_Init();
-    virtual ~S_Init();
+    S_End();
+    virtual ~S_End();
 };
 
-#endif // S_INIT_H
+#endif // S_END_H

@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  instr.cpp
+//  ebin.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "instr.h"
+#include "ebin.h"
 
-S_Instr::S_Instr(Symbols s)
-    : Symbol(s)
+S_Ebin::S_Ebin(Symbols s)
+    : S_E(s)
 {
 }
 
-S_Instr::S_Instr()
-    : Symbol(INSTR)
+S_Ebin::S_Ebin()
+    : S_E()
 {
 }
 
-S_Instr::~S_Instr()
+S_Ebin::~S_Ebin()
 {
 }

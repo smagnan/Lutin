@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  expr.cpp
+//  end.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "expr.h"
+#include "end.h"
 
-S_Expr::S_Expr(Symbols s)
+S_End::S_End(Symbols s)
     : Symbol(s)
 {
 }
 
-S_Expr::S_Expr()
-    : Symbol(EXPR)
+S_End::S_End()
+    : Symbol(END)
 {
 }
 
-S_Expr::~S_Expr()
+S_End::~S_End()
 {
 }

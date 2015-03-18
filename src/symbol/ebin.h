@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  const.h
+//  ebin.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_CONST_H
-#define S_CONST_H
+#ifndef S_EBIN_H
+#define S_EBIN_H
 
 #include <string>
 #include "e.h"
 
-class S_Const : public S_E
+class S_Ebin : public S_E
 {
 private:
 protected:
-    S_Const(Symbols s);
+    S_Ebin(Symbols s);
 public:
-    S_Const();
-    virtual ~S_Const();
+    S_Ebin();
+    virtual ~S_Ebin();
 };
 
-#endif // S_CONST_H
+#endif // S_EBIN_H

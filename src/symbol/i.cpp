@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  init.cpp
+//  i.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "init.h"
+#include "i.h"
 
-S_Init::S_Init(Symbols s)
+S_I::S_I(Symbols s)
     : Symbol(s)
 {
 }
 
-S_Init::S_Init()
-    : Symbol(INIT)
+S_I::S_I()
+    : Symbol(I)
 {
 }
 
-S_Init::~S_Init()
+S_I::~S_I()
 {
 }

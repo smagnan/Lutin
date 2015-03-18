@@ -9,12 +9,12 @@
 #include "const.h"
 
 S_Const::S_Const(Symbols s)
-    : S_Expr(s)
+    : S_E(s)
 {
 }
 
 S_Const::S_Const()
-    : S_Expr(CONST)
+    : S_E(CONST)
 {
 }
 

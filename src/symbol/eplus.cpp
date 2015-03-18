@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  final.cpp
+//  eplus.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "final.h"
+#include "eplus.h"
 
-S_Final::S_Final(Symbols s)
-    : Symbol(s)
+S_Eplus::S_Eplus(Symbols s)
+    : S_Ebin(s)
 {
 }
 
-S_Final::S_Final()
-    : Symbol(FINAL)
+S_Eplus::S_Eplus()
+    : S_Ebin()
 {
 }
 
-S_Final::~S_Final()
+S_Eplus::~S_Eplus()
 {
 }

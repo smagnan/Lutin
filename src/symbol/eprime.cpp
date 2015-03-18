@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  exprbin.cpp
+//  eprime.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "exprbin.h"
+#include "eprime.h"
 
-S_Exprbin::S_Exprbin(Symbols s)
-    : S_Expr(s)
+S_Eprime::S_Eprime(Symbols s)
+    : Symbol(s)
 {
 }
 
-S_Exprbin::S_Exprbin()
-    : S_Expr()
+S_Eprime::S_Eprime()
+    : Symbol(EPRIME)
 {
 }
 
-S_Exprbin::~S_Exprbin()
+S_Eprime::~S_Eprime()
 {
 }

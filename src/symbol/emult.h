@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  prog.h
+//  emult.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_PROG_H
-#define S_PROG_H
+#ifndef S_EMULT_H
+#define S_EMULT_H
 
 #include <string>
-#include "symbol.h"
+#include "ebin.h"
 
-class S_Prog : public Symbol
+class S_Emult : public S_Ebin
 {
 private:
 protected:
-    S_Prog(Symbols s);
+    S_Emult(Symbols s);
 public:
-    S_Prog();
-    virtual ~S_Prog();
+    S_Emult();
+    virtual ~S_Emult();
 };
 
-#endif // S_PROG_H
+#endif // S_EMULT_H

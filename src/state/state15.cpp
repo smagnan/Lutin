@@ -14,7 +14,7 @@
 #include "state16.h" 
 
 State15::State15()
-    : State("State15")
+    : State(15)
 {
 }
 
