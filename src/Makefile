@@ -9,12 +9,13 @@ DIR="./"
 
 GPP=g++
 CFLAGS=-Wall -Wextra -Wmissing-braces -pedantic -Wunused
-INCLUDE=-I"/usr/include/boost" -I"./" -I"./interpreter/" -I"./symbol/" -I"./state/"
+INCLUDE=-I"/usr/include/boost" -I"./" -I"./interpreter/" -I"./symbol/" -I"./state/" -I"./exception/"
 
 INTERPDIR=interpreter
 SYMBOLDIR=symbol
 
 MAINFILE=main.cpp automaton.cpp argsmanager.cpp
+CPPFILES_EXCEPTION=exception/operationException.cpp exception/syntaxException.cpp
 CPPFILES_STATE=state/state.cpp state/state0.cpp state/state1.cpp \
 	state/state2.cpp state/state3.cpp state/state4.cpp state/state5.cpp \
 	state/state6.cpp state/state7.cpp state/state8.cpp state/state9.cpp \
@@ -38,7 +39,7 @@ CPPFILES_INTERPRETER=interpreter/affectation.cpp interpreter/const.cpp \
 	interpreter/interpreter.cpp interpreter/read.cpp interpreter/var.cpp \
 	interpreter/write.cpp interpreter/value.cpp interpreter/printer.cpp
 CPPFILES=$(MAINFILE) $(CPPFILES_INTERPRETER) $(CPPFILES_SYMBOL) \
-	$(CPPFILES_STATE)
+	$(CPPFILES_STATE) $(CPPFILES_EXCEPTION)
 
 OBJ=$(CPPFILES:.cpp=.o)
 OBJS=$(addprefix $(OBJDIR)/,$(OBJ))
