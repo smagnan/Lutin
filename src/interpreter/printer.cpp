@@ -37,10 +37,10 @@ void Printer::print(std::ostream& out,std::string str)
 	// TODO to change? will depens on an external file and will not be hardcoded?
 	std::vector<std::string> lines;
 	std::vector<std::string> words;
-	split(str,lines,'\n'); // split text into lines
+	split(str,lines,'\n',false); // split text into lines
 	for(std::vector<std::string>::iterator it = lines.begin(); it != lines.end(); ++it) {
 		words.clear();
-	    split(*it,words,' ');	// split lines in words
+	    split(*it,words,' ',false);	// split lines in words
 	    for(std::vector<std::string>::iterator it2 = words.begin(); it2 != words.end(); ++it2) {
 	    	out << selectStyle(*it2)  <<*it2 <<' ';
 	    	// TODO: ';' will be inside a word ... -> change that

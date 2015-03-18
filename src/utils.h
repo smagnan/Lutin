@@ -6,5 +6,8 @@ namespace Utils
 {
 	std::string doubleToString(double val);
     double stringToDouble(std::string str);
-    unsigned int split(const std::string &txt, std::vector<std::string> &strs, char ch);
+    // splits with a delimiter, keep the delimiter or not -> keepChar
+    unsigned int split(const std::string &txt, std::vector<std::string> &strs, char ch, bool keepChar);
+    // splits with multiple delimiters, keep all the delimiter
+    unsigned int split(const std::string &txt, std::vector<std::string> &strs, std::string chars);
 }

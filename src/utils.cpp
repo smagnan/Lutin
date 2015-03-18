@@ -16,8 +16,9 @@ double Utils::stringToDouble(std::string str)
     return ret;
 }
 
-unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs, char ch)
+unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs, char ch, bool keepChar)
 {
+	short indexKeep = (short)keepChar;
 	// thx: http://stackoverflow.com/questions/5888022/split-string-by-single-spaces
     unsigned int pos = txt.find( ch );
     unsigned int initialPos = 0;
@@ -25,14 +26,27 @@ unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs
 
     // Decompose statement
     while( pos != std::string::npos ) {
-        strs.push_back( txt.substr( initialPos, pos - initialPos /*+ 1*/ ) );
+        strs.push_back( txt.substr( initialPos, pos - initialPos + indexKeep ) );
         initialPos = pos + 1;
 
         pos = txt.find( ch, initialPos );
     }
 
     // Add the last one
-    strs.push_back( txt.substr( initialPos, std::min( pos, txt.size() ) - initialPos + 1 ) );
+    strs.push_back( txt.substr( initialPos, std::min( pos, txt.size() ) - initialPos + indexKeep ) );
 
+    return strs.size();
+}
+
+unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs, std::string chars)
+{
+    size_t pos = 0, lastPos = 0;
+    while ((pos = txt.find_first_of(chars, lastPos)) != std::string::npos)
+    {
+        strs.push_back(txt.substr(lastPos, pos-lastPos));
+        strs.push_back(txt.substr(pos-lastPos, pos-lastPos+1));
+        lastPos = pos+1;
+    }
+    strs.push_back(txt.substr(lastPos));
     return strs.size();
 }
