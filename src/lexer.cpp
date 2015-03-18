@@ -26,17 +26,17 @@ Lexer::Lexer()
         // Minus symbol
         "(\\s?-\\s?)|"
         // Multiply symbol
-        "(\\*)|"
+        "(\\s?\\*\\s?)|"
         // Divide symbol
-        "(/)|"
+        "(\\s?/\\s?)|"
         // openby left
-        "(\\()|"
+        "(\\s?\\(\\s?)|"
         // openby right
-        "(\\))|"
+        "(\\s?\\)\\s?)|"
         // semicolon
-       "(\\s?;$)|"
+       "(\\s?;\\s?$)|"
         // Id
-        "([a-zA-Z][a-zA-Z0-9_]*)|"
+        "(\\s?[a-zA-Z][a-zA-Z0-9_]*\\s?)|"
         // vir 
         "(\\s?,\\s?)|"
         // egal
@@ -51,9 +51,9 @@ Lexer::Lexer()
     // Will contain matched symbols : 
     symbol_vector symbols;
     // Will contains lines of program :
-    vector<String> progLines;
-    vector<String>::iterator progStart, progEnd;
-    vector<Symbol> lineSymbols;
+    vector<String> progLines;                       // contains all lines of parsed program
+    vector<String>::iterator progStart, progEnd;    // iterator on the vector of lines
+    vector<Symbol> lineSymbols;                     // temp vector of matched symbols
 }
 
 virtual Lexer::~Lexer()
@@ -63,15 +63,15 @@ virtual Lexer::~Lexer()
         vector<Symbol>::iterator i;
         while (i != lineSymbol.end())
         {
-            delete (*i);
-            ++i;
+            delete (*i++);
         }
+        lineSymbols.erase();
     }
 }
 
 //-------------------------------------------------- Public Methods
 
-// set program to be analyzed by regex
+// Set program to be analyzed by regex
 bool Lexer::setProg(String prog)
 {
     if (prog != null)
@@ -83,6 +83,7 @@ bool Lexer::setProg(String prog)
         {
             progLines.push_back(line);   
         }
+        // set iterators to on newly filled vector
         progStart = progLines.begin();
         progEnd = progLines.end();
         return true;    
@@ -93,7 +94,8 @@ bool Lexer::setProg(String prog)
 
 vector<Symbol> Lexer::getSymbols()
 {
-    // if lineSymbols not empty, delete everything inside
+    // If lineSymbols not empty, delete everything inside
+    // and emtpy it
     if (!lineSymbols.empty())
     {
         vector<Symbol>::iterator i;
@@ -102,13 +104,17 @@ vector<Symbol> Lexer::getSymbols()
             delete (*i);
             ++i;
         }
+        lineSymbols.erase();
     }
 
-    boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), expression);
+    // Find symbols
+    boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), main_regex);
     boost::sregex_iterator m2;
     std::for_each(m1, m2, &regex_callback);
+    // increment iterator (for next loop)
     progStart++;
     
+    // Fill symbol vector
     symbol_vector::iterator b,e;
     b = symbols.begin();
     e = symbols.end();
