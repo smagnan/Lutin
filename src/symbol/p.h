@@ -10,6 +10,8 @@
 #define S_P_H
 
 #include <string>
+#include <vector>
+
 #include "symbol.h"
 
 // Rule include :
@@ -26,7 +28,7 @@ protected:
     Bi sbi;
 public:
     S_P();
-    S_P(Bd s_bd, Bi, s_bi);
+    S_P(vector<Symbol>);
     virtual ~S_P();
 };
 
