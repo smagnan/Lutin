@@ -39,7 +39,12 @@ State* State7::getNextState(Symbol * s)
 {
     switch(*s)
     {
-    
+
+        case INIL:
+            return new State8();
+
+        default:
+            break;
     }
     
     return 0;

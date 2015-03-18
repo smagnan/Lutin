@@ -39,7 +39,12 @@ State* State14::getNextState(Symbol * s)
 {
     switch(*s)
     {
-    
+
+        case IDL:
+            return new State15();
+
+        default:
+            break;
     }
     
     return 0;

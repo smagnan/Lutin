@@ -42,7 +42,18 @@ State* State31::getNextState(Symbol * s)
 {
     switch(*s)
     {
-    
+
+        case E:
+            return new State38();
+
+        case T:
+            return new State29();
+
+        case F:
+            return new State30();
+
+        default:
+            break;
     }
     
     return 0;

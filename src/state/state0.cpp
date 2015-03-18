@@ -39,7 +39,15 @@ State* State0::getNextState(Symbol * s)
 {
     switch(*s)
     {
-    
+
+        case P:
+            return new State1();
+
+        case BD:
+            return new State2();
+
+        default:
+            break;
     }
     
     return 0;
