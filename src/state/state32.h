@@ -7,6 +7,7 @@
 // ---------------------------------------------
 
 #ifndef STATE32_H
+
 #define STATE32_H
 
 #include "state.h"

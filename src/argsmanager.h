@@ -48,11 +48,11 @@ class ArgsManager
     public:
         ArgsManager(int argc, const char* argv[]);
         virtual ~ArgsManager();
-        const std::string& getInputText() const;
         po::variable_value operator[] (std::string option);
         po::variables_map::size_type count(std::string option);
         friend std::ostream& operator<< (std::ostream& out, const ArgsManager& am);
         bool isError();
+        std::string getFilePath();
         
     protected:
     
@@ -62,7 +62,7 @@ class ArgsManager
         po::options_description desc;
         po::variables_map vm;
         bool error;
-        std::string input_file_text;
+        std::string filePath;
 };
 
 #endif // ARGS_MANAGER_H

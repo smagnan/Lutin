@@ -26,6 +26,14 @@ bool State10::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case PV:
+            automaton.reduce(10);
+            break;
+
+        case VIR:
+            automaton.reduce(10);
+            break;
+
         default:
             automaton.error();
             break;

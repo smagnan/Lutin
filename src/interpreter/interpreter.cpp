@@ -67,7 +67,7 @@ void Interpreter::update_variable(std::string name, double val)
 {
 	try {
 		Declaration * decl = this->declarations.find(name)->second;
-		if(!decl->getType().compare(DECLAR_TYPE_VAR)) { // if type is VAR
+		if(!decl->getType().compare(KEYWORD_VAR)) { // if type is VAR
 			decl->setValue(val);
 		} else {
 			//throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));

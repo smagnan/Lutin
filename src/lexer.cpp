@@ -2,8 +2,6 @@
 
 using namespace std;
 
-
-
 //-------------------------------------- Constructors - destructors :
 
 Lexer::Lexer()

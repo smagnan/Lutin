@@ -32,7 +32,7 @@ class Automaton
 	public:
 	    Automaton(Interpreter *interp, Lexer *lex);
 	    virtual ~Automaton();
-	    void read(); //utilisera Lexer pour faire le café
+	    void read();
 	    void shift(Symbol * symbol, State * state);
 	    void reduce(int numRule);
 	    void error();

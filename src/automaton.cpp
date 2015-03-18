@@ -10,6 +10,7 @@
 #include "automaton.h"
 #include "state/state0.h"
 #include "symbol/symbol.h"
+#include "debugger.h"
 
 #include <vector>
 #include <iterator>
@@ -93,6 +94,7 @@ void Automaton::reduce(int numRule)
         symbolStack.pop();
         stateStack.pop();
     }
+    
 }
 
 void Automaton::error()

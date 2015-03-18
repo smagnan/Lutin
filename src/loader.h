@@ -13,16 +13,19 @@
 #include "instruction.h"
 #include <sstream>
 #include <fstream>
+#include <string>
 
-class Loader : public Instruction
+class Loader
 {
 private:
 	std::stringstream buffer;
 	std::ifstream file;
 protected:
 public:
-    Loader(char * filepath);
+    Loader(const char * filepath);
     virtual ~Loader();
+    void load(const char * filepath);
+    std::string string(){return buffer.str();};
 };
  
 #endif

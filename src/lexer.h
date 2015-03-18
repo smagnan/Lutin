@@ -1,15 +1,13 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-
-
 // Includes Systeme
 #include <boost/regex.hpp>
 #include <string>
 #include <vector>
 
 // Include Perso
-#include "symbol/symbol.h"/*
+#include "symbol/symbol.h"
 #include "symbol/aff.h"
 #include "symbol/closeby.h"
 #include "symbol/const.h"
@@ -25,7 +23,7 @@
 #include "symbol/var.h"
 #include "symbol/id.h"
 #include "symbol/vir.h"
-#include "symbol/write.h"*/
+#include "symbol/write.h"
 #include "utils.h"
 
 // Vector used for matched symbols :

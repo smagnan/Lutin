@@ -13,14 +13,14 @@
 Var::Var(std::string varName) : Declaration(DEFAULT_INIT_VAL)
 {
 	this->name = varName;
-	this->type = DECLAR_TYPE_VAR;
+	this->type = KEYWORD_VAR;
 	this->affected = false;
 }
 
 Var::Var(std::string varName, double val) : Declaration(val)
 {
 	this->name = varName;
-	this->type = DECLAR_TYPE_VAR;
+	this->type = KEYWORD_VAR;
 	this->affected = true;
 }
 

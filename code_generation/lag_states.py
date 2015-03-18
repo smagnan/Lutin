@@ -12,6 +12,7 @@ templateHeader = """// ---------------------------------------------
 // ---------------------------------------------
 
 #ifndef STATE{ns}_H
+
 #define STATE{ns}_H
 
 #include "state.h"
@@ -132,6 +133,9 @@ def printStateIncludes(numState):
         m = re.match(r'd(\d+)', cell)
         if m:
             includeCode = includeCode + templateInclude.format(ns=m.group(1))
+        m = re.match(r'(\d+)', cell)
+        if m:
+            includeCode = includeCode + templateInclude.format(ns=m.group(1))
     return includeCode
         
 def printStateHeader(numState):
@@ -143,15 +147,10 @@ def printStateSource(numState):
     switchCode1 = "";
     switchCode2 = "";
     includeCode = printStateIncludes(numState);
-    terminal = False
+    terminal = True
     for index, cell in enumerate(automaton[numState]):
-        if cell == "|":
-            terminal = True
-            continue
-        if terminal:
             switchCaseElement = translateToSwitchCase1(cell, header[index])
             switchCode1 = switchCode1 + switchCaseElement
-        else:
             switchCaseElement = translateToSwitchCase2(cell, header[index])
             switchCode2 = switchCode2 + switchCaseElement
     switchCode1 = switchCode1 + templateErrorInstruction
