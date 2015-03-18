@@ -46,7 +46,7 @@ Lexer::Lexer()
     // Compile Regex:
     main_regex.assign(regex);
     // Will contain matched symbols : 
-    symbol_vector symbols;
+//  symbol_vector symbols;
 }
 
 Lexer::~Lexer()
@@ -104,14 +104,19 @@ vector<Symbol*> Lexer::getSymbols()
     // Find symbols
     boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), main_regex);
     boost::sregex_iterator m2;
-    std::for_each(m1, m2, &regex_callback);
+
+ // std::for_each(*m1, m2, &Lexer::regex_callback);
+    while(m1 != m2)
+    {
+        regex_callback(*m1);
+        ++m1;
+    }
+
     // increment iterator (for next loop)
-    progStart++;
-    
     // Fill symbol vector
-    symbol_vector::iterator b,e;
-    b = symbols.begin();
-    e = symbols.end();
+    pattern_vector::iterator b,e;
+    b = patterns.begin();
+    e = patterns.end();
     while(b != e)
     {
         switch (b->first)
@@ -169,6 +174,7 @@ vector<Symbol*> Lexer::getSymbols()
             default:
                 break;
         }
+        ++b;
     }
     return lineSymbols; 
 }
@@ -187,10 +193,7 @@ bool Lexer::regex_callback(const boost::match_results<std::string::const_iterato
     for(int i = 1; i <= 16; i++)
     {
         if (str_found.position(i) != -1) // symbol matched ? 
-        {
-            symbols.push_back(make_pair(i, str_found[i].str()));
-             // cout << "Pattern n° " << i << " matched. Value : " << what[i] << endl;
-        }
+            patterns.push_back(make_pair(i, str_found[i].str()));
     }
     return true;
 }
