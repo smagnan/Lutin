@@ -53,7 +53,7 @@ Lexer::~Lexer()
 {
     if (!lineSymbols.empty())
     {
-        for (int i = 0; i < lineSymbols.size(); i++)
+        for (unsigned short i = 0; i < lineSymbols.size(); i++)
         {
             delete lineSymbols[i];
         }   
@@ -90,7 +90,7 @@ vector<Symbol*> Lexer::getSymbols()
     // and emtpy it
     if (!lineSymbols.empty())
     {
-        for (int i = 0; i < lineSymbols.size(); i++)
+        for (unsigned short i = 0; i < lineSymbols.size(); i++)
         {
             delete lineSymbols[i];
         }   
