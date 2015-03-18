@@ -13,8 +13,8 @@
 
 #include "state13.h" 
 #include "state3.h" 
-#include "state18.h"
-#include "state11.h"
+#include "state18.h" 
+#include "state11.h" 
 
 State2::State2()
     : State(2)
@@ -29,6 +29,18 @@ bool State2::transition(Automaton & automaton, Symbol * s)
 {
     switch(*s)
     {
+
+        case VAR:
+            automaton.shift(s, new State13());
+            break;
+
+        case CONST:
+            automaton.shift(s, new State3());
+            break;
+
+        case END:
+            automaton.reduce(23);
+            break;
 
         default:
             automaton.error();

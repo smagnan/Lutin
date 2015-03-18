@@ -26,6 +26,22 @@ bool State20::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case ID:
+            automaton.reduce(3);
+            break;
+
+        case WRITE:
+            automaton.reduce(3);
+            break;
+
+        case READ:
+            automaton.reduce(3);
+            break;
+
+        case END:
+            automaton.reduce(3);
+            break;
+
         default:
             automaton.error();
             break;

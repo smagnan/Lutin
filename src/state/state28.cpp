@@ -28,6 +28,18 @@ bool State28::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case PLUS:
+            automaton.shift(s, new State34());
+            break;
+
+        case MINUS:
+            automaton.shift(s, new State35());
+            break;
+
+        case PV:
+            automaton.reduce(12);
+            break;
+
         default:
             automaton.error();
             break;

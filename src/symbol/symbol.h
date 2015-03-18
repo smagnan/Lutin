@@ -30,7 +30,8 @@ enum Symbols
     INIL,
     E,
     EPRIME,
-    T
+    T,
+    F
 };
 
 class Symbol

@@ -29,6 +29,18 @@ bool State38::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case PLUS:
+            automaton.shift(s, new State34());
+            break;
+
+        case MINUS:
+            automaton.shift(s, new State35());
+            break;
+
+        case CLOSEBY:
+            automaton.shift(s, new State41());
+            break;
+
         default:
             automaton.error();
             break;

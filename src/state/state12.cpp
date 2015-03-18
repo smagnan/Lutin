@@ -26,6 +26,18 @@ bool State12::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case VAR:
+            automaton.reduce(2);
+            break;
+
+        case CONST:
+            automaton.reduce(2);
+            break;
+
+        case END:
+            automaton.reduce(2);
+            break;
+
         default:
             automaton.error();
             break;
