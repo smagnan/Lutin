@@ -164,7 +164,7 @@ vector<Symbol*> Lexer::getSymbols()
                 lineSymbols.push_back((Symbol*)(new S_Aff()));
                 break;
             case 16:    // number
-                lineSymbols.push_back((Symbol*)(new S_Num(std::stod (b->second))));
+                lineSymbols.push_back((Symbol*)(new S_Num(Utils::stringToDouble(b->second))));
                 break;
             default:
                 break;
@@ -186,9 +186,9 @@ bool Lexer::regex_callback(const boost::match_results<std::string::const_iterato
     // loop on all 16 symbols 
     for(int i = 1; i <= 16; i++)
     {
-        if (what.position(i) != -1) // symbol matched ? 
+        if (str_found.position(i) != -1) // symbol matched ? 
         {
-            symbols.push_back(make_pair(i, what[i].str()));
+            symbols.push_back(make_pair(i, str_found[i].str()));
              // cout << "Pattern n° " << i << " matched. Value : " << what[i] << endl;
         }
     }

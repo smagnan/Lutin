@@ -14,12 +14,6 @@
 #include "symbol/const.h"
 #include "symbol/divide.h"
 #include "symbol/eq.h"
-#include "symbol/exprbin.h"
-#include "symbol/exprdivide.h"
-#include "symbol/expr.h"
-#include "symbol/exprminus.h"
-#include "symbol/exprmult.h"
-#include "symbol/exprplus.h"
 #include "symbol/minus.h"
 #include "symbol/mult.h"
 #include "symbol/num.h"
@@ -30,6 +24,9 @@
 #include "symbol/symbol.h"
 #include "symbol/var.h"
 #include "symbol/write.h"
+#include "symbol/id.h"
+#include "symbol/vir.h"
+#include "utils.h"
 
 // Vector used for matched symbols :
 // - first in pair refers to position of pattern matched in regex
