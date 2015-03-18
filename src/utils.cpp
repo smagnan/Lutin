@@ -7,11 +7,11 @@ std::string Utils::doubleToString(double val)
 	return strs.str();
 }
 
-double Utils::stringToDouble(std:: str)
+double Utils::stringToDouble(std::string str)
 {
     std::istringstream i(str);
     double ret;
-    if (!(i>>x))
+    if (!(i>>ret))
         return 0;
     return ret;
 }

@@ -31,7 +31,7 @@
 // Vector used for matched symbols :
 // - first in pair refers to position of pattern matched in regex
 // - second in pair is the content matched
-typedef std::vector<std::pair<int,std::string> > symbol_vector;
+typedef std::vector<std::pair<int,std::string> > pattern_vector;
 
 class Lexer 
 {
@@ -43,16 +43,17 @@ public:
     std::vector<Symbol*> getSymbols();
     bool hasNext();
 private:
-    static bool regex_callback(const boost::match_results<std::string::const_iterator>& str_found);
-
-     // Will contains lines of program :
+    // Will contains lines of program :
     std::vector<std::string> progLines;                       // contains all lines of parsed program
     std::vector<std::string>::iterator progStart, progEnd;    // iterator on the vector of lines
     std::vector<Symbol*> lineSymbols;                          // temp vector of matched symbols
     // Compile Regex:
     boost::regex main_regex;
     // Will contain matched symbols : 
-    symbol_vector symbols;
+    pattern_vector patterns;
+
+    bool regex_callback(const boost::match_results<std::string::const_iterator>& str_found);
+
 };
 
 #endif // LEXER_H

@@ -33,7 +33,8 @@ CPPFILES_SYMBOL=symbol/aff.cpp symbol/closeby.cpp symbol/const.cpp \
 	symbol/edivide.cpp symbol/eminus.cpp symbol/emult.cpp \
 	symbol/eplus.cpp symbol/minus.cpp symbol/mult.cpp symbol/num.cpp \
 	symbol/openby.cpp symbol/plus.cpp symbol/pv.cpp symbol/read.cpp \
-	symbol/symbol.cpp symbol/var.cpp symbol/write.cpp symbol/eprime.cpp
+	symbol/symbol.cpp symbol/var.cpp symbol/write.cpp symbol/eprime.cpp \
+	symbol/id.cpp symbol/vir.cpp
 CPPFILES_INTERPRETER=interpreter/affectation.cpp interpreter/const.cpp \
 	interpreter/declaration.cpp interpreter/instruction.cpp \
 	interpreter/interpreter.cpp interpreter/read.cpp interpreter/var.cpp \
