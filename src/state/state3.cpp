@@ -12,6 +12,7 @@
 
 
 #include "state4.h" 
+#include "state7.h" 
 
 State3::State3()
     : State(3)
@@ -26,6 +27,10 @@ bool State3::transition(Automaton & automaton, Symbol * s)
 {
     switch(*s)
     {
+
+        case ID:
+            automaton.shift(s, new State4());
+            break;
 
         default:
             automaton.error();

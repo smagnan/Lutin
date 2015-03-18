@@ -11,6 +11,7 @@
 #include "../automaton.h"
 
 
+#include "state15.h" 
 
 State14::State14()
     : State(14)
@@ -25,6 +26,14 @@ bool State14::transition(Automaton & automaton, Symbol * s)
 {
     switch(*s)
     {
+
+        case PV:
+            automaton.reduce(24);
+            break;
+
+        case VIR:
+            automaton.reduce(24);
+            break;
 
         default:
             automaton.error();

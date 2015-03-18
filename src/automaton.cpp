@@ -93,6 +93,7 @@ void Automaton::reduce(int numRule)
         symbolStack.pop();
         stateStack.pop();
     }
+    
 }
 
 void Automaton::error()

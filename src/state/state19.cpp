@@ -27,6 +27,10 @@ bool State19::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case PV:
+            automaton.shift(s, new State20());
+            break;
+
         default:
             automaton.error();
             break;

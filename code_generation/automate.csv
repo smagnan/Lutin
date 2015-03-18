@@ -1,6 +1,6 @@
-PLUS,MINUS,MULT,DIVIDE,OPENBY,CLOSEBY,ID,NUM,VAR,CONST,PV,VIR,EQ,WRITE,READ,AFF,END,|,P,BD,BI,D,I,IDL,INI,INIL,E,EPRIME,T,F
+PLUS,MINUS,MULT,DIVIDE,OPENBY,CLOSEBY,ID,NUM,VAR,CONST,PV,VIR,EQ,WRITE,READ,AFF,END,;,P,BD,BI,D,I,IDL,INI,INIL,E,EPRIME,T,F
 ,,,,,,,,r22,r22,,,,,,,r22,,1,2,,,,,,,,,,
-,,,,,,,,,,,,,,,,Acc.,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,acc,,,,,,,,,,,,,
 ,,,,,,,,d13,d3,,,,,,,r23,,,,18,11,,,,,,,,
 ,,,,,,d4,,,,,,,,,,,,,,,,,,7,,,,,
 ,,,,,,,,,,,,d5,,,,,,,,,,,,,,,,,

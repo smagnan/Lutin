@@ -27,6 +27,10 @@ bool State23::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case AFF:
+            automaton.shift(s, new State27());
+            break;
+
         default:
             automaton.error();
             break;

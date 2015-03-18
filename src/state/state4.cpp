@@ -27,6 +27,10 @@ bool State4::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case EQ:
+            automaton.shift(s, new State5());
+            break;
+
         default:
             automaton.error();
             break;

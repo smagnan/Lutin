@@ -7,6 +7,7 @@
 // ---------------------------------------------
 
 #ifndef STATE26_H
+
 #define STATE26_H
 
 #include "state.h"
