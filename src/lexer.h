@@ -33,6 +33,8 @@
 class Lexer 
 {
 public:
+    Lexer();
+    virtual ~Lexer();
     bool setProg(String prog);
     vector<Symbol> getSymbols();
     bool hasNext();
