@@ -6,29 +6,35 @@
 // Includes Systeme
 #include <boost/regex.hpp>
 #include <string>
+#include <vector>
 
 // Include Perso
-#include "aff.h"
-#include "closeby.h"
-#include "const.h"
-#include "divide.h"
-#include "eq.h"
-#include "exprbin.h"
-#include "exprdivide.h"
-#include "expr.h"
-#include "exprminus.h"
-#include "exprmult.h"
-#include "exprplus.h"
-#include "minus.h"
-#include "mult.h"
-#include "num.h"
-#include "openby.h"
-#include "plus.h"
-#include "pv.h"
-#include "read.h"
-#include "symbol.h"
-#include "var.h"
-#include "write.h"
+#include "symbol/aff.h"
+#include "symbol/closeby.h"
+#include "symbol/const.h"
+#include "symbol/divide.h"
+#include "symbol/eq.h"
+#include "symbol/exprbin.h"
+#include "symbol/exprdivide.h"
+#include "symbol/expr.h"
+#include "symbol/exprminus.h"
+#include "symbol/exprmult.h"
+#include "symbol/exprplus.h"
+#include "symbol/minus.h"
+#include "symbol/mult.h"
+#include "symbol/num.h"
+#include "symbol/openby.h"
+#include "symbol/plus.h"
+#include "symbol/pv.h"
+#include "symbol/read.h"
+#include "symbol/symbol.h"
+#include "symbol/var.h"
+#include "symbol/write.h"
+
+// Vector used for matched symbols :
+// - first in pair refers to position of pattern matched in regex
+// - second in pair is the content matched
+typedef std::vector<std::pair<int,std::string> > symbol_vector;
 
 class Lexer 
 {
@@ -37,10 +43,19 @@ public:
     Lexer();
     virtual ~Lexer();
     bool setProg(std::string prog);
-    std::vector<Symbol> getSymbols();
+    std::vector<Symbol*> getSymbols();
     bool hasNext();
 private:
-    bool regex_callback(const boost::match_results<std::string::const_iterator>& str_found);
+    static bool regex_callback(const boost::match_results<std::string::const_iterator>& str_found);
+
+     // Will contains lines of program :
+    std::vector<std::string> progLines;                       // contains all lines of parsed program
+    std::vector<std::string>::iterator progStart, progEnd;    // iterator on the vector of lines
+    std::vector<Symbol*> lineSymbols;                          // temp vector of matched symbols
+    // Compile Regex:
+    boost::regex main_regex;
+    // Will contain matched symbols : 
+    symbol_vector symbols;
 };
 
 #endif // LEXER_H
