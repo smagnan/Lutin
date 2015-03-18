@@ -25,3 +25,4 @@ const std::string KEYWORD_WRITE = 	"lire";
 const std::string KEYWORD_END = 	";";
 const std::string KEYWORD_SPACE = 	" ";
 const std::string KEYWORD_DOT = 	".";
+const std::string KEYWORD_COMA = 	",";

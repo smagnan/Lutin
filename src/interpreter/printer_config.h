@@ -58,6 +58,7 @@ const std::string STYLE_WRITE = 	STYLE_RED_B;
 const std::string STYLE_END = 		STYLE_WHITE;
 const std::string STYLE_SPACE = 	STYLE_CYAN;		// ... just in case we change the spacing character
 const std::string STYLE_DOT = 		STYLE_YELLOW;
+const std::string STYLE_COMA = 		STYLE_RED;
 const std::string STYLE_OTHER = 	STYLE_WHITE;
 const std::string STYLE_NUM = 		STYLE_GREEN_B;
 

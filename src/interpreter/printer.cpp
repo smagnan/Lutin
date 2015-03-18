@@ -8,12 +8,16 @@
 // ---------------------------------------------
 
 #include <iostream>
+#include <vector>
+#include <iterator>
 
 #include "printer.h"
 #include "printer_config.h"
+#include "../utils.h"
 
 using std::cout;
 using std::endl;
+using Utils::split;
 
 // ==================================================== PUBLIC
 
@@ -30,56 +34,18 @@ Printer::~Printer()
 
 void Printer::print(std::ostream& out,std::string str)
 {
-	// TODO to change, will depens on an external file and will not be hardcoded
-	// I know it's ugly but just wanted something working
-	// There is no such thing as a switch case
-	std::string style_string;
-	if(!str.compare(KEYWORD_VAR)) {
-		style_string = STYLE_VAR;
-	} else if(!str.compare(KEYWORD_CONST)) {
-		style_string = STYLE_CONST;
-	} else if(!str.compare(KEYWORD_VALUE)) {
-		style_string = STYLE_VALUE;
-	} else if(!str.compare(KEYWORD_EQ)) {
-		style_string = STYLE_EQ;
-	} else if(!str.compare(KEYWORD_PLUS)) {
-		style_string = STYLE_PLUS;
-	} else if(!str.compare(KEYWORD_MINUS)) {
-		style_string = STYLE_MINUS;
-	} else if(!str.compare(KEYWORD_MULT)) {
-		style_string = STYLE_MULT;
-	} else if(!str.compare(KEYWORD_DIV)) {
-		style_string = STYLE_DIV;
-	} else if(!str.compare(KEYWORD_LPAR)) {
-		style_string = STYLE_LPAR;
-	} else if(!str.compare(KEYWORD_RPAR)) {
-		style_string = STYLE_RPAR;
-	} else if(!str.compare(KEYWORD_ASSIGN)) {
-		style_string = STYLE_ASSIGN;
-	} else if(!str.compare(KEYWORD_READ)) {
-		style_string = STYLE_READ;
-	} else if(!str.compare(KEYWORD_WRITE)) {
-		style_string = STYLE_WRITE;
-	} else if(!str.compare(KEYWORD_END)) {
-		style_string = STYLE_END;
-	} else if(!str.compare(KEYWORD_SPACE)) {
-		style_string = STYLE_SPACE;
-	} else if(!str.compare(KEYWORD_DOT)) {
-		style_string = STYLE_DOT;
-	} else {
-		style_string = STYLE_OTHER;
-	}
-
-	out << style_string << str << ' ';
-	/*if(!str.compare("Var") || !str.compare("Const") || !str.compare("Value")) {
-		out << STYLE_DECLAR << str << ' ';
-	} else if(!str.compare("+") || !str.compare("-") \
-				|| !str.compare("*") || !str.compare("/") \
-				|| !str.compare("=")) {
-		out << STYLE_SYMBOL << str << ' ';
-	} else {
-		out << STYLE_DEFAULT << str << ' ';
-	}*/	
+	// TODO to change? will depens on an external file and will not be hardcoded?
+	std::vector<std::string> lines;
+	std::vector<std::string> words;
+	split(str,lines,'\n'); // split text into lines
+	for(std::vector<std::string>::iterator it = lines.begin(); it != lines.end(); ++it) {
+		words.clear();
+	    split(*it,words,' ');	// split lines in words
+	    for(std::vector<std::string>::iterator it2 = words.begin(); it2 != words.end(); ++it2) {
+	    	out << selectStyle(*it2) << str << ' ';
+	    	// TODO: ';' will be inside a word ... -> change that
+	    }	    
+	}	
 }
 
 void Printer::print(std::ostream& out,double value)
@@ -125,5 +91,47 @@ void Printer::printString(int count, ...)
     for(j = 0; j < count; j++)
         cout << va_arg(ap, char*); 
     va_end(ap);
+}
+
+std::string Printer::selectStyle(const std::string keyword) const
+{
+	if(!keyword.compare(KEYWORD_VAR)) {
+		return STYLE_VAR;
+	} else if(!keyword.compare(KEYWORD_CONST)) {
+		return STYLE_CONST;
+	} else if(!keyword.compare(KEYWORD_VALUE)) {
+		return STYLE_VALUE;
+	} else if(!keyword.compare(KEYWORD_EQ)) {
+		return STYLE_EQ;
+	} else if(!keyword.compare(KEYWORD_PLUS)) {
+		return STYLE_PLUS;
+	} else if(!keyword.compare(KEYWORD_MINUS)) {
+		return STYLE_MINUS;
+	} else if(!keyword.compare(KEYWORD_MULT)) {
+		return STYLE_MULT;
+	} else if(!keyword.compare(KEYWORD_DIV)) {
+		return STYLE_DIV;
+	} else if(!keyword.compare(KEYWORD_LPAR)) {
+		return STYLE_LPAR;
+	} else if(!keyword.compare(KEYWORD_RPAR)) {
+		return STYLE_RPAR;
+	} else if(!keyword.compare(KEYWORD_ASSIGN)) {
+		return STYLE_ASSIGN;
+	} else if(!keyword.compare(KEYWORD_READ)) {
+		return STYLE_READ;
+	} else if(!keyword.compare(KEYWORD_WRITE)) {
+		return STYLE_WRITE;
+	} else if(!keyword.compare(KEYWORD_END)) {
+		return STYLE_END;
+	} else if(!keyword.compare(KEYWORD_SPACE)) {
+		return STYLE_SPACE;
+	} else if(!keyword.compare(KEYWORD_DOT)) {
+		return STYLE_DOT;
+	} else if(!keyword.compare(KEYWORD_COMA)) {
+		return STYLE_COMA;
+	} else {
+		return STYLE_OTHER;
+	}
+	return STYLE_OTHER;
 }
 
