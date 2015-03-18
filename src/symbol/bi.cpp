@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  idenlist.cpp
+//  bi.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "idenlist.h"
+#include "bi.h"
 
-S_Idenlist::S_Idenlist(Symbols s)
+S_Bi::S_Bi(Symbols s)
     : Symbol(s)
 {
 }
 
-S_Idenlist::S_Idenlist()
-    : Symbol(IDENLIST)
+S_Bi::S_Bi()
+    : Symbol(BI)
 {
 }
 
-S_Idenlist::~S_Idenlist()
+S_Bi::~S_Bi()
 {
 }

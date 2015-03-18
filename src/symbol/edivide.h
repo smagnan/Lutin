@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  final.h
+//  edivide.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_FINAL_H
-#define S_FINAL_H
+#ifndef S_EDIVIDE_H
+#define S_EDIVIDE_H
 
 #include <string>
-#include "symbol.h"
+#include "ebin.h"
 
-class S_Final : public Symbol
+class S_Edivide : public S_Ebin
 {
 private:
 protected:
-    S_Final(Symbols s);
+    S_Edivide(Symbols s);
 public:
-    S_Final();
-    virtual ~S_Final();
+    S_Edivide();
+    virtual ~S_Edivide();
 };
 
-#endif // S_FINAL_H
+#endif // S_EDIVIDE_H

@@ -16,7 +16,7 @@
 #include "state32.h" 
 
 State31::State31()
-    : State("State31")
+    : State(31)
 {
 }
 

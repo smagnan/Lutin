@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  const.h
+//  eprime.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_CONST_H
-#define S_CONST_H
+#ifndef S_EPRIME_H
+#define S_EPRIME_H
 
 #include <string>
-#include "e.h"
+#include "symbol.h"
 
-class S_Const : public S_E
+class S_Eprime : public Symbol
 {
 private:
 protected:
-    S_Const(Symbols s);
+    S_Eprime(Symbols s);
 public:
-    S_Const();
-    virtual ~S_Const();
+    S_Eprime();
+    virtual ~S_Eprime();
 };
 
-#endif // S_CONST_H
+#endif // S_EPRIME_H

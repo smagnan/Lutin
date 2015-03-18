@@ -20,18 +20,17 @@ enum Symbols
     READ,
     AFF,
     END,
-    PROG,
-    DECBLOCK,
-    INSTBLOCK,
-    DECL,
-    INSTR,
-    IDENLIST,
-    INIT,
-    INITLIST,
-    EXPR,
-    EXPRIME,
-    TERM,
-    FINAL
+    P,
+    BD,
+    BI,
+    D,
+    I,
+    IDL,
+    INI,
+    INIL,
+    E,
+    EPRIME,
+    T
 };
 
 class Symbol

@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  prog.cpp
+//  p.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "prog.h"
+#include "p.h"
 
-S_Prog::S_Prog(Symbols s)
+S_P::S_P(Symbols s)
     : Symbol(s)
 {
 }
 
-S_Prog::S_Prog()
-    : Symbol(PROG)
+S_P::S_P()
+    : Symbol(P)
 {
 }
 
-S_Prog::~S_Prog()
+S_P::~S_P()
 {
 }

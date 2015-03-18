@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  exprbin.h
+//  idl.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_EXPRBIN_H
-#define S_EXPRBIN_H
+#ifndef S_IDL_H
+#define S_IDL_H
 
 #include <string>
-#include "expr.h"
+#include "symbol.h"
 
-class S_Exprbin : public S_Expr
+class S_Idl : public Symbol
 {
 private:
 protected:
-    S_Exprbin(Symbols s);
+    S_Idl(Symbols s);
 public:
-    S_Exprbin();
-    virtual ~S_Exprbin();
+    S_Idl();
+    virtual ~S_Idl();
 };
 
-#endif // S_EXPRBIN_H
+#endif // S_IDL_H

@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  term.cpp
+//  ini.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "term.h"
+#include "ini.h"
 
-S_Term::S_Term(Symbols s)
+S_Ini::S_Ini(Symbols s)
     : Symbol(s)
 {
 }
 
-S_Term::S_Term()
-    : Symbol(TERM)
+S_Ini::S_Ini()
+    : Symbol(INI)
 {
 }
 
-S_Term::~S_Term()
+S_Ini::~S_Ini()
 {
 }

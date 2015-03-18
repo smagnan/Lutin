@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  var.cpp
+//  eminus.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "var.h"
+#include "eminus.h"
 
-S_Var::S_Var(Symbols s)
-    : S_E(s)
+S_Eminus::S_Eminus(Symbols s)
+    : S_Ebin(s)
 {
 }
 
-S_Var::S_Var()
-    : S_E(VAR)
+S_Eminus::S_Eminus()
+    : S_Ebin()
 {
 }
 
-S_Var::~S_Var()
+S_Eminus::~S_Eminus()
 {
 }

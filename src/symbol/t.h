@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  expr.h
+//  t.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_EXPR_H
-#define S_EXPR_H
+#ifndef S_T_H
+#define S_T_H
 
 #include <string>
 #include "symbol.h"
 
-class S_Expr : public Symbol
+class S_T : public Symbol
 {
 private:
 protected:
-    S_Expr(Symbols s);
+    S_T(Symbols s);
 public:
-    S_Expr();
-    virtual ~S_Expr();
+    S_T();
+    virtual ~S_T();
 };
 
-#endif // S_EXPR_H
+#endif // S_T_H

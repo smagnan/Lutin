@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  initlist.h
+//  inil.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_INITLIST_H
-#define S_INITLIST_H
+#ifndef S_INIL_H
+#define S_INIL_H
 
 #include <string>
 #include "symbol.h"
 
-class S_Initlist : public Symbol
+class S_Inil : public Symbol
 {
 private:
 protected:
-    S_Initlist(Symbols s);
+    S_Inil(Symbols s);
 public:
-    S_Initlist();
-    virtual ~S_Initlist();
+    S_Inil();
+    virtual ~S_Inil();
 };
 
-#endif // S_INITLIST_H
+#endif // S_INIL_H

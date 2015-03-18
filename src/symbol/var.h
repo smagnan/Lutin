@@ -10,9 +10,9 @@
 #define S_VAR_H
 
 #include <string>
-#include "expr.h"
+#include "e.h"
 
-class S_Var : public S_Expr
+class S_Var : public S_E
 {
 private:
 protected:

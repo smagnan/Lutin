@@ -1,25 +1,25 @@
 // ---------------------------------------------
-//  instblock.h
+//  i.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_INSTBLOCK_H
-#define S_INSTBLOCK_H
+#ifndef S_I_H
+#define S_I_H
 
 #include <string>
 #include "symbol.h"
 
-class S_Instblock : public Symbol
+class S_I : public Symbol
 {
 private:
 protected:
-    S_Instblock(Symbols s);
+    S_I(Symbols s);
 public:
-    S_Instblock();
-    virtual ~S_Instblock();
+    S_I();
+    virtual ~S_I();
 };
 
-#endif // S_INSTBLOCK_H
+#endif // S_I_H
