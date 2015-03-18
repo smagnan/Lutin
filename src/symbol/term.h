@@ -1,23 +1,24 @@
-#ifndef TERM_H
-#define TERM_H
+// ---------------------------------------------
+//  term.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_TERM_H
+#define S_TERM_H
 
-class Term : public Symbol
+#include "symbol.h"
+
+class S_Term : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Term();
-
-		//Deconstructor
-		~Term();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Term(Symbols s);
+public:
+    S_Term();
+    virtual ~S_Term();
 };
 
-#endif
+#endif // S_TERM_H

@@ -1,23 +1,24 @@
-#ifndef DECBLOCK_H
-#define DECBLOCK_H
+// ---------------------------------------------
+//  decblock.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_DECBLOCK_H
+#define S_DECBLOCK_H
 
-class Decblock : public Symbol
+#include "symbol.h"
+
+class S_Decblock : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Decblock();
-
-		//Deconstructor
-		~Decblock();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Decblock(Symbols s);
+public:
+    S_Decblock();
+    virtual ~S_Decblock();
 };
 
-#endif
+#endif // S_DECBLOCK_H

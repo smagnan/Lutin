@@ -1,24 +1,24 @@
-#ifndef VAR_H
-#define VAR_H
+// ---------------------------------------------
+//  var.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "expr.h" 
+#ifndef S_VAR_H
+#define S_VAR_H
 
-class Var : public Expr
+#include "expr.h"
+
+class S_Var : public S_Expr
 {
-
-	public:
-
-		//Default Constructor
-		Var();
-
-		//Deconstructor
-		~Var();
-
-
-	private:
-
-		//Disable the following by Var 
-
+private:
+protected:
+    S_Var(Symbols s);
+public:
+    S_Var();
+    virtual ~S_Var();
 };
 
-#endif
+#endif // S_VAR_H

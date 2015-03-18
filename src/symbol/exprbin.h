@@ -1,22 +1,24 @@
-#ifndef EXPRBIN_H
-#define EXPRBIN_H
+// ---------------------------------------------
+//  exprbin.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "expr.h" 
+#ifndef S_EXPRBIN_H
+#define S_EXPRBIN_H
 
-class Exprbin : public Expr {
+#include "expr.h"
 
-	//Default Constructor
-	Exprbin();
-
-	//Deconstructor
-	~Exprbin();
-
-
-	private:
-
-	protected:
-
-	
+class S_Exprbin : public S_Expr
+{
+private:
+protected:
+    S_Exprbin(Symbols s);
+public:
+    S_Exprbin();
+    virtual ~S_Exprbin();
 };
 
-#endif
+#endif // S_EXPRBIN_H

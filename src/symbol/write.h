@@ -1,24 +1,24 @@
-#ifndef WRITE_H
-#define WRITE_H
+// ---------------------------------------------
+//  write.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_WRITE_H
+#define S_WRITE_H
 
-class Write : public Symbol
+#include "symbol.h"
+
+class S_Write : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Write();
-
-		//Deconstructor
-		~Write();
-
-
-	private:
-
-		//Disable the following by Write 
-
+private:
+protected:
+    S_Write(Symbols s);
+public:
+    S_Write();
+    virtual ~S_Write();
 };
 
-#endif
+#endif // S_WRITE_H

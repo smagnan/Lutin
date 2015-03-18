@@ -1,23 +1,24 @@
-#ifndef EXPRIME_H
-#define EXPRIME_H
+// ---------------------------------------------
+//  exprime.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
+
+#ifndef S_EXPRIME_H
+#define S_EXPRIME_H
 
 #include "symbol.h"
 
-class Exprime : public Symbol {
- 
-	public:
-
-		//Default Constructor
-		Exprime();
-
-		//Deconstructor
-		virtual ~Exprime();
-	
-
-	private:
-
-		//Disable the following by Expr 
-
+class S_Exprime : public Symbol
+{
+private:
+protected:
+    S_Exprime(Symbols s);
+public:
+    S_Exprime();
+    virtual ~S_Exprime();
 };
 
-#endif
+#endif // S_EXPRIME_H

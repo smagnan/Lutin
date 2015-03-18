@@ -1,23 +1,24 @@
-#ifndef EXPRMINUS_H
-#define EXPRMINUS_H
+// ---------------------------------------------
+//  exprminus.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "exprbin.h" 
+#ifndef S_EXPRMINUS_H
+#define S_EXPRMINUS_H
 
-class Exprminus : public Exprbin 
+#include "exprbin.h"
+
+class S_Exprminus : public S_Exprbin
 {
-	public:
-
-		//Default Constructor
-		Exprminus();
-
-		//Deconstructor
-		~Exprminus();
-
-
-	private:
-
-		//Disable the following by Exprminus 
-
+private:
+protected:
+    S_Exprminus(Symbols s);
+public:
+    S_Exprminus();
+    virtual ~S_Exprminus();
 };
 
-#endif
+#endif // S_EXPRMINUS_H

@@ -1,23 +1,24 @@
-#ifndef DECL_H
-#define DECL_H
+// ---------------------------------------------
+//  decl.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_DECL_H
+#define S_DECL_H
 
-class Decl : public Symbol
+#include "symbol.h"
+
+class S_Decl : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Decl();
-
-		//Deconstructor
-		~Decl();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Decl(Symbols s);
+public:
+    S_Decl();
+    virtual ~S_Decl();
 };
 
-#endif
+#endif // S_DECL_H

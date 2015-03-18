@@ -138,7 +138,7 @@ automaton = [line[:-1].split(',') for line in csvFile]
 header = automaton.pop(0);
 
 # Generation
-print("Generation - Stating...")
+print("Generation - Starting...")
 os.chdir(c.output_directory)
 for index, row in enumerate(automaton):
     print(" . . . state " + str(index) + "\t  " + " ".join([automaton[index][i] for i, elt in enumerate(automaton[index]) if elt ] ) )

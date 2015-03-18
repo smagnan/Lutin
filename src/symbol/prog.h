@@ -1,23 +1,24 @@
-#ifndef PROG_H
-#define PROG_H
+// ---------------------------------------------
+//  prog.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_PROG_H
+#define S_PROG_H
 
-class Prog : public Symbol
+#include "symbol.h"
+
+class S_Prog : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Prog();
-
-		//Deconstructor
-		~Prog();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Prog(Symbols s);
+public:
+    S_Prog();
+    virtual ~S_Prog();
 };
 
-#endif
+#endif // S_PROG_H

@@ -1,24 +1,24 @@
-#ifndef DIVIDE_H
-#define DIVIDE_H
+// ---------------------------------------------
+//  divide.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_DIVIDE_H
+#define S_DIVIDE_H
 
-class Divide : public Symbol
+#include "symbol.h"
+
+class S_Divide : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Divide();
-
-		//Deconstructor
-		~Divide();
-
-
-	private:
-
-		//Disable the following by Divide 
-
+private:
+protected:
+    S_Divide(Symbols s);
+public:
+    S_Divide();
+    virtual ~S_Divide();
 };
 
-#endif
+#endif // S_DIVIDE_H

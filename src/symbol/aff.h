@@ -1,24 +1,24 @@
-#ifndef AFF_H
-#define AFF_H
+// ---------------------------------------------
+//  aff.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_AFF_H
+#define S_AFF_H
 
-class Aff : public Symbol
+#include "symbol.h"
+
+class S_Aff : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Aff();
-
-		//Destructor
-		~Aff();
-
-
-	private:
-
-		//Disable the following by Aff 
-
+private:
+protected:
+    S_Aff(Symbols s);
+public:
+    S_Aff();
+    virtual ~S_Aff();
 };
 
-#endif // AFF_H
+#endif // S_AFF_H

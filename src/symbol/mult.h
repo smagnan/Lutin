@@ -1,24 +1,24 @@
-#ifndef MULT_H
-#define MULT_H
+// ---------------------------------------------
+//  mult.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_MULT_H
+#define S_MULT_H
 
-class Mult : public Symbol
+#include "symbol.h"
+
+class S_Mult : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Mult();
-
-		//Deconstructor
-		~Mult();
-
-
-	private:
-
-		//Disable the following by Mult 
-
+private:
+protected:
+    S_Mult(Symbols s);
+public:
+    S_Mult();
+    virtual ~S_Mult();
 };
 
-#endif
+#endif // S_MULT_H

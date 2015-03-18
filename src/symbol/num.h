@@ -1,24 +1,24 @@
-#ifndef NUM_H
-#define NUM_H
+// ---------------------------------------------
+//  num.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "expr.h" 
+#ifndef S_NUM_H
+#define S_NUM_H
 
-class Num : public Expr
+#include "expr.h"
+
+class S_Num : public S_Expr
 {
-
-	public:
-
-		//Default Constructor
-		Num();
-
-		//Deconstructor
-		~Num();
-
-
-	private:
-
-		//Disable the following by Num 
-
+private:
+protected:
+    S_Num(Symbols s);
+public:
+    S_Num();
+    virtual ~S_Num();
 };
 
-#endif
+#endif // S_NUM_H

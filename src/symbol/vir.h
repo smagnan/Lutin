@@ -1,24 +1,24 @@
-#ifndef VIR_H
-#define VIR_H
+// ---------------------------------------------
+//  vir.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_VIR_H
+#define S_VIR_H
 
-class Vir : public Symbol
+#include "symbol.h"
+
+class S_Vir : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Vir();
-
-		//Deconstructor
-		~Vir();
-
-
-	private:
-
-		//Disable the following by Vir 
-
+private:
+protected:
+    S_Vir(Symbols s);
+public:
+    S_Vir();
+    virtual ~S_Vir();
 };
 
-#endif
+#endif // S_VIR_H

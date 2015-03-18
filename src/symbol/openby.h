@@ -1,24 +1,24 @@
-#ifndef OPEN_BY_H
-#define OPEN_BY_H
+// ---------------------------------------------
+//  openby.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_OPENBY_H
+#define S_OPENBY_H
 
-class Openby : public Symbol
+#include "symbol.h"
+
+class S_Openby : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Openby();
-
-		//Deconstructor
-		~Openby();
-
-
-	private:
-
-		//Disable the following by Openby 
-
+private:
+protected:
+    S_Openby(Symbols s);
+public:
+    S_Openby();
+    virtual ~S_Openby();
 };
 
-#endif
+#endif // S_OPENBY_H

@@ -1,24 +1,24 @@
-#ifndef PV_H
-#define PV_H
+// ---------------------------------------------
+//  pv.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_PV_H
+#define S_PV_H
 
-class Pv : public Symbol
+#include "symbol.h"
+
+class S_Pv : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Pv();
-
-		//Deconstructor
-		~Pv();
-
-
-	private:
-
-		//Disable the following by Pv 
-
+private:
+protected:
+    S_Pv(Symbols s);
+public:
+    S_Pv();
+    virtual ~S_Pv();
 };
 
-#endif
+#endif // S_PV_H

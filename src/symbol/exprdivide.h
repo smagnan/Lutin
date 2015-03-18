@@ -1,22 +1,24 @@
-#ifndef EXPRDIVIDE_H
-#define EXPRDIVIDE_H
+// ---------------------------------------------
+//  exprdivide.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "exprbin.h" 
+#ifndef S_EXPRDIVIDE_H
+#define S_EXPRDIVIDE_H
 
-class Exprdivide : public Exprbin
+#include "exprbin.h"
+
+class S_Exprdivide : public S_Exprbin
 {
-	public:
-		//Default Constructor
-		Exprdivide();
-
-		//Deconstructor
-		~Exprdivide();
-
-
-	private:
-
-		//Disable the following by Exprdivide 
-
+private:
+protected:
+    S_Exprdivide(Symbols s);
+public:
+    S_Exprdivide();
+    virtual ~S_Exprdivide();
 };
 
-#endif
+#endif // S_EXPRDIVIDE_H

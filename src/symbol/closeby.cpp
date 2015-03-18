@@ -1,2 +1,23 @@
-#include "closeby.h" 
-Closeby::Closeby() : Symbol(CLOSEBY){}
+// ---------------------------------------------
+//  closeby.cpp
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
+
+#include "closeby.h"
+
+S_Closeby::S_Closeby(Symbols s)
+    : Symbol(s)
+{
+}
+
+S_Closeby::S_Closeby()
+    : Symbol(CLOSEBY)
+{
+}
+
+S_Closeby::~S_Closeby()
+{
+}

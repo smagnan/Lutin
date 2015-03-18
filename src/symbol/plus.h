@@ -1,24 +1,24 @@
-#ifndef PLUS_H
-#define PLUS_H
+// ---------------------------------------------
+//  plus.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_PLUS_H
+#define S_PLUS_H
 
-class Plus : public Symbol
+#include "symbol.h"
+
+class S_Plus : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Plus();
-
-		//Deconstructor
-		~Plus();
-
-
-	private:
-
-		//Disable the following by Plus 
-
+private:
+protected:
+    S_Plus(Symbols s);
+public:
+    S_Plus();
+    virtual ~S_Plus();
 };
 
-#endif
+#endif // S_PLUS_H

@@ -1,23 +1,24 @@
-#ifndef FINAL_H
-#define FINAL_H
+// ---------------------------------------------
+//  final.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_FINAL_H
+#define S_FINAL_H
 
-class Final : public Symbol
+#include "symbol.h"
+
+class S_Final : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Final();
-
-		//Deconstructor
-		~Final();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Final(Symbols s);
+public:
+    S_Final();
+    virtual ~S_Final();
 };
 
-#endif
+#endif // S_FINAL_H

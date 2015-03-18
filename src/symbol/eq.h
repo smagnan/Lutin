@@ -1,24 +1,24 @@
-#ifndef EQ_H
-#define EQ_H
+// ---------------------------------------------
+//  eq.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_EQ_H
+#define S_EQ_H
 
-class Eq : public Symbol
+#include "symbol.h"
+
+class S_Eq : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Eq();
-
-		//Deconstructor
-		~Eq();
-
-
-	private:
-
-		//Disable the following by Eq 
-
+private:
+protected:
+    S_Eq(Symbols s);
+public:
+    S_Eq();
+    virtual ~S_Eq();
 };
 
-#endif
+#endif // S_EQ_H

@@ -1,24 +1,24 @@
-#ifndef CLOSE_BY_H
-#define CLOSE_BY_H
+// ---------------------------------------------
+//  closeby.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_CLOSEBY_H
+#define S_CLOSEBY_H
 
-class Closeby : public Symbol
+#include "symbol.h"
+
+class S_Closeby : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Closeby();
-
-		//Deconstructor
-		~Closeby();
-
-
-	private:
-
-		//Disable the following by Closeby 
-
+private:
+protected:
+    S_Closeby(Symbols s);
+public:
+    S_Closeby();
+    virtual ~S_Closeby();
 };
 
-#endif
+#endif // S_CLOSEBY_H

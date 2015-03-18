@@ -1,2 +1,23 @@
-#include "minus.h" 
-Minus::Minus() : Symbol(MINUS){}
+// ---------------------------------------------
+//  minus.cpp
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
+
+#include "minus.h"
+
+S_Minus::S_Minus(Symbols s)
+    : Symbol(s)
+{
+}
+
+S_Minus::S_Minus()
+    : Symbol(MINUS)
+{
+}
+
+S_Minus::~S_Minus()
+{
+}

@@ -1,23 +1,24 @@
-#ifndef INITLIST_H
-#define INITLIST_H
+// ---------------------------------------------
+//  initlist.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_INITLIST_H
+#define S_INITLIST_H
 
-class Initlist : public Symbol
+#include "symbol.h"
+
+class S_Initlist : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Initlist();
-
-		//Deconstructor
-		~Initlist();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Initlist(Symbols s);
+public:
+    S_Initlist();
+    virtual ~S_Initlist();
 };
 
-#endif
+#endif // S_INITLIST_H

@@ -1,24 +1,24 @@
-#ifndef ID_H
-#define ID_H
+// ---------------------------------------------
+//  id.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "expr.h" 
+#ifndef S_ID_H
+#define S_ID_H
 
-class Id : public Expr
+#include "expr.h"
+
+class S_Id : public S_Expr
 {
-
-	public:
-
-		//Default Constructor
-		Id();
-
-		//Deconstructor
-		~Id();
-
-
-	private:
-
-		//Disable the following by Id 
-
+private:
+protected:
+    S_Id(Symbols s);
+public:
+    S_Id();
+    virtual ~S_Id();
 };
 
-#endif
+#endif // S_ID_H

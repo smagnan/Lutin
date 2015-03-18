@@ -1,24 +1,24 @@
-#ifndef READ_H
-#define READ_H
+// ---------------------------------------------
+//  read.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_READ_H
+#define S_READ_H
 
-class Read : public Symbol
+#include "symbol.h"
+
+class S_Read : public Symbol
 {
-
-	public:
-
-		// Default Constructor
-		Read();
-
-		// Destructor
-		virtual ~Read();
-
-
-	private:
-
-		//Disable the following by Read 
-
+private:
+protected:
+    S_Read(Symbols s);
+public:
+    S_Read();
+    virtual ~S_Read();
 };
 
-#endif
+#endif // S_READ_H

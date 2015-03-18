@@ -1,23 +1,24 @@
-#ifndef MINUS_H
-#define MINUS_H
+// ---------------------------------------------
+//  minus.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_MINUS_H
+#define S_MINUS_H
 
-class Minus : public Symbol
+#include "symbol.h"
+
+class S_Minus : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Minus();
-
-		//Deconstructor
-		~Minus();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Minus(Symbols s);
+public:
+    S_Minus();
+    virtual ~S_Minus();
 };
 
-#endif
+#endif // S_MINUS_H

@@ -1,27 +1,24 @@
-#ifndef EXPR_H
-#define EXPR_H
+// ---------------------------------------------
+//  expr.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
+
+#ifndef S_EXPR_H
+#define S_EXPR_H
 
 #include "symbol.h"
-#include <map>
-#include <string>
-using namespace std;
 
-class Expr : public Symbol {
-
-	public:
-
-		//Default Constructor
-		Expr();
-
-		//Deconstructor
-		virtual ~Expr() {}
-
-		virtual double eval (const map<string,double> &vals) = 0;
-
-	private:
-
-		//Disable the following by Expr 
-
+class S_Expr : public Symbol
+{
+private:
+protected:
+    S_Expr(Symbols s);
+public:
+    S_Expr();
+    virtual ~S_Expr();
 };
 
-#endif
+#endif // S_EXPR_H

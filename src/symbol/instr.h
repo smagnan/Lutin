@@ -1,23 +1,24 @@
-#ifndef INSTR_H
-#define INSTR_H
+// ---------------------------------------------
+//  instr.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_INSTR_H
+#define S_INSTR_H
 
-class Instr : public Symbol
+#include "symbol.h"
+
+class S_Instr : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Instr();
-
-		//Deconstructor
-		~Instr();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Instr(Symbols s);
+public:
+    S_Instr();
+    virtual ~S_Instr();
 };
 
-#endif
+#endif // S_INSTR_H

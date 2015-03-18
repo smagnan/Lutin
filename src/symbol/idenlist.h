@@ -1,23 +1,24 @@
-#ifndef IDENLIST_H
-#define IDENLIST_H
+// ---------------------------------------------
+//  idenlist.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_IDENLIST_H
+#define S_IDENLIST_H
 
-class IdenList : public Symbol
+#include "symbol.h"
+
+class S_Idenlist : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Idenlist();
-
-		//Deconstructor
-		~Idenlist();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Idenlist(Symbols s);
+public:
+    S_Idenlist();
+    virtual ~S_Idenlist();
 };
 
-#endif
+#endif // S_IDENLIST_H

@@ -1,8 +1,23 @@
-#include "read.h" 
+// ---------------------------------------------
+//  read.cpp
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-Read::Read()
+#include "read.h"
+
+S_Read::S_Read(Symbols s)
+    : Symbol(s)
+{
+}
+
+S_Read::S_Read()
     : Symbol(READ)
-{}
+{
+}
 
-Read::~Read()
-{}
+S_Read::~S_Read()
+{
+}

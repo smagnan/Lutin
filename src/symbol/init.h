@@ -1,23 +1,24 @@
-#ifndef INIT_H
-#define INIT_H
+// ---------------------------------------------
+//  init.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "symbol.h" 
+#ifndef S_INIT_H
+#define S_INIT_H
 
-class Init : public Symbol
+#include "symbol.h"
+
+class S_Init : public Symbol
 {
-
-	public:
-
-		//Default Constructor
-		Init();
-
-		//Deconstructor
-		~Init();
-
-	private:
-
-		//Disable the following by Minus 
-
+private:
+protected:
+    S_Init(Symbols s);
+public:
+    S_Init();
+    virtual ~S_Init();
 };
 
-#endif
+#endif // S_INIT_H

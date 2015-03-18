@@ -1,23 +1,24 @@
-#ifndef EXPRMULT_H
-#define EXPRMULT_H
+// ---------------------------------------------
+//  exprmult.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "exprbin.h" 
+#ifndef S_EXPRMULT_H
+#define S_EXPRMULT_H
 
-class Exprmult : public Expr {
+#include "exprbin.h"
 
-	public:
-
-		//Default Constructor
-		Exprmult();
-
-		//Deconstructor
-		~Exprmult();
-
-
-	private:
-
-		//Disable the following by Exprmult 
-
+class S_Exprmult : public S_Exprbin
+{
+private:
+protected:
+    S_Exprmult(Symbols s);
+public:
+    S_Exprmult();
+    virtual ~S_Exprmult();
 };
 
-#endif
+#endif // S_EXPRMULT_H

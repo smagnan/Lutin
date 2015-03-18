@@ -1,24 +1,24 @@
-#ifndef CONST_H
-#define CONST_H
+// ---------------------------------------------
+//  const.h
+//
+//	Created	 :
+//		by 	 : Pierre GODARD
+//
+// ---------------------------------------------
 
-#include "expr.h" 
+#ifndef S_CONST_H
+#define S_CONST_H
 
-class Const : public Expr
+#include "expr.h"
+
+class S_Const : public S_Expr
 {
-
-	public:
-
-		//Default Constructor
-		Const();
-
-		//Deconstructor
-		~Const();
-
-
-	private:
-
-		//Disable the following by Const 
-
+private:
+protected:
+    S_Const(Symbols s);
+public:
+    S_Const();
+    virtual ~S_Const();
 };
 
-#endif
+#endif // S_CONST_H
