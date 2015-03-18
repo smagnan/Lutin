@@ -51,6 +51,7 @@ ArgsManager::ArgsManager(int argc, const char* argv[]) :
         po::notify(vm);
         
         
+        // TODO use loader
         // load the input file
         std::string file_path(vm[OPTION_FILE_LABEL.c_str()].as<std::string>());
         std::ifstream input_file(file_path.c_str());
@@ -101,7 +102,6 @@ ArgsManager::ArgsManager(int argc, const char* argv[]) :
     {
         manageError(e.what());
     }
-    
 }
 
 
