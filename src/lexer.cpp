@@ -44,7 +44,7 @@ Lexer::Lexer()
         // affectation
         "(\\s?:=\\s?)|"
         // num 
-        "(-?\\d+(,\\d+)?)";
+        "(-?\\d+(.\\d+)?)";
     
     // Compile Regex:
     boost::regex main_regex(re);
@@ -53,18 +53,30 @@ Lexer::Lexer()
     // Will contains lines of program :
     vector<String> progLines;
     vector<String>::iterator progStart, progEnd;
+    vector<Symbol> lineSymbols;
 }
 
-Lexer::~Lexer()
+virtual Lexer::~Lexer()
 {
-
+    if (!lineSymbols.empty())
+    {
+        vector<Symbol>::iterator i;
+        while (i != lineSymbol.end())
+        {
+            delete (*i);
+            ++i;
+        }
+    }
 }
 
 //-------------------------------------------------- Public Methods
+
+// set program to be analyzed by regex
 bool Lexer::setProg(String prog)
 {
     if (prog != null)
     {
+        // split program in lines
         std::stringstream ss(prog);
         std::string line;
         while (std::getline(ss, line, '\n'))
@@ -81,8 +93,17 @@ bool Lexer::setProg(String prog)
 
 vector<Symbol> Lexer::getSymbols()
 {
-    vector<Symbol> ret; // what will be returned
- 
+    // if lineSymbols not empty, delete everything inside
+    if (!lineSymbols.empty())
+    {
+        vector<Symbol>::iterator i;
+        while (i != lineSymbol.end())
+        {
+            delete (*i);
+            ++i;
+        }
+    }
+
     boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), expression);
     boost::sregex_iterator m2;
     std::for_each(m1, m2, &regex_callback);
@@ -96,57 +117,58 @@ vector<Symbol> Lexer::getSymbols()
         switch ( (*b).first ) :
         {
             case 1:     // var
-                ret.push_back(new Var());
+                lineSymbols.push_back(new Var());
                 break;
             case 2:     // const
-                ret.push_back(new Const());
+                lineSymbols.push_back(new Const());
                 break;
             case 3:     // lire
-                ret.push_back(new Lire());
+                lineSymbols.push_back(new Lire());
                 break;  
             case 4:     // ecrire
-                ret.push_back(new Ecrire());
+                lineSymbols.push_back(new Ecrire());
                 break;
             case 5:     // +
-                ret.push_back(new Plus());
+                lineSymbols.push_back(new Plus());
                 break;
             case 6:     // -
-                ret.push_back(new Minus());
+                lineSymbols.push_back(new Minus());
                 break;
             case 7:     // *
-                ret.push_back(new Mult());
+                lineSymbols.push_back(new Mult());
                 break;
             case 8:     // /
-                ret.push_back(new Divide());
+                lineSymbols.push_back(new Divide());
                 break;
             case 9:     // (
-                ret.push_back(new Openby());
+                lineSymbols.push_back(new Openby());
                 break;
             case 10:    // )
-                ret.push_back(new Closeby());
+                lineSymbols.push_back(new Closeby());
                 break;
             case 11:    // ;
-                ret.push_back(new Pv());
+                lineSymbols.push_back(new Pv());
                 break;
             case 12:    // id (any a-ZA-Z / 0-9 charac)
-                ret.push_back(new Id());
+                lineSymbols.push_back(new Id((*b).second));
                 break;  
             case 13:    // ,
-                ret.push_back(new Vir());
+                lineSymbols.push_back(new Vir());
                 break;
             case 14:    // =
-                ret.push_back(new Eq());
+                lineSymbols.push_back(new Eq());
                 break;
             case 15:    // :=
-                ret.push_back(new Aff());
+                lineSymbols.push_back(new Aff());
                 break;
             case 16:    // number
-                ret.push_back(new Num());
+                lineSymbols.push_back(new Num(std::stod ((*b).second)));
                 break;
             default:
                 break;
         }
     }
+    return ret; 
 }
 
 bool Lexer::hasNext()

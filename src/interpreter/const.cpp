@@ -8,6 +8,8 @@
 // ---------------------------------------------
 
 #include "const.h"
+#include "operationException.h"
+#include "utils.h"
 
 // Const constructor
 Const::Const(std::string constName, double val) : Declaration(val)
@@ -19,4 +21,9 @@ Const::Const(std::string constName, double val) : Declaration(val)
 Const::~Const()
 {
 
+}
+
+void Const::setValue(double val)
+{
+	throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
 }

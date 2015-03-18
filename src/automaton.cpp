@@ -88,9 +88,11 @@ void Automaton::shift(Symbol * symbol, State * state)
 
 void Automaton::reduce(int numRule)
 {
-	//Depiler les symboles à droite de la règle
-	//Ajouter l'instruction qui va correspond
-	//Passer à l'état qui correspond au symbol non terminal
+    for (int i = 0; i < numRule; i++)
+    {
+        symbolStack.pop();
+        stateStack.pop();
+    }
 }
 
 void Automaton::error()

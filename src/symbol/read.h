@@ -9,6 +9,7 @@
 #ifndef S_READ_H
 #define S_READ_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Read : public Symbol

@@ -9,6 +9,7 @@
 #ifndef S_IDENLIST_H
 #define S_IDENLIST_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Idenlist : public Symbol

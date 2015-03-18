@@ -9,6 +9,7 @@
 #ifndef S_EXPR_H
 #define S_EXPR_H
 
+#include <string>
 #include "symbol.h"
 
 class S_Expr : public Symbol

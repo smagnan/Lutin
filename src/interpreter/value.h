@@ -14,11 +14,12 @@
  
 class Value : public Declaration
 {
-private:
-protected:
-public:
-    Value(double val);
-    virtual ~Value();
+    private:
+    protected:
+    public:
+	Value(double val);
+	virtual ~Value();
+	virtual void setValue(double val);
 };
  
 #endif
