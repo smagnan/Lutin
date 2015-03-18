@@ -46,8 +46,10 @@ void Printer::print(std::ostream& out,std::string str)
 	    	words.clear();
 	    	split(*it2,words,"+-*/=(),;:"); // split at special chars and keep them
 	    	for(std::vector<std::string>::iterator it3 = words.begin(); it3 != words.end(); ++it3) {
-	    		out << selectStyle(*it3) <<*it3 <<' ';
+	    		if(!(*it3).empty())
+	    			out << selectStyle(*it3) <<*it3 ;
 	    	}
+	    	out << ' ';
 	    }	
 	    if (it != lines.begin())	// do not jump if one line only with no end of line char
 	    	out << endl;    
