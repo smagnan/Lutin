@@ -25,11 +25,10 @@ namespace po =  boost::program_options;
 
 int main( int argc, const char* argv[] )
 {
-    
-    
+
 	Printer mainPrinter;
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
-	mainPrinter.printinfo("","Creating Interpreter");
+	mainPrinter.printinfo("","Creating Lexer");
     Lexer *lexer = new Lexer();
 	mainPrinter.printinfo("","Creating Interpreter");
 	Interpreter *interpreter 	= new Interpreter();
@@ -111,6 +110,8 @@ int main( int argc, const char* argv[] )
     delete automaton;
 	mainPrinter.printinfo("","Deleting Interpreter");
 	delete interpreter;
+	mainPrinter.printinfo("","Deleting Lexer");
+	delete lexer;
 	
 	return EXIT_SUCCESS;
 }

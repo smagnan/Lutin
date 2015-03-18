@@ -11,6 +11,9 @@
 #include "state/state0.h"
 #include "symbol/symbol.h"
 
+#include <vector>
+#include <iterator>
+
 using namespace std;
 
 // Automaton constructor
@@ -67,10 +70,13 @@ void Automaton::read()
 {
 	//Prends le prochain jeton (voir si l'automate a déjà toute la liste ou pas)
 	//Appelle la transition de l'état courant (sommet de la pile) avec le symnbole lu
-	Symbol *symbol;
+	std::vector<Symbol> symbols;
 	// TODO use lexer
-	while(/*symbol = this->lexer.getSymbol()*/ true) {
-		this->stateStack.top()->transition(*this,symbol);
+	while(lexer->hasNext()) {
+		symbols = lexer->getSymbols();
+		for(std::vector<Symbol>::iterator it = symbols.begin(); it != symbols.end(); ++it) {
+		    this->stateStack.top()->transition(*this,&*it);
+		}
 	}
 }
 
