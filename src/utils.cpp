@@ -1,5 +1,4 @@
 #include "utils.h"
-#include <algorithm>
 
 std::string Utils::doubleToString(double val)
 {
@@ -34,7 +33,7 @@ unsigned int Utils::split(const std::string &txt, std::vector<std::string> &strs
     }
 
     // Add the last one
-    //strs.push_back( txt.substr( initialPos, std::min( pos, txt.size() ) - initialPos + indexKeep ) );
+    strs.push_back( txt.substr( initialPos, MIN( pos, txt.size() ) - initialPos + indexKeep ) );
 
     return strs.size();
 }
