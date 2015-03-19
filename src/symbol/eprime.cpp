@@ -18,6 +18,12 @@ S_Eprime::S_Eprime()
 {
 }
 
+// RB
+S_Eprime::S_Eprime(S_E* se)
+    : Symbol(EPRIME), e(se)
+{
+}
+
 S_Eprime::~S_Eprime()
 {
 }
