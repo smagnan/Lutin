@@ -18,6 +18,12 @@ S_Bd::S_Bd()
 {
 }
 
+// R-B C
+S_Bd::S_Bd(S_Bd* sbd, S_D* sd, S_Pv* spv) 
+    : Symbol(BD), bd(sbd), d(sd), pv(spv)
+{
+}
+
 S_Bd::~S_Bd()
 {
 }

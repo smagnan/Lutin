@@ -10,8 +10,6 @@
 #define S_P_H
 
 #include <string>
-#include <vector>
-#include <iostream>
 #include "symbol.h"
 
 // Rule include :
@@ -24,11 +22,11 @@ class S_P : public Symbol
 private:
 protected:
     S_P(Symbols s);
-    S_Bd * sbd;
-    S_Bi * sbi;
+    S_Bd * bd;
+    S_Bi * bi;
 public:
     S_P();
-    S_P(std::vector<Symbol*>);
+    S_P(S_Bd*,S_Bi*);
     virtual ~S_P();
 };
 
