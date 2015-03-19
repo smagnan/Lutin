@@ -166,6 +166,7 @@ vector<Symbol*> Lexer::getSymbols()
         }
         ++b;
     }
+    progStart++;
     return lineSymbols; 
 }
 
