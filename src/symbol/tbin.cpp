@@ -1,23 +1,23 @@
 // ---------------------------------------------
-//  edivide.cpp
+//  tbin.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "edivide.h"
+#include "tbin.h"
 
-S_Edivide::S_Edivide(Symbols s)
-    : S_Ebin(s)
+S_Tbin::S_Tbin(Symbols s)
+    : S_T()
 {
 }
 
-S_Edivide::S_Edivide()
-    : S_Ebin()
+S_Tbin::S_Tbin(S_T* t, S_F* f)
+    : S_T(), t(t), f(f)
 {
 }
 
-S_Edivide::~S_Edivide()
+S_Tbin::~S_Tbin()
 {
 }

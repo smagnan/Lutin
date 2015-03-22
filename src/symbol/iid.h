@@ -1,25 +1,28 @@
 // ---------------------------------------------
-//  edivide.h
+//  iid.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_EDIVIDE_H
-#define S_EDIVIDE_H
+#ifndef S_IID_H
+#define S_IID_H
 
 #include <string>
-#include "ebin.h"
+#include "i.h"
 
-class S_Edivide : public S_Ebin
+// Rule include :
+#include "id.h"
+
+class S_Iid : public S_I
 {
 private:
 protected:
-    S_Edivide(Symbols s);
+    S_Id * id;
 public:
-    S_Edivide();
-    virtual ~S_Edivide();
+    S_Iid(S_Id * id);
+    virtual ~S_Iid();
 };
 
-#endif // S_EDIVIDE_H
+#endif // S_IID_H

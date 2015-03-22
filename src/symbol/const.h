@@ -10,9 +10,9 @@
 #define S_CONST_H
 
 #include <string>
-#include "e.h"
+#include "symbol.h"
 
-class S_Const : public S_E
+class S_Const : public Symbol
 {
 private:
 protected:

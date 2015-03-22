@@ -11,25 +11,19 @@
 
 #include <string>
 #include "symbol.h"
-// RB 
+
+// Rule include :
 #include "id.h"
-#include "eq.h"
 #include "num.h"
 
 class S_Ini : public Symbol
 {
 private:
 protected:
-    S_Ini(Symbols s);
-
-    // RB
     S_Id * id;
-    S_Eq * eq;
     S_Num * num;
 public:
-    S_Ini();
-    // RB
-    S_Ini(S_Id*, S_Eq*, S_Num*);
+    S_Ini(S_Id* id, S_Num* num);
     virtual ~S_Ini();
 };
 

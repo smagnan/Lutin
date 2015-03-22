@@ -12,13 +12,15 @@
 #include <string>
 #include "ebin.h"
 
+// Rule include :
+#include "t.h"
+
 class S_Eminus : public S_Ebin
 {
 private:
 protected:
-    S_Eminus(Symbols s);
 public:
-    S_Eminus();
+    S_Eminus(S_E* e, S_T* t);
     virtual ~S_Eminus();
 };
 

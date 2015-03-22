@@ -9,12 +9,12 @@
 #include "var.h"
 
 S_Var::S_Var(Symbols s)
-    : S_E(s)
+    : Symbol(s)
 {
 }
 
 S_Var::S_Var()
-    : S_E(VAR)
+    : Symbol(VAR)
 {
 }
 

@@ -8,13 +8,8 @@
 
 #include "eplus.h"
 
-S_Eplus::S_Eplus(Symbols s)
-    : S_Ebin(s)
-{
-}
-
-S_Eplus::S_Eplus()
-    : S_Ebin()
+S_Eplus::S_Eplus(S_E* e, S_T* t)
+    : S_Ebin(e, t)
 {
 }
 

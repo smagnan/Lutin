@@ -10,9 +10,9 @@
 #define S_ID_H
 
 #include <string>
-#include "e.h"
+#include "symbol.h"
 
-class S_Id : public S_E
+class S_Id : public Symbol
 {
 private:
     std::string value;

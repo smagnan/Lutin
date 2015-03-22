@@ -1,25 +1,24 @@
 // ---------------------------------------------
-//  emult.h
+//  tmult.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_EMULT_H
-#define S_EMULT_H
+#ifndef S_TMULT_H
+#define S_TMULT_H
 
 #include <string>
-#include "ebin.h"
+#include "tbin.h"
 
-class S_Emult : public S_Ebin
+class S_Tmult : public S_Tbin
 {
 private:
 protected:
-    S_Emult(Symbols s);
 public:
-    S_Emult();
-    virtual ~S_Emult();
+    S_Tmult(S_T* t, S_F* f);
+    virtual ~S_Tmult();
 };
 
-#endif // S_EMULT_H
+#endif // S_TMULT_H
