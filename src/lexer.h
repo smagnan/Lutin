@@ -49,7 +49,7 @@ public:
     Lexer();
     virtual ~Lexer();
     bool setProg(std::string prog);
-    std::vector<Symbol*> getSymbols();
+    std::pair<std::vector<Symbol*>, matchError_vector > getSymbols();
     bool hasNext();
 private:
     // Will contains lines of program :

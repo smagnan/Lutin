@@ -85,7 +85,7 @@ bool Lexer::setProg(std::string prog)
 }
 
 
-std::vector<Symbol*> Lexer::getSymbols()
+std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
 {
     // If lineSymbols not empty, delete everything inside
     // and emtpy it
@@ -97,6 +97,10 @@ std::vector<Symbol*> Lexer::getSymbols()
         }   
         lineSymbols.clear();
     }
+
+    // clear error vector
+    if (!matchErr.empty())
+        matchErr.clear();
 
     // Find symbols
     boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), main_regex);
@@ -170,7 +174,7 @@ std::vector<Symbol*> Lexer::getSymbols()
         }
         ++b;
     }
-    return lineSymbols; 
+    return make_pair(lineSymbols, matchErr); 
 }
 
 bool Lexer::hasNext()

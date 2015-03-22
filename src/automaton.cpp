@@ -76,7 +76,7 @@ void Automaton::read()
 	// TODO use lexer
 	while(this->lexer->hasNext()) 
 	{
-		symbols = this->lexer->getSymbols();
+		symbols = this->lexer->getSymbols().first;  // second is for errors
 		for(std::vector<Symbol*>::iterator it = symbols.begin(); it != symbols.end(); ++it) 
 		{
 		    this->stateStack.top()->transition(*this,*it);
