@@ -20,6 +20,7 @@ protected:
 public:
     S_Read();
     virtual ~S_Read();
+    virtual std::string print();
 };
 
 #endif // S_READ_H

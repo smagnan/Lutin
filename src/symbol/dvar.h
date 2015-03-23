@@ -25,6 +25,7 @@ protected:
 public:
     S_Dvar(S_Id* id, S_Idl* idl);
     virtual ~S_Dvar();
+    virtual std::string print();
 };
 
 #endif // S_DVAR_H

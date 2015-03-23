@@ -19,6 +19,7 @@ protected:
 public:
     S_Tdivide(S_T* t, S_F* f);
     virtual ~S_Tdivide();
+    virtual std::string print();
 };
 
 #endif // S_TDIVIDE_H

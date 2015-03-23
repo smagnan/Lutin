@@ -16,3 +16,8 @@ S_Eplus::S_Eplus(S_E* e, S_T* t)
 S_Eplus::~S_Eplus()
 {
 }
+
+std::string S_Eplus::print()
+{
+    return e->print() + " + " + t->print();
+}

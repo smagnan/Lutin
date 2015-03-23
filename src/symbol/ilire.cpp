@@ -16,3 +16,8 @@ S_Ilire::S_Ilire(S_Id* id)
 S_Ilire::~S_Ilire()
 {
 }
+
+std::string S_Ilire::print()
+{
+    return "lire " + id->print();
+}

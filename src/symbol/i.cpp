@@ -21,3 +21,8 @@ S_I::S_I()
 S_I::~S_I()
 {
 }
+
+std::string S_I::print()
+{
+    return "";
+}

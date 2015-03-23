@@ -20,6 +20,7 @@ protected:
 public:
     S_End();
     virtual ~S_End();
+    virtual std::string print();
 };
 
 #endif // S_END_H

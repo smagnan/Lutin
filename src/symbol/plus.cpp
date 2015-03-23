@@ -21,3 +21,8 @@ S_Plus::S_Plus()
 S_Plus::~S_Plus()
 {
 }
+
+std::string S_Plus::print()
+{
+    return "+";
+}

@@ -16,3 +16,8 @@ S_D::S_D()
 S_D::~S_D()
 {
 }
+
+std::string S_D::print()
+{
+    return "";
+}

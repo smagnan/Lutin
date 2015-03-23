@@ -21,3 +21,8 @@ S_Ebin::S_Ebin(S_E* e, S_T* t)
 S_Ebin::~S_Ebin()
 {
 }
+
+std::string S_Ebin::print()
+{
+    return "";
+}

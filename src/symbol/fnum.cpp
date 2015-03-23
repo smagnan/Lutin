@@ -16,3 +16,8 @@ S_Fnum::S_Fnum(S_Num* num)
 S_Fnum::~S_Fnum()
 {
 }
+
+std::string S_Fnum::print()
+{
+    return num->print();
+}

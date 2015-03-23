@@ -16,3 +16,8 @@ S_Bd::S_Bd()
 S_Bd::~S_Bd()
 {
 }
+
+std::string S_Bd::print()
+{
+    return "";
+}

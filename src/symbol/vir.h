@@ -20,6 +20,7 @@ protected:
 public:
     S_Vir();
     virtual ~S_Vir();
+    virtual std::string print();
 };
 
 #endif // S_VIR_H

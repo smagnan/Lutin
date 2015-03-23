@@ -16,3 +16,8 @@ S_F::S_F()
 S_F::~S_F()
 {
 }
+
+std::string S_F::print()
+{
+    return "";
+}

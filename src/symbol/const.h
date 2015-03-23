@@ -20,6 +20,7 @@ protected:
 public:
     S_Const();
     virtual ~S_Const();
+    virtual std::string print();
 };
 
 #endif // S_CONST_H

@@ -20,6 +20,7 @@ protected:
 public:
     S_Plus();
     virtual ~S_Plus();
+    virtual std::string print();
 };
 
 #endif // S_PLUS_H

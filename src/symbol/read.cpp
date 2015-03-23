@@ -21,3 +21,8 @@ S_Read::S_Read()
 S_Read::~S_Read()
 {
 }
+
+std::string S_Read::print()
+{
+    return "read";
+}

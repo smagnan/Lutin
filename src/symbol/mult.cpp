@@ -21,3 +21,8 @@ S_Mult::S_Mult()
 S_Mult::~S_Mult()
 {
 }
+
+std::string S_Mult::print()
+{
+    return "*";
+}

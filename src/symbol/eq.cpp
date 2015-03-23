@@ -21,3 +21,8 @@ S_Eq::S_Eq()
 S_Eq::~S_Eq()
 {
 }
+
+std::string S_Eq::print()
+{
+    return "=";
+}

@@ -19,6 +19,7 @@ protected:
 public:
     S_Idl();
     virtual ~S_Idl();
+    virtual std::string print();
 };
 
 #endif // S_IDL_H

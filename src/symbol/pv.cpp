@@ -21,3 +21,8 @@ S_Pv::S_Pv()
 S_Pv::~S_Pv()
 {
 }
+
+std::string S_Pv::print()
+{
+    return ";";
+}

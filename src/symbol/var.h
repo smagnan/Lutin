@@ -20,6 +20,7 @@ protected:
 public:
     S_Var();
     virtual ~S_Var();
+    virtual std::string print();
 };
 
 #endif // S_VAR_H

@@ -20,6 +20,7 @@ protected:
 public:
     S_I();
     virtual ~S_I();
+    virtual std::string print();
 };
 
 #endif // S_I_H

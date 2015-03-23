@@ -16,3 +16,8 @@ S_Dconst::S_Dconst(S_Ini* ini, S_Inil* inil)
 S_Dconst::~S_Dconst()
 {
 }
+
+std::string S_Dconst::print()
+{
+    return "const " + ini->print() + " " + inil->print();
+}

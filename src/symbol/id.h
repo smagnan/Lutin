@@ -24,6 +24,7 @@ public:
     virtual ~S_Id();
     std::string getValue();
     void setValue(std::string v);
+    virtual std::string print();
 };
 
 #endif // S_ID_H

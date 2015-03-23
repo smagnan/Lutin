@@ -25,6 +25,7 @@ protected:
 public:
     S_Iaff(S_Id* id, S_Eprime* eprime);
     virtual ~S_Iaff();
+    virtual std::string print();
 };
 
 #endif // S_IID_H

@@ -21,3 +21,8 @@ S_Openby::S_Openby()
 S_Openby::~S_Openby()
 {
 }
+
+std::string S_Openby::print()
+{
+    return "(";
+}

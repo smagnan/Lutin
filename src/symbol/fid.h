@@ -23,6 +23,7 @@ protected:
 public:
     S_Fid(S_Id* id);
     virtual ~S_Fid();
+    virtual std::string print();
 };
 
 #endif // S_FID_H
