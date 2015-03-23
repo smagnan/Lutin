@@ -73,12 +73,15 @@ Symbol* Automaton::getDerivationTree()
     // Read should simply change the current token
     
 	std::vector<Symbol*> symbols;
+   
     
 	while(this->lexer->hasNext()) 
 	{
+  //      DEBUGINFO("Automaton::getDerivationTree() - beginning of while loop");
 		symbols = this->lexer->getSymbols().first;  // second is for errors
 		for(std::vector<Symbol*>::iterator it = symbols.begin(); it != symbols.end(); ++it) 
 		{
+//            DEBUGINFO("Automaton::getDerivationTree() - beginning of for loop");
             currentSymbol = *it;
             std::cout << (int)(*currentSymbol) << std::endl;
 		    //this->stateStack.top()->transition(*this,currentSymbol);
