@@ -71,25 +71,38 @@ bool Lexer::setProg(std::string prog)
         {
             progLines.push_back(line);   
         }
+        
+        /*
         // let's see what's inside the prog :
         for(std::vector<std::string>::iterator i = progLines.begin(); i != progLines.end(); i++)
         {
             std::cout << *i << std::endl;
-            /*if (*i == "")
-            {
-                progLines.erase(i);
-                ++i;
-            }*/
         }
+        */
+
+        // remove empty lines :
+        std::vector<std::string>::iterator j = progLines.begin();
+        while(j != progLines.end())
+        {
+            if ((*j).empty())
+                j = progLines.erase(j);
+            else
+                ++j;
+        }
+
+        /*
+        // let's see what's inside the prog :
+        int c = 1;
         for(std::vector<std::string>::iterator i = progLines.begin(); i != progLines.end(); i++)
         {
-            std::cout << *i << std::endl;
+            std::cout << "Line :" << c++ << " : " << *i << std::endl;
         }
+        */
 
         // set iterators to on newly filled vector
         progStart = progLines.begin();
         std::cout << "progStart points to : " << *progStart << std::endl;
-        progEnd = progLines.end();       
+        progEnd = progLines.end()-1;       
         std::cout << "progEnd points to : " << *progEnd << std::endl;
         DEBUGINFO("Lexer::Program Set");
         return true;
@@ -113,6 +126,9 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
         regex_callback(*m1);
         ++m1;
     }
+
+    DEBUGINFO("Lexer::getSymbols() will return symbols from :");
+    std::cout << (*progStart) << std::endl;
 
     // increment iterator (for next loop)
     progStart++;
@@ -184,7 +200,7 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
 bool Lexer::hasNext()
 {
     DEBUGINFO("Lexer::Call to hasNext()");
-    if (progStart != progEnd)
+    if (progStart != progEnd+1)
     {
         DEBUGINFO("Lexer::hasNext() - more lines to compute");
         return true;
