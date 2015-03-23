@@ -28,19 +28,17 @@ class Automaton
 	private:
 		std::stack<Symbol*> symbolStack;
 		std::stack<State*> stateStack;
-		std::pair<Symbols,int>* rules;
-		Interpreter *interpreter;
 		Lexer *lexer;
 	protected:
 	public:
-	    Automaton(Interpreter *interp, Lexer *lex);
+	    Automaton(Lexer *lex);
 	    virtual ~Automaton();
 	    void read();
 	    void shift(Symbol * symbol, State * state);
 	    void reduce(int numRule);
 	    void error();
 	    void accept();
-        Symbol* getSymbol(int numRule, std::vector<Symbol*> & symbols);
+        Symbol* getSymbol(int numRule, std::deque<Symbol*> & symbols);
 };
 
 #endif

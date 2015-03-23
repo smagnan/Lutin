@@ -44,12 +44,13 @@ const unsigned int RULES[RULES_NUMBER] =
     {2, 3, 3, 3, 3, 3, 3, 3, 2, 3, 2, 1, 3, 3, 1, 3, 3, 1, 3, 1, 1, 0, 0, 0, 0};
 
 // Automaton constructor
-Automaton::Automaton(Interpreter *interp,Lexer *lex) 
+Automaton::Automaton(Lexer *lex)
+    : lexer(lex)
 {
-	this->interpreter = interp;
-	this->lexer = lex;
 	// Stack initialization :
 	stateStack.push(new State0());
+    
+    // Read the first token :
 }
 
 Automaton::~Automaton()
@@ -69,10 +70,10 @@ Automaton::~Automaton()
 
 void Automaton::read()
 {
-	//Prends le prochain jeton (voir si l'automate a déjà toute la liste ou pas)
-	//Appelle la transition de l'état courant (sommet de la pile) avec le symnbole lu
+    // Read should simply change the current token
+    
 	std::vector<Symbol*> symbols;
-	// TODO use lexer
+    
 	while(this->lexer->hasNext()) 
 	{
 		symbols = this->lexer->getSymbols().first;  // second is for errors
@@ -91,17 +92,24 @@ void Automaton::shift(Symbol * symbol, State * state)
 
 void Automaton::reduce(int numRule)
 {
-    for (int i = 0; i < rules[numRule].second; i++)
+    std::deque<Symbol*> * symbols = new std::deque<Symbol*>();
+    for (unsigned int i = 0; i < RULES[numRule]; i++)
     {
+        symbols->push_front(symbolStack.top());
         symbolStack.pop();
         stateStack.pop();
     }
     
+    Symbol * symbol = getSymbol(numRule, *symbols);
+    symbolStack.push(symbol);
+    
+    State * state = stateStack.top()->getNextState(symbol);
+    stateStack.push(state);
 }
 
 void Automaton::error()
 {
-    
+    // Erreur de token : On jette le courant et on passe au suivant
 }
 
 void Automaton::accept()
@@ -109,7 +117,7 @@ void Automaton::accept()
     
 }
 
-Symbol* Automaton::getSymbol(int numRule, std::vector<Symbol*> & symbols)
+Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
 {
     if (symbols.size() != RULES[numRule-1])
     {

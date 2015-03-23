@@ -33,7 +33,7 @@ Lexer::Lexer()
         "(\\s*\\)\\s*)|"
         // semicolon
        "(\\s*;\\s*$)|"
-        // Id
+        // id
         "(\\s*[a-zA-Z][a-zA-Z0-9_]*\\s*)|"
         // vir 
         "(\\s*,\\s*)|"
@@ -42,7 +42,7 @@ Lexer::Lexer()
         // affectation
         "(\\s*:=\\s*)|"
         // num 
-        "(-?\\d+(.\\d+)?)"
+        "(-?\\d+(.\\d+)?)|"
         // everything else (matching error)
         "(.*)";
     
