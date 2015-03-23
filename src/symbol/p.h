@@ -9,7 +9,6 @@
 #ifndef S_P_H
 #define S_P_H
 
-#include <string>
 #include "symbol.h"
 
 // Rule include :

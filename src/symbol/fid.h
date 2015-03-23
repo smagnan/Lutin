@@ -9,7 +9,6 @@
 #ifndef S_FID_H
 #define S_FID_H
 
-#include <string>
 #include "f.h"
 
 // Rule include :

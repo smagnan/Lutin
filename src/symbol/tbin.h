@@ -9,7 +9,6 @@
 #ifndef S_TBIN_H
 #define S_TBIN_H
 
-#include <string>
 #include "t.h"
 
 // Rule include :

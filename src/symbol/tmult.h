@@ -9,7 +9,6 @@
 #ifndef S_TMULT_H
 #define S_TMULT_H
 
-#include <string>
 #include "tbin.h"
 
 class S_Tmult : public S_Tbin

@@ -9,7 +9,6 @@
 #ifndef S_EPRIME_H
 #define S_EPRIME_H
 
-#include <string>
 #include "symbol.h"
 
 // Rule include :

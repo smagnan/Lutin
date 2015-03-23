@@ -9,7 +9,6 @@
 #ifndef S_DVAR_H
 #define S_DVAR_H
 
-#include <string>
 #include "d.h"
 
 // Rule include :

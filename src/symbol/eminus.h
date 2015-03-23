@@ -9,7 +9,6 @@
 #ifndef S_EMINUS_H
 #define S_EMINUS_H
 
-#include <string>
 #include "ebin.h"
 
 // Rule include :

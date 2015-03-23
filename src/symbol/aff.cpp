@@ -8,11 +8,6 @@
 
 #include "aff.h"
 
-S_Aff::S_Aff(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Aff::S_Aff()
     : Symbol(AFF)
 {

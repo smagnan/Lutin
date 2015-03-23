@@ -9,14 +9,12 @@
 #ifndef S_VIR_H
 #define S_VIR_H
 
-#include <string>
 #include "symbol.h"
 
 class S_Vir : public Symbol
 {
 private:
 protected:
-    S_Vir(Symbols s);
 public:
     S_Vir();
     virtual ~S_Vir();

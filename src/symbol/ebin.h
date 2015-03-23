@@ -9,7 +9,6 @@
 #ifndef S_EBIN_H
 #define S_EBIN_H
 
-#include <string>
 #include "e.h"
 
 // Rule include :

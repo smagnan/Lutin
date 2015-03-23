@@ -8,11 +8,6 @@
 
 #include "num.h"
 
-S_Num::S_Num(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Num::S_Num()
     : Symbol(NUM), value(0)
 {

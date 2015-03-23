@@ -8,11 +8,6 @@
 
 #include "read.h"
 
-S_Read::S_Read(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Read::S_Read()
     : Symbol(READ)
 {

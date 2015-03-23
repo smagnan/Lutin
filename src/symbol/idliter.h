@@ -9,7 +9,6 @@
 #ifndef S_IDLITER_H
 #define S_IDLITER_H
 
-#include <string>
 #include "idl.h"
 #include "id.h"
 

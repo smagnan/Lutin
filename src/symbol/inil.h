@@ -9,7 +9,6 @@
 #ifndef S_INIL_H
 #define S_INIL_H
 
-#include <string>
 #include "symbol.h"
 
 class S_Inil : public Symbol

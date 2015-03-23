@@ -9,7 +9,6 @@
 #ifndef S_ILIRE_H
 #define S_ILIRE_H
 
-#include <string>
 #include "i.h"
 
 // Rule include :

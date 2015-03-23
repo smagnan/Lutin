@@ -9,7 +9,6 @@
 #ifndef S_D_H
 #define S_D_H
 
-#include <string>
 #include "symbol.h"
 
 class S_D : public Symbol

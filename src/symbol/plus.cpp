@@ -8,11 +8,6 @@
 
 #include "plus.h"
 
-S_Plus::S_Plus(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Plus::S_Plus()
     : Symbol(PLUS)
 {

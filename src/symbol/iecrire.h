@@ -9,7 +9,6 @@
 #ifndef S_IECRIRE_H
 #define S_IECRIRE_H
 
-#include <string>
 #include "i.h"
 
 // Rule include :

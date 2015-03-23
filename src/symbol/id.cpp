@@ -8,11 +8,6 @@
 
 #include "id.h"
 
-S_Id::S_Id(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Id::S_Id()
     : Symbol(ID), value(0)
 {

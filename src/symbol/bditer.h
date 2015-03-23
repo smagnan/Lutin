@@ -9,7 +9,6 @@
 #ifndef S_BDITER_H
 #define S_BDITER_H
 
-#include <string>
 #include "bd.h"
 
 // Rule include :

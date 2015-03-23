@@ -16,7 +16,6 @@ class S_Num : public Symbol
 private:
     double value;
 protected:
-    S_Num(Symbols s);
 public:
     S_Num();
     S_Num(double v);

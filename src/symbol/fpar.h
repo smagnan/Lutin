@@ -9,7 +9,6 @@
 #ifndef S_FPAR_H
 #define S_FPAR_H
 
-#include <string>
 #include "f.h"
 
 // Rule include :

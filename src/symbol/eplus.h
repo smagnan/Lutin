@@ -9,7 +9,6 @@
 #ifndef S_EPLUS_H
 #define S_EPLUS_H
 
-#include <string>
 #include "ebin.h"
 
 // Rule include :
