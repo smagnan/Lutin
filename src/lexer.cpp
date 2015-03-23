@@ -1,50 +1,53 @@
+/*#######################################################################
+#   Class : LEXER                                                       #
+#   Created :                                                           #
+#                                                                       #
+########################################################################*/
+
 #include "lexer.h"
 
-using namespace std;
-
 //-------------------------------------- Constructors - destructors :
-
 Lexer::Lexer()
 {
     // Regex patterns
     const char* regex = 
         // Var
-        "(^var\\s)|"
+        "(^var\\s+)|"
         // Const
-        "(^const\\s)|"
+        "(^const\\s+)|"
         // read 
-        "(^lire\\s)|"
+        "(^lire\\s+)|"
         // write
-        "(^ecrire\\s)|"
+        "(^ecrire\\s+)|"
         // Plus symbol
-        "(\\s?\\+\\s?)|"
+        "(\\s*\\+\\s*)|"
         // Minus symbol
-        "(\\s?-\\s?)|"
+        "(\\s*-\\s*)|"
         // Multiply symbol
-        "(\\s?\\*\\s?)|"
+        "(\\s*\\*\\s*)|"
         // Divide symbol
-        "(\\s?/\\s?)|"
+        "(\\s*/\\s*)|"
         // openby left
-        "(\\s?\\(\\s?)|"
+        "(\\s*\\(\\s*)|"
         // openby right
-        "(\\s?\\)\\s?)|"
+        "(\\s*\\)\\s*)|"
         // semicolon
-       "(\\s?;\\s?$)|"
+       "(\\s*;\\s*$)|"
         // Id
-        "(\\s?[a-zA-Z][a-zA-Z0-9_]*\\s?)|"
+        "(\\s*[a-zA-Z][a-zA-Z0-9_]*\\s*)|"
         // vir 
-        "(\\s?,\\s?)|"
+        "(\\s*,\\s*)|"
         // egal
-        "(\\s?=\\s?)|"
+        "(\\s*=\\s*)|"
         // affectation
-        "(\\s?:=\\s?)|"
+        "(\\s*:=\\s*)|"
         // num 
-        "(-?\\d+(.\\d+)?)";
+        "(-?\\d+(.\\d+)?)"
+        // everything else (matching error)
+        "(.*)";
     
     // Compile Regex:
     main_regex.assign(regex);
-    // Will contain matched symbols : 
-//  symbol_vector symbols;
 }
 
 Lexer::~Lexer()
@@ -82,7 +85,7 @@ bool Lexer::setProg(std::string prog)
 }
 
 
-vector<Symbol*> Lexer::getSymbols()
+std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
 {
     // If lineSymbols not empty, delete everything inside
     // and emtpy it
@@ -95,6 +98,10 @@ vector<Symbol*> Lexer::getSymbols()
         lineSymbols.clear();
     }
 
+    // clear error vector
+    if (!matchErr.empty())
+        matchErr.clear();
+
     // Find symbols
     boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), main_regex);
     boost::sregex_iterator m2;
@@ -105,6 +112,7 @@ vector<Symbol*> Lexer::getSymbols()
     }
 
     // increment iterator (for next loop)
+    progStart++;
     // Fill symbol vector
     pattern_vector::iterator b,e;
     b = patterns.begin();
@@ -166,8 +174,7 @@ vector<Symbol*> Lexer::getSymbols()
         }
         ++b;
     }
-    progStart++;
-    return lineSymbols; 
+    return make_pair(lineSymbols, matchErr); 
 }
 
 bool Lexer::hasNext()
@@ -183,8 +190,22 @@ bool Lexer::regex_callback(const boost::match_results<std::string::const_iterato
     // loop on all 16 symbols 
     for(int i = 1; i <= 16; i++)
     {
-        if (str_found.position(i) != -1) // symbol matched ? 
-            patterns.push_back(make_pair(i, str_found[i].str()));
+        // If one of the parenthesis match (and no more than  one will match) :
+        if (str_found.position(i) != -1) 
+        { // symbol matched ? 
+            if (i != 17) 
+            {   // a pattern was matched.
+                patterns.push_back(make_pair(i, str_found[i].str()));
+            }
+            else 
+            {   // something that was not a pattern was matched
+                matchErr.push_back(matchError());
+                matchErr.back().position = str_found.position(i);
+                matchErr.back().length = str_found.length(i);
+                matchErr.back().str = str_found[i];
+            }
+        }
     }
     return true;
 }
+
