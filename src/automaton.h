@@ -13,6 +13,7 @@
 
 #include <stack>
 #include <utility>
+#include <vector>
 #include "symbol/symbol.h"
 #include "interpreter/interpreter.h"
 #include "lexer.h"
@@ -37,6 +38,7 @@ class Automaton
 	    void reduce(int numRule);
 	    void error();
 	    void accept();
+        Symbol* getSymbol(int numRule, std::vector<Symbol*> & symbols);
 };
 
 #endif
