@@ -80,7 +80,8 @@ Symbol* Automaton::getDerivationTree()
 		for(std::vector<Symbol*>::iterator it = symbols.begin(); it != symbols.end(); ++it) 
 		{
             currentSymbol = *it;
-		    this->stateStack.top()->transition(*this,currentSymbol);
+            std::cout << (int)(*currentSymbol) << std::endl;
+		    //this->stateStack.top()->transition(*this,currentSymbol);
 		}
 	}
     

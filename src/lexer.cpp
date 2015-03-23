@@ -6,6 +6,8 @@
 
 #include "lexer.h"
 
+#include <iostream>
+
 //-------------------------------------- Constructors - destructors :
 Lexer::Lexer()
 {
@@ -78,8 +80,9 @@ bool Lexer::setProg(std::string prog)
         }
         // set iterators to on newly filled vector
         progStart = progLines.begin();
-        progEnd = progLines.end();
-        return true;    
+        progEnd = progLines.end()-1;
+        
+        return true;
     }
     return false;
 }

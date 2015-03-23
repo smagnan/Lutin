@@ -17,6 +17,7 @@
 #include "interpreter/interpreter.h"
 #include "loader.h"
 #include "debugger.h"
+#include "symbol/symbol.h"
 
 using std::cout;
 using std::endl;
@@ -41,15 +42,17 @@ int main( int argc, const char* argv[] )
     }
 
     DEBUGINFO("Creating Loader");
-    Loader *loader 				= new Loader(am.getFilePath().c_str()); // TODO not really clean ...
+    Loader* loader 				= new Loader(am.getFilePath().c_str()); // TODO not really clean ...
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	DEBUGINFO("Creating Lexer");
-    Lexer *lexer 				= new Lexer();
+    Lexer* lexer 				= new Lexer();
     lexer->setProg(loader->string());
 	DEBUGINFO("Creating Interpreter");
-	Interpreter *interpreter 	= new Interpreter();
+	Interpreter* interpreter 	= new Interpreter();
 	DEBUGINFO("Creating FSM");
-	Automaton *automaton 		= new Automaton(lexer);	
+	Automaton* automaton 		= new Automaton(lexer);	
+    DEBUGINFO("Get the derivation tree");
+    Symbol* derivationTree = automaton->getDerivationTree();
     
 	//=================================== TEST STUFF ==========================================
 	DEBUGINFO("============== DECLARE ================");
@@ -68,7 +71,6 @@ int main( int argc, const char* argv[] )
 	DEBUGINFO("================ END ==================");
 	//=================================== END TEST STUFF ======================================
 
-    //automaton->read();
 
     if (am.count("help"))
     {
@@ -80,7 +82,7 @@ int main( int argc, const char* argv[] )
 	{
         // TODO: ANALYZE 
         // Fill with that kind of line :
-        // interpreter.static_analysis();
+        // derivationTree.static_analysis();
         cout << "analyze" << endl;
 	}
 
@@ -88,7 +90,7 @@ int main( int argc, const char* argv[] )
 	{
         // TODO: OPTIMIZE 
         // Fill with that kind of line :
-        // interpreter.optimize();
+        // derivationTree.optimize();
         cout << "optimize" << endl;
 	}
     
