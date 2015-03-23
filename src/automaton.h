@@ -17,6 +17,7 @@
 #include "symbol/symbol.h"
 #include "interpreter/interpreter.h"
 #include "lexer.h"
+#include "symbol/p.h"
 
 #define RULES_NUMBER 25
 
@@ -28,12 +29,13 @@ class Automaton
 	private:
 		std::stack<Symbol*> symbolStack;
 		std::stack<State*> stateStack;
-		Lexer *lexer;
+		Lexer* lexer;
+        Symbol* currentSymbol;
 	protected:
 	public:
 	    Automaton(Lexer *lex);
 	    virtual ~Automaton();
-	    void read();
+	    Symbol* getDerivationTree();
 	    void shift(Symbol * symbol, State * state);
 	    void reduce(int numRule);
 	    void error();
