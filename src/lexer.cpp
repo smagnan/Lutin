@@ -113,10 +113,15 @@ bool Lexer::setProg(std::string prog)
 
 std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
 {
+    std::vector<Symbol*> lineSymbols; 
+
     DEBUGINFO("Lexer::Start of getSymbols");
     // clear error vector
     if (!matchErr.empty())
         matchErr.clear();
+
+    // clear patterns vector for new set of calls to regex_callback
+    patterns.clear();
 
     // Find symbols
     boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), main_regex);
@@ -200,7 +205,7 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
 bool Lexer::hasNext()
 {
     DEBUGINFO("Lexer::Call to hasNext()");
-    if (progStart != progEnd+1)
+    if (progStart != progEnd+1) // if progStart != progEnd, we stop one line before the end.
     {
         DEBUGINFO("Lexer::hasNext() - more lines to compute");
         return true;
@@ -218,7 +223,7 @@ bool Lexer::hasNext()
 bool Lexer::regex_callback(const boost::match_results<std::string::const_iterator>& str_found)
 {
     // loop on all 16 symbols 
-    for(int i = 1; i <= 16; i++)
+    for(int i = 1; i <= 17; i++)
     {
         // If one of the parenthesis match (and no more than  one will match) :
         if (str_found.position(i) != -1) 
@@ -226,6 +231,7 @@ bool Lexer::regex_callback(const boost::match_results<std::string::const_iterato
             if (i != 17) 
             {   // a pattern was matched.
                 patterns.push_back(make_pair(i, str_found[i].str()));
+                return true;
             }
             else 
             {   // something that was not a pattern was matched
@@ -233,9 +239,10 @@ bool Lexer::regex_callback(const boost::match_results<std::string::const_iterato
                 matchErr.back().position = str_found.position(i);
                 matchErr.back().length = str_found.length(i);
                 matchErr.back().str = str_found[i];
+                return false;
             }
         }
     }
-    return true;
+    return false;
 }
 

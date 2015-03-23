@@ -55,7 +55,7 @@ private:
     // Will contains lines of program :
     std::vector<std::string> progLines;                       // contains all lines of parsed program
     std::vector<std::string>::iterator progStart, progEnd;    // iterator on the vector of lines
-    std::vector<Symbol*> lineSymbols;                         // temp vector of matched symbols
+    // std::vector<Symbol*> lineSymbols;                         // temp vector of matched symbols
     // Compile Regex:
     boost::regex main_regex;
     // Will contain matched symbols : 
