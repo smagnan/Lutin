@@ -10,9 +10,9 @@
 #define S_NUM_H
 
 #include <string>
-#include "e.h"
+#include "symbol.h"
 
-class S_Num : public S_E
+class S_Num : public Symbol
 {
 private:
     double value;

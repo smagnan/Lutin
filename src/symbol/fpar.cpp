@@ -1,23 +1,18 @@
 // ---------------------------------------------
-//  emult.cpp
+//  fpar.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "emult.h"
+#include "fpar.h"
 
-S_Emult::S_Emult(Symbols s)
-    : S_Ebin(s)
+S_Fpar::S_Fpar(S_E* e)
+    : S_F(), e(e)
 {
 }
 
-S_Emult::S_Emult()
-    : S_Ebin()
-{
-}
-
-S_Emult::~S_Emult()
+S_Fpar::~S_Fpar()
 {
 }

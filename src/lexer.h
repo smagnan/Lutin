@@ -26,10 +26,21 @@
 #include "symbol/write.h"
 #include "utils.h"
 
+// Structure for matching error :
+struct matchError {
+    unsigned short position;
+    unsigned short length;
+    std::string str;
+};
+
 // Vector used for matched symbols :
 // - first in pair refers to position of pattern matched in regex
 // - second in pair is the content matched
 typedef std::vector<std::pair<int,std::string> > pattern_vector;
+
+// Vector for matching error :
+typedef std::vector<matchError> matchError_vector;
+
 
 class Lexer 
 {
@@ -38,7 +49,7 @@ public:
     Lexer();
     virtual ~Lexer();
     bool setProg(std::string prog);
-    std::vector<Symbol*> getSymbols();
+    std::pair<std::vector<Symbol*>, matchError_vector > getSymbols();
     bool hasNext();
 private:
     // Will contains lines of program :
@@ -49,6 +60,8 @@ private:
     boost::regex main_regex;
     // Will contain matched symbols : 
     pattern_vector patterns;
+    // Will contain matching errors :
+    matchError_vector matchErr; 
 
     bool regex_callback(const boost::match_results<std::string::const_iterator>& str_found);
 

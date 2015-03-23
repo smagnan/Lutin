@@ -8,13 +8,13 @@
 
 #include "ebin.h"
 
-S_Ebin::S_Ebin(Symbols s)
-    : S_E(s)
+S_Ebin::S_Ebin()
+    : S_E()
 {
 }
 
-S_Ebin::S_Ebin()
-    : S_E()
+S_Ebin::S_Ebin(S_E* e, S_T* t)
+    : S_E(), e(e), t(t)
 {
 }
 

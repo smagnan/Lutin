@@ -1,25 +1,28 @@
 // ---------------------------------------------
-//  emult.h
+//  fpar.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_EMULT_H
-#define S_EMULT_H
+#ifndef S_FPAR_H
+#define S_FPAR_H
 
 #include <string>
-#include "ebin.h"
+#include "f.h"
 
-class S_Emult : public S_Ebin
+// Rule include :
+#include "e.h"
+
+class S_Fpar : public S_F
 {
 private:
 protected:
-    S_Emult(Symbols s);
+    S_E * e;
 public:
-    S_Emult();
-    virtual ~S_Emult();
+    S_Fpar(S_E* e);
+    virtual ~S_Fpar();
 };
 
-#endif // S_EMULT_H
+#endif // S_FPAR_H

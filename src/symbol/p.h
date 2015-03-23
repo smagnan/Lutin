@@ -16,17 +16,14 @@
 #include "bd.h"
 #include "bi.h"
 
-
 class S_P : public Symbol
 {
 private:
 protected:
-    S_P(Symbols s);
     S_Bd * bd;
     S_Bi * bi;
 public:
-    S_P();
-    S_P(S_Bd*,S_Bi*);
+    S_P(S_Bd* bd,S_Bi* bi);
     virtual ~S_P();
 };
 

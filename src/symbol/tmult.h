@@ -1,25 +1,24 @@
 // ---------------------------------------------
-//  edivide.h
+//  tmult.h
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#ifndef S_EDIVIDE_H
-#define S_EDIVIDE_H
+#ifndef S_TMULT_H
+#define S_TMULT_H
 
 #include <string>
-#include "ebin.h"
+#include "tbin.h"
 
-class S_Edivide : public S_Ebin
+class S_Tmult : public S_Tbin
 {
 private:
 protected:
-    S_Edivide(Symbols s);
 public:
-    S_Edivide();
-    virtual ~S_Edivide();
+    S_Tmult(S_T* t, S_F* f);
+    virtual ~S_Tmult();
 };
 
-#endif // S_EDIVIDE_H
+#endif // S_TMULT_H

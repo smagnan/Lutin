@@ -49,7 +49,7 @@ int main( int argc, const char* argv[] )
 	DEBUGINFO("Creating Interpreter");
 	Interpreter *interpreter 	= new Interpreter();
 	DEBUGINFO("Creating FSM");
-	Automaton *automaton 		= new Automaton(interpreter,lexer);	
+	Automaton *automaton 		= new Automaton(lexer);	
     
 	//=================================== TEST STUFF ==========================================
 	DEBUGINFO("============== DECLARE ================");

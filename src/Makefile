@@ -28,15 +28,19 @@ CPPFILES_STATE=state/state.cpp state/state0.cpp state/state1.cpp \
 	state/state34.cpp state/state35.cpp state/state36.cpp state/state37.cpp \
 	state/state38.cpp state/state39.cpp state/state40.cpp state/state41.cpp \
 	state/state42.cpp state/state43.cpp
-CPPFILES_SYMBOL=symbol/aff.cpp symbol/bi.cpp symbol/closeby.cpp symbol/const.cpp \
-	symbol/bd.cpp symbol/d.cpp symbol/divide.cpp symbol/ebin.cpp \
-	symbol/e.cpp symbol/edivide.cpp symbol/eminus.cpp symbol/emult.cpp \
-	symbol/end.cpp symbol/eplus.cpp symbol/eprime.cpp symbol/eq.cpp \
-	symbol/i.cpp symbol/id.cpp symbol/idl.cpp symbol/ini.cpp symbol/inil.cpp \
-	symbol/minus.cpp symbol/mult.cpp symbol/num.cpp symbol/openby.cpp \
-	symbol/p.cpp symbol/plus.cpp symbol/pv.cpp symbol/read.cpp symbol/f.cpp \
-	symbol/t.cpp symbol/var.cpp symbol/vir.cpp symbol/write.cpp \
-	symbol/symbol.cpp
+CPPFILES_SYMBOL=symbol/aff.cpp symbol/bd.cpp symbol/bditer.cpp symbol/bi.cpp \
+	symbol/biiter.cpp symbol/closeby.cpp symbol/const.cpp symbol/dconst.cpp \
+	symbol/d.cpp symbol/divide.cpp symbol/dvar.cpp symbol/ebin.cpp symbol/e.cpp \
+	symbol/eminus.cpp symbol/end.cpp symbol/eplus.cpp symbol/eprime.cpp symbol/eq.cpp \
+	symbol/et.cpp symbol/f.cpp symbol/fid.cpp symbol/fnum.cpp symbol/fpar.cpp \
+	symbol/i.cpp symbol/id.cpp symbol/idl.cpp symbol/idliter.cpp symbol/iecrire.cpp \
+	symbol/iaff.cpp symbol/ilire.cpp symbol/ini.cpp symbol/inil.cpp symbol/iniliter.cpp \
+	symbol/minus.cpp symbol/mult.cpp symbol/num.cpp symbol/openby.cpp symbol/p.cpp \
+	symbol/plus.cpp symbol/pv.cpp symbol/read.cpp symbol/symbol.cpp symbol/tbin.cpp \
+	symbol/t.cpp symbol/tdivide.cpp symbol/tf.cpp symbol/tmult.cpp symbol/var.cpp \
+	symbol/vir.cpp symbol/write.cpp
+
+
 CPPFILES_INTERPRETER=interpreter/affectation.cpp interpreter/const.cpp \
 	interpreter/declaration.cpp interpreter/instruction.cpp \
 	interpreter/interpreter.cpp interpreter/read.cpp interpreter/var.cpp \

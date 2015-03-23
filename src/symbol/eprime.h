@@ -11,19 +11,17 @@
 
 #include <string>
 #include "symbol.h"
-// RB
+
+// Rule include :
 #include "e.h"
 
 class S_Eprime : public Symbol
 {
 private:
 protected:
-    S_Eprime(Symbols s);
-    // RB
     S_E * e;
 public:
-    S_Eprime();
-    S_Eprime(S_E*);
+    S_Eprime(S_E* e);
     virtual ~S_Eprime();
 };
 

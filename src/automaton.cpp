@@ -16,41 +16,41 @@
 #include <vector>
 #include <iterator>
 
+#include "symbol/p.h"
+#include "symbol/bditer.h"
+#include "symbol/biiter.h"
+#include "symbol/dvar.h"
+#include "symbol/idliter.h"
+#include "symbol/dconst.h"
+#include "symbol/iniliter.h"
+#include "symbol/ini.h"
+#include "symbol/iecrire.h"
+#include "symbol/iaff.h"
+#include "symbol/ilire.h"
+#include "symbol/eprime.h"
+#include "symbol/eplus.h"
+#include "symbol/eminus.h"
+#include "symbol/et.h"
+#include "symbol/tmult.h"
+#include "symbol/tdivide.h"
+#include "symbol/tf.h"
+#include "symbol/fpar.h"
+#include "symbol/fid.h"
+#include "symbol/fnum.h"
+
 using namespace std;
 
+const unsigned int RULES[RULES_NUMBER] =
+    {2, 3, 3, 3, 3, 3, 3, 3, 2, 3, 2, 1, 3, 3, 1, 3, 3, 1, 3, 1, 1, 0, 0, 0, 0};
+
 // Automaton constructor
-Automaton::Automaton(Interpreter *interp,Lexer *lex) 
+Automaton::Automaton(Lexer *lex)
+    : lexer(lex), currentSymbol(0)
 {
-	this->interpreter = interp;
-	this->lexer = lex;
 	// Stack initialization :
 	stateStack.push(new State0());
-	rules = new pair<Symbols,int>[RULES_NUMBER];
-	rules[0] = make_pair(P,2);
-	rules[1] = make_pair(BD,3);
-	rules[2] = make_pair(BI,3);
-	rules[3] = make_pair(D,3);
-	rules[4] = make_pair(IDL,3);
-	rules[5] = make_pair(D,3);
-	rules[6] = make_pair(INIL,3);
-	rules[7] = make_pair(INI,3);
-	rules[8] = make_pair(I,2);
-	rules[9] = make_pair(I,3);
-	rules[10] = make_pair(I,2);
-	rules[11] = make_pair(EPRIME,1);
-	rules[12] = make_pair(E,3);
-	rules[13] = make_pair(E,3);
-	rules[14] = make_pair(E,1);
-	rules[15] = make_pair(T,3);
-	rules[16] = make_pair(T,3);
-	rules[17] = make_pair(T,1);
-	rules[18] = make_pair(END,3);
-	rules[19] = make_pair(END,1);
-	rules[20] = make_pair(END,1);
-	rules[21] = make_pair(BD,1);
-	rules[22] = make_pair(BI,1);
-	rules[23] = make_pair(IDL,1);
-	rules[24] = make_pair(INIL,1);
+    
+    // Read the first token :
 }
 
 Automaton::~Automaton()
@@ -68,46 +68,174 @@ Automaton::~Automaton()
 	}
 }
 
-void Automaton::read()
+Symbol* Automaton::getDerivationTree()
 {
-	//Prends le prochain jeton (voir si l'automate a déjà toute la liste ou pas)
-	//Appelle la transition de l'état courant (sommet de la pile) avec le symnbole lu
+    // Read should simply change the current token
+    
 	std::vector<Symbol*> symbols;
-	// TODO use lexer
+    
 	while(this->lexer->hasNext()) 
 	{		
-		symbols = this->lexer->getSymbols();
+		symbols = this->lexer->getSymbols().first;  // second is for errors
 		for(std::vector<Symbol*>::iterator it = symbols.begin(); it != symbols.end(); ++it) 
 		{
-		    this->stateStack.top()->transition(*this,*it);
+            currentSymbol = *it;
+		    this->stateStack.top()->transition(*this,currentSymbol);
 		}
 	}
+    
+    return symbolStack.top();
 }
 
 void Automaton::shift(Symbol * symbol, State * state)
 {
+    // Push the elements on the stacks
     symbolStack.push(symbol);
     stateStack.push(state);
+    
+    // Go read the next token
 }
 
 void Automaton::reduce(int numRule)
 {
-    for (int i = 0; i < rules[numRule].second; i++)
+    // Pop elements from the stacks
+    std::deque<Symbol*> * symbols = new std::deque<Symbol*>();
+    for (unsigned int i = 0; i < RULES[numRule]; i++)
     {
+        symbols->push_front(symbolStack.top());
         symbolStack.pop();
+        delete stateStack.top();
         stateStack.pop();
     }
     
+    // Push the new symbol
+    Symbol * symbol = getSymbol(numRule, *symbols);
+    symbolStack.push(symbol);
+    
+    // Push the new state
+    State * state = stateStack.top()->getNextState(symbol);
+    stateStack.push(state);
+    
+    // Do not read the next token
+    stateStack.top()->transition(*this,currentSymbol);
 }
 
 void Automaton::error()
 {
-    
+    // Go read the next token
 }
 
 void Automaton::accept()
 {
-    
+    // Do nothing, just end the process
 }
 
+Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
+{
+    if (symbols.size() != RULES[numRule-1])
+    {
+        // ERROR CASE 
+    }
+    
+    switch (numRule)
+    {
+        case 1:  // P → BD BI
+            return new S_P((S_Bd*)symbols[0], (S_Bi*)symbols[1]);
+            
+        case 2:  // BD → BD D pv
+            delete symbols[2];
+            return new S_Bditer((S_Bd*)symbols[0], (S_D*)symbols[1]);
+            
+        case 3:  // BI → BI I pv
+            delete symbols[2];
+            return new S_Biiter((S_Bi*)symbols[0], (S_I*)symbols[1]);
+            
+        case 4:  // D → var id IDL
+            delete symbols[0];
+            return new S_Dvar((S_Id*)symbols[1], (S_Idl*)symbols[2]);
+            
+        case 5:  // IDL → IDL vir id
+            delete symbols[1];
+            return new S_Idliter((S_Idl*)symbols[0], (S_Id*)symbols[2]);
+            
+        case 6:  // D → const INI INIL
+            delete symbols[0];
+            return new S_Dconst((S_Ini*)symbols[1], (S_Inil*)symbols[2]);
+            
+        case 7:  // INIL → INIL vir INI
+            delete symbols[1];
+            return new S_Iniliter((S_Inil*)symbols[0], (S_Ini*)symbols[2]);
+            
+        case 8:  // INI → id eg num
+            delete symbols[1];
+            return new S_Ini((S_Id*)symbols[0], (S_Num*)symbols[2]);
+            
+        case 9:  // I → ecrire E'
+            delete symbols[0];
+            return new S_Iecrire((S_Eprime*)symbols[1]);
+            
+        case 10: // I → id aff E'
+            delete symbols[1];
+            return new S_Iaff((S_Id*)symbols[0], (S_Eprime*)symbols[2]);
+            
+        case 11: // I → lire id
+            delete symbols[0];
+            return new S_Ilire((S_Id*)symbols[1]);
+            
+        case 12: // E' → E
+            return new S_Eprime((S_E*)symbols[0]);
+            
+        case 13: // E → E + T
+            delete symbols[1];
+            return new S_Eplus((S_E*)symbols[0], (S_T*)symbols[2]);
+            
+        case 14: // E → E - T
+            delete symbols[1];
+            return new S_Eminus((S_E*)symbols[0], (S_T*)symbols[2]);
+            
+        case 15: // E → T
+            return new S_Et((S_T*)symbols[0]);
+            
+        case 16: // T → T * F
+            delete symbols[1];
+            return new S_Tmult((S_T*)symbols[0], (S_F*)symbols[2]);
+            
+        case 17: // T → T / F
+            delete symbols[1];
+            return new S_Tdivide((S_T*)symbols[0], (S_F*)symbols[2]);
+            
+        case 18: // T → F
+            return new S_Tf((S_F*)symbols[0]);
+            
+        case 19: // F → (E)
+            delete symbols[0];
+            delete symbols[2];
+            return new S_Fpar((S_E*)symbols[1]);
+            
+        case 20: // F → id
+            return new S_Fid((S_Id*)symbols[0]);
+            
+        case 21: // F → num
+            return new S_Fnum((S_Num*)symbols[0]);
+            
+        case 22: // BD → ɛ
+            return new S_Bd();
+            
+        case 23: // BI → ɛ
+            return new S_Bi();
+            
+        case 24: // IDL → ɛ
+            return new S_Idl();
+            
+        case 25: // INIL → ɛ
+            return new S_Inil();
+            
+        default:
+            break;
+    }
+    
+    // ERROR CASE
+    
+    return 0;
+}
 

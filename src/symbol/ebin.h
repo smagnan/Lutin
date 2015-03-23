@@ -12,15 +12,19 @@
 #include <string>
 #include "e.h"
 
+// Rule include :
+#include "t.h"
+
 class S_Ebin : public S_E
 {
 private:
 protected:
-    S_Ebin(Symbols s);
-    S_E left_expr;
-    S_E right_expr;
-public:
     S_Ebin();
+    S_E * e;
+    S_T * t;
+    
+public:
+    S_Ebin(S_E* e, S_T* t);
     virtual ~S_Ebin();
 };
 

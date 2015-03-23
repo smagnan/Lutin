@@ -8,13 +8,8 @@
 
 #include "eminus.h"
 
-S_Eminus::S_Eminus(Symbols s)
-    : S_Ebin(s)
-{
-}
-
-S_Eminus::S_Eminus()
-    : S_Ebin()
+S_Eminus::S_Eminus(S_E* e, S_T* t)
+    : S_Ebin(e, t)
 {
 }
 
