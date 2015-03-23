@@ -52,7 +52,7 @@ int main( int argc, const char* argv[] )
 	DEBUGINFO("Creating FSM");
 	Automaton* automaton 		= new Automaton(lexer);	
     DEBUGINFO("Get the derivation tree");
-    Symbol* derivationTree = automaton->getDerivationTree();
+    Symbol* derivationTree 		= automaton->getDerivationTree();
     
 	//=================================== TEST STUFF ==========================================
 	DEBUGINFO("============== DECLARE ================");
