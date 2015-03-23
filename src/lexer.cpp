@@ -5,7 +5,7 @@
 ########################################################################*/
 
 #include "lexer.h"
-
+#include "debugger.h"
 #include <iostream>
 
 //-------------------------------------- Constructors - destructors :
@@ -50,6 +50,7 @@ Lexer::Lexer()
     
     // Compile Regex:
     main_regex.assign(regex);
+    DEBUGINFO("Lexer::Regex ready for use");
 }
 
 Lexer::~Lexer()
@@ -70,10 +71,40 @@ bool Lexer::setProg(std::string prog)
         {
             progLines.push_back(line);   
         }
+        
+        /*
+        // let's see what's inside the prog :
+        for(std::vector<std::string>::iterator i = progLines.begin(); i != progLines.end(); i++)
+        {
+            std::cout << *i << std::endl;
+        }
+        */
+
+        // remove empty lines :
+        std::vector<std::string>::iterator j = progLines.begin();
+        while(j != progLines.end())
+        {
+            if ((*j).empty())
+                j = progLines.erase(j);
+            else
+                ++j;
+        }
+
+        /*
+        // let's see what's inside the prog :
+        int c = 1;
+        for(std::vector<std::string>::iterator i = progLines.begin(); i != progLines.end(); i++)
+        {
+            std::cout << "Line :" << c++ << " : " << *i << std::endl;
+        }
+        */
+
         // set iterators to on newly filled vector
         progStart = progLines.begin();
-        progEnd = progLines.end()-1;
-        
+        std::cout << "progStart points to : " << *progStart << std::endl;
+        progEnd = progLines.end()-1;       
+        std::cout << "progEnd points to : " << *progEnd << std::endl;
+        DEBUGINFO("Lexer::Program Set");
         return true;
     }
     return false;
@@ -82,6 +113,7 @@ bool Lexer::setProg(std::string prog)
 
 std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
 {
+    DEBUGINFO("Lexer::Start of getSymbols");
     // clear error vector
     if (!matchErr.empty())
         matchErr.clear();
@@ -94,6 +126,9 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
         regex_callback(*m1);
         ++m1;
     }
+
+    DEBUGINFO("Lexer::getSymbols() will return symbols from :");
+    std::cout << (*progStart) << std::endl;
 
     // increment iterator (for next loop)
     progStart++;
@@ -157,13 +192,24 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
                 break;
         }
         ++b;
-    }
+    } 
+    DEBUGINFO("Lexer::End of getSymbols()");
     return make_pair(lineSymbols, matchErr); 
 }
 
 bool Lexer::hasNext()
 {
-    return progStart != progEnd;
+    DEBUGINFO("Lexer::Call to hasNext()");
+    if (progStart != progEnd+1)
+    {
+        DEBUGINFO("Lexer::hasNext() - more lines to compute");
+        return true;
+    }
+    else
+    {  
+        DEBUGINFO("Lexer::hasNext() - no other line to compute");
+        return false;
+    }
 }
 
 
