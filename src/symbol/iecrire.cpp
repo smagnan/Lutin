@@ -16,3 +16,8 @@ S_Iecrire::S_Iecrire(S_Eprime* eprime)
 S_Iecrire::~S_Iecrire()
 {
 }
+
+std::string S_Iecrire::print()
+{
+    return "ecrire" + eprime->print();
+}

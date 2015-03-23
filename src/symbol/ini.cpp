@@ -16,3 +16,8 @@ S_Ini::S_Ini(S_Id* id, S_Num* num)
 S_Ini::~S_Ini()
 {
 }
+
+std::string S_Ini::print()
+{
+    return id->print() + " = " + num->print();
+}

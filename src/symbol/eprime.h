@@ -9,7 +9,6 @@
 #ifndef S_EPRIME_H
 #define S_EPRIME_H
 
-#include <string>
 #include "symbol.h"
 
 // Rule include :
@@ -23,6 +22,7 @@ protected:
 public:
     S_Eprime(S_E* e);
     virtual ~S_Eprime();
+    virtual std::string print();
 };
 
 #endif // S_EPRIME_H

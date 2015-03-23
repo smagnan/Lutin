@@ -16,3 +16,8 @@ S_Fpar::S_Fpar(S_E* e)
 S_Fpar::~S_Fpar()
 {
 }
+
+std::string S_Fpar::print()
+{
+    return "(" + e->print() + ")";
+}

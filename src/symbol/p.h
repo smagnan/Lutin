@@ -9,7 +9,6 @@
 #ifndef S_P_H
 #define S_P_H
 
-#include <string>
 #include "symbol.h"
 
 // Rule include :
@@ -25,6 +24,7 @@ protected:
 public:
     S_P(S_Bd* bd,S_Bi* bi);
     virtual ~S_P();
+    virtual std::string print();
 };
 
 #endif // S_P_H

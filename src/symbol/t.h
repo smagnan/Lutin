@@ -9,7 +9,6 @@
 #ifndef S_T_H
 #define S_T_H
 
-#include <string>
 #include "symbol.h"
 
 class S_T : public Symbol
@@ -19,6 +18,7 @@ protected:
 public:
     S_T();
     virtual ~S_T();
+    virtual std::string print();
 };
 
 #endif // S_T_H

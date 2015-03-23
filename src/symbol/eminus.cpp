@@ -16,3 +16,8 @@ S_Eminus::S_Eminus(S_E* e, S_T* t)
 S_Eminus::~S_Eminus()
 {
 }
+
+std::string S_Eminus::print()
+{
+    return e->print() + " - " + t->print();
+}

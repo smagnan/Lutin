@@ -9,7 +9,6 @@
 #ifndef S_EPLUS_H
 #define S_EPLUS_H
 
-#include <string>
 #include "ebin.h"
 
 // Rule include :
@@ -22,6 +21,7 @@ protected:
 public:
     S_Eplus(S_E* e, S_T* t);
     virtual ~S_Eplus();
+    virtual std::string print();
 };
 
 #endif // S_EPLUS_H

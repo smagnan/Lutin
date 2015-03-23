@@ -16,3 +16,8 @@ S_Et::S_Et(S_T* t)
 S_Et::~S_Et()
 {
 }
+
+std::string S_Et::print()
+{
+    return t->print();
+}

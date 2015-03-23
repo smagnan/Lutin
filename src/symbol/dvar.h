@@ -9,7 +9,6 @@
 #ifndef S_DVAR_H
 #define S_DVAR_H
 
-#include <string>
 #include "d.h"
 
 // Rule include :
@@ -25,6 +24,7 @@ protected:
 public:
     S_Dvar(S_Id* id, S_Idl* idl);
     virtual ~S_Dvar();
+    virtual std::string print();
 };
 
 #endif // S_DVAR_H

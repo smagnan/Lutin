@@ -9,7 +9,6 @@
 #ifndef S_IECRIRE_H
 #define S_IECRIRE_H
 
-#include <string>
 #include "i.h"
 
 // Rule include :
@@ -23,6 +22,7 @@ protected:
 public:
     S_Iecrire(S_Eprime* eprime);
     virtual ~S_Iecrire();
+    virtual std::string print();
 };
 
 #endif // S_IECRIRE_H

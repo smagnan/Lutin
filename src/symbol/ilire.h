@@ -9,7 +9,6 @@
 #ifndef S_ILIRE_H
 #define S_ILIRE_H
 
-#include <string>
 #include "i.h"
 
 // Rule include :
@@ -23,6 +22,7 @@ protected:
 public:
     S_Ilire(S_Id* id);
     virtual ~S_Ilire();
+    virtual std::string print();
 };
 
 #endif // S_ILIRE_H

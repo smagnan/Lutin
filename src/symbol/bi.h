@@ -9,7 +9,6 @@
 #ifndef S_BI_H
 #define S_BI_H
 
-#include <string>
 #include "symbol.h"
 
 class S_Bi : public Symbol
@@ -19,6 +18,7 @@ protected:
 public:
     S_Bi();
     virtual ~S_Bi();
+    virtual std::string print();
 };
 
 #endif // S_BI_H

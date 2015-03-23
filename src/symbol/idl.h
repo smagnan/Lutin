@@ -9,7 +9,6 @@
 #ifndef S_IDL_H
 #define S_IDL_H
 
-#include <string>
 #include "symbol.h"
 
 class S_Idl : public Symbol
@@ -19,6 +18,7 @@ protected:
 public:
     S_Idl();
     virtual ~S_Idl();
+    virtual std::string print();
 };
 
 #endif // S_IDL_H

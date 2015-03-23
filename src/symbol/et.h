@@ -9,7 +9,6 @@
 #ifndef S_ET_H
 #define S_ET_H
 
-#include <string>
 #include "e.h"
 
 // Rule include :
@@ -23,6 +22,7 @@ protected:
 public:
     S_Et(S_T* t);
     virtual ~S_Et();
+    virtual std::string print();
 };
 
 #endif // S_ET_H

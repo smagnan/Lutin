@@ -8,11 +8,6 @@
 
 #include "read.h"
 
-S_Read::S_Read(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Read::S_Read()
     : Symbol(READ)
 {
@@ -20,4 +15,9 @@ S_Read::S_Read()
 
 S_Read::~S_Read()
 {
+}
+
+std::string S_Read::print()
+{
+    return "read";
 }

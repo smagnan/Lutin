@@ -9,7 +9,6 @@
 #ifndef S_TF_H
 #define S_TF_H
 
-#include <string>
 #include "t.h"
 
 // Rule include :
@@ -23,6 +22,7 @@ protected:
 public:
     S_Tf(S_F * f);
     virtual ~S_Tf();
+    virtual std::string print();
 };
 
 #endif // S_TF_H

@@ -9,7 +9,6 @@
 #ifndef S_FPAR_H
 #define S_FPAR_H
 
-#include <string>
 #include "f.h"
 
 // Rule include :
@@ -23,6 +22,7 @@ protected:
 public:
     S_Fpar(S_E* e);
     virtual ~S_Fpar();
+    virtual std::string print();
 };
 
 #endif // S_FPAR_H

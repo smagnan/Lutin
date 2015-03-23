@@ -16,3 +16,8 @@ S_Biiter::S_Biiter(S_Bi* bi, S_I* i)
 S_Biiter::~S_Biiter()
 {
 }
+
+std::string S_Biiter::print()
+{
+    return bi->print() + i->print() + ";\n";
+}

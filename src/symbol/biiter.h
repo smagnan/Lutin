@@ -9,7 +9,6 @@
 #ifndef S_BIITER_H
 #define S_BIITER_H
 
-#include <string>
 #include "bi.h"
 
 // Rule include :
@@ -25,6 +24,7 @@ protected:
 public:
     S_Biiter(S_Bi* bi, S_I* i);
     virtual ~S_Biiter();
+    virtual std::string print();
 };
 
 #endif // S_BIITER_H

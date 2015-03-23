@@ -16,3 +16,8 @@ S_Iniliter::S_Iniliter(S_Inil* inil, S_Ini* ini)
 S_Iniliter::~S_Iniliter()
 {
 }
+
+std::string S_Iniliter::print()
+{
+    return inil->print() + ", " + ini->print();
+}

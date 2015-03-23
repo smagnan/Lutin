@@ -8,11 +8,6 @@
 
 #include "num.h"
 
-S_Num::S_Num(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Num::S_Num()
     : Symbol(NUM), value(0)
 {
@@ -35,4 +30,11 @@ double S_Num::getValue()
 void S_Num::setValue(double v)
 {
     value = v;
+}
+
+std::string S_Num::print()
+{
+    std::ostringstream strs;
+    strs << value;
+    return strs.str();
 }

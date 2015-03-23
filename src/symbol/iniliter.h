@@ -9,7 +9,6 @@
 #ifndef S_INILITER_H
 #define S_INILITER_H
 
-#include <string>
 #include "inil.h"
 
 // Rule include :
@@ -24,6 +23,7 @@ protected:
 public:
     S_Iniliter(S_Inil* inil, S_Ini* ini);
     virtual ~S_Iniliter();
+    virtual std::string print();
 };
 
 #endif // S_INILITER_H

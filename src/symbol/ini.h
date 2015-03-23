@@ -9,7 +9,6 @@
 #ifndef S_INI_H
 #define S_INI_H
 
-#include <string>
 #include "symbol.h"
 
 // Rule include :
@@ -25,6 +24,7 @@ protected:
 public:
     S_Ini(S_Id* id, S_Num* num);
     virtual ~S_Ini();
+    virtual std::string print();
 };
 
 #endif // S_INI_H

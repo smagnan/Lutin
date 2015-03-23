@@ -9,7 +9,6 @@
 #ifndef S_IAFF_H
 #define S_IAFF_H
 
-#include <string>
 #include "i.h"
 
 // Rule include :
@@ -25,6 +24,7 @@ protected:
 public:
     S_Iaff(S_Id* id, S_Eprime* eprime);
     virtual ~S_Iaff();
+    virtual std::string print();
 };
 
 #endif // S_IID_H

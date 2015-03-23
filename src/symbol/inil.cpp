@@ -16,3 +16,8 @@ S_Inil::S_Inil()
 S_Inil::~S_Inil()
 {
 }
+
+std::string S_Inil::print()
+{
+    return "";
+}

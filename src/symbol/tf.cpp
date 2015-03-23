@@ -16,3 +16,8 @@ S_Tf::S_Tf(S_F * f)
 S_Tf::~S_Tf()
 {
 }
+
+std::string S_Tf::print()
+{
+    return f->print();
+}

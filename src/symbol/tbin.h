@@ -9,7 +9,6 @@
 #ifndef S_TBIN_H
 #define S_TBIN_H
 
-#include <string>
 #include "t.h"
 
 // Rule include :
@@ -20,13 +19,13 @@ class S_Tbin : public S_T
 {
 private:
 protected:
-    S_Tbin(Symbols s);
     S_T * t;
     S_F * f;
     
 public:
     S_Tbin(S_T* t, S_F* f);
     virtual ~S_Tbin();
+    virtual std::string print();
 };
 
 #endif // S_TBIN_H

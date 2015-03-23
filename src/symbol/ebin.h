@@ -9,7 +9,6 @@
 #ifndef S_EBIN_H
 #define S_EBIN_H
 
-#include <string>
 #include "e.h"
 
 // Rule include :
@@ -26,6 +25,7 @@ protected:
 public:
     S_Ebin(S_E* e, S_T* t);
     virtual ~S_Ebin();
+    virtual std::string print();
 };
 
 #endif // S_EBIN_H

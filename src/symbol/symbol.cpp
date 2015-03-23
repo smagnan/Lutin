@@ -30,3 +30,7 @@ Symbol::operator int() const
     return id;
 }
 
+std::string Symbol::print()
+{
+    return "";
+}

@@ -9,7 +9,6 @@
 #ifndef S_FNUM_H
 #define S_FNUM_H
 
-#include <string>
 #include "f.h"
 
 // Rule include :
@@ -23,6 +22,7 @@ protected:
 public:
     S_Fnum(S_Num* num);
     virtual ~S_Fnum();
+    virtual std::string print();
 };
 
 #endif // S_FNUM_H

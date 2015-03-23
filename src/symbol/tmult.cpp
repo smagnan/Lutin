@@ -16,3 +16,8 @@ S_Tmult::S_Tmult(S_T* t, S_F* f)
 S_Tmult::~S_Tmult()
 {
 }
+
+std::string S_Tmult::print()
+{
+    return t->print() + " * " + f->print();
+}

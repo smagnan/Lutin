@@ -16,3 +16,8 @@ S_E::S_E()
 S_E::~S_E()
 {
 }
+
+std::string S_E::print()
+{
+    return "";
+}
