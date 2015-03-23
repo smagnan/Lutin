@@ -75,7 +75,7 @@ void Automaton::read()
 	std::vector<Symbol*> symbols;
 	// TODO use lexer
 	while(this->lexer->hasNext()) 
-	{
+	{		
 		symbols = this->lexer->getSymbols();
 		for(std::vector<Symbol*>::iterator it = symbols.begin(); it != symbols.end(); ++it) 
 		{
