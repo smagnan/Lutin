@@ -8,8 +8,8 @@
 
 #include "et.h"
 
-S_Et::S_Et(S_E* e)
-    : S_E(), e(e)
+S_Et::S_Et(S_T* t)
+    : S_E(), t(t)
 {
 }
 

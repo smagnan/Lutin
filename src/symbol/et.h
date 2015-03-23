@@ -12,13 +12,16 @@
 #include <string>
 #include "e.h"
 
+// Rule include :
+#include "t.h"
+
 class S_Et : public S_E
 {
 private:
 protected:
-    S_E * e;
+    S_T * t;
 public:
-    S_Et(S_E* e);
+    S_Et(S_T* t);
     virtual ~S_Et();
 };
 

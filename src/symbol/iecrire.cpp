@@ -8,8 +8,8 @@
 
 #include "iecrire.h"
 
-S_Iecrire::S_Iecrire(S_Write* write)
-    : S_I(), write(write)
+S_Iecrire::S_Iecrire(S_Eprime* eprime)
+    : S_I(), eprime(eprime)
 {
 }
 

@@ -11,14 +11,16 @@
 
 #include <string>
 #include "idl.h"
+#include "id.h"
 
 class S_Idliter : public S_Idl
 {
 private:
 protected:
     S_Idl * idl;
+    S_Id * id;
 public:
-    S_Idliter(S_Idl* idl);
+    S_Idliter(S_Idl* idl, S_Id* id);
     virtual ~S_Idliter();
 };
 

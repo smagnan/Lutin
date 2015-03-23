@@ -20,6 +20,8 @@
 
 #define RULES_NUMBER 25
 
+extern const unsigned int RULES[RULES_NUMBER];
+
 class State;
 class Automaton
 {

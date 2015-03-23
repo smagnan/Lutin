@@ -13,15 +13,15 @@
 #include "i.h"
 
 // Rule include :
-#include "write.h"
+#include "eprime.h"
 
 class S_Iecrire : public S_I
 {
 private:
 protected:
-    S_Write * write;
+    S_Eprime * eprime;
 public:
-    S_Iecrire(S_Write* write);
+    S_Iecrire(S_Eprime* eprime);
     virtual ~S_Iecrire();
 };
 

@@ -1,18 +1,18 @@
 // ---------------------------------------------
-//  iid.cpp
+//  iaff.cpp
 //
 //	Created	 :
 //		by 	 : Pierre GODARD
 //
 // ---------------------------------------------
 
-#include "iid.h"
+#include "iaff.h"
 
-S_Iid::S_Iid(S_Id * id)
-    : S_I(), id(id)
+S_Iaff::S_Iaff(S_Id * id, S_Eprime* eprime)
+    : S_I(), id(id), eprime(eprime)
 {
 }
 
-S_Iid::~S_Iid()
+S_Iaff::~S_Iaff()
 {
 }

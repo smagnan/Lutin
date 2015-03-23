@@ -34,7 +34,7 @@ CPPFILES_SYMBOL=symbol/aff.cpp symbol/bd.cpp symbol/bditer.cpp symbol/bi.cpp \
 	symbol/eminus.cpp symbol/end.cpp symbol/eplus.cpp symbol/eprime.cpp symbol/eq.cpp \
 	symbol/et.cpp symbol/f.cpp symbol/fid.cpp symbol/fnum.cpp symbol/fpar.cpp \
 	symbol/i.cpp symbol/id.cpp symbol/idl.cpp symbol/idliter.cpp symbol/iecrire.cpp \
-	symbol/iid.cpp symbol/ilire.cpp symbol/ini.cpp symbol/inil.cpp symbol/iniliter.cpp \
+	symbol/iaff.cpp symbol/ilire.cpp symbol/ini.cpp symbol/inil.cpp symbol/iniliter.cpp \
 	symbol/minus.cpp symbol/mult.cpp symbol/num.cpp symbol/openby.cpp symbol/p.cpp \
 	symbol/plus.cpp symbol/pv.cpp symbol/read.cpp symbol/symbol.cpp symbol/tbin.cpp \
 	symbol/t.cpp symbol/tdivide.cpp symbol/tf.cpp symbol/tmult.cpp symbol/var.cpp \

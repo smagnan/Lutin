@@ -13,15 +13,15 @@
 #include "i.h"
 
 // Rule include :
-#include "read.h"
+#include "id.h"
 
 class S_Ilire : public S_I
 {
 private:
 protected:
-    S_Read * read;
+    S_Id * id;
 public:
-    S_Ilire(S_Read* read);
+    S_Ilire(S_Id* id);
     virtual ~S_Ilire();
 };
 
