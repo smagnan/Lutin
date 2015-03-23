@@ -19,8 +19,10 @@
 class Read : public Instruction
 {
 private:
-	std::streambuf * buf;
-	std::ifstream in_f;
+	std::streambuf * buf; // TODO move?
+	std::ifstream in_f;  // TODO move?
+	//std::istream in;
+	Var * var;
 protected:
 public:
     Read();
@@ -28,7 +30,7 @@ public:
     // isFile: true if we use a file for the input
     // filename: file name + path used for input
     // Var in which we put the result
-    void setAttributes(bool isFile,std::string filename,Var variable); 
+    void setAttributes(bool isFile,std::string filename,Var * variable); 
     int execute();
 };
  

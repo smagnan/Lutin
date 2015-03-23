@@ -21,7 +21,7 @@ Read::~Read()
 
 }
 
-void Read::setAttributes(bool isFile,std::string filename,Var variable)
+void Read::setAttributes(bool isFile,std::string filename,Var * variable)
 {
 	if(isFile) 
 	{
@@ -32,7 +32,9 @@ void Read::setAttributes(bool isFile,std::string filename,Var variable)
 	{
 	    buf = std::cin.rdbuf();
 	}
-	std::istream in(buf);
+	std::istream in_stream(buf);
+	//in = in_stream;
+	this->var = variable;
 }
 
 int Read::execute()
@@ -41,7 +43,8 @@ int Read::execute()
 		return EXEC_RET_NOTSET;
 	try 
 	{
-		// TODO exec code here 
+		// TODO exec code here
+		//this->in >> this->var;
 	}
 	catch(std::exception &e) 
 	{
