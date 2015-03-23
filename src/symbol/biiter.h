@@ -9,7 +9,6 @@
 #ifndef S_BIITER_H
 #define S_BIITER_H
 
-#include <string>
 #include "bi.h"
 
 // Rule include :

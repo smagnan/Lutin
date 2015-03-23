@@ -9,7 +9,6 @@
 #ifndef S_TDIVIDE_H
 #define S_TDIVIDE_H
 
-#include <string>
 #include "tbin.h"
 
 class S_Tdivide : public S_Tbin

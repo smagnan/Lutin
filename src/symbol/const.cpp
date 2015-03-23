@@ -8,11 +8,6 @@
 
 #include "const.h"
 
-S_Const::S_Const(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Const::S_Const()
     : Symbol(CONST)
 {

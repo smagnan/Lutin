@@ -9,7 +9,6 @@
 #ifndef S_IDL_H
 #define S_IDL_H
 
-#include <string>
 #include "symbol.h"
 
 class S_Idl : public Symbol

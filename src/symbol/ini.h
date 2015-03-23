@@ -9,7 +9,6 @@
 #ifndef S_INI_H
 #define S_INI_H
 
-#include <string>
 #include "symbol.h"
 
 // Rule include :

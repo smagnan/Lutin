@@ -9,7 +9,6 @@
 #ifndef S_INILITER_H
 #define S_INILITER_H
 
-#include <string>
 #include "inil.h"
 
 // Rule include :

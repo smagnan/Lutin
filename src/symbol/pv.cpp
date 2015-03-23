@@ -8,11 +8,6 @@
 
 #include "pv.h"
 
-S_Pv::S_Pv(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Pv::S_Pv()
     : Symbol(PV)
 {

@@ -9,7 +9,6 @@
 #ifndef S_DCONST_H
 #define S_DCONST_H
 
-#include <string>
 #include "d.h"
 
 // Rule include :

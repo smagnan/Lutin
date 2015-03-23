@@ -8,11 +8,6 @@
 
 #include "eq.h"
 
-S_Eq::S_Eq(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Eq::S_Eq()
     : Symbol(EQ)
 {

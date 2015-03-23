@@ -9,7 +9,6 @@
 #ifndef S_IAFF_H
 #define S_IAFF_H
 
-#include <string>
 #include "i.h"
 
 // Rule include :

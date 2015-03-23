@@ -8,11 +8,6 @@
 
 #include "closeby.h"
 
-S_Closeby::S_Closeby(Symbols s)
-    : Symbol(s)
-{
-}
-
 S_Closeby::S_Closeby()
     : Symbol(CLOSEBY)
 {

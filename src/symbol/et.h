@@ -9,7 +9,6 @@
 #ifndef S_ET_H
 #define S_ET_H
 
-#include <string>
 #include "e.h"
 
 // Rule include :
