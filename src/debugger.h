@@ -15,7 +15,7 @@ extern Printer global_debug_printer;
 #define DEBUGERR(err) global_debug_printer.printerr("[Debug] ",err);
 #define DEBUGWARN(warn) global_debug_printer.printwarn("[Debug] ",warn);
 #define DEBUGINFO(info) global_debug_printer.printinfo("[Debug] ",info);
-#define TRACE(flux) std::cout << flux << std::endl;
+#define TRACE(flux) std::cout << flux;
 #else
 #define DEBUGERR(err)
 #define DEBUGWARN(warn)
