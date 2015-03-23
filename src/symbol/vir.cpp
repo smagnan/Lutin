@@ -21,3 +21,8 @@ S_Vir::S_Vir()
 S_Vir::~S_Vir()
 {
 }
+
+std::string S_Vir::print()
+{
+    return ",";
+}

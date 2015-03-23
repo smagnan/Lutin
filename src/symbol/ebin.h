@@ -26,6 +26,7 @@ protected:
 public:
     S_Ebin(S_E* e, S_T* t);
     virtual ~S_Ebin();
+    virtual std::string print();
 };
 
 #endif // S_EBIN_H

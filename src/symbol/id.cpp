@@ -36,3 +36,8 @@ void S_Id::setValue(std::string v)
 {
     value = v;
 }
+
+std::string S_Id::print()
+{
+    return value;
+}

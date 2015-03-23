@@ -21,3 +21,8 @@ S_Var::S_Var()
 S_Var::~S_Var()
 {
 }
+
+std::string S_Var::print()
+{
+    return "var";
+}

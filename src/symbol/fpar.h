@@ -23,6 +23,7 @@ protected:
 public:
     S_Fpar(S_E* e);
     virtual ~S_Fpar();
+    virtual std::string print();
 };
 
 #endif // S_FPAR_H

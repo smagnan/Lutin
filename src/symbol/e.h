@@ -19,6 +19,7 @@ protected:
 public:
     S_E();
     virtual ~S_E();
+    virtual std::string print();
 };
 
 #endif // S_E_H

@@ -9,7 +9,6 @@
 #ifndef S_NUM_H
 #define S_NUM_H
 
-#include <string>
 #include "symbol.h"
 
 class S_Num : public Symbol
@@ -24,6 +23,7 @@ public:
     virtual ~S_Num();
     double getValue();
     void setValue(double v);
+    virtual std::string print();
 };
 
 #endif // S_NUM_H

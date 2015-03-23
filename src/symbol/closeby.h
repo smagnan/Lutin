@@ -20,6 +20,7 @@ protected:
 public:
     S_Closeby();
     virtual ~S_Closeby();
+    virtual std::string print();
 };
 
 #endif // S_CLOSEBY_H

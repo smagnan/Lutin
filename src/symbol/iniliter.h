@@ -24,6 +24,7 @@ protected:
 public:
     S_Iniliter(S_Inil* inil, S_Ini* ini);
     virtual ~S_Iniliter();
+    virtual std::string print();
 };
 
 #endif // S_INILITER_H

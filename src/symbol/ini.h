@@ -25,6 +25,7 @@ protected:
 public:
     S_Ini(S_Id* id, S_Num* num);
     virtual ~S_Ini();
+    virtual std::string print();
 };
 
 #endif // S_INI_H

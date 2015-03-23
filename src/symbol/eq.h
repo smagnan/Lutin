@@ -20,6 +20,7 @@ protected:
 public:
     S_Eq();
     virtual ~S_Eq();
+    virtual std::string print();
 };
 
 #endif // S_EQ_H

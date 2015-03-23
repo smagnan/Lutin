@@ -16,3 +16,8 @@ S_Eprime::S_Eprime(S_E* e)
 S_Eprime::~S_Eprime()
 {
 }
+
+std::string S_Eprime::print()
+{
+    return e->print();
+}

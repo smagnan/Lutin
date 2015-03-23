@@ -22,6 +22,7 @@ protected:
 public:
     S_Idliter(S_Idl* idl, S_Id* id);
     virtual ~S_Idliter();
+    virtual std::string print();
 };
 
 #endif // S_IDLITER_H

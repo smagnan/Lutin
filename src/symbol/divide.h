@@ -20,6 +20,7 @@ protected:
 public:
     S_Divide();
     virtual ~S_Divide();
+    virtual std::string print();
 };
 
 #endif // S_DIVIDE_H

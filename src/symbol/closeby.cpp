@@ -21,3 +21,8 @@ S_Closeby::S_Closeby()
 S_Closeby::~S_Closeby()
 {
 }
+
+std::string S_Closeby::print()
+{
+    return ")";
+}

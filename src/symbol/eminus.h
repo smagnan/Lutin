@@ -22,6 +22,7 @@ protected:
 public:
     S_Eminus(S_E* e, S_T* t);
     virtual ~S_Eminus();
+    virtual std::string print();
 };
 
 #endif // S_EMINUS_H

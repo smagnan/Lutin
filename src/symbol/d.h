@@ -19,6 +19,7 @@ protected:
 public:
     S_D();
     virtual ~S_D();
+    virtual std::string print();
 };
 
 #endif // S_D_H

@@ -19,6 +19,7 @@ protected:
 public:
     S_Inil();
     virtual ~S_Inil();
+    virtual std::string print();
 };
 
 #endif // S_INIL_H

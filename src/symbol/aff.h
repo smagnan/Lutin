@@ -20,6 +20,7 @@ protected:
 public:
     S_Aff();
     virtual ~S_Aff();
+    virtual std::string print();
 };
 
 #endif // S_AFF_H

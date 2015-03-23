@@ -23,6 +23,7 @@ protected:
 public:
     S_Ilire(S_Id* id);
     virtual ~S_Ilire();
+    virtual std::string print();
 };
 
 #endif // S_ILIRE_H

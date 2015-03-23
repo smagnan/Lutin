@@ -20,6 +20,7 @@ protected:
 public:
     S_Openby();
     virtual ~S_Openby();
+    virtual std::string print();
 };
 
 #endif // S_OPENBY_H

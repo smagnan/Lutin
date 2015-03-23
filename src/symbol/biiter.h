@@ -25,6 +25,7 @@ protected:
 public:
     S_Biiter(S_Bi* bi, S_I* i);
     virtual ~S_Biiter();
+    virtual std::string print();
 };
 
 #endif // S_BIITER_H

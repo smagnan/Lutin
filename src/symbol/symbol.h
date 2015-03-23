@@ -1,6 +1,12 @@
 #ifndef SYMBOL_H
 #define SYMBOL_H
 
+#include <iostream>
+#include <sstream>
+#include <string>
+
+#define UNUSED(expr) do { (void)(expr); } while (0)
+
 enum Symbols
 {
     PLUS,
@@ -45,6 +51,8 @@ class Symbol
 		virtual ~Symbol();
 
 		operator int() const;
+        
+        virtual std::string print();
 
 	protected:
 		int id;

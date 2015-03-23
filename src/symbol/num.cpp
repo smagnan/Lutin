@@ -36,3 +36,10 @@ void S_Num::setValue(double v)
 {
     value = v;
 }
+
+std::string S_Num::print()
+{
+    std::ostringstream strs;
+    strs << value;
+    return strs.str();
+}

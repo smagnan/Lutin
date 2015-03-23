@@ -20,6 +20,7 @@ protected:
 public:
     S_Mult();
     virtual ~S_Mult();
+    virtual std::string print();
 };
 
 #endif // S_MULT_H

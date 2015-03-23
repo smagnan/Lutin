@@ -16,3 +16,8 @@ S_Idl::S_Idl()
 S_Idl::~S_Idl()
 {
 }
+
+std::string S_Idl::print()
+{
+    return "";
+}
