@@ -6,6 +6,8 @@
 
 #include "lexer.h"
 
+#include <iostream>
+
 //-------------------------------------- Constructors - destructors :
 Lexer::Lexer()
 {
@@ -52,14 +54,6 @@ Lexer::Lexer()
 
 Lexer::~Lexer()
 {
-    if (!lineSymbols.empty())
-    {
-        for (unsigned short i = 0; i < lineSymbols.size(); i++)
-        {
-            delete lineSymbols[i];
-        }   
-        lineSymbols.clear();
-    }
 }
 
 //-------------------------------------------------- Public Methods
@@ -78,8 +72,9 @@ bool Lexer::setProg(std::string prog)
         }
         // set iterators to on newly filled vector
         progStart = progLines.begin();
-        progEnd = progLines.end();
-        return true;    
+        progEnd = progLines.end()-1;
+        
+        return true;
     }
     return false;
 }
@@ -87,17 +82,6 @@ bool Lexer::setProg(std::string prog)
 
 std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
 {
-    // If lineSymbols not empty, delete everything inside
-    // and emtpy it
-    if (!lineSymbols.empty())
-    {
-        for (unsigned short i = 0; i < lineSymbols.size(); i++)
-        {
-            delete lineSymbols[i];
-        }   
-        lineSymbols.clear();
-    }
-
     // clear error vector
     if (!matchErr.empty())
         matchErr.clear();
