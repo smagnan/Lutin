@@ -202,6 +202,25 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
     return make_pair(lineSymbols, matchErr); 
 }
 
+std::deque<Symbol*> Lexer::getDeque()
+{
+    std::deque<Symbol*> symDeque;
+    while (this->hasNext())
+    {
+        std::vector<Symbol*> symVect = this->getSymbols().first;
+        for(std::vector<Symbol*>::iterator it = symVect.begin(); it != symVect.end(); it++)
+        {
+            symDeque.push_back(*it);
+        }
+    }
+    return symDeque;
+}
+
+
+
+
+
+
 bool Lexer::hasNext()
 {
     DEBUGINFO("Lexer::Call to hasNext()");

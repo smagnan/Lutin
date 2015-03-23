@@ -50,6 +50,7 @@ public:
     virtual ~Lexer();
     bool setProg(std::string prog);
     std::pair<std::vector<Symbol*>, matchError_vector > getSymbols();
+    std::deque<Symbol*> getDeque();
     bool hasNext();
 private:
     // Will contains lines of program :
