@@ -30,13 +30,14 @@ void Interpreter::run()
 	{
 		try 
 		{
-			instructions.front().execute();
+			instructions.front()->execute();
+			delete instructions.front(); // TODO ok? 
 			instructions.pop();
 		}
 		catch(std::exception &e) 
 		{
 		this->printer.printerr("Runtime problem ","problem with ...");
-		// TODO: add instruction causing the probleù
+		// TODO: add instruction causing the problem
 		}
 	}
 }

@@ -12,7 +12,7 @@
 // Instruction constructor
 Instruction::Instruction() 
 {
-
+	attributes_set = false;
 }
 
 Instruction::~Instruction()
@@ -25,7 +25,7 @@ Instruction::~Instruction()
 //	executes the instruction
 //
 // ============================
-void Instruction::execute()
+/*int Instruction::execute()
 {
-
-}
+	
+}*/

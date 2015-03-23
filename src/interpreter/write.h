@@ -19,6 +19,7 @@ protected:
 public:
     Write();
     virtual ~Write();
+    int execute();
 };
  
 #endif
