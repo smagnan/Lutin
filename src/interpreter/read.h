@@ -21,7 +21,6 @@ class Read : public Instruction
 private:
 	std::streambuf * buf; // TODO move?
 	std::ifstream in_f;  // TODO move?
-	//std::istream in;
 	Var * var;
 protected:
 public:
