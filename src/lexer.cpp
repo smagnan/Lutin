@@ -7,6 +7,7 @@
 #include "lexer.h"
 #include "debugger.h"
 #include <iostream>
+#include "symbol/end.h"
 
 //-------------------------------------- Constructors - destructors :
 Lexer::Lexer()
@@ -213,6 +214,7 @@ std::deque<Symbol*> Lexer::getDeque()
             symDeque.push_back(*it);
         }
     }
+    symDeque.push_back(new S_End());
     return symDeque;
 }
 

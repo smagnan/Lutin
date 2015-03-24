@@ -37,7 +37,7 @@ class Automaton
 	    virtual ~Automaton();
 	    Symbol* getDerivationTree();
         void read();
-        void next();
+        void transition();
 	    void shift(Symbol * symbol, State * state);
 	    void reduce(int numRule);
 	    void error();

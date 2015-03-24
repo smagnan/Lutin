@@ -15,6 +15,7 @@ class State
 		virtual bool transition(Automaton &automaton, Symbol * s) = 0;
         virtual State* getNextState(Symbol * s) = 0;
         int getId() const;
+		operator int() const;
         
 	protected:
         State(int i);

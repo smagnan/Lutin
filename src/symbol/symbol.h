@@ -40,6 +40,9 @@ enum Symbols
     F
 };
 
+// DEBUG :
+extern const char* SYM[F+1];
+
 class Symbol
 {
 
