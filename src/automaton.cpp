@@ -8,6 +8,7 @@
 // ---------------------------------------------
 
 #include "automaton.h"
+#include "exception/automatonException.h"
 #include "state/state0.h"
 #include "symbol/symbol.h"
 #include "debugger.h"
@@ -57,6 +58,12 @@ Automaton::Automaton(std::deque<Symbol*> input)
 
 Automaton::~Automaton()
 {
+	while(!this->input.empty())
+	{	
+		delete this->input.front();
+		this->input.pop_front();
+	}
+    
 	while(!this->symbolStack.empty())
 	{	
 		delete this->symbolStack.top();
@@ -73,66 +80,59 @@ Automaton::~Automaton()
 Symbol* Automaton::getDerivationTree()
 {
     DEBUGINFO("Automaton::getDerivationTree - BEGIN");
+    
+    // Begin the construction
     transition();
+    
     DEBUGINFO("Automaton::getDerivationTree - END");
+    
+    if (symbolStack.empty())
+    {
+        // ERROR CASE
+        DEBUGERR("Automaton::getDerivationTree - ERROR CASE\n");
+        throw AutomatonException(EMPTY_STATE_STACK_ERROR);
+    }
+    
+    // Return the root symbol
     return symbolStack.top();
 }
 
 void Automaton::transition()
 {
     DEBUGINFO(" - - Automaton::transition");
-    TRACE("    state ");
-    TRACE(*stateStack.top());
-    TRACE(" ( ");
-    TRACE(SYM[*currentSymbol]);
-    TRACE(" ) ");
-    TRACE("\n");
-    TRACE("\n");
+    
+    if (stateStack.empty())
+    {
+        // ERROR CASE
+        DEBUGERR("Automaton::transition - ERROR CASE\n");
+        throw AutomatonException(EMPTY_STATE_STACK_ERROR);
+    }
     
     // Do the next transition
-    if (!stateStack.empty())
-    {
-        stateStack.top()->transition(*this,currentSymbol);
-    }
+    stateStack.top()->transition(*this,currentSymbol);
 }
 
 void Automaton::read()
 {
     DEBUGINFO(" - - Automaton::read");
-    TRACE("    ");
-    TRACE("new token: ");
     
     // Go to the next symbol
     input.pop_front();
     
-    // Reset the current Symbol
     if (input.empty())
     {
-        // Should never occur as the lexer push the end symbol to the back of input
-        DEBUGWARN("End of the input reached\n");
-        currentSymbol = new S_End();
-    }
-    else
-    {
-        // Correct case
-        currentSymbol = input.front();
+        // ERROR CASE
+        DEBUGERR("Automaton::read - ERROR CASE\n");
+        throw AutomatonException(EMPTY_INPUT_ERROR);
     }
     
-    TRACE(SYM[*currentSymbol]);
-    TRACE("\n");
-    TRACE("\n");
+    // Reset the current Symbol
+    currentSymbol = input.front();
 }
 
 void Automaton::shift(Symbol * symbol, State * state)
 {
-    DEBUGINFO("Automaton::shift:");
-    TRACE("    ");
-    TRACE("stacked STATE: ");
-    TRACE(*state);
-    TRACE(" | SYMBOL: ");
-    TRACE(SYM[*symbol]);
-    TRACE("\n");
-    TRACE("\n");
+    DEBUGINFO("Automaton::shift");
     
     // Push the elements on the stacks
     symbolStack.push(symbol);
@@ -147,7 +147,7 @@ void Automaton::shift(Symbol * symbol, State * state)
  
 void Automaton::reduce(int numRule)
 {
-    DEBUGINFO("Automaton::reduce:");
+    DEBUGINFO("Automaton::reduce");
 
     // Pop elements from the stacks
     std::deque<Symbol*> * symbols = new std::deque<Symbol*>();
@@ -159,33 +159,27 @@ void Automaton::reduce(int numRule)
         stateStack.pop();
     }
     
+    if (stateStack.empty())
+    {
+        // ERROR CASE
+        DEBUGERR("Automaton::reduce - ERROR CASE\n");
+        throw AutomatonException(EMPTY_STATE_STACK_ERROR);
+    }
+    
     // Push the new symbol
     Symbol * symbol = getSymbol(numRule, *symbols);
     symbolStack.push(symbol);
     
-    std::cout << *symbol << std::endl;
-    
-    TRACE("    ");
-    TRACE("used RULE: ");
-    TRACE(numRule);
-    TRACE(" | used STATE: ");
-    TRACE(*stateStack.top());
-    TRACE(" | created SYMBOL: ");
-    TRACE(SYM[*symbolStack.top()]);
-    TRACE("\n");
-
+    if (symbolStack.empty())
+    {
+        // ERROR CASE
+        DEBUGERR("Automaton::reduce - ERROR CASE\n");
+        throw AutomatonException(EMPTY_SYMBOL_STACK_ERROR);
+    }
     
     // Push the new state
     State * state = stateStack.top()->getNextState(symbol);
     stateStack.push(state);
-    
-    TRACE("    ");
-    TRACE("stacked STATE: ");
-    TRACE(*state);
-    TRACE(" | SYMBOL: ");
-    TRACE(SYM[*symbol]);
-    TRACE("\n");
-    TRACE("\n");
     
     // Continue 
     transition();
@@ -193,8 +187,9 @@ void Automaton::reduce(int numRule)
 
 void Automaton::error()
 {
-    DEBUGERR("Automaton::error\n");
+    DEBUGERR("Automaton::error");
     
+    // Try the next token
     read();
     
     // Continue
@@ -203,7 +198,8 @@ void Automaton::error()
 
 void Automaton::accept()
 {
-    DEBUGINFO("Automaton::accept\n");
+    DEBUGINFO("Automaton::accept");
+    
     // Do nothing, just end the process
 }
 
@@ -211,8 +207,9 @@ Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
 {
     if (symbols.size() != RULES[numRule-1])
     {
-        DEBUGERR("Automaton::getSymbol:ERROR CASE\n");
-        // ERROR CASE 
+        // ERROR CASE
+        DEBUGERR("Automaton::getSymbol - ERROR CASE");
+        throw AutomatonException(RULES_ERROR);
     }
     
     switch (numRule)
@@ -313,7 +310,8 @@ Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
     }
     
     // ERROR CASE
-    DEBUGERR("Automaton::getSymbol:ERROR CASE\n");
+    DEBUGERR("Automaton::getSymbol - ERROR CASE");
+    throw AutomatonException(RULES_ERROR);
     
     return 0;
 }
