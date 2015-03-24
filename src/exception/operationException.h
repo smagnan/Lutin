@@ -1,3 +1,6 @@
+#ifndef OPERATIONEXCEPTION_H
+#define OPERATIONEXCEPTION_H
+
 #include <exception>
 #include <string>
 
@@ -13,3 +16,5 @@ class OperationException : public std::exception
     private:
 	std::string message;
 };
+
+#endif
