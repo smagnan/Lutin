@@ -14,37 +14,37 @@ Lexer::Lexer()
     // Regex patterns
     const char* regex = 
         // Var
-        "(^var\\s+)|"
+        "(^var)\\s+|"
         // Const
-        "(^const\\s+)|"
+        "(^const)\\s+|"
         // read 
-        "(^lire\\s+)|"
+        "(^lire)\\s+|"
         // write
-        "(^ecrire\\s+)|"
+        "(^ecrire)\\s+|"
         // Plus symbol
-        "(\\s*\\+\\s*)|"
+        "\\s*(\\+)\\s*|"
         // Minus symbol
-        "(\\s*-\\s*)|"
+        "\\s*(-)\\s*|"
         // Multiply symbol
-        "(\\s*\\*\\s*)|"
+        "\\s*(\\*)\\s*|"
         // Divide symbol
-        "(\\s*/\\s*)|"
+        "\\s*(/)\\s*|"
         // openby left
-        "(\\s*\\(\\s*)|"
+        "\\s*(\\()\\s*|"
         // openby right
-        "(\\s*\\)\\s*)|"
+        "\\s*(\\))\\s*|"
         // semicolon
-       "(\\s*;\\s*$)|"
+       "\\s*(;)\\s*$|"
         // id
-        "(\\s*[a-zA-Z][a-zA-Z0-9_]*\\s*)|"
+        "\\s*([a-zA-Z][a-zA-Z0-9_]*)\\s*|"
         // vir 
-        "(\\s*,\\s*)|"
+        "\\s*(,)\\s*|"
         // egal
-        "(\\s*=\\s*)|"
+        "\\s*(=)\\s*|"
         // affectation
-        "(\\s*:=\\s*)|"
+        "\\s*(:=)\\s*|"
         // num 
-        "(-?\\d+(.\\d+)?)|"
+        "\\s*(-?\\d+(.\\d+)?)\\s*|"
         // everything else (matching error)
         "(.*)";
     

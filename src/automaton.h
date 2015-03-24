@@ -13,7 +13,7 @@
 
 #include <stack>
 #include <utility>
-#include <vector>
+#include <deque>
 #include "symbol/symbol.h"
 #include "interpreter/interpreter.h"
 #include "lexer.h"
@@ -29,13 +29,15 @@ class Automaton
 	private:
 		std::stack<Symbol*> symbolStack;
 		std::stack<State*> stateStack;
-		Lexer* lexer;
+		std::deque<Symbol*> input;
         Symbol* currentSymbol;
 	protected:
 	public:
-	    Automaton(Lexer *lex);
+	    Automaton(std::deque<Symbol*> input);
 	    virtual ~Automaton();
 	    Symbol* getDerivationTree();
+        void read();
+        void next();
 	    void shift(Symbol * symbol, State * state);
 	    void reduce(int numRule);
 	    void error();

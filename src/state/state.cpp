@@ -17,3 +17,8 @@ State::State(int i)
 State::~State()
 {
 }
+
+int State::getId() const
+{
+    return id;
+}

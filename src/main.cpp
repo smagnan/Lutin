@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <string>
+#include <deque>
 
 #include <boost/program_options.hpp>
 
@@ -50,7 +51,7 @@ int main( int argc, const char* argv[] )
 	DEBUGINFO("Creating Interpreter");
 	Interpreter* interpreter 	= new Interpreter();
 	DEBUGINFO("Creating FSM");
-	Automaton* automaton 		= new Automaton(lexer);	
+	Automaton* automaton 		= new Automaton(lexer->getDeque());	
     DEBUGINFO("Get the derivation tree");
     Symbol* derivationTree 		= automaton->getDerivationTree();
     
