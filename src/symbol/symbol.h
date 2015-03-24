@@ -7,8 +7,11 @@
 #include <queue>
 #include <map>
 
-class interpreter;
-class instruction;
+// #include "../interpreter/interpreter.h"
+// #include "../interpreter/instruction.h"
+
+class Interpreter;
+class Instruction;
 
 #define UNUSED(expr) do { (void)(expr); } while (0)
 
@@ -69,11 +72,8 @@ class Symbol
         
         friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
 
-<<<<<<< HEAD
-        virtual int eval(Interpreter interpreter) { return SYMB_EVAL_OK;};
-=======
-        //virtual int eval(std::queue<Instruction*> instructions) {};
->>>>>>> c91889ee5704586f81ea4579ff70ff612ccec4b5
+        //virtual int eval(Interpreter interpreter) { return SYMB_EVAL_OK;};
+        virtual int eval(std::queue<Instruction*> instructions) {};
 
 	protected:
 		int id;
