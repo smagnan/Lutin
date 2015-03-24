@@ -17,7 +17,7 @@ S_Fid::~S_Fid()
 {
 }
 
-std::string S_Fid::print()
+std::string S_Fid::print() const
 {
     return id->print();
 }

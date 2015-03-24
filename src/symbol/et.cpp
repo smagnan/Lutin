@@ -17,7 +17,7 @@ S_Et::~S_Et()
 {
 }
 
-std::string S_Et::print()
+std::string S_Et::print() const
 {
     return t->print();
 }

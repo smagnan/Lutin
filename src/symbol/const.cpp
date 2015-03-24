@@ -17,7 +17,7 @@ S_Const::~S_Const()
 {
 }
 
-std::string S_Const::print()
+std::string S_Const::print() const
 {
     return "const";
 }

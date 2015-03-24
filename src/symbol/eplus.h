@@ -21,7 +21,7 @@ protected:
 public:
     S_Eplus(S_E* e, S_T* t);
     virtual ~S_Eplus();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_EPLUS_H

@@ -17,7 +17,7 @@ S_Closeby::~S_Closeby()
 {
 }
 
-std::string S_Closeby::print()
+std::string S_Closeby::print() const
 {
     return ")";
 }

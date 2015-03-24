@@ -18,7 +18,7 @@ protected:
 public:
     S_Closeby();
     virtual ~S_Closeby();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_CLOSEBY_H

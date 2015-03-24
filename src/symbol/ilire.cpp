@@ -17,7 +17,7 @@ S_Ilire::~S_Ilire()
 {
 }
 
-std::string S_Ilire::print()
+std::string S_Ilire::print() const
 {
     return "lire " + id->print();
 }

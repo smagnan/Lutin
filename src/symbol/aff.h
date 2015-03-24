@@ -18,7 +18,7 @@ protected:
 public:
     S_Aff();
     virtual ~S_Aff();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_AFF_H

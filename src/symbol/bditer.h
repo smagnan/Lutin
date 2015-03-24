@@ -25,7 +25,7 @@ public:
     S_Bditer();
     S_Bditer(S_Bd* bd, S_D* d);
     virtual ~S_Bditer();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_BDITER_H

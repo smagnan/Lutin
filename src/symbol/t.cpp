@@ -17,7 +17,7 @@ S_T::~S_T()
 {
 }
 
-std::string S_T::print()
+std::string S_T::print() const
 {
     return "";
 }

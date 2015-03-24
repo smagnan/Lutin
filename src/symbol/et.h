@@ -22,7 +22,7 @@ protected:
 public:
     S_Et(S_T* t);
     virtual ~S_Et();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_ET_H

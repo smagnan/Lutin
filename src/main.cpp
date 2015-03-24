@@ -100,10 +100,10 @@ int main( int argc, const char* argv[] )
         // TODO: PRINT 
         // Fill with that kind of line :
         // cout << interpreter << endl;
-        mainPrinter.print(cout,loader->string());
-		interpreter->print_declarations(cout);
-		interpreter->print_instructions(cout);
-        //cout << "print" << endl;
+        //mainPrinter.print(cout,loader->string());
+		//interpreter->print_declarations(cout);
+		//interpreter->print_instructions(cout);
+        std::cout << *derivationTree << std::endl;
 	}
     
 	if (am.count("execute"))

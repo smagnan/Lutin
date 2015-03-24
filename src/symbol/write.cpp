@@ -17,7 +17,7 @@ S_Write::~S_Write()
 {
 }
 
-std::string S_Write::print()
+std::string S_Write::print() const
 {
     return "write";
 }

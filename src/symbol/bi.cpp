@@ -17,7 +17,7 @@ S_Bi::~S_Bi()
 {
 }
 
-std::string S_Bi::print()
+std::string S_Bi::print() const
 {
     return "";
 }

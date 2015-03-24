@@ -17,7 +17,7 @@ S_Eminus::~S_Eminus()
 {
 }
 
-std::string S_Eminus::print()
+std::string S_Eminus::print() const
 {
     return e->print() + " - " + t->print();
 }

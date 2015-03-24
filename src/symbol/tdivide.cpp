@@ -17,7 +17,7 @@ S_Tdivide::~S_Tdivide()
 {
 }
 
-std::string S_Tdivide::print()
+std::string S_Tdivide::print() const
 {
     return t->print() + " / " + f->print();
 }

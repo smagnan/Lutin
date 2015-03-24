@@ -65,7 +65,9 @@ class Symbol
 
 		operator int() const;
         
-        virtual std::string print();
+        virtual std::string print() const;
+        
+        friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
 
         virtual int eval(std::queue<Instruction*> instructions) {};
 

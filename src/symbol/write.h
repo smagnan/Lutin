@@ -18,7 +18,7 @@ protected:
 public:
     S_Write();
     virtual ~S_Write();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_WRITE_H

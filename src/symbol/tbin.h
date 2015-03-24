@@ -25,7 +25,7 @@ protected:
 public:
     S_Tbin(S_T* t, S_F* f);
     virtual ~S_Tbin();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_TBIN_H

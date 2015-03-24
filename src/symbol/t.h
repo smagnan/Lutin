@@ -18,7 +18,7 @@ protected:
 public:
     S_T();
     virtual ~S_T();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_T_H

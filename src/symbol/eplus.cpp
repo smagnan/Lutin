@@ -17,7 +17,7 @@ S_Eplus::~S_Eplus()
 {
 }
 
-std::string S_Eplus::print()
+std::string S_Eplus::print() const
 {
     return e->print() + " + " + t->print();
 }

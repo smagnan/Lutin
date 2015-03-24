@@ -18,7 +18,7 @@ protected:
 public:
     S_Vir();
     virtual ~S_Vir();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_VIR_H

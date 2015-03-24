@@ -18,7 +18,7 @@ protected:
 public:
     S_Bi();
     virtual ~S_Bi();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_BI_H

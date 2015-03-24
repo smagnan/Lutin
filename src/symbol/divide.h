@@ -18,7 +18,7 @@ protected:
 public:
     S_Divide();
     virtual ~S_Divide();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_DIVIDE_H

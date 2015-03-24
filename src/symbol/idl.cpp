@@ -17,7 +17,7 @@ S_Idl::~S_Idl()
 {
 }
 
-std::string S_Idl::print()
+std::string S_Idl::print() const
 {
     return "";
 }

@@ -18,7 +18,7 @@ protected:
 public:
     S_Tmult(S_T* t, S_F* f);
     virtual ~S_Tmult();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_TMULT_H
