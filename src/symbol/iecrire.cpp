@@ -19,5 +19,5 @@ S_Iecrire::~S_Iecrire()
 
 std::string S_Iecrire::print()
 {
-    return "ecrire" + eprime->print();
+    return "ecrire " + eprime->print();
 }
