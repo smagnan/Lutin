@@ -8,7 +8,7 @@
 
 #include "symbol.h"
 
-const char* SYM[F+1] = {
+const char* SYM[NB_SYMBOLS] = {
     "PLUS",
     "MINUS",
     "MULT",
@@ -37,11 +37,12 @@ const char* SYM[F+1] = {
     "E",
     "EPRIME",
     "T",
-    "F"
+    "F",
+    "SYMBOL"
 };
 
 Symbol::Symbol() : 
-    id(-1)
+    id(SYMBOL)
 {
     
 }

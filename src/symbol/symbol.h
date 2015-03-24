@@ -37,11 +37,13 @@ enum Symbols
     E,
     EPRIME,
     T,
-    F
+    F,
+    SYMBOL,
+    NB_SYMBOLS
 };
 
 // DEBUG :
-extern const char* SYM[F+1];
+extern const char* SYM[NB_SYMBOLS];
 
 class Symbol
 {

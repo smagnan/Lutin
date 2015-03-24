@@ -9,7 +9,7 @@
 #include "bi.h"
 
 S_Bi::S_Bi()
-    : Symbol()
+    : Symbol(BI)
 {
 }
 
