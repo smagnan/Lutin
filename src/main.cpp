@@ -113,7 +113,7 @@ int main( int argc, const char* argv[] )
         // interpreter.execute();
         cout << "execute" << endl;
 	}
-
+    
     DEBUGINFO("Deleting FSM");
     delete automaton;
 	DEBUGINFO("Deleting Interpreter");

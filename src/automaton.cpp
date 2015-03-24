@@ -150,12 +150,12 @@ void Automaton::reduce(int numRule)
     DEBUGINFO("Automaton::reduce");
 
     // Pop elements from the stacks
-    std::deque<Symbol*> * symbols = new std::deque<Symbol*>();
+    std::deque<Symbol*> symbols = std::deque<Symbol*>();
     for (unsigned int i = 0; i < RULES[numRule-1]; i++)
     {
         if (!symbolStack.empty())
         {
-            symbols->push_front(symbolStack.top());
+            symbols.push_front(symbolStack.top());
             symbolStack.pop();
         }
         else
@@ -182,7 +182,7 @@ void Automaton::reduce(int numRule)
     }
     
     // Push the new symbol
-    Symbol * symbol = getSymbol(numRule, *symbols);
+    Symbol * symbol = getSymbol(numRule, symbols);
     symbolStack.push(symbol);
     
     if (symbolStack.empty())
