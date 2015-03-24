@@ -19,5 +19,5 @@ S_Dconst::~S_Dconst()
 
 std::string S_Dconst::print()
 {
-    return "const " + ini->print() + " " + inil->print();
+    return "const " + ini->print() + inil->print();
 }
