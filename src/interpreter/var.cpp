@@ -29,6 +29,13 @@ Var::~Var()
 
 }
 
+std::istream &operator>>( std::istream  &input, Var& obj)
+{ 
+	obj.affected = true;
+ 	input >> obj.value;
+ 	return input;            
+}
+
 void Var::setValue(double val)
 {
 	this->affected = true;

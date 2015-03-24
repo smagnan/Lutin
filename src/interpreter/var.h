@@ -11,6 +11,7 @@
 #define VAR_H
 
 #include <exception>
+#include <iostream>
 #include "declaration.h"
 
 class NoInitException : public std::exception 
@@ -36,6 +37,7 @@ public:
     Var(std::string varName);
     virtual ~Var();
     void setValue(double val);
+    friend std::istream& operator >> (std::istream& input, Var& obj);
     double getValue();
 };
  
