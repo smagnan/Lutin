@@ -8,8 +8,9 @@
 // ---------------------------------------------
 
 #include <exception>
-
+#include "../exception/operationException.h"
 #include "interpreter.h"
+#include "../utils.h"
 
 // Interpreter constructor
 Interpreter::Interpreter() 
@@ -25,13 +26,28 @@ Interpreter::~Interpreter()
 
 void Interpreter::run()
 {
-
+	while(!instructions.empty())
+	{
+		try 
+		{
+			instructions.front()->execute();
+			delete instructions.front(); // TODO ok? 
+			instructions.pop();
+		}
+		catch(std::exception &e) 
+		{
+		this->printer.printerr("Runtime problem ","problem with ...");
+		// TODO: add instruction causing the problem
+		}
+	}
 }
 
 void Interpreter::declare(const std::string &name, Declar_Type type, double val) // TODO: exceptions
 {							// default value for VALUE type
-	if (this->declarations.find(name) == this->declarations.end()) { // If key not found
-		switch(type) {
+	if (this->declarations.find(name) == this->declarations.end()) 
+	{ // If key not found
+		switch(type) 
+		{
 			case D_VAR:
 				this->declarations.insert(std::make_pair(name , new Var(name,val)));
 				break;
@@ -43,7 +59,8 @@ void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 				break;
 		}
 	}
-	else {
+	else 
+	{
 		// this->printer.printerr("")
 		// TODO error, already exists
 		// ERROR: Multiple definition
@@ -52,10 +69,12 @@ void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 
 void Interpreter::declare(const std::string &name)
 {
-	if (this->declarations.find(name) == this->declarations.end()) {
+	if (this->declarations.find(name) == this->declarations.end()) 
+	{
 		this->declarations.insert(std::make_pair(name , new Var(name)));
 	}
-	else {
+	else 
+	{
 		this->printer.printerr("Declaration problem ","multiple definition of "+name);
 		// TODO error, already exists
 		// ERROR: Multiple definition
@@ -64,27 +83,45 @@ void Interpreter::declare(const std::string &name)
 
 void Interpreter::update_variable(std::string name, double val)
 {
-	try {
-		this->declarations.find(name)->second->setValue(val);
-	} catch(std::exception &e) {
-		this->printer.printerr("Affectation problem ","problem with "+name);
+	try 
+	{
+		Declaration * decl = this->declarations.find(name)->second;
+		if(!decl->getType().compare(KEYWORD_VAR)) 
+		{ // if type is VAR
+			decl->setValue(val);
+		} 
+		else 
+		{
+			//throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
+			// TODO ^ FIXME & ugly
+		}
+
+	} 
+	catch(std::exception &e) 
+	{
+		this->printer.printerr("Affectation problem ","problem with ...");
 		// TODO: error if: name does not exist, exist but not a variable etc ...
 		// TODO: create custom exceptions
 		// TODO: calling setValue() if not a Var throws an error
+		// TODO print what causes the error and the "what"
 	}
 }
 
 void Interpreter::print_declarations(std::ostream& out)
 {
 	typedef std::map<std::string, Declaration* >::iterator it_t;
-	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) {
+	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) 
+	{
 	    // TODO: this is ugly
 	    this->printer.print(out,iterator->second->getType());
 	    this->printer.print(out,iterator->first);
 	    this->printer.print(out,"=");
-	    try {
+	    try 
+	    {
 	    	this->printer.print(out,iterator->second->getValue());
-	    } catch(NoInitException &e) {
+	    } 
+	    catch(NoInitException &e) 
+	    {
 	    	this->printer.print(out,e.what()); // TODO fix
 	    }
 	    this->printer.endline();
@@ -94,19 +131,22 @@ void Interpreter::print_declarations(std::ostream& out)
 void Interpreter::print_instructions(std::ostream& out)
 {
 	// TODO
+	this->printer.print(out,"");
 }
 
 void Interpreter::clean_declarations() // TODO: exceptions
 {
 	typedef std::map<std::string, Declaration* >::iterator it_t;
-	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) {
+	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) 
+	{
 	    delete iterator->second;
 	}
 }
 
 void Interpreter::clean_instructions() // TODO: exceptions
 {
-	while (!this->instructions.empty()) {
+	while (!this->instructions.empty()) 
+	{
 		delete this->instructions.front();
 		this->instructions.pop();
 	}

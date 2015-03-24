@@ -19,6 +19,7 @@ protected:
 public:
     Affectation();
     virtual ~Affectation();
+    int  execute();
 };
  
 #endif

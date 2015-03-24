@@ -12,9 +12,10 @@
 
 
 #include "state4.h" 
+#include "state10.h" 
 
 State9::State9()
-    : State("State9")
+    : State(9)
 {
 }
 
@@ -38,4 +39,19 @@ bool State9::transition(Automaton & automaton, Symbol * s)
     }
     
     return false;
+}
+
+State* State9::getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+
+        case INI:
+            return new State10();
+
+        default:
+            break;
+    }
+    
+    return 0;
 }

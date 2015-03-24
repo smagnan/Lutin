@@ -13,7 +13,7 @@
 
 
 State32::State32()
-    : State("State32")
+    : State(32)
 {
 }
 
@@ -57,4 +57,16 @@ bool State32::transition(Automaton & automaton, Symbol * s)
     }
     
     return false;
+}
+
+State* State32::getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+
+        default:
+            break;
+    }
+    
+    return 0;
 }

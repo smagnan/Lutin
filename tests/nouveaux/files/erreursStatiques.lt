@@ -1,0 +1,5 @@
+var a,b;
+const c = 1;
+ecrire a;
+c := 2;
+d := 3;

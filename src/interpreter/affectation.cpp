@@ -19,3 +19,8 @@ Affectation::~Affectation()
 {
 
 }
+
+int  Affectation::execute()
+{
+	return EXEC_RET_OK;
+}

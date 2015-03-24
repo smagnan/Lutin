@@ -13,7 +13,7 @@
 
 
 State12::State12()
-    : State("State12")
+    : State(12)
 {
 }
 
@@ -26,11 +26,23 @@ bool State12::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case ID:
+            automaton.reduce(2);
+            break;
+
         case VAR:
             automaton.reduce(2);
             break;
 
         case CONST:
+            automaton.reduce(2);
+            break;
+
+        case WRITE:
+            automaton.reduce(2);
+            break;
+
+        case READ:
             automaton.reduce(2);
             break;
 
@@ -45,4 +57,16 @@ bool State12::transition(Automaton & automaton, Symbol * s)
     }
     
     return false;
+}
+
+State* State12::getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+
+        default:
+            break;
+    }
+    
+    return 0;
 }

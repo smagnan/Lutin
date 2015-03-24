@@ -8,16 +8,16 @@
 
 #include "var.h"
 
-S_Var::S_Var(Symbols s)
-    : S_Expr(s)
-{
-}
-
 S_Var::S_Var()
-    : S_Expr(VAR)
+    : Symbol(VAR)
 {
 }
 
 S_Var::~S_Var()
 {
+}
+
+std::string S_Var::print()
+{
+    return "var";
 }

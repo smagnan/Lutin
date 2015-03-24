@@ -16,7 +16,7 @@ Value::Value(double val) : Declaration(val)
 {
 	// the name is equivalent to the value
 	this->name = Utils::doubleToString(this->value);
-	this->type = "Value";
+	this->type = KEYWORD_VALUE;
 }
 
 Value::~Value()
@@ -26,5 +26,6 @@ Value::~Value()
 
 void Value::setValue(double val)
 {
-	throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
+	//throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
+	// FIXME ^ calls terminate() if not catched
 }

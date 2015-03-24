@@ -1,0 +1,4 @@
+aff,closeby,const,divide,eq,end,id,minus,mult,num,openby,plus,p,pv,read,var,vir,write,p,bd,bditer,bi,biiter,d,dvar,dconst,idl,idliter,inil,iniliter,ini,i,iecrire,ilire,iid,eprime,e,ebin,eplus,eminus,et,t,tbin,tmult,tdivide,tf,f,fpar,fid,fnum
+AFF,CLOSEBY,CONST,DIVIDE,EQ,END,ID,MINUS,MULT,NUM,OPENBY,PLUS,P,PV,READ,VAR,VIR,WRITE,P,BD,,,,D,,,IDL,,INIL,,INI,I,,,,EPRIME,E,,,,,T,,,,,F,,,
+symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,bd,symbol,bi,symbol,d,d,symbol,idl,symbol,inil,symbol,symbol,i,i,i,symbol,symbol,e,ebin,ebin,e,symbol,t,tbin,tbin,t,symbol,f,f,f
+,,,,,,std::string,,,double,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

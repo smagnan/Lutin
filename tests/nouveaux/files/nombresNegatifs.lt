@@ -1,0 +1,9 @@
+var a;
+lire a;
+ecrire a;
+ecrire 1/a;
+ecrire -1-a;
+ecrire -1+a;
+ecrire -1*a;
+ecrire -1/a;
+

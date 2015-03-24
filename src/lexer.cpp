@@ -1,82 +1,69 @@
+/*#######################################################################
+#   Class : LEXER                                                       #
+#   Created :                                                           #
+#                                                                       #
+########################################################################*/
+
 #include "lexer.h"
-
-using namespace std;
-
-
-// Vector used for matched symbols :
-// - first in pair refers to position of pattern matched in regex
-// - second in pair is the content matched
-typedef std::vector<std::pair<int,std::string> > symbol_vector;
-
+#include "debugger.h"
+#include <iostream>
+#include "symbol/end.h"
 
 //-------------------------------------- Constructors - destructors :
-
 Lexer::Lexer()
 {
     // Regex patterns
     const char* regex = 
         // Var
-        "(^var\\s)|"
+        "(^var)\\s+|"
         // Const
-        "(^const\\s)|"
+        "(^const)\\s+|"
         // read 
-        "(^lire\\s)|"
+        "(^lire)\\s+|"
         // write
-        "(^ecrire\\s)|"
+        "(^ecrire)\\s+|"
         // Plus symbol
-        "(\\s?\\+\\s?)|"
+        "\\s*(\\+)\\s*|"
         // Minus symbol
-        "(\\s?-\\s?)|"
+        "\\s*(-)\\s*|"
         // Multiply symbol
-        "(\\s?\\*\\s?)|"
+        "\\s*(\\*)\\s*|"
         // Divide symbol
-        "(\\s?/\\s?)|"
+        "\\s*(/)\\s*|"
         // openby left
-        "(\\s?\\(\\s?)|"
+        "\\s*(\\()\\s*|"
         // openby right
-        "(\\s?\\)\\s?)|"
+        "\\s*(\\))\\s*|"
         // semicolon
-       "(\\s?;\\s?$)|"
-        // Id
-        "(\\s?[a-zA-Z][a-zA-Z0-9_]*\\s?)|"
+       "\\s*(;)\\s*$|"
+        // id
+        "\\s*([a-zA-Z][a-zA-Z0-9_]*)\\s*|"
         // vir 
-        "(\\s?,\\s?)|"
+        "\\s*(,)\\s*|"
         // egal
-        "(\\s?=\\s?)|"
+        "\\s*(=)\\s*|"
         // affectation
-        "(\\s?:=\\s?)|"
+        "\\s*(:=)\\s*|"
         // num 
-        "(-?\\d+(.\\d+)?)";
+        "\\s*(-?\\d+(.\\d+)?)\\s*|"
+        // everything else (matching error)
+        "(.*)";
     
     // Compile Regex:
-    boost::regex main_regex(re);
-    // Will contain matched symbols : 
-    symbol_vector symbols;
-    // Will contains lines of program :
-    vector<String> progLines;                       // contains all lines of parsed program
-    vector<String>::iterator progStart, progEnd;    // iterator on the vector of lines
-    vector<Symbol> lineSymbols;                     // temp vector of matched symbols
+    main_regex.assign(regex);
+    DEBUGINFO("Lexer::Regex ready for use");
 }
 
-virtual Lexer::~Lexer()
+Lexer::~Lexer()
 {
-    if (!lineSymbols.empty())
-    {
-        vector<Symbol>::iterator i;
-        while (i != lineSymbol.end())
-        {
-            delete (*i++);
-        }
-        lineSymbols.erase();
-    }
 }
 
 //-------------------------------------------------- Public Methods
 
 // Set program to be analyzed by regex
-bool Lexer::setProg(String prog)
+bool Lexer::setProg(std::string prog)
 {
-    if (prog != null)
+    if (prog.size() != 0)
     {
         // split program in lines
         std::stringstream ss(prog);
@@ -85,103 +72,170 @@ bool Lexer::setProg(String prog)
         {
             progLines.push_back(line);   
         }
+        
+        /*
+        // let's see what's inside the prog :
+        for(std::vector<std::string>::iterator i = progLines.begin(); i != progLines.end(); i++)
+        {
+            std::cout << *i << std::endl;
+        }
+        */
+
+        // remove empty lines :
+        std::vector<std::string>::iterator j = progLines.begin();
+        while(j != progLines.end())
+        {
+            if ((*j).empty())
+                j = progLines.erase(j);
+            else
+                ++j;
+        }
+
+        /*
+        // let's see what's inside the prog :
+        int c = 1;
+        for(std::vector<std::string>::iterator i = progLines.begin(); i != progLines.end(); i++)
+        {
+            std::cout << "Line :" << c++ << " : " << *i << std::endl;
+        }
+        */
+
         // set iterators to on newly filled vector
         progStart = progLines.begin();
-        progEnd = progLines.end();
-        return true;    
+        std::cout << "progStart points to : " << *progStart << std::endl;
+        progEnd = progLines.end()-1;       
+        std::cout << "progEnd points to : " << *progEnd << std::endl;
+        DEBUGINFO("Lexer::Program Set");
+        return true;
     }
     return false;
 }
 
 
-vector<Symbol> Lexer::getSymbols()
+std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
 {
-    // If lineSymbols not empty, delete everything inside
-    // and emtpy it
-    if (!lineSymbols.empty())
-    {
-        vector<Symbol>::iterator i;
-        while (i != lineSymbol.end())
-        {
-            delete (*i);
-            ++i;
-        }
-        lineSymbols.erase();
-    }
+    std::vector<Symbol*> lineSymbols; 
+
+    DEBUGINFO("Lexer::Start of getSymbols");
+    // clear error vector
+    if (!matchErr.empty())
+        matchErr.clear();
+
+    // clear patterns vector for new set of calls to regex_callback
+    patterns.clear();
 
     // Find symbols
     boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), main_regex);
     boost::sregex_iterator m2;
-    std::for_each(m1, m2, &regex_callback);
+    while(m1 != m2)
+    {
+        regex_callback(*m1);
+        ++m1;
+    }
+
+    DEBUGINFO("Lexer::getSymbols() will return symbols from :");
+    std::cout << (*progStart) << std::endl;
+
     // increment iterator (for next loop)
     progStart++;
-    
     // Fill symbol vector
-    symbol_vector::iterator b,e;
-    b = symbols.begin();
-    e = symbols.end();
+    pattern_vector::iterator b,e;
+    b = patterns.begin();
+    e = patterns.end();
     while(b != e)
     {
-        switch ( (*b).first ) :
+        switch (b->first)
         {
-            case 1:     // var
-                lineSymbols.push_back(new Var());
+            case 1 :     // var 
+                lineSymbols.push_back((Symbol*)(new S_Var()));
                 break;
-            case 2:     // const
-                lineSymbols.push_back(new Const());
+            case 2 :     // const
+                lineSymbols.push_back((Symbol*)(new S_Const()));
                 break;
-            case 3:     // lire
-                lineSymbols.push_back(new Lire());
+            case 3 :     // lire
+                lineSymbols.push_back((Symbol*)(new S_Read()));
                 break;  
             case 4:     // ecrire
-                lineSymbols.push_back(new Ecrire());
+                lineSymbols.push_back((Symbol*)(new S_Write()));
                 break;
             case 5:     // +
-                lineSymbols.push_back(new Plus());
+                lineSymbols.push_back((Symbol*)(new S_Plus()));
                 break;
             case 6:     // -
-                lineSymbols.push_back(new Minus());
+                lineSymbols.push_back((Symbol*)(new S_Minus()));
                 break;
             case 7:     // *
-                lineSymbols.push_back(new Mult());
+                lineSymbols.push_back((Symbol*)(new S_Mult()));
                 break;
             case 8:     // /
-                lineSymbols.push_back(new Divide());
+                lineSymbols.push_back((Symbol*)(new S_Divide()));
                 break;
             case 9:     // (
-                lineSymbols.push_back(new Openby());
+                lineSymbols.push_back((Symbol*)(new S_Openby()));
                 break;
             case 10:    // )
-                lineSymbols.push_back(new Closeby());
+                lineSymbols.push_back((Symbol*)(new S_Closeby()));
                 break;
             case 11:    // ;
-                lineSymbols.push_back(new Pv());
+                lineSymbols.push_back((Symbol*)(new S_Pv()));
                 break;
             case 12:    // id (any a-ZA-Z / 0-9 charac)
-                lineSymbols.push_back(new Id((*b).second));
+                lineSymbols.push_back((Symbol*)(new S_Id(b->second)));
                 break;  
             case 13:    // ,
-                lineSymbols.push_back(new Vir());
+                lineSymbols.push_back((Symbol*)(new S_Vir()));
                 break;
             case 14:    // =
-                lineSymbols.push_back(new Eq());
+                lineSymbols.push_back((Symbol*)(new S_Eq()));
                 break;
             case 15:    // :=
-                lineSymbols.push_back(new Aff());
+                lineSymbols.push_back((Symbol*)(new S_Aff()));
                 break;
             case 16:    // number
-                lineSymbols.push_back(new Num(std::stod ((*b).second)));
+                lineSymbols.push_back((Symbol*)(new S_Num(Utils::stringToDouble(b->second))));
                 break;
             default:
                 break;
         }
-    }
-    return ret; 
+        ++b;
+    } 
+    DEBUGINFO("Lexer::End of getSymbols()");
+    return make_pair(lineSymbols, matchErr); 
 }
+
+std::deque<Symbol*> Lexer::getDeque()
+{
+    std::deque<Symbol*> symDeque;
+    while (this->hasNext())
+    {
+        std::vector<Symbol*> symVect = this->getSymbols().first;
+        for(std::vector<Symbol*>::iterator it = symVect.begin(); it != symVect.end(); it++)
+        {
+            symDeque.push_back(*it);
+        }
+    }
+    symDeque.push_back(new S_End());
+    return symDeque;
+}
+
+
+
+
+
 
 bool Lexer::hasNext()
 {
-    return progStart != progEnd;
+    DEBUGINFO("Lexer::Call to hasNext()");
+    if (progStart != progEnd+1) // if progStart != progEnd, we stop one line before the end.
+    {
+        DEBUGINFO("Lexer::hasNext() - more lines to compute");
+        return true;
+    }
+    else
+    {  
+        DEBUGINFO("Lexer::hasNext() - no other line to compute");
+        return false;
+    }
 }
 
 
@@ -190,13 +244,26 @@ bool Lexer::hasNext()
 bool Lexer::regex_callback(const boost::match_results<std::string::const_iterator>& str_found)
 {
     // loop on all 16 symbols 
-    for(int i = 1; i <= 16; i++)
+    for(int i = 1; i <= 17; i++)
     {
-        if (what.position(i) != -1) // symbol matched ? 
-        {
-            symbols.push_back(make_pair(i, what[i].str()));
-             // cout << "Pattern n° " << i << " matched. Value : " << what[i] << endl;
+        // If one of the parenthesis match (and no more than  one will match) :
+        if (str_found.position(i) != -1) 
+        { // symbol matched ? 
+            if (i != 17) 
+            {   // a pattern was matched.
+                patterns.push_back(make_pair(i, str_found[i].str()));
+                return true;
+            }
+            else 
+            {   // something that was not a pattern was matched
+                matchErr.push_back(matchError());
+                matchErr.back().position = str_found.position(i);
+                matchErr.back().length = str_found.length(i);
+                matchErr.back().str = str_found[i];
+                return false;
+            }
         }
     }
-    return true;
+    return false;
 }
+

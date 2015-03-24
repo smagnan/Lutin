@@ -10,12 +10,19 @@ class Symbol;
 class State
 {
 	public:
-		State(std::string name);
+		State();
 		virtual ~State();
-		void print() const;
 		virtual bool transition(Automaton &automaton, Symbol * s) = 0;
+        virtual State* getNextState(Symbol * s) = 0;
+        int getId() const;
+		operator int() const;
+        
 	protected:
-		std::string name;
+        State(int i);
+        
+        const int id;
+        
+    private:
 };
 
 #endif // STATE_H

@@ -24,7 +24,7 @@ const std::string STYLE_IMPORTANT =         "\033[0;32m";
 
 
 ArgsManager::ArgsManager(int argc, const char* argv[]) :
-    desc("Allowed options"), vm(NULL), error(false), input_file_text("")
+    desc("Allowed options"), vm(NULL), error(false), filePath("")
 {
     
     try
@@ -50,25 +50,7 @@ ArgsManager::ArgsManager(int argc, const char* argv[]) :
               vm); // Variable map
         po::notify(vm);
         
-        
-        // load the input file
-        std::string file_path(vm[OPTION_FILE_LABEL.c_str()].as<std::string>());
-        std::ifstream input_file(file_path.c_str());
-        std::string line;
-        if (input_file.is_open())
-        {
-            while ( getline (input_file,line) )
-            {
-                input_file_text += line + "\n";
-            }
-            input_file.close();
-        }
-        
-        // ERROR : Cannot open file
-        else
-        {
-            manageError(OPTION_ERROR_FILE + file_path);
-        }
+        filePath = vm[OPTION_FILE_LABEL.c_str()].as<std::string>();
         
     }
     
@@ -101,17 +83,11 @@ ArgsManager::ArgsManager(int argc, const char* argv[]) :
     {
         manageError(e.what());
     }
-    
 }
 
 
 ArgsManager::~ArgsManager()
 {
-}
-
-const std::string& ArgsManager::getInputText() const
-{
-    return input_file_text;
 }
 
 po::variable_value ArgsManager::operator[] (std::string option)
@@ -147,5 +123,10 @@ std::ostream& operator<< (std::ostream& out, const ArgsManager& am)
     << OPTION_USAGE_TEXT << std::endl
     << std::endl
     << am.desc;
+}
+
+std::string ArgsManager::getFilePath()
+{
+    return vm[OPTION_FILE_LABEL.c_str()].as<std::string>();
 }
 

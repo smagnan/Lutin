@@ -1,0 +1,10 @@
+var a;
+var b;
+lire a;
+lire b;
+ecrire b;
+ecrire a+b;
+ecrire a-b;
+ecrire a*b;
+ecrire a/b;
+

@@ -19,3 +19,8 @@ Write::~Write()
 {
 
 }
+
+int  Write::execute()
+{
+	return EXEC_RET_OK;
+}

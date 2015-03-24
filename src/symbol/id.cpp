@@ -8,18 +8,13 @@
 
 #include "id.h"
 
-S_Id::S_Id(Symbols s)
-    : S_Expr(s)
-{
-}
-
 S_Id::S_Id()
-    : S_Expr(ID), value(0)
+    : Symbol(ID), value(0)
 {
 }
 
 S_Id::S_Id(std::string v)
-    : S_Expr(ID), value(v)
+    : Symbol(ID), value(v)
 {
 }
 
@@ -35,4 +30,9 @@ std::string S_Id::getValue()
 void S_Id::setValue(std::string v)
 {
     value = v;
+}
+
+std::string S_Id::print()
+{
+    return value;
 }

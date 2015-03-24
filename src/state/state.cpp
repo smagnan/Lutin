@@ -4,16 +4,26 @@
 
 using namespace std;
 
-State::State(string name)
+State::State()
+    : id(-1)
 {
-	this->name=name;
+}
+
+State::State(int i)
+    : id(i)
+{
 }
 
 State::~State()
 {
 }
 
-void State::print() const
+int State::getId() const
 {
-	cout<<name<<endl;
+    return id;
+}
+
+State::operator int() const
+{
+    return id;
 }

@@ -15,7 +15,7 @@
 #include "state37.h" 
 
 State29::State29()
-    : State("State29")
+    : State(29)
 {
 }
 
@@ -59,4 +59,16 @@ bool State29::transition(Automaton & automaton, Symbol * s)
     }
     
     return false;
+}
+
+State* State29::getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+
+        default:
+            break;
+    }
+    
+    return 0;
 }

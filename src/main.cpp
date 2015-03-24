@@ -9,12 +9,16 @@
 
 #include <iostream>
 #include <string>
+#include <deque>
 
 #include <boost/program_options.hpp>
 
 #include "automaton.h"
 #include "argsmanager.h"
 #include "interpreter/interpreter.h"
+#include "loader.h"
+#include "debugger.h"
+#include "symbol/symbol.h"
 
 using std::cout;
 using std::endl;
@@ -27,17 +31,32 @@ int main( int argc, const char* argv[] )
 {
 
 	Printer mainPrinter;
+	mainPrinter.printerr("Error example ","more error text");
+	mainPrinter.printwarn("Warning example ","more warning text");
+	mainPrinter.printinfo("Information example ","more info text");
+	ArgsManager am(argc, argv);
+    
+    if (am.isError())
+    {
+        cout << am << endl;
+        return EXIT_FAILURE;
+    }
+
+    DEBUGINFO("Creating Loader");
+    Loader* loader 				= new Loader(am.getFilePath().c_str()); // TODO not really clean ...
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
-	mainPrinter.printinfo("","Creating Lexer");
-    Lexer *lexer = new Lexer();
-	mainPrinter.printinfo("","Creating Interpreter");
-	Interpreter *interpreter 	= new Interpreter();
-	mainPrinter.printinfo("","Creating FSM");
-	Automaton *automaton 		= new Automaton(interpreter,lexer);
-	mainPrinter.printerr("Project not finised ","you know what to do ...");
-	mainPrinter.printwarn("Project not finised ","you know what to do ...");	
+	DEBUGINFO("Creating Lexer");
+    Lexer* lexer 				= new Lexer();
+    lexer->setProg(loader->string());
+	DEBUGINFO("Creating Interpreter");
+	Interpreter* interpreter 	= new Interpreter();
+	DEBUGINFO("Creating FSM");
+	Automaton* automaton 		= new Automaton(lexer->getDeque());	
+    DEBUGINFO("Get the derivation tree");
+    Symbol* derivationTree 		= automaton->getDerivationTree();
+    
 	//=================================== TEST STUFF ==========================================
-	mainPrinter.print("","============== DECLARE =================");
+	DEBUGINFO("============== DECLARE ================");
 	interpreter->declare("testVar",D_VAR,42);
 	interpreter->declare("testVar2"); // not initialised var
 	interpreter->declare("testVar3");
@@ -46,22 +65,14 @@ int main( int argc, const char* argv[] )
 	// The following line is equivalent to the previous one :) 
 	// Note that whatever the string is the name will be the value
 	interpreter->declare("",D_VALUE,100); // XXX does nothing here since the value is already stored
-	mainPrinter.print("","============== UPDATED ================");
+	DEBUGINFO("=============== UPDATE ================");
 	interpreter->update_variable("testVar",1337);
 	interpreter->update_variable("testVar2",8080);
 	interpreter->update_variable("testConst",1000); // Not working as you can see, quite normal (:
-	mainPrinter.print("","================ END ==================");
+	DEBUGINFO("================ END ==================");
 	//=================================== END TEST STUFF ======================================
-    cout << endl;
-    
-    ArgsManager am(argc, argv);
-    
-    if (am.isError())
-    {
-        cout << am << endl;
-        return EXIT_FAILURE;
-    }
-    
+
+
     if (am.count("help"))
     {
         cout << am << endl;
@@ -72,7 +83,7 @@ int main( int argc, const char* argv[] )
 	{
         // TODO: ANALYZE 
         // Fill with that kind of line :
-        // interpreter.static_analysis();
+        // derivationTree.static_analysis();
         cout << "analyze" << endl;
 	}
 
@@ -80,7 +91,7 @@ int main( int argc, const char* argv[] )
 	{
         // TODO: OPTIMIZE 
         // Fill with that kind of line :
-        // interpreter.optimize();
+        // derivationTree.optimize();
         cout << "optimize" << endl;
 	}
     
@@ -89,6 +100,7 @@ int main( int argc, const char* argv[] )
         // TODO: PRINT 
         // Fill with that kind of line :
         // cout << interpreter << endl;
+        mainPrinter.print(cout,loader->string());
 		interpreter->print_declarations(cout);
 		interpreter->print_instructions(cout);
         //cout << "print" << endl;
@@ -101,17 +113,15 @@ int main( int argc, const char* argv[] )
         // interpreter.execute();
         cout << "execute" << endl;
 	}
-    
-    // Get the input file content
-    cout << "Input file content : " << endl << endl;
-    cout << am.getInputText();
 
-    mainPrinter.printinfo("","Deleting FSM");
+    DEBUGINFO("Deleting FSM");
     delete automaton;
-	mainPrinter.printinfo("","Deleting Interpreter");
+	DEBUGINFO("Deleting Interpreter");
 	delete interpreter;
-	mainPrinter.printinfo("","Deleting Lexer");
+	DEBUGINFO("Deleting Lexer");
 	delete lexer;
+	DEBUGINFO("Deleting Loader");
+	delete loader;
 	
 	return EXIT_SUCCESS;
 }

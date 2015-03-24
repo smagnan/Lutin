@@ -13,7 +13,7 @@
 
 
 State40::State40()
-    : State("State40")
+    : State(40)
 {
 }
 
@@ -57,4 +57,16 @@ bool State40::transition(Automaton & automaton, Symbol * s)
     }
     
     return false;
+}
+
+State* State40::getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+
+        default:
+            break;
+    }
+    
+    return 0;
 }

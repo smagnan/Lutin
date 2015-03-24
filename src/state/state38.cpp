@@ -16,7 +16,7 @@
 #include "state41.h" 
 
 State38::State38()
-    : State("State38")
+    : State(38)
 {
 }
 
@@ -48,4 +48,16 @@ bool State38::transition(Automaton & automaton, Symbol * s)
     }
     
     return false;
+}
+
+State* State38::getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+
+        default:
+            break;
+    }
+    
+    return 0;
 }

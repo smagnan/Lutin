@@ -13,9 +13,11 @@
 
 #include "state13.h" 
 #include "state3.h" 
+#include "state18.h" 
+#include "state11.h" 
 
 State2::State2()
-    : State("State2")
+    : State(2)
 {
 }
 
@@ -47,4 +49,22 @@ bool State2::transition(Automaton & automaton, Symbol * s)
     }
     
     return false;
+}
+
+State* State2::getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+
+        case BI:
+            return new State18();
+
+        case D:
+            return new State11();
+
+        default:
+            break;
+    }
+    
+    return 0;
 }

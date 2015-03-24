@@ -12,6 +12,7 @@ templateHeader = """// ---------------------------------------------
 // ---------------------------------------------
 
 #ifndef STATE{ns}_H
+
 #define STATE{ns}_H
 
 #include "state.h"
@@ -24,6 +25,7 @@ public:
     State{ns}();
     virtual ~State{ns}();
     bool transition(Automaton & automaton, Symbol * s);
+    State* getNextState(Symbol * s);
 }};
 
 #endif // STATE{ns}_H
@@ -44,7 +46,7 @@ templateSource = """// ---------------------------------------------
 {stateincludes}
 
 State{ns}::State{ns}()
-    : State("State{ns}")
+    : State({ns})
 {{
 }}
 
@@ -56,10 +58,22 @@ bool State{ns}::transition(Automaton & automaton, Symbol * s)
 {{
     switch(*s)
     {{
-{switchcode}
+{switchcode1}
     }}
     
     return false;
+}}
+
+State* State{ns}::getNextState(Symbol * s)
+{{
+    switch(*s)
+    {{
+{switchcode2}
+        default:
+            break;
+    }}
+    
+    return 0;
 }}
 """
 
@@ -87,10 +101,15 @@ templateErrorInstruction = """
             break;
 """
 
+templateNewStateInstruction = """
+        case {symbolname}:
+            return new State{newstate}();
+"""
+
 templateInclude = """
 #include "state{ns}.h" """
 
-def translateToSwitchCase(str, symbolname):
+def translateToSwitchCase1(str, symbolname):
     m = re.match(r'd(\d+)', str)
     if m:
         return templateShiftInstruction.format(symbolname=symbolname, shiftstate=m.group(1))
@@ -101,11 +120,20 @@ def translateToSwitchCase(str, symbolname):
     if m:
         return templateAcceptInstruction.format(symbolname=symbolname);
     return ""
+
+def translateToSwitchCase2(str, symbolname):
+    m = re.match('(\d+)', str)
+    if m:
+        return templateNewStateInstruction.format(symbolname=symbolname, newstate=m.group(1))
+    return ""
     
 def printStateIncludes(numState):
     includeCode = ""
     for index, cell in enumerate(automaton[numState]):
         m = re.match(r'd(\d+)', cell)
+        if m:
+            includeCode = includeCode + templateInclude.format(ns=m.group(1))
+        m = re.match(r'(\d+)', cell)
         if m:
             includeCode = includeCode + templateInclude.format(ns=m.group(1))
     return includeCode
@@ -116,13 +144,17 @@ def printStateHeader(numState):
     return state
         
 def printStateSource(numState):
-    switchCode = "";
+    switchCode1 = "";
+    switchCode2 = "";
     includeCode = printStateIncludes(numState);
+    terminal = True
     for index, cell in enumerate(automaton[numState]):
-        switchCaseElement = translateToSwitchCase(cell, header[index])
-        switchCode = switchCode + switchCaseElement
-    switchCode = switchCode + templateErrorInstruction
-    state = templateSource.format(ns=numState, switchcode=switchCode, stateincludes=includeCode)
+            switchCaseElement = translateToSwitchCase1(cell, header[index])
+            switchCode1 = switchCode1 + switchCaseElement
+            switchCaseElement = translateToSwitchCase2(cell, header[index])
+            switchCode2 = switchCode2 + switchCaseElement
+    switchCode1 = switchCode1 + templateErrorInstruction
+    state = templateSource.format(ns=numState, switchcode1=switchCode1, switchcode2=switchCode2, stateincludes=includeCode)
     # print(state)
     return state
 

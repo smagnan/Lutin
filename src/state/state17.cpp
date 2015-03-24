@@ -13,7 +13,7 @@
 
 
 State17::State17()
-    : State("State17")
+    : State(17)
 {
 }
 
@@ -41,4 +41,16 @@ bool State17::transition(Automaton & automaton, Symbol * s)
     }
     
     return false;
+}
+
+State* State17::getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+
+        default:
+            break;
+    }
+    
+    return 0;
 }

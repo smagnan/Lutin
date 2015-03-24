@@ -8,16 +8,16 @@
 
 #include "const.h"
 
-S_Const::S_Const(Symbols s)
-    : S_Expr(s)
-{
-}
-
 S_Const::S_Const()
-    : S_Expr(CONST)
+    : Symbol(CONST)
 {
 }
 
 S_Const::~S_Const()
 {
+}
+
+std::string S_Const::print()
+{
+    return "const";
 }

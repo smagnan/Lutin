@@ -11,6 +11,7 @@
 #define DECLARATION_H
 
 #include <string>
+#include "keywords.h"
  
 class Declaration
 {

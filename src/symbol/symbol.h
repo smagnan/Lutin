@@ -1,6 +1,12 @@
 #ifndef SYMBOL_H
 #define SYMBOL_H
 
+#include <iostream>
+#include <sstream>
+#include <string>
+
+#define UNUSED(expr) do { (void)(expr); } while (0)
+
 enum Symbols
 {
     PLUS,
@@ -20,42 +26,41 @@ enum Symbols
     READ,
     AFF,
     END,
-    PROG,
-    DECBLOCK,
-    INSTBLOCK,
-    DECL,
-    INSTR,
-    IDENLIST,
-    INIT,
-    INITLIST,
-    EXPR,
-    EXPRIME,
-    TERM,
-    FINAL
+    P,
+    BD,
+    BI,
+    D,
+    I,
+    IDL,
+    INI,
+    INIL,
+    E,
+    EPRIME,
+    T,
+    F
 };
+
+// DEBUG :
+extern const char* SYM[F+1];
 
 class Symbol
 {
 
 	public:
+		Symbol();
 
-		//Default Constructor
-		Symbol(int id);
+		Symbol(int i);
 
-		//Deconstructor
 		virtual ~Symbol();
 
-		void print();
-
-		// overload int() to cast symbol into integer
 		operator int() const;
+        
+        virtual std::string print();
 
 	protected:
-		int ident;
+		int id;
 
 	private:
-
-		//Disable the following by Symbol 
 
 };
 

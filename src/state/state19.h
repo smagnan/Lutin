@@ -7,6 +7,7 @@
 // ---------------------------------------------
 
 #ifndef STATE19_H
+
 #define STATE19_H
 
 #include "state.h"
@@ -19,6 +20,7 @@ public:
     State19();
     virtual ~State19();
     bool transition(Automaton & automaton, Symbol * s);
+    State* getNextState(Symbol * s);
 };
 
 #endif // STATE19_H

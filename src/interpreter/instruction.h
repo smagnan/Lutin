@@ -9,15 +9,21 @@
 
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
- 
+
+// TODO: real error or stuff
+const int EXEC_RET_OK = 		0;
+const int EXEC_RET_ERROR = 		-1; // TODO add more details
+const int EXEC_RET_NOTSET = 	-2; // all attributes are not set yet
+
 class Instruction
 {
 private:
 protected:
+	bool attributes_set;
 public:
     Instruction();
     virtual ~Instruction();
-    virtual void execute();
+    virtual int execute() = 0;
 };
  
 #endif

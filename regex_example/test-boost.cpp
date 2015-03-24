@@ -59,7 +59,7 @@ bool regex_callback(const boost::match_results<std::string::const_iterator>& wha
         if (what.position(i) != -1) // symbol matched ? 
         {
             symbols.push_back(make_pair(i, what[i].str()));
-         // cout << "Pattern n° " << i << " matched. Value : " << what[i] << endl;
+            //cout << "Pattern n° " << i << " matched. Value : " << what[i] << endl;
         }
     }
     return true;   
@@ -83,7 +83,16 @@ int main(int argc, const char* argv[]) {
         
         boost::sregex_iterator m1(text.begin(), text.end(), expression);
         boost::sregex_iterator m2;
-        std::for_each(m1, m2, &regex_callback); 
+//      std::for_each(m1, m2, &regex_callback); 
+        while(m1 != m2)
+        {
+            regex_callback(*m1);
+            ++m1;
+        }
+        for(symbol_vector::iterator i = symbols.begin(); i != symbols.end(); i++)
+        {
+            cout << (*i).second << endl;
+        }
         cout << symbols.size() << " matches found" << endl;
    } while (argc == 1);
     return 0;

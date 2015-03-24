@@ -11,9 +11,11 @@
 #include "../automaton.h"
 
 
+#include "state1.h" 
+#include "state2.h" 
 
 State0::State0()
-    : State("State0")
+    : State(0)
 {
 }
 
@@ -26,11 +28,23 @@ bool State0::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case ID:
+            automaton.reduce(22);
+            break;
+
         case VAR:
             automaton.reduce(22);
             break;
 
         case CONST:
+            automaton.reduce(22);
+            break;
+
+        case WRITE:
+            automaton.reduce(22);
+            break;
+
+        case READ:
             automaton.reduce(22);
             break;
 
@@ -45,4 +59,22 @@ bool State0::transition(Automaton & automaton, Symbol * s)
     }
     
     return false;
+}
+
+State* State0::getNextState(Symbol * s)
+{
+    switch(*s)
+    {
+
+        case P:
+            return new State1();
+
+        case BD:
+            return new State2();
+
+        default:
+            break;
+    }
+    
+    return 0;
 }
