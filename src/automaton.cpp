@@ -43,7 +43,7 @@
 using namespace std;
 
 const unsigned int RULES[RULES_NUMBER] =
-    {2, 3, 3, 3, 3, 3, 3, 3, 2, 3, 2, 1, 4, 3, 1, 3, 3, 1, 3, 1, 1, 0, 0, 0, 0};
+    {2, 3, 3, 3, 3, 3, 3, 3, 2, 3, 2, 1, 3, 3, 1, 3, 3, 1, 3, 1, 1, 0, 0, 0, 0};
 
 // Automaton constructor
 Automaton::Automaton(std::deque<Symbol*> input)
@@ -153,10 +153,25 @@ void Automaton::reduce(int numRule)
     std::deque<Symbol*> * symbols = new std::deque<Symbol*>();
     for (unsigned int i = 0; i < RULES[numRule-1]; i++)
     {
-        symbols->push_front(symbolStack.top());
-        symbolStack.pop();
-        delete stateStack.top();
-        stateStack.pop();
+        if (!symbolStack.empty())
+        {
+            symbols->push_front(symbolStack.top());
+            symbolStack.pop();
+        }
+        else
+        {
+            DEBUGWARN("Automaton::reduce - Empty symbol stack\n");
+        }
+        
+        if (!stateStack.empty())
+        {
+            delete stateStack.top();
+            stateStack.pop();
+        }
+        else
+        {
+            DEBUGWARN("Automaton::reduce - Empty state stack\n");
+        }
     }
     
     if (stateStack.empty())
