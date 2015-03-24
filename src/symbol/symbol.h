@@ -4,6 +4,11 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <queue>
+#include <map>
+
+#include "../interpreter/interpreter.cpp"
+#include "../interpreter/instruction.cpp"
 
 #define UNUSED(expr) do { (void)(expr); } while (0)
 
@@ -42,6 +47,9 @@ enum Symbols
     NB_SYMBOLS
 };
 
+const int SYMB_EVAL_OK =        0;
+const int SYMB_EVAL_FAILED =    -1;
+
 // DEBUG :
 extern const char* SYM[NB_SYMBOLS];
 
@@ -60,6 +68,8 @@ class Symbol
         virtual std::string print() const;
         
         friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
+
+        virtual int eval(std::queue<Instruction*> instructions) {};
 
 	protected:
 		int id;

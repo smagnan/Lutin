@@ -22,6 +22,7 @@ Read::~Read()
 }
 
 void Read::setAttributes(bool isFile,std::string filename,Var * variable)
+// TODO ? stream as param instead of that?
 {
 	if(isFile) 
 	{
