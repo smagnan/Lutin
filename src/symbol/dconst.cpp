@@ -17,7 +17,7 @@ S_Dconst::~S_Dconst()
 {
 }
 
-std::string S_Dconst::print()
+std::string S_Dconst::print() const
 {
     return "const " + ini->print() + inil->print();
 }

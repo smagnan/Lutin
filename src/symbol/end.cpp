@@ -17,7 +17,7 @@ S_End::~S_End()
 {
 }
 
-std::string S_End::print()
+std::string S_End::print() const
 {
     return "";
 }

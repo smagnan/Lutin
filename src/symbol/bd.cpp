@@ -17,7 +17,7 @@ S_Bd::~S_Bd()
 {
 }
 
-std::string S_Bd::print()
+std::string S_Bd::print() const
 {
     return "";
 }

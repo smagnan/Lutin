@@ -18,7 +18,7 @@ protected:
 public:
     S_Plus();
     virtual ~S_Plus();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_PLUS_H

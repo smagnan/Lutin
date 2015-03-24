@@ -17,7 +17,7 @@ S_Biiter::~S_Biiter()
 {
 }
 
-std::string S_Biiter::print()
+std::string S_Biiter::print() const
 {
     return bi->print() + i->print() + ";\n";
 }

@@ -18,7 +18,7 @@ protected:
 public:
     S_Var();
     virtual ~S_Var();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_VAR_H

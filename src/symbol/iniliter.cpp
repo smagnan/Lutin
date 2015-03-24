@@ -17,7 +17,7 @@ S_Iniliter::~S_Iniliter()
 {
 }
 
-std::string S_Iniliter::print()
+std::string S_Iniliter::print() const
 {
     return inil->print() + ", " + ini->print();
 }

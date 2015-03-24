@@ -17,7 +17,7 @@ S_P::~S_P()
 {
 }
 
-std::string S_P::print()
+std::string S_P::print() const
 {
     return bd->print() + "\n" + bi->print();
 }

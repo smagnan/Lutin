@@ -18,7 +18,7 @@ protected:
 public:
     S_Bd();
     virtual ~S_Bd();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_BD_H

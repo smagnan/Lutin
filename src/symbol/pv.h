@@ -18,7 +18,7 @@ protected:
 public:
     S_Pv();
     virtual ~S_Pv();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_PV_H

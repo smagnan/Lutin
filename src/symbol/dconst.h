@@ -24,7 +24,7 @@ protected:
 public:
     S_Dconst(S_Ini* ini, S_Inil* inil);
     virtual ~S_Dconst();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_DCONST_H

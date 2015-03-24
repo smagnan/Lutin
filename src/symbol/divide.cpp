@@ -17,7 +17,7 @@ S_Divide::~S_Divide()
 {
 }
 
-std::string S_Divide::print()
+std::string S_Divide::print() const
 {
     return "/";
 }

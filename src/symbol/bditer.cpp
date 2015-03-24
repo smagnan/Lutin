@@ -17,7 +17,7 @@ S_Bditer::~S_Bditer()
 {
 }
 
-std::string S_Bditer::print()
+std::string S_Bditer::print() const
 {
     return bd->print() + d->print() + ";\n";
 }

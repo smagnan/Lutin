@@ -17,7 +17,7 @@ S_Eq::~S_Eq()
 {
 }
 
-std::string S_Eq::print()
+std::string S_Eq::print() const
 {
     return "=";
 }

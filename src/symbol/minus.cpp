@@ -17,7 +17,7 @@ S_Minus::~S_Minus()
 {
 }
 
-std::string S_Minus::print()
+std::string S_Minus::print() const
 {
     return "-";
 }

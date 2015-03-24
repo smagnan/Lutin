@@ -57,7 +57,9 @@ class Symbol
 
 		operator int() const;
         
-        virtual std::string print();
+        virtual std::string print() const;
+        
+        friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
 
 	protected:
 		int id;

@@ -22,7 +22,7 @@ public:
     virtual ~S_Num();
     double getValue();
     void setValue(double v);
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_NUM_H

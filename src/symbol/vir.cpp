@@ -17,7 +17,7 @@ S_Vir::~S_Vir()
 {
 }
 
-std::string S_Vir::print()
+std::string S_Vir::print() const
 {
     return ",";
 }

@@ -17,7 +17,7 @@ S_Tf::~S_Tf()
 {
 }
 
-std::string S_Tf::print()
+std::string S_Tf::print() const
 {
     return f->print();
 }
