@@ -40,6 +40,9 @@ enum Symbols
     F
 };
 
+const int SYMB_EVAL_OK =        0;
+const int SYMB_EVAL_FAILED =    -1;
+
 // DEBUG :
 extern const char* SYM[F+1];
 
@@ -56,6 +59,8 @@ class Symbol
 		operator int() const;
         
         virtual std::string print();
+
+        virtual int eval();
 
 	protected:
 		int id;
