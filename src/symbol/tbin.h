@@ -12,7 +12,6 @@
 #include "t.h"
 
 // Rule include :
-#include "t.h"
 #include "f.h"
 
 class S_Tbin : public S_T
