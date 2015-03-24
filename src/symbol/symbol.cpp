@@ -8,39 +8,6 @@
 
 #include "symbol.h"
 
-const char* SYM[NB_SYMBOLS] = {
-    "PLUS",
-    "MINUS",
-    "MULT",
-    "DIVIDE",
-    "OPENBY",
-    "CLOSEBY",
-    "ID",
-    "NUM",
-    "VAR",
-    "CONST",
-    "PV",
-    "VIR",
-    "EQ",
-    "WRITE",
-    "READ",
-    "AFF",
-    "END",
-    "P",
-    "BD",
-    "BI",
-    "D",
-    "I",
-    "IDL",
-    "INI",
-    "INIL",
-    "E",
-    "EPRIME",
-    "T",
-    "F",
-    "SYMBOL"
-};
-
 Symbol::Symbol() : 
     id(SYMBOL)
 {
@@ -66,7 +33,7 @@ Symbol::operator int() const
 std::string Symbol::print() const
 {
     return "";
-}
+} 
 
 std::ostream& operator<< (std::ostream& out, const Symbol& symbol)
 {
