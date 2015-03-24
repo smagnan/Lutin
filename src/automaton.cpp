@@ -74,7 +74,6 @@ Symbol* Automaton::getDerivationTree()
 {
     DEBUGINFO("Automaton::getDerivationTree - BEGIN");
     transition();
-    std::cout << *symbolStack.top() << std::endl;
     DEBUGINFO("Automaton::getDerivationTree - END");
     return symbolStack.top();
 }
