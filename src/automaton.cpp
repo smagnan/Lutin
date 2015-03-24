@@ -71,7 +71,7 @@ Automaton::~Automaton()
 Symbol* Automaton::getDerivationTree()
 {
     // Read should simply change the current token
-    TRACE("getDerivationTree: IN" << std::endl);
+    DEBUGINFO("getDerivationTree: IN");
 	std::vector<Symbol*> symbols;
    
 	while(this->lexer->hasNext()) 
@@ -85,7 +85,7 @@ Symbol* Automaton::getDerivationTree()
 		}
 		TRACE("END" << std::endl);
 	}
-    TRACE("getDerivationTree: OUT" << std::endl);
+    DEBUGINFO("getDerivationTree: OUT");
     // XXX v moche XXX
     //return symbolStack.top(); // generate segfault  
     return (symbolStack.empty())?new Symbol():symbolStack.top(); // FIXME TODO gestion du cas où c'est vide: temporaire mais enlève la segfault 
