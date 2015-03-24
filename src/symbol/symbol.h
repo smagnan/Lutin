@@ -8,7 +8,6 @@
 #include <map>
 
 #include "../interpreter/interpreter.cpp"
-#include "../interpreter/instruction.cpp"
 
 #define UNUSED(expr) do { (void)(expr); } while (0)
 
@@ -69,7 +68,7 @@ class Symbol
         
         friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
 
-        virtual int eval(std::queue<Instruction*> instructions) {};
+        virtual int eval(Interpreter interpreter) { return SYMB_EVAL_OK;};
 
 	protected:
 		int id;
