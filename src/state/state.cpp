@@ -17,3 +17,13 @@ State::State(int i)
 State::~State()
 {
 }
+
+int State::getId() const
+{
+    return id;
+}
+
+State::operator int() const
+{
+    return id;
+}

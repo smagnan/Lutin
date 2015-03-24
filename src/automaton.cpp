@@ -37,6 +37,7 @@
 #include "symbol/fpar.h"
 #include "symbol/fid.h"
 #include "symbol/fnum.h"
+#include "symbol/end.h"
 
 using namespace std;
 
@@ -44,13 +45,14 @@ const unsigned int RULES[RULES_NUMBER] =
     {2, 3, 3, 3, 3, 3, 3, 3, 2, 3, 2, 1, 3, 3, 1, 3, 3, 1, 3, 1, 1, 0, 0, 0, 0};
 
 // Automaton constructor
-Automaton::Automaton(Lexer *lex)
-    : lexer(lex), currentSymbol(0)
+Automaton::Automaton(std::deque<Symbol*> input)
+    : input(input)
 {
 	// Stack initialization :
 	stateStack.push(new State0());
     
-    // Read the first token :
+    // Set the current Symbol
+    currentSymbol = input.empty() ? 0 : input.front();
 }
 
 Automaton::~Automaton()
@@ -70,6 +72,7 @@ Automaton::~Automaton()
 
 Symbol* Automaton::getDerivationTree()
 {
+    /*
     // Read should simply change the current token
     DEBUGINFO("getDerivationTree: IN");
 	std::vector<Symbol*> symbols;
@@ -88,23 +91,80 @@ Symbol* Automaton::getDerivationTree()
     DEBUGINFO("getDerivationTree: OUT");
     // XXX v moche XXX
     //return symbolStack.top(); // generate segfault  
-    return (symbolStack.empty())?new Symbol():symbolStack.top(); // FIXME TODO gestion du cas où c'est vide: temporaire mais enlève la segfault 
+    return (symbolStack.empty())?new Symbol():symbolStack.top(); // FIXME TODO gestion du cas où c'est vide: temporaire mais enlève la segfault
+    
+    */
+    transition();
+    return 0;
+}
+
+void Automaton::transition()
+{
+    TRACE("  Automaton::transition");
+    TRACE("\n                   ");
+    TRACE(*stateStack.top());
+    TRACE(" -> ");
+    TRACE(SYM[*currentSymbol]);
+    TRACE("\n");
+    
+    // Do the next transition
+    if (!stateStack.empty())
+    {
+        stateStack.top()->transition(*this,currentSymbol);
+    }
+}
+
+void Automaton::read()
+{
+    TRACE("  Automaton::read\n");
+    
+    // Go to the next symbol
+    input.pop_front();
+    
+    // Reset the current Symbol
+    if (input.empty())
+    {
+        // Should never occur as the lexer push the end symbol to the back of input
+        TRACE("      WARNING: End of the input reached\n");
+        currentSymbol = new S_End();
+    }
+    else
+    {
+        // Correct case
+        currentSymbol = input.front();
+    }
+    
 }
 
 void Automaton::shift(Symbol * symbol, State * state)
 {
+    TRACE("Automaton::shift:");
+    TRACE("\n                   ");
+    TRACE("stacked STATE: ");
+    TRACE(*state);
+    TRACE(" | SYMBOL: ");
+    TRACE(SYM[*symbol]);
+    TRACE("\n");
+    
     // Push the elements on the stacks
     symbolStack.push(symbol);
     stateStack.push(state);
     
     // Go read the next token
+    read();
+    
+    // Continue
+    transition();
 }
-
+ 
 void Automaton::reduce(int numRule)
 {
+    TRACE("Automaton::reduce:");
+    TRACE("\n                   ");
+
     // Pop elements from the stacks
     std::deque<Symbol*> * symbols = new std::deque<Symbol*>();
-    for (unsigned int i = 0; i < RULES[numRule]; i++)
+    for (unsigned int i = 0; i < RULES[numRule-1]; i++)
     {
         symbols->push_front(symbolStack.top());
         symbolStack.pop();
@@ -120,17 +180,29 @@ void Automaton::reduce(int numRule)
     State * state = stateStack.top()->getNextState(symbol);
     stateStack.push(state);
     
-    // Do not read the next token
-    stateStack.top()->transition(*this,currentSymbol);
+    TRACE("stacked STATE: ");
+    TRACE(*state);
+    TRACE(" | SYMBOL: ");
+    TRACE(SYM[*symbol]);
+    TRACE("\n");
+    
+    // Continue 
+    transition();
 }
 
 void Automaton::error()
 {
-    // Go read the next token
+    TRACE("Automaton::error\n");
+    
+    read();
+    
+    // Continue
+    transition();
 }
 
 void Automaton::accept()
 {
+    TRACE("Automaton::accept\n");
     // Do nothing, just end the process
 }
 
@@ -138,6 +210,7 @@ Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
 {
     if (symbols.size() != RULES[numRule-1])
     {
+        TRACE("Automaton::getSymbol:ERROR CASE\n");
         // ERROR CASE 
     }
     

@@ -28,11 +28,23 @@ bool State0::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case ID:
+            automaton.reduce(22);
+            break;
+
         case VAR:
             automaton.reduce(22);
             break;
 
         case CONST:
+            automaton.reduce(22);
+            break;
+
+        case WRITE:
+            automaton.reduce(22);
+            break;
+
+        case READ:
             automaton.reduce(22);
             break;
 
