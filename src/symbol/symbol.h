@@ -4,6 +4,11 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <queue>
+#include <map>
+
+#include "../interpreter/interpreter.cpp"
+#include "../interpreter/instruction.cpp"
 
 #define UNUSED(expr) do { (void)(expr); } while (0)
 
@@ -62,7 +67,7 @@ class Symbol
         
         virtual std::string print();
 
-        virtual int eval();
+        virtual int eval(std::queue<Instruction*> instructions) {};
 
 	protected:
 		int id;
