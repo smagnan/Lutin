@@ -20,7 +20,7 @@ Write::~Write()
 
 }
 
-int  Write::execute()
+int  Write::execute(Interpreter & interpreter)
 {	
 	if (attributes_set)
 		return EXEC_RET_NOTSET;
@@ -28,6 +28,7 @@ int  Write::execute()
 	{
 		// XXX code exec here
 		std::ostream out(buf);
+		this->expr_value = this->expr->eval(interpreter);
 		out << this->expr_value;
 	}
 	catch(std::exception &e) 
@@ -37,7 +38,7 @@ int  Write::execute()
 	return EXEC_RET_OK;
 }
 
-void Write::setAttributes(bool isFile,std::string filename,double expr_ret)
+void Write::setAttributes(bool isFile,std::string filename,S_Eprime * ex)
 // TODO ? stream as param instead of that?
 {
 	if(isFile) 
@@ -49,5 +50,5 @@ void Write::setAttributes(bool isFile,std::string filename,double expr_ret)
 	{
 	    buf = std::cout.rdbuf();
 	}	
-	this->expr_value = expr_ret;
+	this->expr = ex;
 }

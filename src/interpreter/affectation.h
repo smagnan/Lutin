@@ -26,8 +26,8 @@ protected:
 public:
     Affectation();
     virtual ~Affectation();
-    int  execute();
-    void setAttributes(Var * var, double value);
+    int execute(Interpreter & interpreter);
+    void setAttributes(Var * var, S_Eprime * ex);
 };
  
 #endif

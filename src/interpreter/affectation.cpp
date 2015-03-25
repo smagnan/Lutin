@@ -20,13 +20,14 @@ Affectation::~Affectation()
 
 }
 
-int  Affectation::execute()
+int Affectation::execute(Interpreter & interpreter)
 {
 	if (attributes_set)
 		return EXEC_RET_NOTSET;
 	try 
 	{
 		// XXX code exec here
+		this->var_value = this->expr->eval(interpreter);
 		this->variable->setValue(this->var_value);
 	}
 	catch(std::exception &e) 
@@ -36,8 +37,8 @@ int  Affectation::execute()
 	return EXEC_RET_OK;
 }
 
-void Affectation::setAttributes(Var * var, double value)
+void Affectation::setAttributes(Var * var, S_Eprime * ex)
 {
 	variable = var;
-	this->var_value = value;
+	this->expr = ex;
 }

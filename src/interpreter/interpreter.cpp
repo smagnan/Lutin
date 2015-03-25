@@ -100,17 +100,22 @@ void Interpreter::load_instructions()
 				else // --- aff
 				{
 					Affectation * affect = new Affectation();
-					this->instructions.push(affect/*make_pair(,i_aff->expression())*/);
+					//affect->setAttributes(...,i_aff->expression()); // TODO id stuff
+					this->instructions.push(affect);
 				}
 			}	
 			else //  ------ read
 			{
-
+				Read * rd = new Read();
+				//rd->setAttributes(...); // TODO id stuff
+				this->instructions.push(rd);
 			}
 		}
 		else // ----------- write
 		{
-
+			Write * wr = new Write();
+			wr->setAttributes(i_write->expression());
+			this->instructions.push(wr);
 		}
 		next = current->next();
 	}

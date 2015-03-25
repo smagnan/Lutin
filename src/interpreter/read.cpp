@@ -36,7 +36,7 @@ void Read::setAttributes(bool isFile,std::string filename,Var * variable)
 	this->var = variable;
 }
 
-int Read::execute()
+int Read::execute(Interpreter & interpreter)
 {
 	if (attributes_set)
 		return EXEC_RET_NOTSET;

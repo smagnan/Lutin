@@ -27,9 +27,9 @@ protected:
 public:
     Write();
     virtual ~Write();
-    int execute();
-    void setAttributes(bool isFile,std::string filename,double expr_ret);
-    void setAttributes(double expr_ret) {setAttributes(false,"",expr_ret);};
+    int execute(Interpreter & interpreter);
+    void setAttributes(bool isFile,std::string filename,S_Eprime * ex);
+    void setAttributes(S_Eprime * ex) {setAttributes(false,"",ex);};
 };
  
 #endif

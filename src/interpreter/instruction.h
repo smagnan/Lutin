@@ -10,6 +10,9 @@
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
 
+//#include "interpreter.h"
+class Interpreter;
+
 // TODO: real error or stuff
 const int EXEC_RET_OK = 		0;
 const int EXEC_RET_ERROR = 		-1; // TODO add more details
@@ -23,7 +26,7 @@ protected:
 public:
     Instruction();
     virtual ~Instruction();
-    virtual int execute() = 0;
+    virtual int execute(Interpreter&) = 0;
 };
  
 #endif

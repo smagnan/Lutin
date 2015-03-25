@@ -28,12 +28,12 @@ protected:
 public:
     Read();
     virtual ~Read();
+    int execute(Interpreter & interpreter);
     // isFile: true if we use a file for the input
     // filename: file name + path used for input
     // Var in which we put the result
     void setAttributes(bool isFile,std::string filename,Var * variable); 
     void setAttributes(Var * variable) {setAttributes(false,"",variable);}; 
-    int execute();
 };
  
 #endif
