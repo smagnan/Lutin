@@ -1,4 +1,5 @@
-var a,b;
+var a,b,e;
+var e;
 const c = 1;
 ecrire a;
 c := 2;

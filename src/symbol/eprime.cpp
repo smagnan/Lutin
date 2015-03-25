@@ -15,6 +15,8 @@ S_Eprime::S_Eprime(S_E* e)
 
 S_Eprime::~S_Eprime()
 {
+	if(e != 0)
+		delete e;
 }
 
 std::string S_Eprime::print() const

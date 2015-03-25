@@ -9,13 +9,7 @@
 #include <vector>
 #include <stack>  
 
-// #include "../interpreter/interpreter.h"
-// #include "../interpreter/instruction.h"
-
 class Interpreter;
-class Instruction;
-
-#define UNUSED(expr) do { (void)(expr); } while (0)
 
 enum Symbols
 {
@@ -72,10 +66,11 @@ class Symbol
         
         virtual std::string print() const;
         
+        virtual Symbol* optimize();
+        
         friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
 
-        //virtual int eval(Interpreter interpreter) { return SYMB_EVAL_OK;};
-        virtual int eval(std::queue<Instruction*> instructions) {};
+        virtual double eval(Interpreter& interpreter);
 
 		virtual void staticAnalysis(map< std::string,vector<boolean> > & memId , stack<string> &log) {};
 		

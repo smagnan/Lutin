@@ -26,7 +26,7 @@ Interpreter::~Interpreter()
 
 void Interpreter::run()
 {
-	while(!instructions.empty())
+	/*while(!instructions.empty())
 	{
 		try 
 		{
@@ -39,7 +39,8 @@ void Interpreter::run()
 		this->printer.printerr("Runtime problem ","problem with ...");
 		// TODO: add instruction causing the problem
 		}
-	}
+	}*/
+	//TODO: not usefull?
 }
 
 void Interpreter::declare(const std::string &name, Declar_Type type, double val) // TODO: exceptions
@@ -131,6 +132,21 @@ void Interpreter::print_instructions(std::ostream& out)
 {
 	// TODO
 	this->printer.print(out,"");
+}
+
+double Interpreter::get_value(std::string id)
+{
+	try 
+	{
+		return this->declarations.find(id)->second->getValue();
+
+	} 
+	catch(std::exception &e) 
+	{
+		this->printer.printerr("No such id ","problem with ...");
+		// TODO: error if: name does not exist so can't get value
+	}
+	return 0; // TODO const or equiv.
 }
 
 void Interpreter::clean_declarations() // TODO: exceptions

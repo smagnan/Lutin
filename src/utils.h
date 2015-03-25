@@ -1,3 +1,6 @@
+#ifndef UTILS_H
+#define UTILS_H
+
 #include <string>
 #include <sstream>
 #include <vector>
@@ -25,3 +28,5 @@ namespace Utils
     // splits with multiple delimiters, keep all the delimiter
     unsigned int split(const std::string &txt, std::vector<std::string> &strs, std::string chars);
 }
+
+#endif

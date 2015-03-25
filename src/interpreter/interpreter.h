@@ -51,6 +51,8 @@ public:
     void keep_value(double val) {declare(std::string(),D_VALUE,val);}; 
     // Change the value of a variable
     void update_variable(std::string name, double val);
+    // return the value associated with the element in memory (var,const ...)
+    double get_value(std::string id);
     // Print all the declarations
     void print_declarations(std::ostream& out); // TODO not here
     // Print all the instructions

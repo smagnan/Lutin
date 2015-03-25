@@ -15,6 +15,7 @@ class S_E : public Symbol
 {
 private:
 protected:
+    S_E(Symbols s);
 public:
     S_E();
     virtual ~S_E();

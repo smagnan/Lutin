@@ -9,12 +9,13 @@
 #ifndef S_T_H
 #define S_T_H
 
-#include "symbol.h"
+#include "e.h"
 
-class S_T : public Symbol
+class S_T : public S_E
 {
 private:
 protected:
+    S_T(Symbols s);
 public:
     S_T();
     virtual ~S_T();

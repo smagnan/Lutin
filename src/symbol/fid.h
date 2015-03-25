@@ -23,6 +23,7 @@ public:
     S_Fid(S_Id* id);
     virtual ~S_Fid();
     virtual std::string print() const;
+    virtual Symbol* optimize();
 };
 
 #endif // S_FID_H

@@ -15,6 +15,10 @@ S_Tbin::S_Tbin(S_T* t, S_F* f)
 
 S_Tbin::~S_Tbin()
 {
+	if(!t)
+		delete t;
+	if(!f)
+		delete f;
 }
 
 std::string S_Tbin::print() const
