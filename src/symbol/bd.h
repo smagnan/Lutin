@@ -19,6 +19,7 @@ public:
     S_Bd();
     virtual ~S_Bd();
     virtual std::string print() const;
+    virtual S_Bd * next() { return NULL;};
 };
 
 #endif // S_BD_H

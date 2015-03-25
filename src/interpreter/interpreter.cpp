@@ -26,14 +26,35 @@ Interpreter::~Interpreter()
 
 void Interpreter::load_memory()
 {
-	Symbol * declar_b;
-	declar_b = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
+	S_Bd * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
+	S_Bd * next;
+	if (current == NULL)
+		return; // TODO ?
+	next = current;
+	do
+	{
+		current = next;
+		// current.son().eval() or equivalent ...
+		next = current->next();
+	}
+	while(current != NULL);
+
 }
 
 void Interpreter::run()
 {
-	Symbol * instruc_b;
-	instruc_b = (static_cast<S_P*>(this->symbol_tree))->get_S_Bi();
+	S_Bi * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bi();
+	S_Bi * next;
+	if (current == NULL)
+		return; // TODO ?
+	next = current;
+	do
+	{
+		current = next;
+		// current.son().eval() or equivalent ...
+		// next = current->next(); // TODO next for Bi
+	}
+	while(current != NULL);
 	/*while(!instructions.empty())
 	{
 		try 
