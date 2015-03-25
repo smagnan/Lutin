@@ -15,7 +15,6 @@
 #include <utility>
 #include <deque>
 #include "symbol/symbol.h"
-#include "interpreter/interpreter.h"
 #include "lexer.h"
 #include "symbol/p.h"
 

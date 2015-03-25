@@ -11,6 +11,11 @@
 
 #include "symbol.h"
 
+#include <map>
+#include <vector>
+#include <stack> 
+#include <string>
+
 class S_Bi : public Symbol
 {
 private:
@@ -18,6 +23,7 @@ protected:
 public:
     S_Bi();
     virtual ~S_Bi();
+    virtual void staticAnalysis( map< std::string,vector<boolean> > & memId , stack<string> &log) {};
     virtual std::string print() const;
 };
 

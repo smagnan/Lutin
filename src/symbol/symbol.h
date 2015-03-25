@@ -6,6 +6,8 @@
 #include <string>
 #include <queue>
 #include <map>
+#include <vector>
+#include <stack>  
 
 class Interpreter;
 
@@ -68,8 +70,11 @@ class Symbol
         
         friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
 
-        virtual double eval(Interpreter& interpreter);
+        //virtual int eval(Interpreter interpreter) { return SYMB_EVAL_OK;};
+        virtual int eval(std::queue<Instruction*>) {return NULL;}; // not "std::queue<Instruction*> instructions" -> Warning
 
+		virtual void staticAnalysis(map< std::string,vector<boolean> > & memId , stack<string> &log) {};
+		
 	protected:
 		int id;
 

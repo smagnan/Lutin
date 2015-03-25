@@ -13,9 +13,9 @@
 #include "../utils.h"
 
 // Interpreter constructor
-Interpreter::Interpreter() 
+Interpreter::Interpreter(Symbol* tree) 
 {
-
+	this->symbol_tree = tree;
 }
 
 Interpreter::~Interpreter()
@@ -24,8 +24,37 @@ Interpreter::~Interpreter()
 	clean_instructions();
 }
 
+void Interpreter::load_memory()
+{
+	S_Bd * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
+	S_Bd * next;
+	if (current == NULL)
+		return; // TODO ?
+	next = current;
+	do
+	{
+		current = next;
+		// current.son().eval() or equivalent ...
+		next = current->next();
+	}
+	while(current != NULL);
+
+}
+
 void Interpreter::run()
 {
+	S_Bi * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bi();
+	S_Bi * next;
+	if (current == NULL)
+		return; // TODO ?
+	next = current;
+	do
+	{
+		current = next;
+		// current.son().eval() or equivalent ...
+		// next = current->next(); // TODO next for Bi
+	}
+	while(current != NULL);
 	/*while(!instructions.empty())
 	{
 		try 
@@ -62,8 +91,7 @@ void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 	}
 	else 
 	{
-		// this->printer.printerr("")
-		// TODO error, already exists
+		this->printer.printerr("Multiple definition");
 		// ERROR: Multiple definition
 	}
 }

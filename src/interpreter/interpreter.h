@@ -24,6 +24,7 @@
 #include "write.h"
 #include "affectation.h"
 #include "printer.h"
+#include "automaton.h"
 
 enum Declar_Type {D_VAR,D_CONST,D_VALUE};
 class Interpreter
@@ -32,12 +33,16 @@ private:
 	std::queue<Instruction*> instructions;
 	std::map<std::string,Declaration*> declarations;  // http://bannalia.blogspot.fr/2014/05/fast-polymorphic-collections.html instead?
     Printer printer;
+    Symbol* symbol_tree;
 protected:
 public:
-    Interpreter();
+    Interpreter(Symbol* tree);
     virtual ~Interpreter();
+    // Load the declaration block
+    // TODO XXX return value -> error code?
+    void load_memory();
 	// executes the program currently loaded
-	// XXX return value -> error code?
+	// TODO XXX return value -> error code?
     void run();			
     // I think double is the more generic type in our case
     // or we can build a custom type ...
