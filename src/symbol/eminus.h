@@ -22,6 +22,7 @@ public:
     S_Eminus(S_E* e, S_T* t);
     virtual ~S_Eminus();
     virtual std::string print() const;
+    virtual double eval(Interpreter& interpreter);
 };
 
 #endif // S_EMINUS_H

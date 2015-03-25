@@ -9,7 +9,17 @@
 #include <vector>
 #include <stack>  
 
+#include "../exception/mathException.h"
+
 class Interpreter;
+
+struct Variable
+{
+    bool is_const; // A constant cannot be assigned
+    // bool is_declared; If it is in the map, it is declared...
+    bool is_assigned;
+    bool is_used; // A variable can be used in read/write/aff statements
+};
 
 enum Symbols
 {
@@ -70,10 +80,9 @@ class Symbol
         
         friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
 
-        //virtual int eval(Interpreter interpreter) { return SYMB_EVAL_OK;};
-        virtual int eval(std::queue<Instruction*>) {return NULL;}; // not "std::queue<Instruction*> instructions" -> Warning
+        virtual double eval(Interpreter& interpreter);
 
-		virtual void staticAnalysis(map< std::string,vector<boolean> > & memId , stack<string> &log) {};
+		virtual void staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
 		
 	protected:
 		int id;

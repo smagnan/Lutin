@@ -24,6 +24,7 @@ public:
     virtual ~S_Fid();
     virtual std::string print() const;
     virtual Symbol* optimize();
+    virtual double eval(Interpreter& interpreter);
 };
 
 #endif // S_FID_H

@@ -19,6 +19,7 @@ public:
     S_Tdivide(S_T* t, S_F* f);
     virtual ~S_Tdivide();
     virtual std::string print() const;
+    virtual double eval(Interpreter& interpreter);
 };
 
 #endif // S_TDIVIDE_H

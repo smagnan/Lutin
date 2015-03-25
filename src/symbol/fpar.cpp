@@ -38,5 +38,5 @@ Symbol* S_Fpar::optimize()
 
 double S_Fpar::eval(Interpreter& interpreter)
 {
-    return 0;
+    return e->eval(interpreter);
 }

@@ -23,3 +23,8 @@ std::string S_Eprime::print() const
 {
     return e->print();
 }
+
+double S_Eprime::eval(Interpreter& interpreter)
+{
+    return e->eval(interpreter);
+}

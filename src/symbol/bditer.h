@@ -29,10 +29,10 @@ protected:
 public:
     S_Bditer();
     S_Bditer(S_Bd* bd, S_D* d);
-    void staticAnalysis(map< std::string,vector<boolean> > & memId , stack<string> &log);
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     virtual ~S_Bditer();
     virtual std::string print() const;
-    S_Bd * next() {return bd};
+    S_Bd * next() {return bd;};
 };
 
 #endif // S_BDITER_H

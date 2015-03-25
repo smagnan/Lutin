@@ -28,3 +28,8 @@ Symbol* S_Fid::optimize()
 {
     return 0;
 }
+
+double S_Fid::eval(Interpreter& interpreter)
+{
+    return id->eval(interpreter);
+}

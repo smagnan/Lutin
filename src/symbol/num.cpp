@@ -38,3 +38,9 @@ std::string S_Num::print() const
     strs << value;
     return strs.str();
 }
+
+double S_Num::eval(Interpreter& interpreter)
+{
+    (void) interpreter;
+    return value;
+}

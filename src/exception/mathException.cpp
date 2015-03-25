@@ -1,8 +1,8 @@
 #include "mathException.h"
 
 
-std::string MathException::DIVIDE_BY_ZERO = "Divide by zero";
-std::string MathException::C_E_O = "Cannot evaluate object";
+const std::string DIVIDE_BY_ZERO_ERROR = "Divide by zero.";
+const std::string CANNOT_EVALUATE_ERROR = "Cannot evaluate object.";
 
 // Constructor
 MathException::MathException(std::string msg)

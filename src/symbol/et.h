@@ -23,6 +23,7 @@ public:
     S_Et(S_T* t);
     virtual ~S_Et();
     virtual std::string print() const;
+    virtual double eval(Interpreter& interpreter);
 };
 
 #endif // S_ET_H

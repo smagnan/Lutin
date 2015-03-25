@@ -24,6 +24,7 @@ public:
     virtual ~S_Fnum();
     virtual std::string print() const;
     virtual Symbol* optimize();
+    virtual double eval(Interpreter& interpreter);
 };
 
 #endif // S_FNUM_H

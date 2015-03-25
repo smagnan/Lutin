@@ -21,3 +21,11 @@ std::string S_Tmult::print() const
 {
     return t->print() + " * " + f->print();
 }
+
+double S_Tmult::eval(Interpreter& interpreter)
+{
+    double t_value = t->eval(interpreter);
+    double f_value = f->eval(interpreter);
+    
+    return t_value * f_value;
+}

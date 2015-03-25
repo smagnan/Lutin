@@ -23,6 +23,7 @@ public:
     S_Tf(S_F * f);
     virtual ~S_Tf();
     virtual std::string print() const;
+    virtual double eval(Interpreter& interpreter);
 };
 
 #endif // S_TF_H

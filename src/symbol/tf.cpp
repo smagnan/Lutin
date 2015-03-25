@@ -23,3 +23,8 @@ std::string S_Tf::print() const
 {
     return f->print();
 }
+
+double S_Tf::eval(Interpreter& interpreter)
+{
+    return f->eval(interpreter);
+}

@@ -21,3 +21,8 @@ std::string S_Bd::print() const
 {
     return "";
 }
+
+void S_Bd::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    
+}

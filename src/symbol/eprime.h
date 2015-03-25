@@ -23,6 +23,7 @@ public:
     S_Eprime(S_E* e);
     virtual ~S_Eprime();
     virtual std::string print() const;
+    virtual double eval(Interpreter& interpreter);
 };
 
 #endif // S_EPRIME_H

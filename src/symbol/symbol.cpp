@@ -47,5 +47,10 @@ std::ostream& operator<< (std::ostream& out, const Symbol& symbol)
 
 double Symbol::eval(Interpreter& interpreter)
 {
-    return 0;
+    throw MathException(CANNOT_EVALUATE_ERROR);
+}
+
+void Symbol::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    
 }

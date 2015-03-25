@@ -23,3 +23,8 @@ std::string S_Et::print() const
 {
     return t->print();
 }
+
+double S_Et::eval(Interpreter& interpreter)
+{
+    return t->eval(interpreter);
+}

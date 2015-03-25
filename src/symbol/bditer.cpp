@@ -25,3 +25,8 @@ std::string S_Bditer::print() const
 {
     return bd->print() + d->print() + ";\n";
 }
+
+void S_Bditer::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    
+}

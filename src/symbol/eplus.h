@@ -22,6 +22,7 @@ public:
     S_Eplus(S_E* e, S_T* t);
     virtual ~S_Eplus();
     virtual std::string print() const;
+    virtual double eval(Interpreter& interpreter);
 };
 
 #endif // S_EPLUS_H

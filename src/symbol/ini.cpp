@@ -25,3 +25,8 @@ std::string S_Ini::print() const
 {
     return id->print() + " = " + num->print();
 }
+
+void S_Ini::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    
+}

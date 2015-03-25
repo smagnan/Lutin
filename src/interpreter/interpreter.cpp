@@ -91,7 +91,7 @@ void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 	}
 	else 
 	{
-		this->printer.printerr("Multiple definition");
+		this->printer.printerr("Multiple definition","");
 		// ERROR: Multiple definition
 	}
 }

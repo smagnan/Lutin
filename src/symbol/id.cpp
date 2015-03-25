@@ -7,6 +7,7 @@
 // ---------------------------------------------
 
 #include "id.h"
+#include "../interpreter/interpreter.h"
 
 S_Id::S_Id()
     : Symbol(ID), value(0)
@@ -35,4 +36,9 @@ void S_Id::setValue(std::string v)
 std::string S_Id::print() const
 {
     return value;
+}
+
+double S_Id::eval(Interpreter& interpreter)
+{
+    return interpreter.get_value(value);
 }

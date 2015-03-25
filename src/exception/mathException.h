@@ -4,16 +4,15 @@
 #include <exception>
 #include <string>
 
+extern const std::string DIVIDE_BY_ZERO_ERROR;
+extern const std::string CANNOT_EVALUATE_ERROR;
+
 class MathException : public std::exception
 {
     public: 
 		MathException(std::string msg); 
 		virtual ~MathException() throw();
 		const char *what() const throw();
-		
-		    
-		static std::string DIVIDE_BY_ZERO;
-		static std::string C_E_O;
 
     private:
 		std::string message;

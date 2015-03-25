@@ -21,3 +21,11 @@ std::string S_Eplus::print() const
 {
     return e->print() + " + " + t->print();
 }
+
+double S_Eplus::eval(Interpreter& interpreter)
+{
+    double e_value = e->eval(interpreter);
+    double t_value = t->eval(interpreter);
+    
+    return e_value + t_value;
+}

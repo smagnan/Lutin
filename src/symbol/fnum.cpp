@@ -28,3 +28,8 @@ Symbol* S_Fnum::optimize()
 {
     return num;
 }
+
+double S_Fnum::eval(Interpreter& interpreter)
+{
+    return num->eval(interpreter);
+}

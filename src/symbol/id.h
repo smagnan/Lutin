@@ -23,6 +23,7 @@ public:
     std::string getValue();
     void setValue(std::string v);
     virtual std::string print() const;
+    virtual double eval(Interpreter& interpreter);
 };
 
 #endif // S_ID_H

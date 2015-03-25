@@ -28,7 +28,7 @@ protected:
     S_Num * num;
 public:
     S_Ini(S_Id* id, S_Num* num);
-    void staticAnalysis( map< std::string,vector<boolean> > & memId , stack<string> &log);
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     virtual ~S_Ini();
     virtual std::string print() const;
 };
