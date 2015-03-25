@@ -15,6 +15,10 @@ S_P::S_P(S_Bd* bd,S_Bi* bi)
 
 S_P::~S_P()
 {
+	if(!bd)
+		delete bd;
+	if(!bi)
+		delete bi;
 }
 
 std::string S_P::print() const

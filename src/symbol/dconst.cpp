@@ -15,6 +15,10 @@ S_Dconst::S_Dconst(S_Ini* ini, S_Inil* inil)
 
 S_Dconst::~S_Dconst()
 {
+	if(ini != 0)
+		delete ini;
+	if(inil != 0)
+		delete inil;
 }
 
 std::string S_Dconst::print() const
