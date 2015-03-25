@@ -1,0 +1,5 @@
+ERROR: line 2: variable e is already declared
+ERROR: line 3: variable a was never assigned
+ERROR: line 4: c is a constant, cannot be reassigned
+ERROR: line 5: missing declaration of variable d
+ERROR: variable b is never used

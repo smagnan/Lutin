@@ -1,0 +1,3 @@
+SYNTAX ERROR (1:7) expected probable ,
+SYNTAX ERROR (4:1) expected ;
+SYNTAX ERROR (8:4) expected operator :=
