@@ -9,12 +9,12 @@
 #include "num.h"
 
 S_Num::S_Num()
-    : Symbol(NUM), value(0)
+    : S_F(NUM), value(0)
 {
 }
 
 S_Num::S_Num(double v)
-    : Symbol(NUM), value(v)
+    : S_F(NUM), value(v)
 {
 }
 

@@ -21,3 +21,8 @@ std::string S_Fnum::print() const
 {
     return num->print();
 }
+
+Symbol* S_Fnum::optimize()
+{
+    return num;
+}

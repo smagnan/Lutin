@@ -8,8 +8,14 @@
 
 #include "f.h"
 
+S_F::S_F(Symbols s)
+    : S_T(s)
+{
+    
+}
+
 S_F::S_F()
-    : Symbol(F)
+    : S_T(F)
 {
 }
 

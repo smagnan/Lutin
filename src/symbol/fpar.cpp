@@ -21,3 +21,20 @@ std::string S_Fpar::print() const
 {
     return "(" + e->print() + ")";
 }
+
+Symbol* S_Fpar::optimize()
+{
+    S_E* s = (S_E*)e->optimize();
+    if (s)
+    {
+        delete e;
+        e = s;
+        return e;
+    }
+    return 0;
+}
+
+double S_Fpar::eval(Interpreter& interpreter)
+{
+    return 0;
+}

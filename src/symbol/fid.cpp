@@ -21,3 +21,8 @@ std::string S_Fid::print() const
 {
     return id->print();
 }
+
+Symbol* S_Fid::optimize()
+{
+    return 0;
+}

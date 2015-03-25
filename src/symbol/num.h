@@ -9,9 +9,9 @@
 #ifndef S_NUM_H
 #define S_NUM_H
 
-#include "symbol.h"
+#include "f.h"
 
-class S_Num : public Symbol
+class S_Num : public S_F
 {
 private:
     double value;
