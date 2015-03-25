@@ -15,6 +15,10 @@ S_Biiter::S_Biiter(S_Bi* bi, S_I* i)
 
 S_Biiter::~S_Biiter()
 {
+	if(bi != 0)
+		delete bi;
+	if(i != 0)
+		delete i;
 }
 
 std::string S_Biiter::print() const

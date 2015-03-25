@@ -15,6 +15,10 @@ S_Iniliter::S_Iniliter(S_Inil* inil, S_Ini* ini)
 
 S_Iniliter::~S_Iniliter()
 {
+	if(!inil)
+		delete inil;
+	if(!ini)
+		delete ini;
 }
 
 std::string S_Iniliter::print() const

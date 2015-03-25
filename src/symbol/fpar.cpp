@@ -15,6 +15,8 @@ S_Fpar::S_Fpar(S_E* e)
 
 S_Fpar::~S_Fpar()
 {
+	if(e != 0)
+		delete e;
 }
 
 std::string S_Fpar::print() const

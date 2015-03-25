@@ -15,6 +15,8 @@ S_Et::S_Et(S_T* t)
 
 S_Et::~S_Et()
 {
+	if(t != 0)
+		delete t;
 }
 
 std::string S_Et::print() const

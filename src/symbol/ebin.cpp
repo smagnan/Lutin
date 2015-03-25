@@ -20,6 +20,10 @@ S_Ebin::S_Ebin(S_E* e, S_T* t)
 
 S_Ebin::~S_Ebin()
 {
+	if(e != 0)
+		delete e;
+	if(t != 0)
+		delete t;
 }
 
 std::string S_Ebin::print() const

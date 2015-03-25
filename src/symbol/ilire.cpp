@@ -15,6 +15,8 @@ S_Ilire::S_Ilire(S_Id* id)
 
 S_Ilire::~S_Ilire()
 {
+	if(id != 0)
+		delete id;
 }
 
 std::string S_Ilire::print() const
