@@ -25,12 +25,13 @@
 #include "affectation.h"
 #include "printer.h"
 #include "../symbol/symbol.h"
+#include "../symbol/eprime.h"
 
 enum Declar_Type {D_VAR,D_CONST,D_VALUE};
 class Interpreter
 {
 private:
-	std::queue<Instruction*> instructions;
+	std::queue<std::pair<Instruction*,S_Eprime*> > instructions;
 	std::map<std::string,Declaration*> declarations;  // http://bannalia.blogspot.fr/2014/05/fast-polymorphic-collections.html instead?
     Printer printer;
     Symbol* symbol_tree;
@@ -40,7 +41,10 @@ public:
     virtual ~Interpreter();
     // Load the declaration block
     // TODO XXX return value -> error code?
-    void load_memory();
+    void load_declarations();
+    // Load the instructions block
+    // TODO XXX return value -> error code?
+    void load_instructions();
 	// executes the program currently loaded
 	// TODO XXX return value -> error code?
     void run();			

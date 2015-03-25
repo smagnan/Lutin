@@ -32,7 +32,25 @@ Interpreter::~Interpreter()
 	clean_instructions();
 }
 
-void Interpreter::load_memory()
+void Interpreter::clean_declarations() // TODO: exceptions
+{
+	typedef std::map<std::string, Declaration* >::iterator it_t;
+	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) 
+	{
+	    delete iterator->second;
+	}
+}
+
+void Interpreter::clean_instructions() // TODO: exceptions
+{
+	while (!this->instructions.empty()) 
+	{
+		delete this->instructions.front().first; // not second as it is deleted later: in tree
+		this->instructions.pop();
+	}
+}
+
+void Interpreter::load_declarations()
 {
 	S_Bd * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
 	S_Bd * next;
@@ -49,7 +67,7 @@ void Interpreter::load_memory()
 	while(current != NULL);
 }
 
-void Interpreter::run()
+void Interpreter::load_instructions()
 {
 	S_Bi * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bi();
 	S_Bi * next;
@@ -61,6 +79,8 @@ void Interpreter::run()
 	{
 		current = next;
 		curr_instruction = (static_cast<S_Biiter*>(current))->get_instruction();
+		// (: thx:  http://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
+		// TYPE* dynamic_cast<TYPE*> (object);
 		next = current->next();
 	}
 	while(current != NULL);
@@ -79,6 +99,11 @@ void Interpreter::run()
 		}
 	}*/
 	//TODO: not usefull?
+}
+
+void Interpreter::run()
+{
+
 }
 
 void Interpreter::declare(const std::string &name, Declar_Type type, double val) // TODO: exceptions
@@ -168,7 +193,7 @@ void Interpreter::print_declarations(std::ostream& out)
 
 void Interpreter::print_instructions(std::ostream& out)
 {
-	// TODO
+	// TODO print instructions
 	this->printer.print(out,"");
 }
 
@@ -185,22 +210,4 @@ double Interpreter::get_value(std::string id)
 		// TODO: error if: name does not exist so can't get value
 	}
 	return 0; // TODO const or equiv.
-}
-
-void Interpreter::clean_declarations() // TODO: exceptions
-{
-	typedef std::map<std::string, Declaration* >::iterator it_t;
-	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) 
-	{
-	    delete iterator->second;
-	}
-}
-
-void Interpreter::clean_instructions() // TODO: exceptions
-{
-	while (!this->instructions.empty()) 
-	{
-		delete this->instructions.front();
-		this->instructions.pop();
-	}
 }
