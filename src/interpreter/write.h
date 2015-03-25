@@ -14,6 +14,7 @@
 #include <streambuf>
 #include <fstream>
 #include "instruction.h"
+#include "../symbol/eprime.h"
 
 class Write : public Instruction
 {
@@ -21,12 +22,14 @@ private:
 	std::streambuf * buf; // TODO move?
 	std::ofstream out_f;  // TODO move?
 	double expr_value;
+	S_Eprime * expr;
 protected:
 public:
     Write();
     virtual ~Write();
     int execute();
     void setAttributes(bool isFile,std::string filename,double expr_ret);
+    void setAttributes(double expr_ret) {setAttributes(false,"",expr_ret);};
 };
  
 #endif

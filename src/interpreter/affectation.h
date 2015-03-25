@@ -12,12 +12,16 @@
  
 #include "instruction.h"
 #include "var.h"
+#include "../symbol/id.h"
+#include "../symbol/eprime.h"
  
 class Affectation : public Instruction
 {
 private:
 	Var * variable;
 	double var_value;
+	S_Id * id;
+	S_Eprime * expr;
 protected:
 public:
     Affectation();

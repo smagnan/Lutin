@@ -18,7 +18,9 @@
 #include "../symbol/bditer.h"
 #include "../symbol/d.h"
 #include "../symbol/p.h"
-
+#include "../symbol/iaff.h"
+#include "../symbol/iecrire.h"
+#include "../symbol/ilire.h"
 
 // Interpreter constructor
 Interpreter::Interpreter(Symbol* tree) 
@@ -45,7 +47,7 @@ void Interpreter::clean_instructions() // TODO: exceptions
 {
 	while (!this->instructions.empty()) 
 	{
-		delete this->instructions.front().first; // not second as it is deleted later: in tree
+		delete this->instructions.front();
 		this->instructions.pop();
 	}
 }
@@ -75,12 +77,41 @@ void Interpreter::load_instructions()
 		return; // TODO ?
 	next = current;
 	S_I * curr_instruction;
+	S_Iecrire* i_write;
+	S_Ilire* i_read;
+	S_Iaff* i_aff;
 	do
 	{
 		current = next;
 		curr_instruction = (static_cast<S_Biiter*>(current))->get_instruction();
 		// (: thx:  http://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
 		// TYPE* dynamic_cast<TYPE*> (object);
+		i_write = dynamic_cast<S_Iecrire*> (curr_instruction);
+		if (i_write ==  NULL)
+		{
+			i_read = dynamic_cast<S_Ilire*> (curr_instruction);
+			if (i_read ==  NULL)
+			{
+				i_aff = dynamic_cast<S_Iaff*> (curr_instruction);
+				if (i_aff ==  NULL)
+				{
+					// TODO ERROR
+				}
+				else // --- aff
+				{
+					Affectation * affect = new Affectation();
+					this->instructions.push(affect/*make_pair(,i_aff->expression())*/);
+				}
+			}	
+			else //  ------ read
+			{
+
+			}
+		}
+		else // ----------- write
+		{
+
+		}
 		next = current->next();
 	}
 	while(current != NULL);

@@ -31,7 +31,7 @@ enum Declar_Type {D_VAR,D_CONST,D_VALUE};
 class Interpreter
 {
 private:
-	std::queue<std::pair<Instruction*,S_Eprime*> > instructions;
+	std::queue<Instruction*> instructions;
 	std::map<std::string,Declaration*> declarations;  // http://bannalia.blogspot.fr/2014/05/fast-polymorphic-collections.html instead?
     Printer printer;
     Symbol* symbol_tree;

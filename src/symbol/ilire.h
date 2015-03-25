@@ -23,7 +23,7 @@ public:
     S_Ilire(S_Id* id);
     virtual ~S_Ilire();
     virtual std::string print() const;
-    S_Eprime * expression() { return eprime;};
+    S_Id * get_id() { return id;};
 };
 
 #endif // S_ILIRE_H

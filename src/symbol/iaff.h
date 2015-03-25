@@ -26,6 +26,7 @@ public:
     virtual ~S_Iaff();
     virtual std::string print() const;
     S_Eprime * expression() { return eprime;};
+    S_Id * get_id() { return id;};
 };
 
 #endif // S_IID_H

@@ -15,6 +15,7 @@
 #include <fstream>
 #include "instruction.h"
 #include "var.h"
+#include "../symbol/id.h"
  
 class Read : public Instruction
 {
@@ -22,6 +23,7 @@ private:
 	std::streambuf * buf; // TODO move?
 	std::ifstream in_f;  // TODO move?
 	Var * var;
+    S_Id * id;
 protected:
 public:
     Read();
@@ -30,6 +32,7 @@ public:
     // filename: file name + path used for input
     // Var in which we put the result
     void setAttributes(bool isFile,std::string filename,Var * variable); 
+    void setAttributes(Var * variable) {setAttributes(false,"",variable);}; 
     int execute();
 };
  
