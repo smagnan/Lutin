@@ -6,6 +6,8 @@
 #include <string>
 #include <queue>
 #include <map>
+#include <vector>
+#include <stack>  
 
 // #include "../interpreter/interpreter.h"
 // #include "../interpreter/instruction.h"
@@ -75,6 +77,8 @@ class Symbol
         //virtual int eval(Interpreter interpreter) { return SYMB_EVAL_OK;};
         virtual int eval(std::queue<Instruction*> instructions) {};
 
+		virtual void staticAnalysis(map< std::string,vector<boolean> > & memId , stack<string> &log) {};
+		
 	protected:
 		int id;
 

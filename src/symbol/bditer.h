@@ -15,6 +15,11 @@
 #include "bd.h"
 #include "d.h"
 
+#include <map>
+#include <vector>
+#include <stack> 
+#include <string>
+
 class S_Bditer : public S_Bd
 {
 private:
@@ -24,6 +29,7 @@ protected:
 public:
     S_Bditer();
     S_Bditer(S_Bd* bd, S_D* d);
+    void staticAnalysis(map< std::string,vector<boolean> > & memId , stack<string> &log);
     virtual ~S_Bditer();
     virtual std::string print() const;
 };
