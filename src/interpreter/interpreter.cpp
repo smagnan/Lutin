@@ -13,9 +13,9 @@
 #include "../utils.h"
 
 // Interpreter constructor
-Interpreter::Interpreter() 
+Interpreter::Interpreter(Symbol* tree) 
 {
-
+	this->symbol_tree = tree;
 }
 
 Interpreter::~Interpreter()
@@ -24,8 +24,16 @@ Interpreter::~Interpreter()
 	clean_instructions();
 }
 
+void Interpreter::load_memory()
+{
+	Symbol * declar_b;
+	declar_b = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
+}
+
 void Interpreter::run()
 {
+	Symbol * instruc_b;
+	instruc_b = (static_cast<S_P*>(this->symbol_tree))->get_S_Bi();
 	/*while(!instructions.empty())
 	{
 		try 

@@ -73,7 +73,7 @@ class Symbol
         friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
 
         //virtual int eval(Interpreter interpreter) { return SYMB_EVAL_OK;};
-        virtual int eval(std::queue<Instruction*> instructions) {};
+        virtual int eval(std::queue<Instruction*>) {}; // not "std::queue<Instruction*> instructions" -> Warning
 
 	protected:
 		int id;

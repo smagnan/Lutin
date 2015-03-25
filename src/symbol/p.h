@@ -25,6 +25,8 @@ public:
     S_P(S_Bd* bd,S_Bi* bi);
     virtual ~S_P();
     virtual std::string print() const;
+    S_Bd* get_S_Bd(){return bd;};
+    S_Bi* get_S_Bi(){return bi;};
 };
 
 #endif // S_P_H

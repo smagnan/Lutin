@@ -48,12 +48,12 @@ int main( int argc, const char* argv[] )
 	DEBUGINFO("Creating Lexer");
     Lexer* lexer 				= new Lexer();
     lexer->setProg(loader->string());
-	DEBUGINFO("Creating Interpreter");
-	Interpreter* interpreter 	= new Interpreter();
 	DEBUGINFO("Creating FSM");
 	Automaton* automaton 		= new Automaton(lexer->getDeque());	
     DEBUGINFO("Get the derivation tree");
     Symbol* derivationTree 		= automaton->getDerivationTree();
+    DEBUGINFO("Creating Interpreter");
+	Interpreter* interpreter 	= new Interpreter(derivationTree);
     
 	//=================================== TEST STUFF ==========================================
 	DEBUGINFO("============== DECLARE ================");
