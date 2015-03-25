@@ -17,7 +17,7 @@ S_Pv::~S_Pv()
 {
 }
 
-std::string S_Pv::print()
+std::string S_Pv::print() const
 {
     return ";";
 }

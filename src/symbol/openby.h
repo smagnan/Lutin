@@ -18,7 +18,7 @@ protected:
 public:
     S_Openby();
     virtual ~S_Openby();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_OPENBY_H

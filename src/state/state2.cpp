@@ -30,12 +30,24 @@ bool State2::transition(Automaton & automaton, Symbol * s)
     switch(*s)
     {
 
+        case ID:
+            automaton.reduce(23);
+            break;
+
         case VAR:
             automaton.shift(s, new State13());
             break;
 
         case CONST:
             automaton.shift(s, new State3());
+            break;
+
+        case WRITE:
+            automaton.reduce(23);
+            break;
+
+        case READ:
+            automaton.reduce(23);
             break;
 
         case END:

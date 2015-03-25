@@ -18,7 +18,7 @@ protected:
 public:
     S_Mult();
     virtual ~S_Mult();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_MULT_H

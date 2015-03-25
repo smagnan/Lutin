@@ -22,7 +22,7 @@ public:
     virtual ~S_Id();
     std::string getValue();
     void setValue(std::string v);
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_ID_H

@@ -17,7 +17,7 @@ S_Aff::~S_Aff()
 {
 }
 
-std::string S_Aff::print()
+std::string S_Aff::print() const
 {
     return ":=";
 }

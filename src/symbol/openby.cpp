@@ -17,7 +17,7 @@ S_Openby::~S_Openby()
 {
 }
 
-std::string S_Openby::print()
+std::string S_Openby::print() const
 {
     return "(";
 }

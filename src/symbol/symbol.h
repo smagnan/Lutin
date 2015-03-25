@@ -4,6 +4,14 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <queue>
+#include <map>
+
+// #include "../interpreter/interpreter.h"
+// #include "../interpreter/instruction.h"
+
+class Interpreter;
+class Instruction;
 
 #define UNUSED(expr) do { (void)(expr); } while (0)
 
@@ -37,11 +45,16 @@ enum Symbols
     E,
     EPRIME,
     T,
-    F
+    F,
+    SYMBOL,
+    NB_SYMBOLS
 };
 
+const int SYMB_EVAL_OK =        0;
+const int SYMB_EVAL_FAILED =    -1;
+
 // DEBUG :
-extern const char* SYM[F+1];
+extern const char* SYM[NB_SYMBOLS];
 
 class Symbol
 {
@@ -55,7 +68,12 @@ class Symbol
 
 		operator int() const;
         
-        virtual std::string print();
+        virtual std::string print() const;
+        
+        friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
+
+        //virtual int eval(Interpreter interpreter) { return SYMB_EVAL_OK;};
+        virtual int eval(std::queue<Instruction*> instructions) {};
 
 	protected:
 		int id;

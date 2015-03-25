@@ -17,7 +17,7 @@ S_Iecrire::~S_Iecrire()
 {
 }
 
-std::string S_Iecrire::print()
+std::string S_Iecrire::print() const
 {
-    return "ecrire" + eprime->print();
+    return "ecrire " + eprime->print();
 }

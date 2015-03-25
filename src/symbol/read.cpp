@@ -17,7 +17,7 @@ S_Read::~S_Read()
 {
 }
 
-std::string S_Read::print()
+std::string S_Read::print() const
 {
     return "read";
 }

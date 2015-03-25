@@ -22,7 +22,7 @@ protected:
 public:
     S_Iecrire(S_Eprime* eprime);
     virtual ~S_Iecrire();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_IECRIRE_H

@@ -17,7 +17,7 @@ S_Dvar::~S_Dvar()
 {
 }
 
-std::string S_Dvar::print()
+std::string S_Dvar::print() const
 {
-    return "var " + id->print() + " " + idl->print();
+    return "var " + id->print() + idl->print();
 }

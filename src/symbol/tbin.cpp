@@ -17,7 +17,7 @@ S_Tbin::~S_Tbin()
 {
 }
 
-std::string S_Tbin::print()
+std::string S_Tbin::print() const
 {
     return "";
 }

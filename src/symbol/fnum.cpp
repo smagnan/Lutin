@@ -17,7 +17,7 @@ S_Fnum::~S_Fnum()
 {
 }
 
-std::string S_Fnum::print()
+std::string S_Fnum::print() const
 {
     return num->print();
 }

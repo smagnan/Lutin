@@ -17,7 +17,7 @@ S_Inil::~S_Inil()
 {
 }
 
-std::string S_Inil::print()
+std::string S_Inil::print() const
 {
     return "";
 }

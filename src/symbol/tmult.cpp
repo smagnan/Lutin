@@ -17,7 +17,7 @@ S_Tmult::~S_Tmult()
 {
 }
 
-std::string S_Tmult::print()
+std::string S_Tmult::print() const
 {
     return t->print() + " * " + f->print();
 }

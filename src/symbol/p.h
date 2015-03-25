@@ -24,7 +24,7 @@ protected:
 public:
     S_P(S_Bd* bd,S_Bi* bi);
     virtual ~S_P();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_P_H

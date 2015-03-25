@@ -17,7 +17,7 @@ S_Ini::~S_Ini()
 {
 }
 
-std::string S_Ini::print()
+std::string S_Ini::print() const
 {
     return id->print() + " = " + num->print();
 }

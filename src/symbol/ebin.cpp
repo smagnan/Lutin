@@ -22,7 +22,7 @@ S_Ebin::~S_Ebin()
 {
 }
 
-std::string S_Ebin::print()
+std::string S_Ebin::print() const
 {
     return "";
 }

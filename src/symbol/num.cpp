@@ -32,7 +32,7 @@ void S_Num::setValue(double v)
     value = v;
 }
 
-std::string S_Num::print()
+std::string S_Num::print() const
 {
     std::ostringstream strs;
     strs << value;

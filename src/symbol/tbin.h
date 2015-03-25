@@ -12,7 +12,6 @@
 #include "t.h"
 
 // Rule include :
-#include "t.h"
 #include "f.h"
 
 class S_Tbin : public S_T
@@ -25,7 +24,7 @@ protected:
 public:
     S_Tbin(S_T* t, S_F* f);
     virtual ~S_Tbin();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_TBIN_H

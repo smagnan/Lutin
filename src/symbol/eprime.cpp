@@ -17,7 +17,7 @@ S_Eprime::~S_Eprime()
 {
 }
 
-std::string S_Eprime::print()
+std::string S_Eprime::print() const
 {
     return e->print();
 }

@@ -17,7 +17,7 @@ S_Iaff::~S_Iaff()
 {
 }
 
-std::string S_Iaff::print()
+std::string S_Iaff::print() const
 {
     return id->print() + " := " + eprime->print();
 }

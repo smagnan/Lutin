@@ -17,7 +17,7 @@ S_Var::~S_Var()
 {
 }
 
-std::string S_Var::print()
+std::string S_Var::print() const
 {
     return "var";
 }

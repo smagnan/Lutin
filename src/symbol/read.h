@@ -18,7 +18,7 @@ protected:
 public:
     S_Read();
     virtual ~S_Read();
-    virtual std::string print();
+    virtual std::string print() const;
 };
 
 #endif // S_READ_H

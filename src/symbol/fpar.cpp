@@ -17,7 +17,7 @@ S_Fpar::~S_Fpar()
 {
 }
 
-std::string S_Fpar::print()
+std::string S_Fpar::print() const
 {
     return "(" + e->print() + ")";
 }

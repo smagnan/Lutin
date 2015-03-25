@@ -17,7 +17,7 @@ S_Idliter::~S_Idliter()
 {
 }
 
-std::string S_Idliter::print()
+std::string S_Idliter::print() const
 {
     return idl->print() + ", " + id->print();
 }
