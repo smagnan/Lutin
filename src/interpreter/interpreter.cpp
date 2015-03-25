@@ -11,6 +11,14 @@
 #include "../exception/operationException.h"
 #include "interpreter.h"
 #include "../utils.h"
+#include "../symbol/bi.h"
+#include "../symbol/biiter.h"
+#include "../symbol/i.h"
+#include "../symbol/bd.h"
+#include "../symbol/bditer.h"
+#include "../symbol/d.h"
+#include "../symbol/p.h"
+
 
 // Interpreter constructor
 Interpreter::Interpreter(Symbol* tree) 
@@ -28,31 +36,32 @@ void Interpreter::load_memory()
 {
 	S_Bd * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
 	S_Bd * next;
-	if (current == NULL)
+	if (current == NULL || current->next() == NULL) // if NULL or Bd and not Bditer
 		return; // TODO ?
 	next = current;
+	S_D * curr_declar;
 	do
 	{
 		current = next;
-		// current.son().eval() or equivalent ...
+		curr_declar = (static_cast<S_Bditer*>(current))->get_declaration();
 		next = current->next();
 	}
 	while(current != NULL);
-
 }
 
 void Interpreter::run()
 {
 	S_Bi * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bi();
 	S_Bi * next;
-	if (current == NULL)
+	if (current == NULL || current->next() == NULL) // if NULL or Bi and not Biiter
 		return; // TODO ?
 	next = current;
+	S_I * curr_instruction;
 	do
 	{
 		current = next;
-		// current.son().eval() or equivalent ...
-		// next = current->next(); // TODO next for Bi
+		curr_instruction = (static_cast<S_Biiter*>(current))->get_instruction();
+		next = current->next();
 	}
 	while(current != NULL);
 	/*while(!instructions.empty())

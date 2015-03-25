@@ -24,7 +24,7 @@
 #include "write.h"
 #include "affectation.h"
 #include "printer.h"
-#include "automaton.h"
+#include "../symbol/symbol.h"
 
 enum Declar_Type {D_VAR,D_CONST,D_VALUE};
 class Interpreter

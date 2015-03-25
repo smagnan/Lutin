@@ -33,6 +33,7 @@ public:
     virtual ~S_Bditer();
     virtual std::string print() const;
     S_Bd * next() {return bd;};
+    S_D * get_declaration() { return d;};
 };
 
 #endif // S_BDITER_H

@@ -25,6 +25,7 @@ public:
     virtual ~S_Bi();
     virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     virtual std::string print() const;
+    virtual S_Bi * next() { return NULL;};
 };
 
 #endif // S_BI_H

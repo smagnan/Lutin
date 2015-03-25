@@ -25,6 +25,9 @@ public:
     S_Biiter(S_Bi* bi, S_I* i);
     virtual ~S_Biiter();
     virtual std::string print() const;
+    S_Bi * next() { return bi;};
+    S_I * get_instruction() { return i;};
 };
+
 
 #endif // S_BIITER_H
