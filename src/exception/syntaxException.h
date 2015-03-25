@@ -1,3 +1,6 @@
+#ifndef SYNTAXEXCEPTION_H
+#define SYNTAXEXCEPTION_H
+
 #include <exception>
 #include <string>
 
@@ -10,3 +13,5 @@ class SyntaxException: public std::exception
     private:
 	std::string message;
 };
+
+#endif

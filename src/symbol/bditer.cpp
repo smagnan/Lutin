@@ -15,6 +15,10 @@ S_Bditer::S_Bditer(S_Bd* bd, S_D* d)
 
 S_Bditer::~S_Bditer()
 {
+	if(bd != 0)
+		delete bd;
+	if(d != 0)
+		delete d;	
 }
 
 std::string S_Bditer::print() const

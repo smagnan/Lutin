@@ -15,6 +15,10 @@ S_Ini::S_Ini(S_Id* id, S_Num* num)
 
 S_Ini::~S_Ini()
 {
+	if(!id)
+		delete id;
+	if(!num)
+		delete num;
 }
 
 std::string S_Ini::print() const

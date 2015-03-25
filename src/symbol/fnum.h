@@ -23,6 +23,7 @@ public:
     S_Fnum(S_Num* num);
     virtual ~S_Fnum();
     virtual std::string print() const;
+    virtual Symbol* optimize();
 };
 
 #endif // S_FNUM_H
