@@ -26,7 +26,7 @@ Interpreter::~Interpreter()
 
 void Interpreter::run()
 {
-	while(!instructions.empty())
+	/*while(!instructions.empty())
 	{
 		try 
 		{
@@ -39,7 +39,8 @@ void Interpreter::run()
 		this->printer.printerr("Runtime problem ","problem with ...");
 		// TODO: add instruction causing the problem
 		}
-	}
+	}*/
+	//TODO: not usefull?
 }
 
 void Interpreter::declare(const std::string &name, Declar_Type type, double val) // TODO: exceptions

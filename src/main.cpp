@@ -103,7 +103,7 @@ int main( int argc, const char* argv[] )
         //mainPrinter.print(cout,loader->string());
 		//interpreter->print_declarations(cout);
 		//interpreter->print_instructions(cout);
-        std::cout << *derivationTree << std::endl;
+        std::cout << *derivationTree << std::endl; // TODO extract string for synaxic coloration
 	}
     
 	if (am.count("execute"))
