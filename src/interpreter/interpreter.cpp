@@ -135,6 +135,21 @@ void Interpreter::print_instructions(std::ostream& out)
 	this->printer.print(out,"");
 }
 
+double Interpreter::get_value(std::string id)
+{
+	try 
+	{
+		return this->declarations.find(id)->second->getValue();
+
+	} 
+	catch(std::exception &e) 
+	{
+		this->printer.printerr("No such id ","problem with ...");
+		// TODO: error if: name does not exist so can't get value
+	}
+	return 0; // TODO const or equiv.
+}
+
 void Interpreter::clean_declarations() // TODO: exceptions
 {
 	typedef std::map<std::string, Declaration* >::iterator it_t;
