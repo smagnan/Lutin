@@ -14,6 +14,7 @@
 #include <streambuf>
 #include <fstream>
 #include "instruction.h"
+#include "interpreter.h"
 #include "../symbol/eprime.h"
 
 class Write : public Instruction

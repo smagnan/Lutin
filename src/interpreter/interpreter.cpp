@@ -100,14 +100,14 @@ void Interpreter::load_instructions()
 				else // --- aff
 				{
 					Affectation * affect = new Affectation();
-					//affect->setAttributes(...,i_aff->expression()); // TODO id stuff
+					affect->setAttributes(i_aff->get_id(),i_aff->expression());
 					this->instructions.push(affect);
 				}
 			}	
 			else //  ------ read
 			{
 				Read * rd = new Read();
-				//rd->setAttributes(...); // TODO id stuff
+				rd->setAttributes(i_read->get_id());
 				this->instructions.push(rd);
 			}
 		}
@@ -120,26 +120,24 @@ void Interpreter::load_instructions()
 		next = current->next();
 	}
 	while(current != NULL);
-	/*while(!instructions.empty())
+}
+
+void Interpreter::run()
+{
+	while(!instructions.empty())
 	{
 		try 
 		{
-			instructions.front()->execute();
+			instructions.front()->execute(*this);
 			delete instructions.front(); // TODO ok? 
 			instructions.pop();
 		}
 		catch(std::exception &e) 
 		{
-		this->printer.printerr("Runtime problem ","problem with ...");
-		// TODO: add instruction causing the problem
+			this->printer.printerr("Runtime problem ","problem with ...");
+			// TODO: add instruction causing the problem
 		}
-	}*/
-	//TODO: not usefull?
-}
-
-void Interpreter::run()
-{
-
+	}
 }
 
 void Interpreter::declare(const std::string &name, Declar_Type type, double val) // TODO: exceptions
@@ -246,4 +244,28 @@ double Interpreter::get_value(std::string id)
 		// TODO: error if: name does not exist so can't get value
 	}
 	return 0; // TODO const or equiv.
+}
+
+Var * Interpreter::get_variable(std::string id)
+{
+	Declaration * decl;
+	try 
+	{
+		decl = this->declarations.find(id)->second;
+		if (decl->getType().compare(KEYWORD_VAR))
+		{
+			return static_cast<Var*>(decl);
+		}
+		else // TODO error if not VAR ?
+		{	
+			this->printer.printerr("Not a VAR ","problem with ...");
+			return NULL;
+		}
+	} 
+	catch(std::exception &e) 
+	{
+		this->printer.printerr("No such id ","problem with ...");
+		// TODO: error if: name does not exist so can't get value
+	}
+	return NULL; // TODO const or equiv.
 }

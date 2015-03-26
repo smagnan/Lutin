@@ -10,13 +10,13 @@
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
 
-//#include "interpreter.h"
 class Interpreter;
 
 // TODO: real error or stuff
 const int EXEC_RET_OK = 		0;
 const int EXEC_RET_ERROR = 		-1; // TODO add more details
 const int EXEC_RET_NOTSET = 	-2; // all attributes are not set yet
+const int EXEC_RET_NOTAVAR = 	-3; // looking for a var, found something else
 
 class Instruction
 {

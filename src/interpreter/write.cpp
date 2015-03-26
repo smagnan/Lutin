@@ -26,7 +26,7 @@ int  Write::execute(Interpreter & interpreter)
 		return EXEC_RET_NOTSET;
 	try 
 	{
-		// XXX code exec here
+		// exec:
 		std::ostream out(buf);
 		this->expr_value = this->expr->eval(interpreter);
 		out << this->expr_value;

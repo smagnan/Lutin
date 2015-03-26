@@ -16,6 +16,7 @@
 #include "instruction.h"
 #include "var.h"
 #include "../symbol/id.h"
+#include "interpreter.h"
  
 class Read : public Instruction
 {
@@ -32,8 +33,8 @@ public:
     // isFile: true if we use a file for the input
     // filename: file name + path used for input
     // Var in which we put the result
-    void setAttributes(bool isFile,std::string filename,Var * variable); 
-    void setAttributes(Var * variable) {setAttributes(false,"",variable);}; 
+    void setAttributes(bool isFile,std::string filename,S_Id * id_in); 
+    void setAttributes(S_Id * id_in) {setAttributes(false,"",id_in);}; 
 };
  
 #endif

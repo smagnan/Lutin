@@ -26,7 +26,10 @@ int Affectation::execute(Interpreter & interpreter)
 		return EXEC_RET_NOTSET;
 	try 
 	{
-		// XXX code exec here
+		// exec:
+		this->variable = interpreter.get_variable(this->id->getValue());
+		if (this->variable ==  NULL) // TODO Not a VAR -> ERROR
+			return EXEC_RET_NOTAVAR;
 		this->var_value = this->expr->eval(interpreter);
 		this->variable->setValue(this->var_value);
 	}
@@ -37,8 +40,8 @@ int Affectation::execute(Interpreter & interpreter)
 	return EXEC_RET_OK;
 }
 
-void Affectation::setAttributes(Var * var, S_Eprime * ex)
+void Affectation::setAttributes(S_Id * id_in, S_Eprime * ex)
 {
-	variable = var;
+	this->id = id_in;
 	this->expr = ex;
 }

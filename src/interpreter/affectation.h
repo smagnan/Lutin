@@ -11,6 +11,7 @@
 #define AFFECTATION_H
  
 #include "instruction.h"
+#include "interpreter.h"
 #include "var.h"
 #include "../symbol/id.h"
 #include "../symbol/eprime.h"
@@ -27,7 +28,7 @@ public:
     Affectation();
     virtual ~Affectation();
     int execute(Interpreter & interpreter);
-    void setAttributes(Var * var, S_Eprime * ex);
+    void setAttributes(S_Id * id_in, S_Eprime * ex);
 };
  
 #endif

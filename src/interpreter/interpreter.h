@@ -62,6 +62,8 @@ public:
     void update_variable(std::string name, double val);
     // return the value associated with the element in memory (var,const ...)
     double get_value(std::string id);
+    // return a pointer to the var associated at the id
+    Var * get_variable(std::string id);
     // Print all the declarations
     void print_declarations(std::ostream& out); // TODO not here
     // Print all the instructions
