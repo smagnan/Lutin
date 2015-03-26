@@ -25,6 +25,8 @@ public:
     S_Dvar(S_Id* id, S_Idl* idl);
     virtual ~S_Dvar();
     virtual std::string print() const;
+    S_Id * get_id() {return id;};
+
 };
 
 #endif // S_DVAR_H

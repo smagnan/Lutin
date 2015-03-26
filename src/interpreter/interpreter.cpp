@@ -23,6 +23,8 @@
 #include "../symbol/ilire.h"
 #include "../symbol/dconst.h"
 #include "../symbol/dvar.h"
+#include "../symbol/id.h"	// TODO useful?
+#include "../symbol/ini.h"	// TODO useful?
 
 // Interpreter constructor
 Interpreter::Interpreter(Symbol* tree) 
@@ -78,14 +80,12 @@ void Interpreter::load_declarations()
 			}	
 			else //  ------ var
 			{
-				// TODO
-				//declare(id,D_VAR,XXX);
+				declare(d_var->get_id()->getValue());
 			}
 		}
 		else // ----------- const
 		{
-			// TODO
-			//declare(id,D_CONST,XXX);
+			declare(d_const->get_ini()->getId(),D_CONST,d_const->get_ini()->getNum());
 		}
 		next = current->next();
 	}
