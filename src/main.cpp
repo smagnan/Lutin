@@ -56,7 +56,7 @@ int main( int argc, const char* argv[] )
 	Interpreter* interpreter 	= new Interpreter(derivationTree);
     
 	//=================================== TEST STUFF ==========================================
-	DEBUGINFO("============== DECLARE ================");
+	/*DEBUGINFO("============== DECLARE ================");
 	interpreter->declare("testVar",D_VAR,42);
 	interpreter->declare("testVar2"); // not initialised var
 	interpreter->declare("testVar3");
@@ -69,7 +69,7 @@ int main( int argc, const char* argv[] )
 	interpreter->update_variable("testVar",1337);
 	interpreter->update_variable("testVar2",8080);
 	interpreter->update_variable("testConst",1000); // Not working as you can see, quite normal (:
-	DEBUGINFO("================ END ==================");
+	DEBUGINFO("================ END ==================");*/
 	//=================================== END TEST STUFF ======================================
 
 
@@ -103,14 +103,19 @@ int main( int argc, const char* argv[] )
         //mainPrinter.print(cout,loader->string());
 		//interpreter->print_declarations(cout);
 		//interpreter->print_instructions(cout);
-        std::cout << *derivationTree << std::endl; // TODO extract string for synaxic coloration
+        std::cout << *derivationTree << std::endl; // TODO [[[ extract string for synaxic coloration ]]]
 	}
     
 	if (am.count("execute"))
 	{
         // TODO: OPTIMIZE 
         // Fill with that kind of line :
-        // interpreter.execute();
+        DEBUGINFO("Loading declarations");
+        interpreter->load_declarations();
+        DEBUGINFO("Loading instructions");
+        interpreter->load_instructions();
+        DEBUGINFO("Run");
+        interpreter->run();
         cout << "execute" << endl;
 	}
     

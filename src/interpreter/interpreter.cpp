@@ -11,6 +11,7 @@
 #include "../exception/operationException.h"
 #include "interpreter.h"
 #include "../utils.h"
+#include "../debugger.h"
 #include "../symbol/bi.h"
 #include "../symbol/biiter.h"
 #include "../symbol/i.h"
@@ -58,6 +59,8 @@ void Interpreter::clean_instructions() // TODO: exceptions
 
 void Interpreter::load_declarations()
 {
+	TRACE((static_cast<S_P*>(this->symbol_tree))->get_S_Bd())
+	DEBUGINFO("load_declarations: START")
 	S_Bd * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
 	S_Bd * next;
 	if (current == NULL || current->next() == NULL) // if NULL or Bd and not Bditer
