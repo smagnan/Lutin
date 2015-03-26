@@ -21,6 +21,8 @@
 #include "../symbol/iaff.h"
 #include "../symbol/iecrire.h"
 #include "../symbol/ilire.h"
+#include "../symbol/dconst.h"
+#include "../symbol/dvar.h"
 
 // Interpreter constructor
 Interpreter::Interpreter(Symbol* tree) 
@@ -60,10 +62,31 @@ void Interpreter::load_declarations()
 		return; // TODO ?
 	next = current;
 	S_D * curr_declar;
+	S_Dconst * d_const;
+	S_Dvar * d_var;
 	do
 	{
 		current = next;
 		curr_declar = (static_cast<S_Bditer*>(current))->get_declaration();
+		d_const = dynamic_cast<S_Dconst*> (curr_declar);
+		if (d_const ==  NULL)
+		{
+			d_var = dynamic_cast<S_Dvar*> (curr_declar);
+			if (d_var ==  NULL)
+			{
+				// TODO ERROR
+			}	
+			else //  ------ var
+			{
+				// TODO
+				//declare(id,D_VAR,XXX);
+			}
+		}
+		else // ----------- const
+		{
+			// TODO
+			//declare(id,D_CONST,XXX);
+		}
 		next = current->next();
 	}
 	while(current != NULL);
@@ -85,7 +108,6 @@ void Interpreter::load_instructions()
 		current = next;
 		curr_instruction = (static_cast<S_Biiter*>(current))->get_instruction();
 		// (: thx:  http://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
-		// TYPE* dynamic_cast<TYPE*> (object);
 		i_write = dynamic_cast<S_Iecrire*> (curr_instruction);
 		if (i_write ==  NULL)
 		{
