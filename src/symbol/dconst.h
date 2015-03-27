@@ -25,6 +25,7 @@ public:
     S_Dconst(S_Ini* ini, S_Inil* inil);
     virtual ~S_Dconst();
     virtual std::string print() const;
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     S_Ini * get_ini() {return ini;};
 };
 

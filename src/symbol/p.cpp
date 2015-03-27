@@ -25,3 +25,9 @@ std::string S_P::print() const
 {
     return bd->print() + "\n" + bi->print();
 }
+
+void S_P::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    this.bd.staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
+	this.bi.staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
+}

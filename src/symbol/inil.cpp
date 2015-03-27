@@ -21,3 +21,8 @@ std::string S_Inil::print() const
 {
     return "";
 }
+
+void S_Inil::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    
+}

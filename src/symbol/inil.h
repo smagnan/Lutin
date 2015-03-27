@@ -19,6 +19,7 @@ public:
     S_Inil();
     virtual ~S_Inil();
     virtual std::string print() const;
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
 };
 
 #endif // S_INIL_H
