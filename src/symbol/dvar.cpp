@@ -28,9 +28,14 @@ std::string S_Dvar::print() const
 
 void S_Dvar::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
 {
-	std::pair<map::iterator Iter, bool> p = memId.insert( std::pair< std::string, Variable >(id.value,is_declared);
+	// Désolé mais j'ai pas compris ce que tu cherchait à faire là 
+	// Et ça n'a pas trop de sens
+	// + pas mal d'erreurs de syntaxe
+	/*
+	std::pair<std::map::iterator Iter, bool> p = memId.insert( std::pair< std::string, Variable >(id.value,is_declared);
 	if(!p.second)
 	{
 		log = ALREADY_DECLARED;
 	}
+	*/
 }

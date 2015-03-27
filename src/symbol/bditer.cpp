@@ -28,6 +28,6 @@ std::string S_Bditer::print() const
 
 void S_Bditer::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
 {
-    this.bd.staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
-	this.d.staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
+    this->bd->staticAnalysis(memId , log);
+	this->d->staticAnalysis(memId , log);
 }

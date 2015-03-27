@@ -28,6 +28,6 @@ std::string S_P::print() const
 
 void S_P::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
 {
-    this.bd.staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
-	this.bi.staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
+    this->bd->staticAnalysis(memId ,log);
+	this->bi->staticAnalysis(memId ,log);
 }

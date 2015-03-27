@@ -28,6 +28,6 @@ std::string S_Dconst::print() const
 
 void S_Dconst::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
 {
-    this.ini.staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
-	this.inil.staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
+    this->ini->staticAnalysis(memId ,log);
+	this->inil->staticAnalysis(memId ,log);
 }
