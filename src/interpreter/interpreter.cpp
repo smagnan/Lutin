@@ -82,11 +82,11 @@ void Interpreter::load_declarations()
 		DEBUGWARN("    load_declarations: 7");
 		current = next;
 		curr_declar = static_cast<S_D*>((static_cast<S_Bditer*>(current))->get_declaration());
-		DEBUGWARN("    load_declarations: 8");
 		TRACE("current                          : " << current << std::endl)
 		TRACE("static_cast<S_Bditer*>(current)  : " << static_cast<S_Bditer*>(current) << std::endl)
 		TRACE("_->get_declaration()             : " << (static_cast<S_Bditer*>(current))->get_declaration() << std::endl)
 		TRACE("curr_declar                      : " << curr_declar << std::endl)
+		DEBUGWARN("    load_declarations: 8");
 		d_const = dynamic_cast<S_Dconst*> (curr_declar);
 		DEBUGWARN("    load_declarations: 9");
 		if (d_const ==  NULL)
@@ -97,11 +97,12 @@ void Interpreter::load_declarations()
 			if (d_var ==  NULL)
 			{
 				// TODO ERROR
-				DEBUGWARN("            load_declarations: 12");
+				DEBUGERR("            load_declarations: 12");
 			}	
 			else //  ------ var
 			{
 				DEBUGWARN("            load_declarations: 13");
+				TRACE("Var id: " << d_var->get_id()->getValue() << std::endl)
 				declare(d_var->get_id()->getValue());
 				DEBUGWARN("            load_declarations: 14");
 			}
@@ -109,6 +110,8 @@ void Interpreter::load_declarations()
 		else // ----------- const
 		{
 			DEBUGWARN("        load_declarations: 15");
+			TRACE("Const id: " << d_const->get_ini()->getId() << std::endl)
+			TRACE("Const id: " << d_const->get_ini()->getNum() << std::endl)
 			declare(d_const->get_ini()->getId(),D_CONST,d_const->get_ini()->getNum());
 			DEBUGWARN("        load_declarations: 16");
 		}
