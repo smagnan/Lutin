@@ -59,8 +59,6 @@ void Interpreter::clean_instructions() // TODO: exceptions
 
 void Interpreter::load_declarations()
 {
-	TRACE((static_cast<S_P*>(this->symbol_tree))->get_S_Bd())
-	DEBUGINFO("load_declarations: START")
 	S_Bd * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
 	S_Bd * next;
 	if (current == NULL || current->next() == NULL) // if NULL or Bd and not Bditer
@@ -72,7 +70,7 @@ void Interpreter::load_declarations()
 	do
 	{
 		current = next;
-		curr_declar = (static_cast<S_Bditer*>(current))->get_declaration();
+		curr_declar = static_cast<S_D*>((static_cast<S_Bditer*>(current))->get_declaration());
 		d_const = dynamic_cast<S_Dconst*> (curr_declar);
 		if (d_const ==  NULL)
 		{
@@ -92,7 +90,7 @@ void Interpreter::load_declarations()
 		}
 		next = current->next();
 	}
-	while(current != NULL);
+	while(next != NULL);
 }
 
 void Interpreter::load_instructions()
@@ -144,7 +142,7 @@ void Interpreter::load_instructions()
 		}
 		next = current->next();
 	}
-	while(current != NULL);
+	while(next != NULL);
 }
 
 void Interpreter::run()
