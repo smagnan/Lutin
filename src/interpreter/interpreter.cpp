@@ -59,38 +59,65 @@ void Interpreter::clean_instructions() // TODO: exceptions
 
 void Interpreter::load_declarations()
 {
+	DEBUGINFO("load_declarations: START");
+	DEBUGWARN("load_declarations: 1");
 	S_Bd * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
+	DEBUGWARN("load_declarations: 2");
 	S_Bd * next;
+	DEBUGWARN("load_declarations: 3");
+	TRACE(current << std::endl)
 	if (current == NULL || current->next() == NULL) // if NULL or Bd and not Bditer
+	{
+		DEBUGWARN("load_declarations: 3 ret");
 		return; // TODO ?
+	}
+	DEBUGWARN("load_declarations: 5");
 	next = current;
 	S_D * curr_declar;
 	S_Dconst * d_const;
 	S_Dvar * d_var;
+	DEBUGWARN("load_declarations: 6");
 	do
 	{
+		DEBUGWARN("    load_declarations: 7");
 		current = next;
 		curr_declar = static_cast<S_D*>((static_cast<S_Bditer*>(current))->get_declaration());
+		DEBUGWARN("    load_declarations: 8");
+		TRACE("current                          : " << current << std::endl)
+		TRACE("static_cast<S_Bditer*>(current)  : " << static_cast<S_Bditer*>(current) << std::endl)
+		TRACE("_->get_declaration()             : " << (static_cast<S_Bditer*>(current))->get_declaration() << std::endl)
+		TRACE("curr_declar                      : " << curr_declar << std::endl)
 		d_const = dynamic_cast<S_Dconst*> (curr_declar);
+		DEBUGWARN("    load_declarations: 9");
 		if (d_const ==  NULL)
 		{
+			DEBUGWARN("        load_declarations: 10");
 			d_var = dynamic_cast<S_Dvar*> (curr_declar);
+			DEBUGWARN("        load_declarations: 11");
 			if (d_var ==  NULL)
 			{
 				// TODO ERROR
+				DEBUGWARN("            load_declarations: 12");
 			}	
 			else //  ------ var
 			{
+				DEBUGWARN("            load_declarations: 13");
 				declare(d_var->get_id()->getValue());
+				DEBUGWARN("            load_declarations: 14");
 			}
 		}
 		else // ----------- const
 		{
+			DEBUGWARN("        load_declarations: 15");
 			declare(d_const->get_ini()->getId(),D_CONST,d_const->get_ini()->getNum());
+			DEBUGWARN("        load_declarations: 16");
 		}
+		DEBUGWARN("    load_declarations: 17");
 		next = current->next();
+		DEBUGWARN("    load_declarations: 18");
 	}
 	while(next != NULL);
+	DEBUGINFO("load_declarations: END");
 }
 
 void Interpreter::load_instructions()
