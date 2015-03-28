@@ -8,6 +8,8 @@
 // ---------------------------------------------
 
 #include <exception>
+#include <stack>
+#include <typeinfo>
 #include "../exception/operationException.h"
 #include "interpreter.h"
 #include "../utils.h"
@@ -48,11 +50,11 @@ void Interpreter::clean_declarations() // TODO: exceptions
 	}
 }
 
-void Interpreter::clean_instructions() // TODO: exceptions
+void Interpreter::clean_instructions() // TODO: exceptions ... supposed to be useless?
 {
 	while (!this->instructions.empty()) 
 	{
-		delete this->instructions.front();
+		delete this->instructions.top();
 		this->instructions.pop();
 	}
 }
@@ -76,6 +78,7 @@ void Interpreter::load_declarations()
 	S_D * curr_declar;
 	S_Dconst * d_const;
 	S_Dvar * d_var;
+	std::string className;
 	DEBUGWARN("load_declarations: 6");
 	do
 	{
@@ -86,7 +89,8 @@ void Interpreter::load_declarations()
 		TRACE("static_cast<S_Bditer*>(current)  : " << static_cast<S_Bditer*>(current) << std::endl)
 		TRACE("_->get_declaration()             : " << (static_cast<S_Bditer*>(current))->get_declaration() << std::endl)
 		TRACE("curr_declar                      : " << curr_declar << std::endl)
-		if (curr_declar <(void*)(0x100)) // FIXME UGLYEST THING IN HISTORY
+		className = typeid(*current).name(); 
+		if(!className.compare("4S_Bd")) // this means we reached the end of the branch: a Bd symbol (decorated name)
 			break;
 		DEBUGWARN("    load_declarations: 8");
 		d_const = dynamic_cast<S_Dconst*> (curr_declar);
@@ -136,11 +140,13 @@ void Interpreter::load_instructions()
 	S_Iecrire* i_write;
 	S_Ilire* i_read;
 	S_Iaff* i_aff;
+	std::string className; 
 	do
 	{
 		current = next;
 		curr_instruction = (static_cast<S_Biiter*>(current))->get_instruction();
-		if (curr_instruction <(void*)(0x100)) // FIXME UGLYEST THING IN HISTORY
+		className = typeid(*current).name(); 
+		if(!className.compare("4S_Bi")) // this means we reached the end of the branch: à Bi symbol (decorated name)
 			break;
 		// (: thx:  http://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
 		i_write = dynamic_cast<S_Iecrire*> (curr_instruction);
@@ -173,6 +179,7 @@ void Interpreter::load_instructions()
 			Write * wr = new Write();
 			wr->setAttributes(i_write->expression());
 			this->instructions.push(wr);
+			//this->printer.print(std::cout,i_write->expression()->eval(*this)); // see? not the correct order
 		}
 		next = current->next();
 	}
@@ -185,8 +192,8 @@ void Interpreter::run()
 	{
 		try 
 		{
-			instructions.front()->execute(*this);
-			delete instructions.front(); // TODO ok? 
+			instructions.top()->execute(*this);
+			delete instructions.top(); // TODO ok? 
 			instructions.pop();
 		}
 		catch(std::exception &e) 
@@ -292,12 +299,19 @@ double Interpreter::get_value(std::string id)
 {
 	try 
 	{
-		return this->declarations.find(id)->second->getValue();
-
+		if(this->declarations.find(id) == this->declarations.end())
+		{
+			this->printer.printerr("No such id: ",id);
+			return 0;
+		}
+		else
+		{
+			return this->declarations.find(id)->second->getValue();
+		}
 	} 
 	catch(std::exception &e) 
 	{
-		this->printer.printerr("No such id ","problem with ...");
+		this->printer.printerr("Problem while getting value of: ",id);
 		// TODO: error if: name does not exist so can't get value
 	}
 	return 0; // TODO const or equiv.
@@ -309,19 +323,19 @@ Var * Interpreter::get_variable(std::string id)
 	try 
 	{
 		decl = this->declarations.find(id)->second;
-		if (decl->getType().compare(KEYWORD_VAR))
+		if (!decl->getType().compare(KEYWORD_VAR))
 		{
 			return static_cast<Var*>(decl);
 		}
 		else // TODO error if not VAR ?
 		{	
-			this->printer.printerr("Not a VAR ","problem with ...");
+			this->printer.printerr("Not a VAR: ",id);
 			return NULL;
 		}
 	} 
 	catch(std::exception &e) 
 	{
-		this->printer.printerr("No such id ","problem with ...");
+		this->printer.printerr("No such id: ",id);
 		// TODO: error if: name does not exist so can't get value
 	}
 	return NULL; // TODO const or equiv.

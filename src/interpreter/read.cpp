@@ -8,7 +8,9 @@
 // ---------------------------------------------
 
 #include <exception>
+#include <limits>
 #include "read.h"
+#include "../debugger.h"
 
 // Read constructor
 Read::Read() 
@@ -42,12 +44,21 @@ int Read::execute(Interpreter & interpreter)
 		return EXEC_RET_NOTSET;
 	try 
 	{
-		// exec:
+		/*DEBUGINFO("Read::execute IN")
+		// exec: 
+		TRACE(this->id->getValue())*/
 		this->var = interpreter.get_variable(this->id->getValue());
 		if (this->var ==  NULL) // TODO Not a VAR -> ERROR
 			return EXEC_RET_NOTAVAR;
 		std::istream in(buf);
+		std::cin.clear();
 		in >> *this->var;
+		/*int temp;
+		std::cin >> temp;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+		int temp2;
+		std::cin >> temp2;
+		DEBUGINFO("Read::execute OUT")*/
 	}
 	catch(std::exception &e) 
 	{

@@ -1,0 +1,7 @@
+var x;
+lire x;
+ecrire x;
+ecrire x*x;
+ecrire x*x*x;
+ecrire x*x*x*x;
+
