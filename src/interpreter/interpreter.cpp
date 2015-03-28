@@ -9,6 +9,7 @@
 
 #include <exception>
 #include <stack>
+#include <typeinfo>
 #include "../exception/operationException.h"
 #include "interpreter.h"
 #include "../utils.h"
@@ -77,6 +78,7 @@ void Interpreter::load_declarations()
 	S_D * curr_declar;
 	S_Dconst * d_const;
 	S_Dvar * d_var;
+	std::string className;
 	DEBUGWARN("load_declarations: 6");
 	do
 	{
@@ -87,7 +89,8 @@ void Interpreter::load_declarations()
 		TRACE("static_cast<S_Bditer*>(current)  : " << static_cast<S_Bditer*>(current) << std::endl)
 		TRACE("_->get_declaration()             : " << (static_cast<S_Bditer*>(current))->get_declaration() << std::endl)
 		TRACE("curr_declar                      : " << curr_declar << std::endl)
-		if (curr_declar <(void*)(0x100)) // FIXME UGLYEST THING IN HISTORY
+		className = typeid(*current).name(); 
+		if(!className.compare("4S_Bd")) // this means we reached the end of the branch: a Bd symbol (decorated name)
 			break;
 		DEBUGWARN("    load_declarations: 8");
 		d_const = dynamic_cast<S_Dconst*> (curr_declar);
@@ -137,11 +140,13 @@ void Interpreter::load_instructions()
 	S_Iecrire* i_write;
 	S_Ilire* i_read;
 	S_Iaff* i_aff;
+	std::string className; 
 	do
 	{
 		current = next;
 		curr_instruction = (static_cast<S_Biiter*>(current))->get_instruction();
-		if (curr_instruction <(void*)(0x100)) // FIXME UGLYEST THING IN HISTORY
+		className = typeid(*current).name(); 
+		if(!className.compare("4S_Bi")) // this means we reached the end of the branch: à Bi symbol (decorated name)
 			break;
 		// (: thx:  http://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
 		i_write = dynamic_cast<S_Iecrire*> (curr_instruction);
