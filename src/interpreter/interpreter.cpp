@@ -114,17 +114,22 @@ void Interpreter::load_declarations()
 				DEBUGWARN("            load_declarations: 13");
 				TRACE("Var id: " << d_var->get_id()->getValue() << std::endl)
 				declare(d_var->get_id()->getValue());
-				TRACE("Var idl 1: " << d_var->get_idl()->get_id()->getValue() << std::endl)
 				var_idl = d_var->get_idl();
-				while(var_idl != NULL)
-				{
-					declare(var_idl->get_id()->getValue());
-					TRACE("Var idl n: " << var_idl->get_id() << std::endl)
-					var_idl = var_idl->get_idl();
-					className = typeid(*var_idl).name(); 
-					DEBUGINFO(className)
-					if(!className.compare("5S_Idl")) // end of the branch: a Idl symbol (decorated name)
-						break;
+				className = typeid(*var_idl).name(); 
+				DEBUGINFO(className)
+				if(className.compare("5S_Idl")) // end of the branch: a Idl symbol (decorated name)
+				{	
+					TRACE("Var idl 1: " << d_var->get_id()->getValue() << std::endl)
+					while(var_idl != NULL)
+					{
+						declare(var_idl->get_id()->getValue());
+						TRACE("Var idl n: " << var_idl->get_id() << std::endl)
+						var_idl = var_idl->get_idl();
+						className = typeid(*var_idl).name(); 
+						DEBUGINFO(className)
+						if(!className.compare("5S_Idl")) // end of the branch: a Idl symbol (decorated name)
+							break;
+					}
 				}
 				DEBUGWARN("            load_declarations: 14");
 			}
@@ -136,16 +141,21 @@ void Interpreter::load_declarations()
 			TRACE("Const id: " << d_const->get_ini()->getNum() << std::endl)
 			declare(d_const->get_ini()->getId(),D_CONST,d_const->get_ini()->getNum());
 			const_inil = d_const->get_inil();
-			while(const_inil != NULL)
+			className = typeid(*const_inil).name(); 
+			DEBUGINFO(className)
+			if(className.compare("6S_Inil")) // end of the branch: a Inil symbol (decorated name)
 			{
-				declare(const_inil->get_ini()->getId(),D_CONST,const_inil->get_ini()->getNum());
-				TRACE("Var idl n: " << const_inil->get_ini()->getId() << std::endl)
-				TRACE("Var idl n: " << const_inil->get_ini()->getNum() << std::endl)
-				const_inil = const_inil->get_inil();
-				className = typeid(*const_inil).name(); 
-				DEBUGINFO(className)
-				if(!className.compare("6S_Inil")) // end of the branch: a Inil symbol (decorated name)
-					break;
+				while(const_inil != NULL)
+				{
+					declare(const_inil->get_ini()->getId(),D_CONST,const_inil->get_ini()->getNum());
+					TRACE("Var idl n: " << const_inil->get_ini()->getId() << std::endl)
+					TRACE("Var idl n: " << const_inil->get_ini()->getNum() << std::endl)
+					const_inil = const_inil->get_inil();
+					className = typeid(*const_inil).name(); 
+					DEBUGINFO(className)
+					if(!className.compare("6S_Inil")) // end of the branch: a Inil symbol (decorated name)
+						break;
+				}
 			}
 			DEBUGWARN("        load_declarations: 16");
 		}
