@@ -29,7 +29,7 @@ int  Write::execute(Interpreter & interpreter)
 		// exec:
 		std::ostream out(buf);
 		this->expr_value = this->expr->eval(interpreter);
-		out << this->expr_value;
+		out << this->expr_value << std::endl; // TODO keep the endl?
 	}
 	catch(std::exception &e) 
 	{

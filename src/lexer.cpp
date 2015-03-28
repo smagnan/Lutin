@@ -102,9 +102,9 @@ bool Lexer::setProg(std::string prog)
 
         // set iterators to on newly filled vector
         progStart = progLines.begin();
-        std::cout << "progStart points to : " << *progStart << std::endl;
+        TRACE("progStart points to : " << *progStart << std::endl)
         progEnd = progLines.end()-1;       
-        std::cout << "progEnd points to : " << *progEnd << std::endl;
+        TRACE("progEnd points to : " << *progEnd << std::endl)
         DEBUGINFO("Lexer::Program Set");
         return true;
     }
@@ -134,7 +134,7 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
     }
 
     DEBUGINFO("Lexer::getSymbols() will return symbols from :");
-    std::cout << (*progStart) << std::endl;
+    TRACE((*progStart) << std::endl)
 
     // increment iterator (for next loop)
     progStart++;

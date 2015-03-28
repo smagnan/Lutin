@@ -72,7 +72,6 @@ int main( int argc, const char* argv[] )
 	DEBUGINFO("================ END ==================");*/
 	//=================================== END TEST STUFF ======================================
 
-
     if (am.count("help"))
     {
         cout << am << endl;
@@ -80,19 +79,21 @@ int main( int argc, const char* argv[] )
     }
 	
 	if (am.count("analyze")) 
-	{
+	{  
+        mainPrinter.printinfo("OPTIMIZATION ","start");
         // TODO: ANALYZE 
         // Fill with that kind of line :
         // derivationTree.static_analysis();
-        cout << "analyze" << endl;
+        mainPrinter.printinfo("OPTIMIZATION ","start");
 	}
 
 	if (am.count("optimize"))
-	{
+	{  
+        mainPrinter.printinfo("OPTIMIZATION ","start");
         // TODO: OPTIMIZE 
         // Fill with that kind of line :
         // derivationTree.optimize();
-        cout << "optimize" << endl;
+        mainPrinter.printinfo("OPTIMIZATION ","end");
 	}
     
 	if (am.count("print")) 
@@ -103,20 +104,24 @@ int main( int argc, const char* argv[] )
         //mainPrinter.print(cout,loader->string());
 		//interpreter->print_declarations(cout);
 		//interpreter->print_instructions(cout);
-        std::cout << *derivationTree << std::endl; // TODO [[[ extract string for synaxic coloration ]]]
+		mainPrinter.printinfo("PRINTING ","start");
+		mainPrinter.print(cout,derivationTree->print());
+        //std::cout << *derivationTree << std::endl; // TODO [[[ extract string for synaxic coloration ]]]
+        mainPrinter.printinfo("PRINTING ","end");
 	}
     
 	if (am.count("execute"))
 	{
         // TODO: OPTIMIZE 
         // Fill with that kind of line :
+        mainPrinter.printinfo("EXECUTION ","start");
         DEBUGINFO("Loading declarations");
         interpreter->load_declarations();
         DEBUGINFO("Loading instructions");
         interpreter->load_instructions();
         DEBUGINFO("Run");
         interpreter->run();
-        cout << "execute" << endl;
+        mainPrinter.printinfo("EXECUTION ","end");
 	}
     
     DEBUGINFO("Deleting FSM");
