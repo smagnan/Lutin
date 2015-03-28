@@ -27,6 +27,7 @@ public:
     virtual std::string print() const;
 	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     S_Ini * get_ini() {return ini;};
+    S_Inil * get_inil() {return inil;};
 };
 
 #endif // S_DCONST_H

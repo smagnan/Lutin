@@ -27,6 +27,7 @@ public:
 	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     virtual std::string print() const;
     S_Id * get_id() {return id;};
+    S_Idl * get_idl() {return idl;};
 
 };
 

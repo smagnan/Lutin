@@ -10,6 +10,7 @@
 #define S_IDL_H
 
 #include "symbol.h"
+#include "id.h"
 
 class S_Idl : public Symbol
 {
@@ -20,6 +21,8 @@ public:
     virtual ~S_Idl();
     virtual std::string print() const;
 	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+	virtual S_Idl* get_idl(){return NULL;};
+	virtual S_Id* get_id(){return NULL;};
 };
 
 #endif // S_IDL_H

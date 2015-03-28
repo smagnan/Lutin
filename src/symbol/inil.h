@@ -10,6 +10,7 @@
 #define S_INIL_H
 
 #include "symbol.h"
+#include "ini.h"
 
 class S_Inil : public Symbol
 {
@@ -20,6 +21,8 @@ public:
     virtual ~S_Inil();
     virtual std::string print() const;
 	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+	virtual S_Inil* get_inil(){return NULL;};
+	virtual S_Ini* get_ini(){return NULL;};
 };
 
 #endif // S_INIL_H
