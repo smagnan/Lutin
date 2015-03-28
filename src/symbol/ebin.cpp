@@ -30,3 +30,9 @@ std::string S_Ebin::print() const
 {
     return "";
 }
+
+void S_Ebin::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    this->e->staticAnalysis(memId , log);
+	this->t->staticAnalysis(memId , log);
+}

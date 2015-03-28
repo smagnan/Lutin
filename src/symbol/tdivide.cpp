@@ -34,3 +34,9 @@ double S_Tdivide::eval(Interpreter& interpreter)
     
     return t_value / f_value;
 }
+
+void S_Tdivide::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    this->t->staticAnalysis(memId ,log);
+	this->f->staticAnalysis(memId ,log);
+}

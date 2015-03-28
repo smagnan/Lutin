@@ -25,6 +25,7 @@ public:
     virtual std::string print() const;
     virtual Symbol* optimize();
     virtual double eval(Interpreter& interpreter);
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
 };
 
 #endif // S_FID_H

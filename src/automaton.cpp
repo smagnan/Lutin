@@ -112,7 +112,7 @@ void Automaton::transition()
     DEBUGWARN("Automaton::transition 1")
     TRACE("stateStack.top() : " << stateStack.top() << std::endl)
     DEBUGWARN("Automaton::transition 2")
-    //if (stateStack.top() != NULL)
+    if (stateStack.top() != NULL)
         stateStack.top()->transition(*this,currentSymbol);
     DEBUGWARN("Automaton::transition end")
 }

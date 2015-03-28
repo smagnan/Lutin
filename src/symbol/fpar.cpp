@@ -40,3 +40,8 @@ double S_Fpar::eval(Interpreter& interpreter)
 {
     return e->eval(interpreter);
 }
+
+void S_Fpar::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    this->e->staticAnalysis(memId ,log);
+}

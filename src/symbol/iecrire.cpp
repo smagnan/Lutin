@@ -23,3 +23,8 @@ std::string S_Iecrire::print() const
 {
     return "ecrire " + eprime->print();
 }
+
+void S_Iecrire::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+	this->eprime->staticAnalysis(memId , log);
+}

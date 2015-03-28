@@ -28,3 +28,8 @@ double S_Tf::eval(Interpreter& interpreter)
 {
     return f->eval(interpreter);
 }
+
+void S_Tf::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    this->f->staticAnalysis(memId ,log);
+}

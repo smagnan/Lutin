@@ -29,3 +29,9 @@ double S_Eplus::eval(Interpreter& interpreter)
     
     return e_value + t_value;
 }
+
+void S_Eplus::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    this->e->staticAnalysis(memId , log);
+	this->t->staticAnalysis(memId , log);
+}

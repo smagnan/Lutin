@@ -7,9 +7,11 @@
 #include <queue>
 #include <map>
 #include <vector>
-#include <stack>  
+#include <stack>
 
+#include "staticAnalysis.h"
 #include "../exception/mathException.h"
+#include "staticAnalysis.h"
 
 class Interpreter;
 

@@ -22,6 +22,7 @@ public:
     S_Eminus(S_E* e, S_T* t);
     virtual ~S_Eminus();
     virtual std::string print() const;
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     virtual double eval(Interpreter& interpreter);
 };
 

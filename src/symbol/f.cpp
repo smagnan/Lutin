@@ -27,3 +27,8 @@ std::string S_F::print() const
 {
     return "";
 }
+
+void S_F::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+
+}
