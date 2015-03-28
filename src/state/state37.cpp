@@ -14,6 +14,7 @@
 #include "state31.h" 
 #include "state32.h" 
 #include "state33.h" 
+#include "state40.h" 
 
 State37::State37()
     : State(37)
@@ -54,6 +55,9 @@ State* State37::getNextState(Symbol * s)
 {
     switch(*s)
     {
+
+        case F:
+            return new State40();
 
         default:
             break;

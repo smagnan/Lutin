@@ -134,6 +134,8 @@ void Automaton::shift(Symbol * symbol, State * state)
 {
     DEBUGINFO("Automaton::shift");
     
+    TRACE("Décalage vers state" << *state << " par le symbole " << *symbol << std::endl);
+    
     // Push the elements on the stacks
     symbolStack.push(symbol);
     stateStack.push(state);
@@ -148,6 +150,8 @@ void Automaton::shift(Symbol * symbol, State * state)
 void Automaton::reduce(int numRule)
 {
     DEBUGINFO("Automaton::reduce");
+    
+    TRACE("Réduction par la règle " << numRule << std::endl);
 
     // Pop elements from the stacks
     std::deque<Symbol*> symbols = std::deque<Symbol*>();
@@ -192,9 +196,15 @@ void Automaton::reduce(int numRule)
         throw AutomatonException(EMPTY_SYMBOL_STACK_ERROR);
     }
     
+    TRACE("state avant " << *stateStack.top() << std::endl)
+    
     // Push the new state
     State * state = stateStack.top()->getNextState(symbol);
     stateStack.push(state);
+    
+    TRACE("state après " << state << std::endl)
+    
+    TRACE(" vers state" << *state << " par le symbole " << *symbol << std::endl);
     
     // Continue 
     transition();
