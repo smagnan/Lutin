@@ -10,6 +10,7 @@
 #include <exception>
 #include <stack>
 #include <typeinfo>
+#include <stdlib.h> 
 #include "../exception/operationException.h"
 #include "interpreter.h"
 #include "../utils.h"
@@ -189,16 +190,39 @@ void Interpreter::load_instructions()
 				}
 				else // --- aff
 				{
-					Affectation * affect = new Affectation();
-					affect->setAttributes(i_aff->get_id(),i_aff->expression());
-					this->instructions.push(affect);
+					/*className = typeid(*i_aff->get_id()).name(); 
+					if(!className.compare("4S_Bi")) // to check if the id exists or not (like: used but not declared)
+					{
+						// TODO Stop exec and print message
+					}*/
+					if(declared(i_aff->get_id()->getValue())) // check that the var in which we store exists
+					{
+						Affectation * affect = new Affectation();
+						affect->setAttributes(i_aff->get_id(),i_aff->expression());
+						this->instructions.push(affect);
+					}
+					else
+					{
+						printer.printerr("No such element (:=) : ",i_read->get_id()->getValue());
+						exit (EXIT_FAILURE);
+					}
+
 				}
 			}	
 			else //  ------ read
 			{
-				Read * rd = new Read();
-				rd->setAttributes(i_read->get_id());
-				this->instructions.push(rd);
+				if(declared(i_read->get_id()->getValue())) // check that the var in which we store exists
+				{
+					Read * rd = new Read();
+					rd->setAttributes(i_read->get_id());
+					this->instructions.push(rd);
+				}
+				else
+				{
+					printer.printerr("No such element (lire) : ",i_read->get_id()->getValue());
+					exit (EXIT_FAILURE);
+				}
+				
 			}
 		}
 		else // ----------- write
@@ -206,7 +230,6 @@ void Interpreter::load_instructions()
 			Write * wr = new Write();
 			wr->setAttributes(i_write->expression());
 			this->instructions.push(wr);
-			//this->printer.print(std::cout,i_write->expression()->eval(*this)); // see? not the correct order
 		}
 		next = current->next();
 	}
@@ -293,6 +316,11 @@ void Interpreter::update_variable(std::string name, double val)
 		// TODO: calling setValue() if not a Var throws an error
 		// TODO print what causes the error and the "what"
 	}
+}
+
+bool Interpreter::declared(std::string name)
+{
+	return this->declarations.find(name) != this->declarations.end();
 }
 
 void Interpreter::print_declarations(std::ostream& out)

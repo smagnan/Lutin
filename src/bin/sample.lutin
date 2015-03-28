@@ -7,3 +7,4 @@ ecrire n;
 ecrire n2;
 ecrire x;
 ecrire (x+y)/(x-y)+(x/y);
+lire z;
