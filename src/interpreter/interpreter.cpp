@@ -203,7 +203,7 @@ void Interpreter::load_instructions()
 					}
 					else
 					{
-						printer.printerr("No such element (:=) : ",i_read->get_id()->getValue());
+						printer.printerr("No such element (:=) : ",i_aff->get_id()->getValue());
 						exit (EXIT_FAILURE);
 					}
 
