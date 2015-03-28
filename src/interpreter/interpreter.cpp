@@ -8,6 +8,7 @@
 // ---------------------------------------------
 
 #include <exception>
+#include <stack>
 #include "../exception/operationException.h"
 #include "interpreter.h"
 #include "../utils.h"
@@ -48,11 +49,11 @@ void Interpreter::clean_declarations() // TODO: exceptions
 	}
 }
 
-void Interpreter::clean_instructions() // TODO: exceptions
+void Interpreter::clean_instructions() // TODO: exceptions ... supposed to be useless?
 {
 	while (!this->instructions.empty()) 
 	{
-		delete this->instructions.front();
+		delete this->instructions.top();
 		this->instructions.pop();
 	}
 }
@@ -173,6 +174,7 @@ void Interpreter::load_instructions()
 			Write * wr = new Write();
 			wr->setAttributes(i_write->expression());
 			this->instructions.push(wr);
+			//this->printer.print(std::cout,i_write->expression()->eval(*this)); // see? not the correct order
 		}
 		next = current->next();
 	}
@@ -185,8 +187,8 @@ void Interpreter::run()
 	{
 		try 
 		{
-			instructions.front()->execute(*this);
-			delete instructions.front(); // TODO ok? 
+			instructions.top()->execute(*this);
+			delete instructions.top(); // TODO ok? 
 			instructions.pop();
 		}
 		catch(std::exception &e) 
@@ -292,12 +294,19 @@ double Interpreter::get_value(std::string id)
 {
 	try 
 	{
-		return this->declarations.find(id)->second->getValue();
-
+		if(this->declarations.find(id) == this->declarations.end())
+		{
+			this->printer.printerr("No such id: ",id);
+			return 0;
+		}
+		else
+		{
+			return this->declarations.find(id)->second->getValue();
+		}
 	} 
 	catch(std::exception &e) 
 	{
-		this->printer.printerr("No such id ","problem with ...");
+		this->printer.printerr("Problem while getting value of: ",id);
 		// TODO: error if: name does not exist so can't get value
 	}
 	return 0; // TODO const or equiv.
@@ -309,19 +318,19 @@ Var * Interpreter::get_variable(std::string id)
 	try 
 	{
 		decl = this->declarations.find(id)->second;
-		if (decl->getType().compare(KEYWORD_VAR))
+		if (!decl->getType().compare(KEYWORD_VAR))
 		{
 			return static_cast<Var*>(decl);
 		}
 		else // TODO error if not VAR ?
 		{	
-			this->printer.printerr("Not a VAR ","problem with ...");
+			this->printer.printerr("Not a VAR: ",id);
 			return NULL;
 		}
 	} 
 	catch(std::exception &e) 
 	{
-		this->printer.printerr("No such id ","problem with ...");
+		this->printer.printerr("No such id: ",id);
 		// TODO: error if: name does not exist so can't get value
 	}
 	return NULL; // TODO const or equiv.
