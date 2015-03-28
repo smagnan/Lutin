@@ -26,20 +26,5 @@ std::string S_Iecrire::print() const
 
 void S_Iecrire::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
 {
-    /*
-	std::map< std::string, Variable >::iterator it;
-	it=memId.find(id->getValue());
-	if (it == memId.end()) 
-	{
-		log.push(NOT_DECLARED);
-	}
-	else if ( (it->second).is_assigned = false)
-	{
-		log.push(NOT_ASSIGNED);
-	}
-	else
-	{
-		(it->second).is_used = true ;
-	}
-    */
+	this->eprime->staticAnalysis(memId , log);
 }

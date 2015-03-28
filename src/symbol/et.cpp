@@ -28,3 +28,8 @@ double S_Et::eval(Interpreter& interpreter)
 {
     return t->eval(interpreter);
 }
+
+void S_Et::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    this->t->staticAnalysis(memId , log);
+}

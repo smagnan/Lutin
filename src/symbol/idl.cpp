@@ -21,3 +21,8 @@ std::string S_Idl::print() const
 {
     return "";
 }
+
+void S_Idl::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    
+}

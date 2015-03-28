@@ -29,3 +29,9 @@ double S_Tmult::eval(Interpreter& interpreter)
     
     return t_value * f_value;
 }
+
+void S_Tmult::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    this->t->staticAnalysis(memId ,log);
+	this->f->staticAnalysis(memId ,log);
+}
