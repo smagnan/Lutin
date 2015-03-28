@@ -25,3 +25,15 @@ std::string S_Idliter::print() const
 {
     return idl->print() + ", " + id->print();
 }
+
+void S_Idliter::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+{
+    this->idl->staticAnalysis(memId , log);
+
+	Variable idDeclared;
+	idDeclared.is_declared = true;
+	if ((memId.insert( std::pair< std::string, Variable >(id->getValue(),idDeclared))).second == false)
+	{
+		log.push(ALREADY_DECLARED);
+	}
+}

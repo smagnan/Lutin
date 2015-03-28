@@ -20,6 +20,7 @@ public:
     S_F();
     virtual ~S_F();
     virtual std::string print() const;
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
 };
 
 #endif // S_F_H

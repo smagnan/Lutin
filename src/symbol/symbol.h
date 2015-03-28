@@ -9,6 +9,7 @@
 #include <vector>
 #include <stack>  
 
+#include "staticAnalysis.h"
 #include "../exception/mathException.h"
 
 class Interpreter;

@@ -22,6 +22,7 @@ public:
     S_Idliter(S_Idl* idl, S_Id* id);
     virtual ~S_Idliter();
     virtual std::string print() const;
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
 };
 
 #endif // S_IDLITER_H
