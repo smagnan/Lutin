@@ -19,6 +19,7 @@
 #include <vector>
 #include <stack> 
 #include <string>
+//#include "../debugger.h"
 
 class S_Bditer : public S_Bd
 {
@@ -33,7 +34,12 @@ public:
     virtual ~S_Bditer();
     virtual std::string print() const;
     S_Bd * next() {return bd;};
-    S_D * get_declaration() { return d;};
+    S_D * get_declaration() { 
+    	/*DEBUGERR("get_declaration IN")
+    	TRACE(d << std::endl);
+    	DEBUGERR("get_declaration OUT")*/
+    	return d;
+    };
 };
 
 #endif // S_BDITER_H

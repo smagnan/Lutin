@@ -86,6 +86,8 @@ void Interpreter::load_declarations()
 		TRACE("static_cast<S_Bditer*>(current)  : " << static_cast<S_Bditer*>(current) << std::endl)
 		TRACE("_->get_declaration()             : " << (static_cast<S_Bditer*>(current))->get_declaration() << std::endl)
 		TRACE("curr_declar                      : " << curr_declar << std::endl)
+		if (curr_declar <(void*)(0x100)) // FIXME UGLYEST THING IN HISTORY
+			break;
 		DEBUGWARN("    load_declarations: 8");
 		d_const = dynamic_cast<S_Dconst*> (curr_declar);
 		DEBUGWARN("    load_declarations: 9");
@@ -138,6 +140,8 @@ void Interpreter::load_instructions()
 	{
 		current = next;
 		curr_instruction = (static_cast<S_Biiter*>(current))->get_instruction();
+		if (curr_instruction <(void*)(0x100)) // FIXME UGLYEST THING IN HISTORY
+			break;
 		// (: thx:  http://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
 		i_write = dynamic_cast<S_Iecrire*> (curr_instruction);
 		if (i_write ==  NULL)

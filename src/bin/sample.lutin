@@ -1,5 +1,6 @@
 var x ;
-const n=10, n2=100 ;
+const n=10 ;
+const n2=100 ;
 ecrire n;
 lire x;
 x := (x + 10) * 5;

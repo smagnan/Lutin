@@ -15,9 +15,9 @@ S_Bditer::S_Bditer(S_Bd* bd, S_D* d)
 
 S_Bditer::~S_Bditer()
 {
-	if(bd != 0)
+	if(bd != NULL)
 		delete bd;
-	if(d != 0)
+	if(d != NULL)
 		delete d;	
 }
 
