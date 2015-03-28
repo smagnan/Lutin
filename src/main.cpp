@@ -53,7 +53,11 @@ int main( int argc, const char* argv[] )
 	// SIDE NOTE: http://stackoverflow.com/questions/107264/how-often-to-commit-changes-to-source-control
 	DEBUGINFO("Creating Lexer");
     Lexer* lexer 				= new Lexer();
-    lexer->setProg(loader->string());
+    if (!lexer->setProg(loader->string()))
+    {
+        DEBUGINFO("Program is empty");
+        return EXIT_FAILURE;
+    }
 	DEBUGINFO("Creating FSM");
 	Automaton* automaton 		= new Automaton(lexer->getDeque());	
     DEBUGINFO("Get the derivation tree");
