@@ -1,6 +1,7 @@
-var x ;
-const n=10 ;
-const n2=100 ;
-ecrire n;
+var x , y;
+const n=10 , n2=100 ;
 lire x;
 x := (x + 10) * 5;
+ecrire x;
+lire y;
+ecrire (x+y)/(x-y)+(x/y);

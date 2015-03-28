@@ -7,7 +7,6 @@
 // ---------------------------------------------
 
 #include "ilire.h"
-#include "staticAnalysis.h"
 
 S_Ilire::S_Ilire(S_Id* id)
     : S_I(), id(id)

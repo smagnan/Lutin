@@ -7,7 +7,6 @@
 // ---------------------------------------------
 
 #include "iecrire.h"
-#include "staticAnalysis.h"
 
 S_Iecrire::S_Iecrire(S_Eprime* eprime)
     : S_I(), eprime(eprime)
@@ -27,6 +26,7 @@ std::string S_Iecrire::print() const
 
 void S_Iecrire::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
 {
+    /*
 	std::map< std::string, Variable >::iterator it;
 	it=memId.find(id->getValue());
 	if (it == memId.end()) 
@@ -41,4 +41,5 @@ void S_Iecrire::staticAnalysis(std::map< std::string, Variable > & memId ,std::s
 	{
 		(it->second).is_used = true ;
 	}
+    */
 }
