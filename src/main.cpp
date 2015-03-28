@@ -9,8 +9,9 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <streambuf>
 #include <deque>
-
 #include <boost/program_options.hpp>
 
 #include "automaton.h"
@@ -29,6 +30,11 @@ namespace po =  boost::program_options;
 
 int main( int argc, const char* argv[] )
 {
+	std::ifstream t("../datas/logo.ascii");
+	std::stringstream buffer;
+	buffer << t.rdbuf();
+
+	cout << buffer.str() << endl; 
 
 	Printer mainPrinter;
 	mainPrinter.printerr("Error example ","more error text");

@@ -1,7 +1,7 @@
-var x , y;
+var x,y; 
 const n=10 , n2=100 ;
 lire x;
+lire y;
 x := (x + 10) * 5;
 ecrire x;
-lire y;
 ecrire (x+y)/(x-y)+(x/y);
