@@ -29,6 +29,7 @@ using std::endl;
 using std::string;
 using std::map;
 using std::stack;
+using std::iterator;
 
 namespace po =  boost::program_options;
 
@@ -97,7 +98,7 @@ int main( int argc, const char* argv[] )
 	if (am.count("analyze"))
 	{
         mainPrinter.printinfo("ANALYZE ","start");
-        map<std::string , Variable> variableMemory;
+        map<string , Variable> variableMemory;
         stack<string> log;
         string currentLogLine;
         derivationTree->staticAnalysis(variableMemory,log);
@@ -107,6 +108,14 @@ int main( int argc, const char* argv[] )
             currentLogLine = log.top();
             log.pop();
             cerr<<currentLogLine<<endl;
+        }
+
+        for(map<string, Variable>::iterator iVariable = variableMemory.begin();iVariable != variableMemory.end();iVariable++)
+        {
+            if(!(iVariable->second.is_used))
+            {
+                cerr<<"Variable "<<iVariable->first<<" is never used"<<endl;
+            }
         }
         mainPrinter.printinfo("ANALYZE ","start");
 	}
