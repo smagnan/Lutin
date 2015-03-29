@@ -23,6 +23,7 @@ public:
     S_Ilire(S_Id* id);
     virtual ~S_Ilire();
     virtual std::string print() const;
+    virtual void optimize();
 	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     S_Id * get_id() { return id;};
 };

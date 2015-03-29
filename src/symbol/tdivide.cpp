@@ -62,21 +62,18 @@ void S_Tdivide::optimize(bool& is_opt, double& value)
     // Only f is optimized : fix f
     else if (f_is_opt)
     {
-        // Neutral element
-        if (f_value == 1)
-        {
-            // TODO: treated above
-        }
-        // Other
-        else
-        {
-            is_opt = false;
-            value = 0;
-            delete f;
-            f = new S_Fnum(new S_Num(f_value));
-        }
+        is_opt = false;
+        value = 0;
+        delete f;
+        f = new S_Fnum(new S_Num(f_value));
     }
     // None is optimized : do nothing
+    else
+    {
+        is_opt = false;
+        value = 0;
+    }
+    std::cout << value << " | " << is_opt << " | S_Tdivide " << *this << std::endl;
 }
 
 double S_Tdivide::eval(Interpreter& interpreter)

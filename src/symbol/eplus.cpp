@@ -43,38 +43,26 @@ void S_Eplus::optimize(bool& is_opt, double& value)
     // Only e is optimized : fix e
     else if (e_is_opt)
     {
-        // Neutral element
-        if (e_value == 0)
-        {
-            // TODO
-        }
-        // Other
-        else
-        {
-            is_opt = false;
-            value = 0;
-            delete t;
-            e = new S_Et(new S_Tf(new S_Fnum(new S_Num(e_value))));
-        }
+        is_opt = false;
+        value = 0;
+        delete e;
+        e = new S_Et(new S_Tf(new S_Fnum(new S_Num(e_value))));
     }
     // Only f is optimized : fix f
     else if (t_is_opt)
     {
-        // Neutral element
-        if (t_value == 1)
-        {
-            // TODO
-        }
-        // Other
-        else
-        {
-            is_opt = false;
-            value = 0;
-            delete t;
-            t = new S_Tf(new S_Fnum(new S_Num(t_value)));
-        }
+        is_opt = false;
+        value = 0;
+        delete t;
+        t = new S_Tf(new S_Fnum(new S_Num(t_value)));
     }
     // None is optimized : do nothing
+    else
+    {
+        is_opt = false;
+        value = 0;
+    }
+    std::cout << value << " | " << is_opt << " | S_Eplus " << *this << std::endl;
 }
 
 double S_Eplus::eval(Interpreter& interpreter)

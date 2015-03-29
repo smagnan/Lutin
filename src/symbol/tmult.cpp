@@ -54,38 +54,26 @@ void S_Tmult::optimize(bool& is_opt, double& value)
     // Only t is optimized : fix t
     else if (t_is_opt)
     {
-        // Neutral element
-        if (t_value == 1)
-        {
-            // TODO
-        }
-        // Other
-        else
-        {
-            is_opt = false;
-            value = 0;
-            delete t;
-            t = new S_Tf(new S_Fnum(new S_Num(t_value)));
-        }
+        is_opt = false;
+        value = 0;
+        delete t;
+        t = new S_Tf(new S_Fnum(new S_Num(t_value)));
     }
     // Only f is optimized : fix f
     else if (f_is_opt)
     {
-        // Neutral element
-        if (f_value == 1)
-        {
-            // TODO
-        }
-        // Other
-        else
-        {
-            is_opt = false;
-            value = 0;
-            delete f;
-            f = new S_Fnum(new S_Num(f_value));
-        }
+        is_opt = false;
+        value = 0;
+        delete f;
+        f = new S_Fnum(new S_Num(f_value));
     }
     // None is optimized : do nothing
+    else
+    {
+        is_opt = false;
+        value = 0;
+    }
+    std::cout << value << " | " << is_opt << " | S_Tmult " << *this << std::endl;
 }
 
 double S_Tmult::eval(Interpreter& interpreter)

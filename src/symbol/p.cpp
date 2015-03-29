@@ -28,7 +28,9 @@ std::string S_P::print() const
 
 void S_P::optimize()
 {
+    std::cout << "S_P::optimize()" << std::endl;
     bi->optimize();
+    std::cout << "S_P::optimize():END" << std::endl;
 }
 
 void S_P::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)

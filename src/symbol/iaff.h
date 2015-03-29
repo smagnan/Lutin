@@ -25,8 +25,8 @@ public:
     S_Iaff(S_Id* id, S_Eprime* eprime);
     virtual ~S_Iaff();
     virtual std::string print() const;
-    void optimize();
-	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+    virtual void optimize();
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     S_Eprime * expression() { return eprime;};
     S_Id * get_id() { return id;};
 };

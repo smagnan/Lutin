@@ -27,6 +27,7 @@ std::string S_Et::print() const
 void S_Et::optimize(bool& is_opt, double& value)
 {
     t->optimize(is_opt, value);
+    std::cout << value << " | " << is_opt << " | S_Et " << *this << std::endl;
 }
 
 double S_Et::eval(Interpreter& interpreter)

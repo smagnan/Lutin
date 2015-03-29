@@ -11,16 +11,15 @@
 
 #include "staticAnalysis.h"
 #include "../exception/mathException.h"
-#include "staticAnalysis.h"
 
 class Interpreter;
 
 struct Variable
 {
-    bool is_const; // A constant cannot be assigned
-    bool is_declared; // If it is in the map, it is declared...
+    bool is_const;
+    bool is_declared;
     bool is_assigned;
-    bool is_used; // A variable can be used in read/write/aff statements
+    bool is_used;
 };
 
 enum Symbols

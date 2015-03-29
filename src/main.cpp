@@ -114,9 +114,7 @@ int main( int argc, const char* argv[] )
 	if (am.count("optimize"))
 	{
         mainPrinter.printinfo("OPTIMIZATION ","start");
-        // TODO: OPTIMIZE
-        // Fill with that kind of line :
-        // derivationTree.optimize();
+        derivationTree->optimize();
         mainPrinter.printinfo("OPTIMIZATION ","end");
 	}
 
@@ -128,10 +126,10 @@ int main( int argc, const char* argv[] )
         //mainPrinter.print(cout,loader->string());
 		//interpreter->print_declarations(cout);
 		//interpreter->print_instructions(cout);
-		mainPrinter.printinfo("PRINTING ","start");
-		mainPrinter.print(cout,derivationTree->print());
-        //std::cout << *derivationTree << std::endl; // TODO [[[ extract string for synaxic coloration ]]]
-        mainPrinter.printinfo("PRINTING ","end");
+		//mainPrinter.printinfo("PRINTING ","start");
+		//mainPrinter.print(cout,derivationTree->print());
+        std::cout << *derivationTree << std::endl; // TODO [[[ extract string for synaxic coloration ]]]
+        //mainPrinter.printinfo("PRINTING ","end");
 	}
 
 	if (am.count("execute"))

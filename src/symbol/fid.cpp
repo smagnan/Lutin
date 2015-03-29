@@ -28,6 +28,7 @@ void S_Fid::optimize(bool& is_opt, double& value)
 {
     is_opt = false;
     value = 0;
+    std::cout << value << " | " << is_opt << " | S_Fid " << *this << std::endl;
 }
 
 double S_Fid::eval(Interpreter& interpreter)

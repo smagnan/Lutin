@@ -38,6 +38,7 @@ void S_Eprime::optimize()
         delete e;
         e = new S_Et(new S_Tf(new S_Fnum(new S_Num(value))));
     }
+    std::cout << value << " | " << is_opt << " | S_Eprime " << *this << std::endl;
 }
 
 double S_Eprime::eval(Interpreter& interpreter)

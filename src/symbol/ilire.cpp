@@ -24,6 +24,10 @@ std::string S_Ilire::print() const
     return "lire " + id->print();
 }
 
+void S_Ilire::optimize()
+{
+}
+
 void S_Ilire::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
 {
 	std::map< std::string, Variable >::iterator it;

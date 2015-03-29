@@ -26,7 +26,9 @@ std::string S_Iecrire::print() const
 
 void S_Iecrire::optimize()
 {
+    std::cout << "S_Iecrire::optimize()" << std::endl;
     eprime->optimize();
+    std::cout << "S_Iecrire::optimize():END" << std::endl;
 }
 
 void S_Iecrire::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)

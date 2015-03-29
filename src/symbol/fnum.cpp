@@ -28,6 +28,7 @@ void S_Fnum::optimize(bool& is_opt, double& value)
 {
     is_opt = true;
     value = num->getValue();
+    std::cout << value << " | " << is_opt << " | S_Fnum " << *this << std::endl;
 }
 
 double S_Fnum::eval(Interpreter& interpreter)
