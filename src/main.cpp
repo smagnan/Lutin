@@ -13,6 +13,8 @@
 #include <streambuf>
 #include <deque>
 #include <boost/program_options.hpp>
+#include <map>
+#include <stack>
 
 #include "automaton.h"
 #include "argsmanager.h"
@@ -22,7 +24,11 @@
 #include "symbol/symbol.h"
 
 using std::cout;
+using std::cerr;
 using std::endl;
+using std::string;
+using std::map;
+using std::stack;
 
 namespace po =  boost::program_options;
 
@@ -34,14 +40,14 @@ int main( int argc, const char* argv[] )
 	std::stringstream buffer;
 	buffer << t.rdbuf();
 
-	cout << buffer.str() << endl; 
+	cout << buffer.str() << endl;
 
 	Printer mainPrinter;
 	mainPrinter.printerr("Error example ","more error text");
 	mainPrinter.printwarn("Warning example ","more warning text");
 	mainPrinter.printinfo("Information example ","more info text");
 	ArgsManager am(argc, argv);
-    
+
     if (am.isError())
     {
         cout << am << endl;
@@ -59,12 +65,12 @@ int main( int argc, const char* argv[] )
         return EXIT_FAILURE;
     }
 	DEBUGINFO("Creating FSM");
-	Automaton* automaton 		= new Automaton(lexer->getDeque());	
+	Automaton* automaton 		= new Automaton(lexer->getDeque());
     DEBUGINFO("Get the derivation tree");
     Symbol* derivationTree 		= automaton->getDerivationTree();
     DEBUGINFO("Creating Interpreter");
 	Interpreter* interpreter 	= new Interpreter(derivationTree);
-    
+
 	//=================================== TEST STUFF ==========================================
 	/*DEBUGINFO("============== DECLARE ================");
 	interpreter->declare("testVar",D_VAR,42);
@@ -72,7 +78,7 @@ int main( int argc, const char* argv[] )
 	interpreter->declare("testVar3");
 	interpreter->declare("testConst",D_CONST,777);
 	interpreter->keep_value(100);
-	// The following line is equivalent to the previous one :) 
+	// The following line is equivalent to the previous one :)
 	// Note that whatever the string is the name will be the value
 	interpreter->declare("",D_VALUE,100); // XXX does nothing here since the value is already stored
 	DEBUGINFO("=============== UPDATE ================");
@@ -87,28 +93,36 @@ int main( int argc, const char* argv[] )
         cout << am << endl;
         return EXIT_SUCCESS;
     }
-	
-	if (am.count("analyze")) 
-	{  
-        mainPrinter.printinfo("OPTIMIZATION ","start");
-        // TODO: ANALYZE 
-        // Fill with that kind of line :
-        // derivationTree.static_analysis();
-        mainPrinter.printinfo("OPTIMIZATION ","start");
+
+	if (am.count("analyze"))
+	{
+        mainPrinter.printinfo("ANALYZE ","start");
+        map<std::string , Variable> variableMemory;
+        stack<string> log;
+        string currentLogLine;
+        derivationTree->staticAnalysis(variableMemory,log);
+        cerr<<log.size()<<endl;
+        while(!log.empty())
+        {
+            currentLogLine = log.top();
+            log.pop();
+            cerr<<currentLogLine<<endl;
+        }
+        mainPrinter.printinfo("ANALYZE ","start");
 	}
 
 	if (am.count("optimize"))
-	{  
+	{
         mainPrinter.printinfo("OPTIMIZATION ","start");
-        // TODO: OPTIMIZE 
+        // TODO: OPTIMIZE
         // Fill with that kind of line :
         // derivationTree.optimize();
         mainPrinter.printinfo("OPTIMIZATION ","end");
 	}
-    
-	if (am.count("print")) 
+
+	if (am.count("print"))
 	{
-        // TODO: PRINT 
+        // TODO: PRINT
         // Fill with that kind of line :
         // cout << interpreter << endl;
         //mainPrinter.print(cout,loader->string());
@@ -119,10 +133,10 @@ int main( int argc, const char* argv[] )
         //std::cout << *derivationTree << std::endl; // TODO [[[ extract string for synaxic coloration ]]]
         mainPrinter.printinfo("PRINTING ","end");
 	}
-    
+
 	if (am.count("execute"))
 	{
-        // TODO: OPTIMIZE 
+        // TODO: OPTIMIZE
         // Fill with that kind of line :
         mainPrinter.printinfo("EXECUTION ","start");
         DEBUGINFO("Loading declarations");
@@ -133,7 +147,7 @@ int main( int argc, const char* argv[] )
         interpreter->run();
         mainPrinter.printinfo("EXECUTION ","end");
 	}
-    
+
     DEBUGINFO("Deleting FSM");
     delete automaton;
 	DEBUGINFO("Deleting Interpreter");
@@ -142,6 +156,6 @@ int main( int argc, const char* argv[] )
 	delete lexer;
 	DEBUGINFO("Deleting Loader");
 	delete loader;
-	
+
 	return EXIT_SUCCESS;
 }
