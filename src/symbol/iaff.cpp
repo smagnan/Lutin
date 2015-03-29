@@ -36,7 +36,7 @@ void S_Iaff::staticAnalysis(std::map< std::string, Variable > & memId ,std::stac
 		log.push(NOT_DECLARED);
 	}
 	
-	else if (it->second).is_const == true)
+	else if ((it->second).is_const == true)
 	{
 		log.push(CONST_AFFECT);
 	}
