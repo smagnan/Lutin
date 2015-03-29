@@ -48,7 +48,7 @@ void S_Fid::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack
 	{
 		log.push(NOT_DECLARED);
 	}
-	else if ( (it->second).is_assigned = false)
+	else if ( ((it->second).is_const == false) && ((it->second).is_assigned == false))
 	{
 		log.push(NOT_ASSIGNED);
 	}

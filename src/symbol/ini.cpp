@@ -30,6 +30,7 @@ void S_Ini::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack
 {
 	Variable idDeclared;
 	idDeclared.is_declared = true;
+	idDeclared.is_const = true;
 	if ((memId.insert( std::pair< std::string, Variable >(id->getValue(),idDeclared))).second == false)
 	{
 		log.push(ALREADY_DECLARED);

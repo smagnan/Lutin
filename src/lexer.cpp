@@ -15,37 +15,37 @@ Lexer::Lexer()
     // Regex patterns
     const char* regex = 
         // Var
-        "(^var)\\s+|"
+        "(^var\\s+)|"
         // Const
-        "(^const)\\s+|"
+        "(^const\\s+)|"
         // read 
-        "(^lire)\\s+|"
+        "(^lire\\s+)|"
         // write
-        "(^ecrire)\\s+|"
+        "(^ecrire\\s+)|"
         // Plus symbol
-        "(\\+)|"
+        "\\s*(\\+)\\s*|"
         // Minus symbol
-        "(-)|"
+        "\\s*(-)\\s*|"
         // Multiply symbol
-        "(\\*)|"
+        "\\s*(\\*)\\s*|"
         // Divide symbol
-        "(/)|"
+        "\\s*(/)\\s*|"
         // openby left
-        "(\\()|"
+        "\\s*(\\()\\s*|"
         // openby right
-        "(\\))|"
+        "\\s*(\\))\\s*|"
         // semicolon
-        "(;)\\s*$|"
+        "\\s*(;)\\s*$|"
         // id
-        "\\s*([a-zA-Z][a-zA-Z0-9_]*)\\s*|"
+        "(\\s*[a-zA-Z][a-zA-Z0-9_]*\\s*)|"
         // vir 
-        "(,)|"
+        "\\s*(,)\\s*|"
         // egal
-        "(=)|"
+        "\\s*(=)\\s*|"
         // affectation
-        "(:=)|"
+        "\\s*(:=)\\s*|"
         // num 
-        "\\s+(-?\\d+(.\\d+)?)\\s+|"
+        "([0-9]*\\.[0-9]+|[0-9]+)|"
         // everything else (matching error)
         "(.*)";
     
@@ -125,10 +125,13 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
     patterns.clear();
 
     // Find symbols
+    std::cout << "Start of line : " << *((*progStart).begin()) << std::endl;
+    std::cout << "End of line : " << *((*progStart).end()-1) << std::endl;
     boost::sregex_iterator m1((*progStart).begin(), (*progStart).end(), main_regex);
     boost::sregex_iterator m2;
     while(m1 != m2)
     {
+        std::cout << "Regex call back with " << *m1 << std::endl;
         regex_callback(*m1);
         ++m1;
     }
@@ -141,6 +144,7 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
     // Fill symbol vector
     pattern_vector::iterator b,e;
     b = patterns.begin();
+    
     e = patterns.end();
     while(b != e)
     {
@@ -148,53 +152,70 @@ std::pair<std::vector<Symbol*>, matchError_vector> Lexer::getSymbols()
         {
             case 1 :     // var 
                 lineSymbols.push_back((Symbol*)(new S_Var()));
+                std::cout << "Found var" << std::endl;
                 break;
             case 2 :     // const
                 lineSymbols.push_back((Symbol*)(new S_Const()));
+                std::cout << "Found const" << std::endl;
                 break;
             case 3 :     // lire
                 lineSymbols.push_back((Symbol*)(new S_Read()));
+                std::cout << "Found lire" << std::endl;
                 break;  
             case 4:     // ecrire
                 lineSymbols.push_back((Symbol*)(new S_Write()));
+                std::cout << "Found ecrire" << std::endl;
                 break;
             case 5:     // +
                 lineSymbols.push_back((Symbol*)(new S_Plus()));
+                std::cout << "Found +" << std::endl;
                 break;
             case 6:     // -
                 lineSymbols.push_back((Symbol*)(new S_Minus()));
+                std::cout << "Found -" << std::endl;
                 break;
             case 7:     // *
                 lineSymbols.push_back((Symbol*)(new S_Mult()));
+                std::cout << "Found *" << std::endl;
                 break;
             case 8:     // /
                 lineSymbols.push_back((Symbol*)(new S_Divide()));
+                std::cout << "Found /" << std::endl;
                 break;
             case 9:     // (
                 lineSymbols.push_back((Symbol*)(new S_Openby()));
+                std::cout << "Found (" << std::endl;
                 break;
             case 10:    // )
                 lineSymbols.push_back((Symbol*)(new S_Closeby()));
+                std::cout << "Found )" << std::endl;
                 break;
             case 11:    // ;
                 lineSymbols.push_back((Symbol*)(new S_Pv()));
+                std::cout << "Found ;" << std::endl;
                 break;
             case 12:    // id (any a-ZA-Z / 0-9 charac)
                 lineSymbols.push_back((Symbol*)(new S_Id(b->second)));
+                std::cout << "Found id" << std::endl;
                 break;  
             case 13:    // ,
                 lineSymbols.push_back((Symbol*)(new S_Vir()));
+                std::cout << "Found ," << std::endl;
                 break;
             case 14:    // =
                 lineSymbols.push_back((Symbol*)(new S_Eq()));
+                std::cout << "Found =" << std::endl;
                 break;
             case 15:    // :=
                 lineSymbols.push_back((Symbol*)(new S_Aff()));
+                std::cout << "Found :=" << std::endl;
                 break;
             case 16:    // number
                 lineSymbols.push_back((Symbol*)(new S_Num(Utils::stringToDouble(b->second))));
+                std::cout << "Found number" << std::endl;
                 break;
             default:
+                std::cout << "Found nothing" << std::endl;
                 break;
         }
         ++b;
@@ -243,14 +264,17 @@ bool Lexer::hasNext()
 
 bool Lexer::regex_callback(const boost::match_results<std::string::const_iterator>& str_found)
 {
-    // loop on all 16 symbols 
+    // loop on all 17 symbols 
     for(int i = 1; i <= 17; i++)
     {
+        std::cout << "For loop 1 : i = " << i << std::endl;
         // If one of the parenthesis match (and no more than  one will match) :
         if (str_found.position(i) != -1) 
         { // symbol matched ? 
+            std::cout << "If : i = " << i << " and str_found.position(i) = " << str_found.position(i) << std::endl;
             if (i != 17) 
             {   // a pattern was matched.
+                std::cout << "Symbol n " << i << " matched : " << str_found[i] << std::endl;
                 patterns.push_back(make_pair(i, str_found[i].str()));
                 return true;
             }
@@ -260,6 +284,7 @@ bool Lexer::regex_callback(const boost::match_results<std::string::const_iterato
                 matchErr.back().position = str_found.position(i);
                 matchErr.back().length = str_found.length(i);
                 matchErr.back().str = str_found[i];
+                std::cout << "MatchErr : " << str_found[i] << std::endl;
                 return false;
             }
         }
