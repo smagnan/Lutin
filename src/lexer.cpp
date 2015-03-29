@@ -23,27 +23,27 @@ Lexer::Lexer()
         // write
         "(^ecrire\\s+)|"
         // Plus symbol
-        "(\\s*\\+\\s*)|"
+        "\\s*(\\+)\\s*|"
         // Minus symbol
-        "(\\s*-\\s*)|"
+        "\\s*(-)\\s*|"
         // Multiply symbol
-        "(\\s*\\*\\s*)|"
+        "\\s*(\\*)\\s*|"
         // Divide symbol
-        "(\\s*/\\s*)|"
+        "\\s*(/)\\s*|"
         // openby left
-        "(\\s*\\(\\s*)|"
+        "\\s*(\\()\\s*|"
         // openby right
-        "(\\s*\\)\\s*)|"
+        "\\s*(\\))\\s*|"
         // semicolon
-        "(\\s*;\\s*$)|"
+        "\\s*(;)\\s*$|"
         // id
         "(\\s*[a-zA-Z][a-zA-Z0-9_]*\\s*)|"
         // vir 
-        "(\\s*,\\s*)|"
+        "\\s*(,)\\s*|"
         // egal
-        "(\\s*=\\s*)|"
+        "\\s*(=)\\s*|"
         // affectation
-        "(\\s*:=\\s*)|"
+        "\\s*(:=)\\s*|"
         // num 
         "([0-9]*\\.[0-9]+|[0-9]+)|"
         // everything else (matching error)
