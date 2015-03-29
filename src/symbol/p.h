@@ -25,7 +25,8 @@ public:
     S_P(S_Bd* bd,S_Bi* bi);
     virtual ~S_P();
     virtual std::string print() const;
-	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+    void optimize();
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     S_Bd* get_S_Bd(){return bd;};
     S_Bi* get_S_Bi(){return bi;};
 };

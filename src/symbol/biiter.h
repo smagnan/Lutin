@@ -25,7 +25,8 @@ public:
     S_Biiter(S_Bi* bi, S_I* i);
     virtual ~S_Biiter();
     virtual std::string print() const;
-	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+    void optimize();
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     S_Bi * next() { return bi;};
     S_I * get_instruction() { return i;};
 };

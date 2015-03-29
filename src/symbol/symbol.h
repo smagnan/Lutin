@@ -67,29 +67,33 @@ extern const char* SYM[NB_SYMBOLS];
 class Symbol
 {
 
-	public:
-		Symbol();
+    public:
+        Symbol();
 
-		Symbol(int i);
+        Symbol(int i);
 
-		virtual ~Symbol();
+        virtual ~Symbol();
 
-		operator int() const;
-        
+        operator int() const;
+
         virtual std::string print() const;
         
-        virtual Symbol* optimize();
-        
+        virtual void optimize(bool& is_opt, double& value);
+
+        virtual void optimize();
+ 
         friend std::ostream& operator<< (std::ostream& out, const Symbol& symbol);
 
         virtual double eval(Interpreter& interpreter);
 
-		virtual void staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
-		
-	protected:
-		int id;
+        virtual double eval();
 
-	private:
+        virtual void staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log);
+
+    protected:
+        int id;
+
+    private:
 
 };
 

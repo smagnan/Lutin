@@ -26,6 +26,11 @@ std::string S_Iaff::print() const
     return id->print() + " := " + eprime->print();
 }
 
+void S_Iaff::optimize()
+{
+    eprime->optimize();
+}
+
 void S_Iaff::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
 {
 	std::map< std::string, Variable >::iterator it;

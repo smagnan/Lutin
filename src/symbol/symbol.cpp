@@ -35,9 +35,13 @@ std::string Symbol::print() const
     return "";
 }
 
-Symbol* Symbol::optimize()
+void Symbol::optimize()
 {
-    return 0;
+}
+
+void Symbol::optimize(bool& is_opt, double& value)
+{
+    throw MathException(CANNOT_EVALUATE_ERROR);
 }
 
 std::ostream& operator<< (std::ostream& out, const Symbol& symbol)
@@ -46,6 +50,11 @@ std::ostream& operator<< (std::ostream& out, const Symbol& symbol)
 }
 
 double Symbol::eval(Interpreter& interpreter)
+{
+    throw MathException(CANNOT_EVALUATE_ERROR);
+}
+
+double Symbol::eval()
 {
     throw MathException(CANNOT_EVALUATE_ERROR);
 }

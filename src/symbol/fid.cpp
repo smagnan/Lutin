@@ -24,14 +24,20 @@ std::string S_Fid::print() const
     return id->print();
 }
 
-Symbol* S_Fid::optimize()
+void S_Fid::optimize(bool& is_opt, double& value)
 {
-    return 0;
+    is_opt = false;
+    value = 0;
 }
 
 double S_Fid::eval(Interpreter& interpreter)
 {
     return id->eval(interpreter);
+}
+
+double S_Fid::eval()
+{
+    return id->eval();
 }
 
 void S_Fid::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)

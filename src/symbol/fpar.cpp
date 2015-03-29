@@ -24,21 +24,19 @@ std::string S_Fpar::print() const
     return "(" + e->print() + ")";
 }
 
-Symbol* S_Fpar::optimize()
+void S_Fpar::optimize(bool& is_opt, double& value)
 {
-    S_E* s = (S_E*)e->optimize();
-    if (s)
-    {
-        delete e;
-        e = s;
-        return e;
-    }
-    return 0;
+    e->optimize(is_opt, value);
 }
 
 double S_Fpar::eval(Interpreter& interpreter)
 {
     return e->eval(interpreter);
+}
+
+double S_Fpar::eval()
+{
+    return e->eval();
 }
 
 void S_Fpar::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)

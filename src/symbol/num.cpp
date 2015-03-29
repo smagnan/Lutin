@@ -44,3 +44,8 @@ double S_Num::eval(Interpreter& interpreter)
     (void) interpreter;
     return value;
 }
+
+double S_Num::eval()
+{
+    return value;
+}

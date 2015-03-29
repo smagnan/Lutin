@@ -10,12 +10,12 @@
 #include "../interpreter/interpreter.h"
 
 S_Id::S_Id()
-    : Symbol(ID), value(0)
+    : S_F(ID), value(0)
 {
 }
 
 S_Id::S_Id(std::string v)
-    : Symbol(ID), value(v)
+    : S_F(ID), value(v)
 {
 }
 
@@ -41,4 +41,9 @@ std::string S_Id::print() const
 double S_Id::eval(Interpreter& interpreter)
 {
     return interpreter.get_value(value);
+}
+
+double S_Id::eval()
+{
+    throw MathException(CANNOT_EVALUATE_ERROR);
 }

@@ -24,6 +24,7 @@ public:
     void setValue(double v);
     virtual std::string print() const;
     virtual double eval(Interpreter& interpreter);
+    virtual double eval();
 };
 
 #endif // S_NUM_H

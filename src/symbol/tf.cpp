@@ -24,9 +24,19 @@ std::string S_Tf::print() const
     return f->print();
 }
 
+void S_Tf::optimize(bool& is_opt, double& value)
+{
+    f->optimize(is_opt, value);
+}
+
 double S_Tf::eval(Interpreter& interpreter)
 {
     return f->eval(interpreter);
+}
+
+double S_Tf::eval()
+{
+    return f->eval();
 }
 
 void S_Tf::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)

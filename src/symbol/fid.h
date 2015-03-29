@@ -23,8 +23,9 @@ public:
     S_Fid(S_Id* id);
     virtual ~S_Fid();
     virtual std::string print() const;
-    virtual Symbol* optimize();
+    virtual void optimize(bool& is_opt, double& value);
     virtual double eval(Interpreter& interpreter);
+    virtual double eval();
 	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
 };
 

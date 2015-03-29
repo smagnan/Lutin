@@ -19,7 +19,9 @@ public:
     S_Tmult(S_T* t, S_F* f);
     virtual ~S_Tmult();
     virtual std::string print() const;
+    virtual void optimize(bool& is_opt, double& value);
     virtual double eval(Interpreter& interpreter);
+    virtual double eval();
 	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
 };
 

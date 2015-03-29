@@ -24,9 +24,19 @@ std::string S_Et::print() const
     return t->print();
 }
 
+void S_Et::optimize(bool& is_opt, double& value)
+{
+    t->optimize(is_opt, value);
+}
+
 double S_Et::eval(Interpreter& interpreter)
 {
     return t->eval(interpreter);
+}
+
+double S_Et::eval()
+{
+    return t->eval();
 }
 
 void S_Et::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)

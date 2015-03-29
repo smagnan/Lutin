@@ -24,12 +24,18 @@ std::string S_Fnum::print() const
     return num->print();
 }
 
-Symbol* S_Fnum::optimize()
+void S_Fnum::optimize(bool& is_opt, double& value)
 {
-    return num;
+    is_opt = true;
+    value = num->getValue();
 }
 
 double S_Fnum::eval(Interpreter& interpreter)
 {
     return num->eval(interpreter);
+}
+
+double S_Fnum::eval()
+{
+    return num->eval();
 }

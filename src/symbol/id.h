@@ -9,9 +9,9 @@
 #ifndef S_ID_H
 #define S_ID_H
 
-#include "symbol.h"
+#include "f.h"
 
-class S_Id : public Symbol
+class S_Id : public S_F
 {
 private:
     std::string value;
@@ -24,6 +24,7 @@ public:
     void setValue(std::string v);
     virtual std::string print() const;
     virtual double eval(Interpreter& interpreter);
+    virtual double eval();
 };
 
 #endif // S_ID_H

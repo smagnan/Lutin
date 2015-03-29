@@ -23,8 +23,10 @@ public:
     S_Eprime(S_E* e);
     virtual ~S_Eprime();
     virtual std::string print() const;
+    virtual void optimize();
 	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     virtual double eval(Interpreter& interpreter);
+    virtual double eval();
 };
 
 #endif // S_EPRIME_H

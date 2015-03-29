@@ -22,8 +22,10 @@ public:
     S_Eplus(S_E* e, S_T* t);
     virtual ~S_Eplus();
     virtual std::string print() const;
+    virtual void optimize(bool& is_opt, double& value);
 	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
     virtual double eval(Interpreter& interpreter);
+    virtual double eval();
 };
 
 #endif // S_EPLUS_H
