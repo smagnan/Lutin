@@ -9,6 +9,7 @@
 #include "state19.h"
 #include "../symbol/symbol.h"
 #include "../automaton.h"
+#include "../symbol/pv.h"
 
 
 #include "state20.h" 
@@ -32,7 +33,9 @@ bool State19::transition(Automaton & automaton, Symbol * s)
             break;
 
         default:
-            automaton.error();
+            Symbol* symbol = new S_Pv();
+            automaton.notifyMissingSymbol(symbol);
+            automaton.shift(symbol, new State20());
             break;
 
     }
