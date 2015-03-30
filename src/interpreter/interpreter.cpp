@@ -27,8 +27,8 @@
 #include "../symbol/ilire.h"
 #include "../symbol/dconst.h"
 #include "../symbol/dvar.h"
-#include "../symbol/id.h"	// TODO useful?
-#include "../symbol/ini.h"	// TODO useful?
+#include "../symbol/id.h"
+#include "../symbol/ini.h"
 
 // Interpreter constructor
 Interpreter::Interpreter(Symbol* tree) 
@@ -42,7 +42,7 @@ Interpreter::~Interpreter()
 	clean_instructions();
 }
 
-void Interpreter::clean_declarations() // TODO: exceptions
+void Interpreter::clean_declarations() 
 {
 	typedef std::map<std::string, Declaration* >::iterator it_t;
 	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) 
@@ -51,7 +51,7 @@ void Interpreter::clean_declarations() // TODO: exceptions
 	}
 }
 
-void Interpreter::clean_instructions() // TODO: exceptions ... supposed to be useless?
+void Interpreter::clean_instructions() 
 {
 	while (!this->instructions.empty()) 
 	{
@@ -88,7 +88,7 @@ void Interpreter::load_declarations()
 			d_var = dynamic_cast<S_Dvar*> (curr_declar);
 			if (d_var ==  NULL)
 			{
-				// TODO ERROR
+				// Do nothing, not a correct type
 			}	
 			else //  ------ var
 			{
@@ -158,7 +158,7 @@ void Interpreter::load_instructions()
 				i_aff = dynamic_cast<S_Iaff*> (curr_instruction);
 				if (i_aff ==  NULL)
 				{
-					// TODO ERROR
+					// Do nothing, not a correct type
 				}
 				else // --- aff
 				{
@@ -215,16 +215,15 @@ void Interpreter::run()
 		}
 		catch(std::exception &e) 
 		{
-			this->printer.printerr("Runtime problem ","problem with ...");
-			// TODO: add instruction causing the problem
+			this->printer.printerr("Runtime problem ","problem with current instruction");
 		}
 	}
 }
 
-void Interpreter::declare(const std::string &name, Declar_Type type, double val) // TODO: exceptions
+void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 {							// default value for VALUE type
-	if (this->declarations.find(name) == this->declarations.end()) 
-	{ // If key not found
+	if (this->declarations.find(name) == this->declarations.end()) // If key not found
+	{ 
 		switch(type) 
 		{
 			case D_VAR:
@@ -240,7 +239,7 @@ void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 	}
 	else 
 	{
-		this->printer.printerr("Multiple definition","");
+		this->printer.printerr("Multiple definition of: ",name);
 		// ERROR: Multiple definition
 	}
 }
@@ -253,9 +252,7 @@ void Interpreter::declare(const std::string &name)
 	}
 	else 
 	{
-		this->printer.printerr("Declaration problem ","multiple definition of "+name);
-		// TODO error, already exists
-		// ERROR: Multiple definition
+		this->printer.printerr("Multiple definition of: ",name);
 	}
 }
 
@@ -264,23 +261,19 @@ void Interpreter::update_variable(std::string name, double val)
 	try 
 	{
 		Declaration * decl = this->declarations.find(name)->second;
-		if(!decl->getType().compare(KEYWORD_VAR)) 
-		{ // if type is VAR
+		if(!decl->getType().compare(KEYWORD_VAR)) // if type is VAR
+		{ 
 			decl->setValue(val);
 		} 
 		else 
 		{
-
+			this->printer.printerr("Affectation problem - wrong type: ",name);
 		}
 
 	} 
 	catch(std::exception &e) 
 	{
-		this->printer.printerr("Affectation problem ","problem with ...");
-		// TODO: error if: name does not exist, exist but not a variable etc ...
-		// TODO: create custom exceptions
-		// TODO: calling setValue() if not a Var throws an error
-		// TODO print what causes the error and the "what"
+		this->printer.printerr("Affectation problem: ",name);
 	}
 }
 
@@ -294,7 +287,6 @@ void Interpreter::print_declarations(std::ostream& out)
 	typedef std::map<std::string, Declaration* >::iterator it_t;
 	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) 
 	{
-	    // TODO: this is ugly
 	    this->printer.print(out,iterator->second->getType());
 	    this->printer.print(out,iterator->first);
 	    this->printer.print(out,"=");
@@ -323,7 +315,7 @@ double Interpreter::get_value(std::string id)
 		if(this->declarations.find(id) == this->declarations.end())
 		{
 			this->printer.printerr("No such id: ",id);
-			return 0;
+			return DEFAULT_ELEM_VALUE;
 		}
 		else
 		{
@@ -333,9 +325,8 @@ double Interpreter::get_value(std::string id)
 	catch(std::exception &e) 
 	{
 		this->printer.printerr("Problem while getting value of: ",id);
-		// TODO: error if: name does not exist so can't get value
 	}
-	return 0; // TODO const or equiv.
+	return DEFAULT_ELEM_VALUE;
 }
 
 Var * Interpreter::get_variable(std::string id)
@@ -348,7 +339,7 @@ Var * Interpreter::get_variable(std::string id)
 		{
 			return static_cast<Var*>(decl);
 		}
-		else // TODO error if not VAR ?
+		else
 		{	
 			this->printer.printerr("Not a VAR: ",id);
 			return NULL;
@@ -357,7 +348,6 @@ Var * Interpreter::get_variable(std::string id)
 	catch(std::exception &e) 
 	{
 		this->printer.printerr("No such id: ",id);
-		// TODO: error if: name does not exist so can't get value
 	}
-	return NULL; // TODO const or equiv.
+	return NULL;
 }

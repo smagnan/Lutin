@@ -28,6 +28,7 @@
 #include "../symbol/symbol.h"
 #include "../symbol/eprime.h"
 
+const double DEFAULT_ELEM_VALUE = 0;                  // if the element (input...) is incorrect, specify the default value
 enum Declar_Type {D_VAR,D_CONST,D_VALUE};
 class Interpreter
 {
