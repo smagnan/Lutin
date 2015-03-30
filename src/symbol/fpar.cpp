@@ -33,7 +33,6 @@ void S_Fpar::optimize(bool& is_opt, double& value)
         delete e;
         e = ret;
     }
-    std::cout << value << " | " << is_opt << " | S_Fpar " << *this << " | " << ret << std::endl;
 }
 
 double S_Fpar::eval(Interpreter& interpreter)

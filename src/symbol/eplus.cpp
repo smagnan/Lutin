@@ -95,7 +95,6 @@ void S_Eplus::optimize(bool& is_opt, double& value, S_E** ret)
         is_opt = false;
         value = 0;
     }
-    std::cout << value << " | " << is_opt << " | S_Eplus" << std::endl;
 }
 
 double S_Eplus::eval(Interpreter& interpreter)

@@ -107,10 +107,6 @@ bool ArgsManager::isError()
 
 void ArgsManager::manageError(std::string what)
 {
-    std::cerr << STYLE_ERROR;
-    std::cerr << OPTION_ERROR_MESSAGE << OPTION_ERROR_SEPARATOR
-            << what << std::endl;
-    std::cerr << STYLE_DEFAULT;
     error = true;
 }
 
