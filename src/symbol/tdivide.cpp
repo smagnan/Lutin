@@ -1,8 +1,8 @@
 // ---------------------------------------------
 //  tdivide.cpp
 //
-//	Created	 :
-//		by 	 : Pierre GODARD
+//  Created  :
+//      by   : Pierre GODARD
 //
 // ---------------------------------------------
 
@@ -121,5 +121,5 @@ double S_Tdivide::eval()
 void S_Tdivide::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->t->staticAnalysis(memId ,log);
-	this->f->staticAnalysis(memId ,log);
+    this->f->staticAnalysis(memId ,log);
 }

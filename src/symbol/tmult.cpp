@@ -121,5 +121,5 @@ double S_Tmult::eval()
 void S_Tmult::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->t->staticAnalysis(memId ,log);
-	this->f->staticAnalysis(memId ,log);
+    this->f->staticAnalysis(memId ,log);
 }
