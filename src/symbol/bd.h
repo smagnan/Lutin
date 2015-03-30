@@ -23,7 +23,7 @@ protected:
 public:
     S_Bd();
     virtual ~S_Bd();
-    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId);
     virtual std::string print() const;
     virtual S_Bd * next() { return NULL;};
 };

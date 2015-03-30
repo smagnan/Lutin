@@ -70,8 +70,7 @@ int main( int argc, const char* argv[] )
 	if (am.count("analyze"))
 	{
         map<string , Variable> variableMemory;
-        vector<string> log;
-        derivationTree->staticAnalysis(variableMemory,log);
+        derivationTree->staticAnalysis(variableMemory);
 	}
 
 	if (am.count("optimize"))

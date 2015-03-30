@@ -29,7 +29,7 @@ void S_Iecrire::optimize()
     eprime->optimize();
 }
 
-void S_Iecrire::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Iecrire::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-	this->eprime->staticAnalysis(memId , log);
+	this->eprime->staticAnalysis(memId);
 }

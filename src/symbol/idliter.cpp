@@ -26,9 +26,9 @@ std::string S_Idliter::print() const
     return idl->print() + ", " + id->print();
 }
 
-void S_Idliter::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Idliter::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->idl->staticAnalysis(memId , log);
+    this->idl->staticAnalysis(memId);
     
     Variable var_info;
     var_info.is_const = false;

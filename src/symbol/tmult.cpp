@@ -118,8 +118,8 @@ double S_Tmult::eval()
     return t_value * f_value;
 }
 
-void S_Tmult::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Tmult::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->t->staticAnalysis(memId ,log);
-    this->f->staticAnalysis(memId ,log);
+    this->t->staticAnalysis(memId);
+    this->f->staticAnalysis(memId);
 }

@@ -113,8 +113,8 @@ double S_Eplus::eval()
     return e_value + t_value;
 }
 
-void S_Eplus::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Eplus::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->e->staticAnalysis(memId , log);
-	this->t->staticAnalysis(memId , log);
+    this->e->staticAnalysis(memId);
+	this->t->staticAnalysis(memId);
 }

@@ -32,7 +32,7 @@ void S_F::optimize(bool& is_opt, double& value)
 {
 }
 
-void S_F::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_F::staticAnalysis(std::map< std::string, Variable > & memId)
 {
 
 }

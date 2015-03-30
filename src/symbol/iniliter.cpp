@@ -26,8 +26,8 @@ std::string S_Iniliter::print() const
     return inil->print() + ", " + ini->print();
 }
 
-void S_Iniliter::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Iniliter::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->inil->staticAnalysis(memId ,log);
-	this->ini->staticAnalysis(memId ,log);
+    this->inil->staticAnalysis(memId);
+	this->ini->staticAnalysis(memId);
 }

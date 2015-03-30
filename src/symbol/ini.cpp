@@ -26,7 +26,7 @@ std::string S_Ini::print() const
     return id->print() + " = " + num->print();
 }
 
-void S_Ini::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Ini::staticAnalysis(std::map< std::string, Variable > & memId)
 {
     Variable var_info;
     var_info.is_const = true;// This is a const

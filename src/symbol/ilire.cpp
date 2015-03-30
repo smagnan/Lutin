@@ -28,7 +28,7 @@ void S_Ilire::optimize()
 {
 }
 
-void S_Ilire::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Ilire::staticAnalysis(std::map< std::string, Variable > & memId)
 {
     std::map< std::string, Variable >::iterator it = memId.find(id->getValue());
     
