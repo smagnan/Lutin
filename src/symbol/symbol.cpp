@@ -41,7 +41,8 @@ void Symbol::optimize()
 
 void Symbol::optimize(bool& is_opt, double& value)
 {
-
+    (void) is_opt;
+    (void) value;
     throw MathException(CANNOT_EVALUATE_ERROR);
 }
 
@@ -52,7 +53,7 @@ std::ostream& operator<< (std::ostream& out, const Symbol& symbol)
 
 double Symbol::eval(Interpreter& interpreter)
 {
-
+    (void) interpreter;
     throw MathException(CANNOT_EVALUATE_ERROR);
 }
 

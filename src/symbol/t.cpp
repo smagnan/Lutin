@@ -30,4 +30,7 @@ std::string S_T::print() const
 
 void S_T::optimize(bool& is_opt, double& value, S_T** ret)
 {
+    (void) is_opt;
+    (void) value;
+    (void) ret;
 }
