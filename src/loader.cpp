@@ -30,12 +30,6 @@ void Loader::load(const char * filepath)
     }
     else 
 	{
-        std::cerr << "Erreur, veuillez specifier des arguments"                 << std::endl;
-        std::cerr << "  Utilisation :"                                          << std::endl;
-        std::cerr << "    ../lut [-p] [-a] [-e] [-o] source.lt"                 << std::endl;
-        std::cerr << "      [-p] affiche le code source reconnu"                << std::endl;
-        std::cerr << "      [-a] analyse le programme de maniere statique"      << std::endl;
-        std::cerr << "      [-e] execute interactivement le programme"          << std::endl;
-        std::cerr << "      [-o] optimise les expressions et instructions"      << std::endl;
+        std::cerr << "Erreur a l'ouverture du fichier " << filepath << std::endl;
     }
 }
