@@ -136,8 +136,8 @@ int main( int argc, const char* argv[] )
 		//interpreter->print_declarations(cout);
 		//interpreter->print_instructions(cout);
 		//mainPrinter.printinfo("PRINTING ","start");
-		//mainPrinter.print(cout,derivationTree->print());
-        std::cout << *derivationTree << std::endl; // TODO [[[ extract string for synaxic coloration ]]]
+		mainPrinter.print(cout,derivationTree->print());
+        //std::cout << *derivationTree << std::endl; // TODO [[[ extract string for synaxic coloration ]]]
         //mainPrinter.printinfo("PRINTING ","end");
 	}
 

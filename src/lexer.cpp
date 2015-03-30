@@ -280,10 +280,6 @@ bool Lexer::regex_callback(const boost::match_results<std::string::const_iterato
             }
             else 
             {   // something that was not a pattern was matched
-                matchErr.push_back(matchError());
-                matchErr.back().position = str_found.position(i);
-                matchErr.back().length = str_found.length(i);
-                matchErr.back().str = str_found[i];
                 std::cout << "MatchErr : " << str_found[i] << std::endl;
                 return false;
             }
