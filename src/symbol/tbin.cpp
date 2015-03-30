@@ -30,7 +30,7 @@ void S_Tbin::optimize(bool& is_opt, double& value)
 {
 }
 
-void S_Tbin::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Tbin::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->t->staticAnalysis(memId ,log);
 	this->f->staticAnalysis(memId ,log);

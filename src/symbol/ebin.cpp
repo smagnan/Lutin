@@ -33,10 +33,9 @@ std::string S_Ebin::print() const
 
 void S_Ebin::optimize(bool& is_opt, double& value, S_E** ret)
 {
-    std::cout << value << " | " << is_opt << " | S_Ebin " << *this << " | " << ret << std::endl;
 }
 
-void S_Ebin::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Ebin::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->e->staticAnalysis(memId , log);
 	this->t->staticAnalysis(memId , log);

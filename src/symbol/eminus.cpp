@@ -35,7 +35,6 @@ void S_Eminus::optimize(bool& is_opt, double& value, S_E** ret)
     S_T* t_ret = 0;
     e->optimize(e_is_opt, e_value, &e_ret);
     t->optimize(t_is_opt, t_value, &t_ret);
-    
     if (e_ret)
     {
         delete e;
@@ -92,7 +91,7 @@ double S_Eminus::eval(Interpreter& interpreter)
 {
     double e_value = e->eval(interpreter);
     double t_value = t->eval(interpreter);
-    
+
     return e_value - t_value;
 }
 
@@ -100,11 +99,11 @@ double S_Eminus::eval()
 {
     double e_value = e->eval();
     double t_value = t->eval();
-    
+
     return e_value - t_value;
 }
 
-void S_Eminus::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Eminus::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->e->staticAnalysis(memId ,log);
 	this->t->staticAnalysis(memId ,log);

@@ -96,12 +96,12 @@ double S_Tdivide::eval(Interpreter& interpreter)
 {
     double t_value = t->eval(interpreter);
     double f_value = f->eval(interpreter);
-    
+
     if (f_value == 0)
     {
         throw MathException(DIVIDE_BY_ZERO_ERROR);
     }
-    
+
     return t_value / f_value;
 }
 
@@ -109,16 +109,16 @@ double S_Tdivide::eval()
 {
     double t_value = t->eval();
     double f_value = f->eval();
-    
+
     if (f_value == 0)
     {
         throw MathException(DIVIDE_BY_ZERO_ERROR);
     }
-    
+
     return t_value / f_value;
 }
 
-void S_Tdivide::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Tdivide::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->t->staticAnalysis(memId ,log);
 	this->f->staticAnalysis(memId ,log);
