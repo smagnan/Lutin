@@ -47,12 +47,11 @@ void S_Fid::staticAnalysis(std::map< std::string, Variable > & memId ,std::vecto
     // Trying to read a non declared variable
 	if (it == memId.end())
 	{
-        std::cout << "ICI" << std::endl;
-		log.push_back(NOT_DECLARED + id->getValue());
+        std::cerr << NOT_DECLARED << *id << std::endl;
 	}
 	else if (!(it->second).is_const && !(it->second).is_assigned)
 	{
-		log.push_back(NOT_ASSIGNED + id->getValue());
+        std::cerr << NOT_ASSIGNED << *id << std::endl;
 		(it->second).is_used = true ;
 	}
 	else

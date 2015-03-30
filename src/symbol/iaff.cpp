@@ -37,11 +37,11 @@ void S_Iaff::staticAnalysis(std::map< std::string, Variable > & memId ,std::vect
 
 	if (it == memId.end())
 	{
-		log.push_back(NOT_DECLARED + id->getValue());
+        std::cerr << NOT_DECLARED << *id << std::endl;
 	}
 	else if ((it->second).is_const)
 	{
-		log.push_back(CONST_AFFECT + id->getValue());
+        std::cerr << CONST_AFFECT << *id << std::endl;
 		(it->second).is_used = true;
 	}
 	else

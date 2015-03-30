@@ -35,13 +35,7 @@ void S_Ilire::staticAnalysis(std::map< std::string, Variable > & memId ,std::vec
     // Trying to read a non declared variable
     if (it == memId.end())
     {
-        log.push_back(NOT_DECLARED + id->getValue());
-    }
-    // The variable is not asigned
-    else if (!(it->second).is_assigned)
-    {
-        log.push_back(NOT_ASSIGNED + id->getValue());
-        (it->second).is_used = true;
+        std::cerr << NOT_DECLARED << *id << std::endl;
     }
     // Normal case
     else

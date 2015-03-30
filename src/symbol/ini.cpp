@@ -37,6 +37,6 @@ void S_Ini::staticAnalysis(std::map< std::string, Variable > & memId ,std::vecto
     // If the id is already in the map : double declaration
     if (!(memId.insert( std::pair< std::string, Variable >(id->getValue(),var_info))).second)
     {
-        log.push_back(ALREADY_DECLARED + id->getValue());
+        std::cerr << ALREADY_DECLARED << *id << std::endl;
     }
 }
