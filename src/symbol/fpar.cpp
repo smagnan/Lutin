@@ -46,7 +46,7 @@ double S_Fpar::eval()
     return e->eval();
 }
 
-void S_Fpar::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Fpar::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->e->staticAnalysis(memId ,log);
 }

@@ -28,14 +28,11 @@ std::string S_Biiter::print() const
 
 void S_Biiter::optimize()
 {
-    std::cout << "S_Biiter::optimize()" << std::endl;
     bi->optimize();
-    std::cout << "S_Biiter::optimize(): " << *i << std::endl;
     i->optimize();
-    std::cout << "S_Biiter::optimize():END" << std::endl;
 }
 
-void S_Biiter::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Biiter::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
 	this->bi->staticAnalysis(memId , log);
 	this->i->staticAnalysis(memId , log);

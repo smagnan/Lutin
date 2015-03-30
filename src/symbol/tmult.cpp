@@ -32,7 +32,7 @@ void S_Tmult::optimize(bool& is_opt, double& value)
     double f_value;
     t->optimize(t_is_opt, t_value);
     f->optimize(f_is_opt, f_value);
-    
+
     // Multiply by zero : optimize
     if (f_is_opt && f_value == 0)
     {
@@ -80,7 +80,7 @@ double S_Tmult::eval(Interpreter& interpreter)
 {
     double t_value = t->eval(interpreter);
     double f_value = f->eval(interpreter);
-    
+
     return t_value * f_value;
 }
 
@@ -88,11 +88,11 @@ double S_Tmult::eval()
 {
     double t_value = t->eval();
     double f_value = f->eval();
-    
+
     return t_value * f_value;
 }
 
-void S_Tmult::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Tmult::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->t->staticAnalysis(memId ,log);
 	this->f->staticAnalysis(memId ,log);

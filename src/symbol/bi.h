@@ -13,7 +13,7 @@
 
 #include <map>
 #include <vector>
-#include <stack> 
+#include <stack>
 #include <string>
 
 class S_Bi : public Symbol
@@ -23,7 +23,7 @@ protected:
 public:
     S_Bi();
     virtual ~S_Bi();
-    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
     virtual std::string print() const;
     virtual S_Bi * next() { return NULL;};
 };

@@ -14,7 +14,7 @@
 #include <deque>
 #include <boost/program_options.hpp>
 #include <map>
-#include <stack>
+#include <vector>
 
 #include "automaton.h"
 #include "argsmanager.h"
@@ -28,7 +28,7 @@ using std::cerr;
 using std::endl;
 using std::string;
 using std::map;
-using std::stack;
+using std::vector;
 using std::iterator;
 
 namespace po =  boost::program_options;
@@ -99,20 +99,17 @@ int main( int argc, const char* argv[] )
 	{
         mainPrinter.printinfo("ANALYZE ","start");
         map<string , Variable> variableMemory;
-        stack<string> log;
+        vector<string> log;
         string currentLogLine;
         derivationTree->staticAnalysis(variableMemory,log);
-        cerr<<log.size()<<endl;
-        while(!log.empty())
+        for(vector<string> :: iterator iCurrentLine = log.begin();iCurrentLine != log.end() ; iCurrentLine++)
         {
-            currentLogLine = log.top();
-            log.pop();
-            cerr<<currentLogLine<<endl;
+            cerr<<*iCurrentLine<<endl;
         }
 
         for(map<string, Variable>::iterator iVariable = variableMemory.begin();iVariable != variableMemory.end();iVariable++)
         {
-            if(!(iVariable->second.is_used))
+            if(!((iVariable->second).is_used))
             {
                 cerr<<"Variable "<<iVariable->first<<" is never used"<<endl;
             }

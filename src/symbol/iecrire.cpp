@@ -31,7 +31,7 @@ void S_Iecrire::optimize()
     std::cout << "S_Iecrire::optimize():END" << std::endl;
 }
 
-void S_Iecrire::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Iecrire::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
 	this->eprime->staticAnalysis(memId , log);
 }

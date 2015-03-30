@@ -32,7 +32,7 @@ void S_Tdivide::optimize(bool& is_opt, double& value)
     double f_value;
     t->optimize(t_is_opt, t_value);
     f->optimize(f_is_opt, f_value);
-    
+
     // Divide by zero : do not optimize
     if (f_is_opt && f_value == 0)
     {
@@ -80,12 +80,12 @@ double S_Tdivide::eval(Interpreter& interpreter)
 {
     double t_value = t->eval(interpreter);
     double f_value = f->eval(interpreter);
-    
+
     if (f_value == 0)
     {
         throw MathException(DIVIDE_BY_ZERO_ERROR);
     }
-    
+
     return t_value / f_value;
 }
 
@@ -93,16 +93,16 @@ double S_Tdivide::eval()
 {
     double t_value = t->eval();
     double f_value = f->eval();
-    
+
     if (f_value == 0)
     {
         throw MathException(DIVIDE_BY_ZERO_ERROR);
     }
-    
+
     return t_value / f_value;
 }
 
-void S_Tdivide::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Tdivide::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->t->staticAnalysis(memId ,log);
 	this->f->staticAnalysis(memId ,log);
