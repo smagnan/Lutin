@@ -62,19 +62,12 @@ void Interpreter::clean_instructions() // TODO: exceptions ... supposed to be us
 
 void Interpreter::load_declarations()
 {
-	DEBUGINFO("load_declarations: START");
-	DEBUGWARN("load_declarations: 1");
 	S_Bd * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
-	DEBUGWARN("load_declarations: 2");
 	S_Bd * next;
-	DEBUGWARN("load_declarations: 3");
-	TRACE(current << std::endl)
 	if (current == NULL || current->next() == NULL) // if NULL or Bd and not Bditer
 	{
-		DEBUGWARN("load_declarations: 3 ret");
-		return; // TODO ?
+		return;
 	}
-	DEBUGWARN("load_declarations: 5");
 	next = current;
 	S_D * curr_declar;
 	S_Dconst * d_const;
@@ -82,89 +75,59 @@ void Interpreter::load_declarations()
 	S_Idl * var_idl;
 	S_Inil * const_inil;
 	std::string className;
-	DEBUGWARN("load_declarations: 6");
 	do
 	{
-		DEBUGWARN("    load_declarations: 7");
 		current = next;
 		curr_declar = static_cast<S_D*>((static_cast<S_Bditer*>(current))->get_declaration());
-		TRACE("current                          : " << current << std::endl)
-		TRACE("static_cast<S_Bditer*>(current)  : " << static_cast<S_Bditer*>(current) << std::endl)
-		TRACE("_->get_declaration()             : " << (static_cast<S_Bditer*>(current))->get_declaration() << std::endl)
-		TRACE("curr_declar                      : " << curr_declar << std::endl)
 		className = typeid(*current).name(); 
-		DEBUGINFO(className)
 		if(!className.compare("4S_Bd")) // this means we reached the end of the branch: a Bd symbol (decorated name)
 			break;
-		DEBUGWARN("    load_declarations: 8");
 		d_const = dynamic_cast<S_Dconst*> (curr_declar);
-		DEBUGWARN("    load_declarations: 9");
 		if (d_const ==  NULL)
 		{
-			DEBUGWARN("        load_declarations: 10");
 			d_var = dynamic_cast<S_Dvar*> (curr_declar);
-			DEBUGWARN("        load_declarations: 11");
 			if (d_var ==  NULL)
 			{
 				// TODO ERROR
-				DEBUGERR("            load_declarations: 12");
 			}	
 			else //  ------ var
 			{
-				DEBUGWARN("            load_declarations: 13");
-				TRACE("Var id: " << d_var->get_id()->getValue() << std::endl)
 				declare(d_var->get_id()->getValue());
 				var_idl = d_var->get_idl();
 				className = typeid(*var_idl).name(); 
-				DEBUGINFO(className)
 				if(className.compare("5S_Idl")) // end of the branch: a Idl symbol (decorated name)
 				{	
-					TRACE("Var idl 1: " << d_var->get_id()->getValue() << std::endl)
 					while(var_idl != NULL)
 					{
 						declare(var_idl->get_id()->getValue());
-						TRACE("Var idl n: " << var_idl->get_id() << std::endl)
 						var_idl = var_idl->get_idl();
 						className = typeid(*var_idl).name(); 
-						DEBUGINFO(className)
 						if(!className.compare("5S_Idl")) // end of the branch: a Idl symbol (decorated name)
 							break;
 					}
 				}
-				DEBUGWARN("            load_declarations: 14");
 			}
 		}
 		else // ----------- const
 		{
-			DEBUGWARN("        load_declarations: 15");
-			TRACE("Const id: " << d_const->get_ini()->getId() << std::endl)
-			TRACE("Const id: " << d_const->get_ini()->getNum() << std::endl)
 			declare(d_const->get_ini()->getId(),D_CONST,d_const->get_ini()->getNum());
 			const_inil = d_const->get_inil();
 			className = typeid(*const_inil).name(); 
-			DEBUGINFO(className)
 			if(className.compare("6S_Inil")) // end of the branch: a Inil symbol (decorated name)
 			{
 				while(const_inil != NULL)
 				{
 					declare(const_inil->get_ini()->getId(),D_CONST,const_inil->get_ini()->getNum());
-					TRACE("Var idl n: " << const_inil->get_ini()->getId() << std::endl)
-					TRACE("Var idl n: " << const_inil->get_ini()->getNum() << std::endl)
 					const_inil = const_inil->get_inil();
 					className = typeid(*const_inil).name(); 
-					DEBUGINFO(className)
 					if(!className.compare("6S_Inil")) // end of the branch: a Inil symbol (decorated name)
 						break;
 				}
 			}
-			DEBUGWARN("        load_declarations: 16");
 		}
-		DEBUGWARN("    load_declarations: 17");
 		next = current->next();
-		DEBUGWARN("    load_declarations: 18");
 	}
 	while(next != NULL);
-	DEBUGINFO("load_declarations: END");
 }
 
 void Interpreter::load_instructions()
@@ -186,7 +149,6 @@ void Interpreter::load_instructions()
 		className = typeid(*current).name(); 
 		if(!className.compare("4S_Bi")) // this means we reached the end of the branch: à Bi symbol (decorated name)
 			break;
-		// (: thx:  http://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
 		i_write = dynamic_cast<S_Iecrire*> (curr_instruction);
 		if (i_write ==  NULL)
 		{
@@ -200,11 +162,6 @@ void Interpreter::load_instructions()
 				}
 				else // --- aff
 				{
-					/*className = typeid(*i_aff->get_id()).name(); 
-					if(!className.compare("4S_Bi")) // to check if the id exists or not (like: used but not declared)
-					{
-						// TODO Stop exec and print message
-					}*/
 					if(declared(i_aff->get_id()->getValue())) // check that the var in which we store exists
 					{
 						Affectation * affect = new Affectation();
@@ -313,8 +270,7 @@ void Interpreter::update_variable(std::string name, double val)
 		} 
 		else 
 		{
-			//throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
-			// TODO ^ FIXME & ugly
+
 		}
 
 	} 
