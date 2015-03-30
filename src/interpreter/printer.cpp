@@ -34,7 +34,6 @@ Printer::~Printer()
 
 void Printer::print(std::ostream& out,std::string str)
 {
-	// TODO to change? will depens on an external file and will not be hardcoded?
 	std::vector<std::string> lines;
 	std::vector<std::string> metawords;
 	std::vector<std::string> words;

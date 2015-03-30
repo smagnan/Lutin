@@ -13,7 +13,7 @@
 #include <string>
 #include <cstdarg>
  
-class Printer // TODO messages buffer 
+class Printer
 {
 private:
 	void printString(int count, ...); 	// with count the number of arguments
