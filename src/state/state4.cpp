@@ -9,6 +9,7 @@
 #include "state4.h"
 #include "../symbol/symbol.h"
 #include "../automaton.h"
+#include "../symbol/eq.h"
 
 
 #include "state5.h" 
@@ -32,7 +33,9 @@ bool State4::transition(Automaton & automaton, Symbol * s)
             break;
 
         default:
-            automaton.error();
+            Symbol* symbol = new S_Eq();
+            automaton.notifyMissingSymbol(symbol);
+            automaton.shift(symbol, new State5());
             break;
 
     }

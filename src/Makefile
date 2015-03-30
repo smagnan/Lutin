@@ -65,6 +65,9 @@ debug: executable
 executable: $(OBJS)
 	$(GPP) $(CFLAGS) $(FLAGS) -o $(BIN) $(OBJS) $(LIBS)
 
+test: executable
+	../tests/mktest.sh
+
 $(CLEAN):
 	rm -f $(OBJS) $(BIN)
 

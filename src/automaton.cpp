@@ -191,8 +191,11 @@ void Automaton::accept()
     // Do nothing, just end the process
 }
 
-void notifyMissingSymbol(Symbol* symbol)
+void Automaton::notifyMissingSymbol(Symbol* symbol)
 {
+    input.push_front(symbol);
+    currentSymbol = input.front();
+    std::cerr << "WARNING: Missing symbol " << *symbol << " has been added to the flow" << std::endl;
 }
 
 Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)

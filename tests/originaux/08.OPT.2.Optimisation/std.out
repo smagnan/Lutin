@@ -1,3 +1,6 @@
+PRINTING PROGRAM :
 var a;
+
 lire a;
 ecrire (a);
+

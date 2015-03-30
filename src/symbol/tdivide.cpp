@@ -10,6 +10,8 @@
 #include "fnum.h"
 #include "tf.h"
 
+#include <iostream>
+
 S_Tdivide::S_Tdivide(S_T* t, S_F* f)
     : S_Tbin(t, f)
 {
@@ -99,6 +101,7 @@ double S_Tdivide::eval(Interpreter& interpreter)
 
     if (f_value == 0)
     {
+		std::cerr << "ERROR: division by 0" << std::endl;
         throw MathException(DIVIDE_BY_ZERO_ERROR);
     }
 

@@ -17,6 +17,7 @@
 #include <vector>
 
 #include "automaton.h"
+#include "exception/automatonException.h"
 #include "argsmanager.h"
 #include "interpreter/interpreter.h"
 #include "loader.h"
@@ -57,8 +58,19 @@ int main( int argc, const char* argv[] )
         return EXIT_FAILURE;
     }
 
-	Automaton* automaton 		= new Automaton(lexer->getDeque());
-    Symbol* derivationTree 		= automaton->getDerivationTree();
+	Automaton* automaton;
+    Symbol* derivationTree;
+
+    try
+    {
+        automaton       = new Automaton(lexer->getDeque());
+        derivationTree 	= automaton->getDerivationTree();
+    } catch ( AutomatonException a ) {
+        std::cerr << a.what() << std::endl;    
+        return EXIT_FAILURE;
+    }
+    
+
 	Interpreter* interpreter 	= new Interpreter(derivationTree);
 
     if (am.count("help"))

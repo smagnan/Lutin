@@ -9,6 +9,7 @@
 #include "state23.h"
 #include "../symbol/symbol.h"
 #include "../automaton.h"
+#include "../symbol/aff.h"
 
 
 #include "state27.h" 
@@ -32,7 +33,9 @@ bool State23::transition(Automaton & automaton, Symbol * s)
             break;
 
         default:
-            automaton.error();
+            Symbol* symbol = new S_Aff();
+            automaton.notifyMissingSymbol(symbol);
+            automaton.shift(symbol, new State27());
             break;
 
     }
