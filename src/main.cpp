@@ -82,21 +82,7 @@ int main( int argc, const char* argv[] )
 	if (am.count("analyze"))
 	{
         map<string , Variable> variableMemory;
-        vector<string> log;
-        string currentLogLine;
-        derivationTree->staticAnalysis(variableMemory,log);
-        for(vector<string> :: iterator iCurrentLine = log.begin();iCurrentLine != log.end() ; iCurrentLine++)
-        {
-            cerr<<*iCurrentLine<<endl;
-        }
-
-        for(map<string, Variable>::iterator iVariable = variableMemory.begin();iVariable != variableMemory.end();iVariable++)
-        {
-            if(!((iVariable->second).is_used))
-            {
-                cerr<<"Variable "<<iVariable->first<<" is never used"<<endl;
-            }
-        }
+        derivationTree->staticAnalysis(variableMemory);
 	}
 
 	if (am.count("optimize"))

@@ -26,8 +26,8 @@ std::string S_Bditer::print() const
     return bd->print() + d->print() + ";\n";
 }
 
-void S_Bditer::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Bditer::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->bd->staticAnalysis(memId , log);
-	this->d->staticAnalysis(memId , log);
+    this->bd->staticAnalysis(memId);
+	this->d->staticAnalysis(memId);
 }

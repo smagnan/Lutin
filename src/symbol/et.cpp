@@ -46,7 +46,7 @@ double S_Et::eval()
     return t->eval();
 }
 
-void S_Et::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Et::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->t->staticAnalysis(memId , log);
+    this->t->staticAnalysis(memId);
 }

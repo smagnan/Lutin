@@ -87,7 +87,7 @@ class Symbol
 
         virtual double eval();
 
-        virtual void staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log);
+        virtual void staticAnalysis(std::map< std::string, Variable > & memId);
 
     protected:
         int id;

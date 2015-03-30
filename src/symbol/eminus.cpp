@@ -103,8 +103,8 @@ double S_Eminus::eval()
     return e_value - t_value;
 }
 
-void S_Eminus::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Eminus::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->e->staticAnalysis(memId ,log);
-	this->t->staticAnalysis(memId ,log);
+    this->e->staticAnalysis(memId);
+	this->t->staticAnalysis(memId);
 }

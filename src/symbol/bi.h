@@ -23,7 +23,7 @@ protected:
 public:
     S_Bi();
     virtual ~S_Bi();
-    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId);
     virtual std::string print() const;
     virtual S_Bi * next() { return NULL;};
 };

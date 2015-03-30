@@ -40,7 +40,7 @@ double S_Tf::eval()
     return f->eval();
 }
 
-void S_Tf::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Tf::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->f->staticAnalysis(memId ,log);
+    this->f->staticAnalysis(memId);
 }

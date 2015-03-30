@@ -27,7 +27,7 @@ public:
     virtual ~S_Ebin();
     virtual std::string print() const;
     virtual void optimize(bool& is_opt, double& value, S_E** ret);
-	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId);
 };
 
 #endif // S_EBIN_H

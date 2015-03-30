@@ -35,8 +35,8 @@ void S_Ebin::optimize(bool& is_opt, double& value, S_E** ret)
 {
 }
 
-void S_Ebin::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Ebin::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->e->staticAnalysis(memId , log);
-	this->t->staticAnalysis(memId , log);
+    this->e->staticAnalysis(memId);
+	this->t->staticAnalysis(memId);
 }
