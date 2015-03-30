@@ -36,7 +36,7 @@ void S_Ilire::staticAnalysis(std::map< std::string, Variable > & memId ,std::sta
 	{
 		log.push(NOT_DECLARED);
 	}
-	else if ( (it->second).is_assigned = false)
+	else if ( (it->second).is_assigned == false)
 	{
 		log.push(NOT_ASSIGNED);
 	}
