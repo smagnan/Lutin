@@ -31,6 +31,7 @@ void S_Ini::staticAnalysis(std::map< std::string, Variable > & memId ,std::vecto
 	Variable idDeclared;
 	idDeclared.is_declared = true;
 	idDeclared.is_const = true;
+	idDeclared.is_affected = true;
 	if ((memId.insert( std::pair< std::string, Variable >(id->getValue(),idDeclared))).second == false)
 	{
 		log.push_back(ALREADY_DECLARED + id->getValue());
