@@ -41,6 +41,7 @@ class Automaton
 	    void reduce(int numRule);
 	    void error();
 	    void accept();
+	    void notifyMissingSymbol(Symbol* symbol);
         Symbol* getSymbol(int numRule, std::deque<Symbol*> & symbols);
 };
 

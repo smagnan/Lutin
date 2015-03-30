@@ -26,8 +26,14 @@ std::string S_Et::print() const
 
 void S_Et::optimize(bool& is_opt, double& value, S_E** ret)
 {
-    t->optimize(is_opt, value);
-    std::cout << value << " | " << is_opt << " | S_Et " << *this << std::endl;
+    ret = 0;
+    S_T* t_ret = 0;
+    t->optimize(is_opt, value, &t_ret);
+    if (t_ret)
+    {
+        delete t;
+        t = t_ret;
+    }
 }
 
 double S_Et::eval(Interpreter& interpreter)
@@ -40,7 +46,7 @@ double S_Et::eval()
     return t->eval();
 }
 
-void S_Et::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Et::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->t->staticAnalysis(memId , log);
 }

@@ -28,12 +28,10 @@ std::string S_P::print() const
 
 void S_P::optimize()
 {
-    std::cout << "S_P::optimize()" << std::endl;
     bi->optimize();
-    std::cout << "S_P::optimize():END" << std::endl;
 }
 
-void S_P::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_P::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->bd->staticAnalysis(memId ,log);
 	this->bi->staticAnalysis(memId ,log);

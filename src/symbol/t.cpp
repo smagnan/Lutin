@@ -28,6 +28,9 @@ std::string S_T::print() const
     return "";
 }
 
-void S_T::optimize(bool& is_opt, double& value)
+void S_T::optimize(bool& is_opt, double& value, S_T** ret)
 {
+    (void) is_opt;
+    (void) value;
+    (void) ret;
 }

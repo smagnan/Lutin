@@ -57,31 +57,25 @@ ArgsManager::ArgsManager(int argc, const char* argv[]) :
     // ERROR : too many "input_file" arguments
     catch (po::too_many_positional_options_error e)
     {
-        manageError(e.what());
+        manageError("ERROR: too many \"input_file\" arguments");
     }
     
     // ERROR : Unknown option
     catch (po::unknown_option e)
     {
-        manageError(e.what());
-    }
-    
-    // ERROR : Required "input_file" argument
-    catch (po::required_option e)
-    {
-        manageError(e.what());
+        manageError("ERROR: unknown option");
     }
     
     // ERROR : Required "input_file" argument
     catch (po::multiple_occurrences e)
     {
-        manageError(e.what());
+        manageError("ERROR: required \"input_file\" argument");
     }
     
     // ERROR : Default
     catch (po::error e)
     {
-        manageError(e.what());
+        manageError("ERROR: please specify arguments");
     }
 }
 
@@ -107,10 +101,7 @@ bool ArgsManager::isError()
 
 void ArgsManager::manageError(std::string what)
 {
-    std::cerr << STYLE_ERROR;
-    std::cerr << OPTION_ERROR_MESSAGE << OPTION_ERROR_SEPARATOR
-            << what << std::endl;
-    std::cerr << STYLE_DEFAULT;
+    std::cout << what << std::endl;
     error = true;
 }
 

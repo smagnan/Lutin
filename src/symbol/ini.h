@@ -18,7 +18,7 @@
 #include <string>
 #include <map>
 #include <vector>
-#include <stack>  
+#include <stack>
 
 class S_Ini : public Symbol
 {
@@ -28,7 +28,7 @@ protected:
     S_Num * num;
 public:
     S_Ini(S_Id* id, S_Num* num);
-    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
     virtual ~S_Ini();
     virtual	std::string getId() {return id->getValue();};
     virtual double getNum() {return num->getValue();};

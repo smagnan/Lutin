@@ -24,15 +24,22 @@ std::string S_Tmult::print() const
     return t->print() + " * " + f->print();
 }
 
-void S_Tmult::optimize(bool& is_opt, double& value)
+void S_Tmult::optimize(bool& is_opt, double& value, S_T** ret)
 {
     bool t_is_opt;
     double t_value;
+    S_T* t_ret = 0;
     bool f_is_opt;
     double f_value;
-    t->optimize(t_is_opt, t_value);
+    t->optimize(t_is_opt, t_value, &t_ret);
     f->optimize(f_is_opt, f_value);
-    
+
+    if (t_ret)
+    {
+        delete t;
+        t = t_ret;
+    }
+
     // Multiply by zero : optimize
     if (f_is_opt && f_value == 0)
     {
@@ -54,18 +61,38 @@ void S_Tmult::optimize(bool& is_opt, double& value)
     // Only t is optimized : fix t
     else if (t_is_opt)
     {
-        is_opt = false;
-        value = 0;
-        delete t;
-        t = new S_Tf(new S_Fnum(new S_Num(t_value)));
+        if (t_value == 1)
+        {
+            is_opt = false;
+            value = 0;
+            *ret = f;
+            f = 0;
+        }
+        else
+        {
+            is_opt = false;
+            value = 0;
+            delete t;
+            t = new S_Tf(new S_Fnum(new S_Num(t_value)));
+        }
     }
     // Only f is optimized : fix f
     else if (f_is_opt)
     {
-        is_opt = false;
-        value = 0;
-        delete f;
-        f = new S_Fnum(new S_Num(f_value));
+        if (f_value == 1)
+        {
+            is_opt = false;
+            value = 0;
+            *ret = t;
+            t = 0;
+        }
+        else
+        {
+            is_opt = false;
+            value = 0;
+            delete f;
+            f = new S_Fnum(new S_Num(f_value));
+        }
     }
     // None is optimized : do nothing
     else
@@ -73,14 +100,13 @@ void S_Tmult::optimize(bool& is_opt, double& value)
         is_opt = false;
         value = 0;
     }
-    std::cout << value << " | " << is_opt << " | S_Tmult " << *this << std::endl;
 }
 
 double S_Tmult::eval(Interpreter& interpreter)
 {
     double t_value = t->eval(interpreter);
     double f_value = f->eval(interpreter);
-    
+
     return t_value * f_value;
 }
 
@@ -88,12 +114,12 @@ double S_Tmult::eval()
 {
     double t_value = t->eval();
     double f_value = f->eval();
-    
+
     return t_value * f_value;
 }
 
-void S_Tmult::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Tmult::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->t->staticAnalysis(memId ,log);
-	this->f->staticAnalysis(memId ,log);
+    this->f->staticAnalysis(memId ,log);
 }

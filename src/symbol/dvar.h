@@ -24,7 +24,7 @@ protected:
 public:
     S_Dvar(S_Id* id, S_Idl* idl);
     virtual ~S_Dvar();
-	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
     virtual std::string print() const;
     S_Id * get_id() {return id;};
     S_Idl * get_idl() {return idl;};

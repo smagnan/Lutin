@@ -28,7 +28,6 @@ void S_Fid::optimize(bool& is_opt, double& value)
 {
     is_opt = false;
     value = 0;
-    std::cout << value << " | " << is_opt << " | S_Fid " << *this << std::endl;
 }
 
 double S_Fid::eval(Interpreter& interpreter)
@@ -41,17 +40,20 @@ double S_Fid::eval()
     return id->eval();
 }
 
-void S_Fid::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Fid::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
-    std::map< std::string, Variable >::iterator it;
-	it=memId.find(id->getValue());
-	if (it == memId.end()) 
+    std::map< std::string, Variable >::iterator it = memId.find(id->getValue());
+	
+    // Trying to read a non declared variable
+	if (it == memId.end())
 	{
-		log.push(NOT_DECLARED);
+        std::cout << "ICI" << std::endl;
+		log.push_back(NOT_DECLARED + id->getValue());
 	}
-	else if ( ((it->second).is_const == false) && ((it->second).is_assigned == false))
+	else if (!(it->second).is_const && !(it->second).is_assigned)
 	{
-		log.push(NOT_ASSIGNED);
+		log.push_back(NOT_ASSIGNED + id->getValue());
+		(it->second).is_used = true ;
 	}
 	else
 	{

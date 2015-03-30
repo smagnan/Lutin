@@ -24,7 +24,7 @@ public:
     S_Iniliter(S_Inil* inil, S_Ini* ini);
     virtual ~S_Iniliter();
     virtual std::string print() const;
-	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
 	S_Inil* get_inil(){return inil;};
 	S_Ini* get_ini(){return ini;};
 };

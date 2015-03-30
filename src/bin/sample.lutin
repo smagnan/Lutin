@@ -1,6 +1,10 @@
-
+var x;
+x:=2;
 ecrire (0+x);
 ecrire (x+0);
 ecrire x+0;
-
-ecrire (x*0+0+x*0-x);
+ecrire x *0 ;
+ecrire (x*0+0+x*1-x);
+ecrire (x*0+0+x/1-x);
+ecrire (x *0+0+1/x-x);
+ecrire (0*x-1)/1*x;

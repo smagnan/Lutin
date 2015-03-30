@@ -15,10 +15,10 @@ S_Tbin::S_Tbin(S_T* t, S_F* f)
 
 S_Tbin::~S_Tbin()
 {
-	if(!t)
-		delete t;
-	if(!f)
-		delete f;
+    if(!t)
+        delete t;
+    if(!f)
+        delete f;
 }
 
 std::string S_Tbin::print() const
@@ -26,12 +26,15 @@ std::string S_Tbin::print() const
     return "";
 }
 
-void S_Tbin::optimize(bool& is_opt, double& value)
+void S_Tbin::optimize(bool& is_opt, double& value, S_T** ret)
 {
+    (void) is_opt;
+    (void) value;
+    (void) ret;
 }
 
-void S_Tbin::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Tbin::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->t->staticAnalysis(memId ,log);
-	this->f->staticAnalysis(memId ,log);
+    this->f->staticAnalysis(memId ,log);
 }

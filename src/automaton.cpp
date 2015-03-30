@@ -79,17 +79,12 @@ Automaton::~Automaton()
 
 Symbol* Automaton::getDerivationTree()
 {
-    DEBUGINFO("Automaton::getDerivationTree - BEGIN");
-    
     // Begin the construction
     transition();
-    
-    DEBUGINFO("Automaton::getDerivationTree - END");
     
     if (symbolStack.empty())
     {
         // ERROR CASE
-        DEBUGERR("Automaton::getDerivationTree - ERROR CASE\n");
         throw AutomatonException(EMPTY_STATE_STACK_ERROR);
     }
     
@@ -99,12 +94,9 @@ Symbol* Automaton::getDerivationTree()
 
 void Automaton::transition()
 {
-    DEBUGINFO(" - - Automaton::transition");
-    
     if (stateStack.empty())
     {
         // ERROR CASE
-        DEBUGERR("Automaton::transition - ERROR CASE\n");
         throw AutomatonException(EMPTY_STATE_STACK_ERROR);
     }
     
@@ -114,15 +106,12 @@ void Automaton::transition()
 
 void Automaton::read()
 {
-    DEBUGINFO(" - - Automaton::read");
-    
     // Go to the next symbol
     input.pop_front();
     
     if (input.empty())
     {
         // ERROR CASE
-        DEBUGERR("Automaton::read - ERROR CASE\n");
         throw AutomatonException(EMPTY_INPUT_ERROR);
     }
     
@@ -132,9 +121,6 @@ void Automaton::read()
 
 void Automaton::shift(Symbol * symbol, State * state)
 {
-    DEBUGINFO("Automaton::shift");
-    TRACE(*symbol << "\n")
-    
     // Push the elements on the stacks
     symbolStack.push(symbol);
     stateStack.push(state);
@@ -148,8 +134,6 @@ void Automaton::shift(Symbol * symbol, State * state)
  
 void Automaton::reduce(int numRule)
 {
-    DEBUGINFO("Automaton::reduce");
-
     // Pop elements from the stacks
     std::deque<Symbol*> symbols = std::deque<Symbol*>();
     for (unsigned int i = 0; i < RULES[numRule-1]; i++)
@@ -159,26 +143,17 @@ void Automaton::reduce(int numRule)
             symbols.push_front(symbolStack.top());
             symbolStack.pop();
         }
-        else
-        {
-            DEBUGWARN("Automaton::reduce - Empty symbol stack\n");
-        }
         
         if (!stateStack.empty())
         {
             delete stateStack.top();
             stateStack.pop();
         }
-        else
-        {
-            DEBUGWARN("Automaton::reduce - Empty state stack\n");
-        }
     }
     
     if (stateStack.empty())
     {
         // ERROR CASE
-        DEBUGERR("Automaton::reduce - ERROR CASE\n");
         throw AutomatonException(EMPTY_STATE_STACK_ERROR);
     }
     
@@ -189,7 +164,6 @@ void Automaton::reduce(int numRule)
     if (symbolStack.empty())
     {
         // ERROR CASE
-        DEBUGERR("Automaton::reduce - ERROR CASE\n");
         throw AutomatonException(EMPTY_SYMBOL_STACK_ERROR);
     }
     
@@ -203,7 +177,7 @@ void Automaton::reduce(int numRule)
 
 void Automaton::error()
 {
-    DEBUGERR("Automaton::error");
+    //DEBUGERR("Automaton::error");
     
     // Try the next token
     read();
@@ -214,9 +188,11 @@ void Automaton::error()
 
 void Automaton::accept()
 {
-    DEBUGINFO("Automaton::accept");
-    
     // Do nothing, just end the process
+}
+
+void notifyMissingSymbol(Symbol* symbol)
+{
 }
 
 Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
@@ -224,7 +200,6 @@ Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
     if (symbols.size() != RULES[numRule-1])
     {
         // ERROR CASE
-        DEBUGERR("Automaton::getSymbol - ERROR CASE");
         throw AutomatonException(RULES_ERROR);
     }
     
@@ -304,11 +279,9 @@ Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
             return new S_Fpar((S_E*)symbols[1]);
             
         case 20: // F → id
-            std::cout << "## F → id ##" << *symbols[0] << std::endl;
             return new S_Fid((S_Id*)symbols[0]);
             
         case 21: // F → num
-            std::cout << "## F → num ##" << *symbols[0] << std::endl;
             return new S_Fnum((S_Num*)symbols[0]);
             
         case 22: // BD → ɛ
@@ -328,7 +301,6 @@ Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
     }
     
     // ERROR CASE
-    DEBUGERR("Automaton::getSymbol - ERROR CASE");
     throw AutomatonException(RULES_ERROR);
     
     return 0;

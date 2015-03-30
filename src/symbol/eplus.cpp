@@ -32,13 +32,19 @@ void S_Eplus::optimize(bool& is_opt, double& value, S_E** ret)
     S_E* e_ret = 0;
     bool t_is_opt;
     double t_value;
+    S_T* t_ret = 0;
     e->optimize(e_is_opt, e_value, &e_ret);
-    t->optimize(t_is_opt, t_value);
-    
+    t->optimize(t_is_opt, t_value, &t_ret);
     if (e_ret)
     {
         delete e;
         e = e_ret;
+    }
+    
+    if (t_ret)
+    {
+        delete t;
+        t = t_ret;
     }
     
     // Both constants : optimize
@@ -89,14 +95,13 @@ void S_Eplus::optimize(bool& is_opt, double& value, S_E** ret)
         is_opt = false;
         value = 0;
     }
-    std::cout << value << " | " << is_opt << " | S_Eplus" << std::endl;
 }
 
 double S_Eplus::eval(Interpreter& interpreter)
 {
     double e_value = e->eval(interpreter);
     double t_value = t->eval(interpreter);
-    
+
     return e_value + t_value;
 }
 
@@ -104,11 +109,11 @@ double S_Eplus::eval()
 {
     double e_value = e->eval();
     double t_value = t->eval();
-    
+
     return e_value + t_value;
 }
 
-void S_Eplus::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Eplus::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->e->staticAnalysis(memId , log);
 	this->t->staticAnalysis(memId , log);

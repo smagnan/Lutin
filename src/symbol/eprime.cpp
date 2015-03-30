@@ -44,7 +44,6 @@ void S_Eprime::optimize()
         delete e;
         e = e_ret;
     }
-    std::cout << value << " | " << is_opt << " | S_Eprime " << *this << std::endl;
 }
 
 double S_Eprime::eval(Interpreter& interpreter)
@@ -57,7 +56,7 @@ double S_Eprime::eval()
     return e->eval();
 }
 
-void S_Eprime::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Eprime::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
     this->e->staticAnalysis(memId ,log);
 }

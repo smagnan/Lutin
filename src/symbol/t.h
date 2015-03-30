@@ -20,7 +20,7 @@ public:
     S_T();
     virtual ~S_T();
     virtual std::string print() const;
-    virtual void optimize(bool& is_opt, double& value);
+    virtual void optimize(bool& is_opt, double& value, S_T** ret);
 };
 
 #endif // S_T_H
