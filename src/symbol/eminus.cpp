@@ -32,13 +32,20 @@ void S_Eminus::optimize(bool& is_opt, double& value, S_E** ret)
     S_E* e_ret = 0;
     bool t_is_opt;
     double t_value;
+    S_T* t_ret = 0;
     e->optimize(e_is_opt, e_value, &e_ret);
-    t->optimize(t_is_opt, t_value);
+    t->optimize(t_is_opt, t_value, &t_ret);
     
     if (e_ret)
     {
         delete e;
         e = e_ret;
+    }
+    
+    if (t_ret)
+    {
+        delete t;
+        t = t_ret;
     }
     
     // Both constants : optimize

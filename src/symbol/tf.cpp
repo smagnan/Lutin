@@ -24,8 +24,9 @@ std::string S_Tf::print() const
     return f->print();
 }
 
-void S_Tf::optimize(bool& is_opt, double& value)
+void S_Tf::optimize(bool& is_opt, double& value, S_T** ret)
 {
+    ret = 0;
     f->optimize(is_opt, value);
     std::cout << value << " | " << is_opt << " | S_Tf " << *this << std::endl;
 }
