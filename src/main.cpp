@@ -47,7 +47,6 @@ int main( int argc, const char* argv[] )
 
     if (am.isError())
     {
-        cout << am << endl;
         return EXIT_FAILURE;
     }
 
