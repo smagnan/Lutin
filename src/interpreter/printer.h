@@ -22,10 +22,15 @@ protected:
 public:
     Printer();
     virtual ~Printer();
+    // Print Lutin code with syntaxic coloration 
+    // seems it has a swapping problem on some configurations
     void print(std::ostream& out,std::string str);
     void print(std::ostream& out,double value);
-    void printerr(std::string error, std::string desc);
+    // ERROR printer: syntaxic coloration
+    void printerr(std::string error, std::string desc); 
+    // WARNING printer: syntaxic coloration
     void printwarn(std::string warn, std::string desc);
+    // INFO printer: syntaxic coloration
     void printinfo(std::string info, std::string desc);
     void print(std::string def, std::string desc);
     void endline();

@@ -28,7 +28,7 @@ int Affectation::execute(Interpreter & interpreter)
 	{
 		// exec:
 		this->variable = interpreter.get_variable(this->id->getValue());
-		if (this->variable ==  NULL) // TODO Not a VAR -> ERROR
+		if (this->variable ==  NULL) 
 			return EXEC_RET_NOTAVAR;
 		this->var_value = this->expr->eval(interpreter);
 		this->variable->setValue(this->var_value);

@@ -47,8 +47,6 @@ protected:
     void update_variable(std::string name, double val);
     // Print all the declarations - DEBUG oriented
     void print_declarations(std::ostream& out);
-    // Print all the instructions - DEBUG oriented
-    void print_instructions(std::ostream& out);
 public:
     Interpreter(Symbol* tree);
     virtual ~Interpreter();

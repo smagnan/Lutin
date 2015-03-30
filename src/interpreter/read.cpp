@@ -24,7 +24,6 @@ Read::~Read()
 }
 
 void Read::setAttributes(bool isFile,std::string filename,S_Id * id_in)
-// TODO ? stream as param instead of that?
 {
 	if(isFile) 
 	{
@@ -44,21 +43,12 @@ int Read::execute(Interpreter & interpreter)
 		return EXEC_RET_NOTSET;
 	try 
 	{
-		/*DEBUGINFO("Read::execute IN")
-		// exec: 
-		TRACE(this->id->getValue())*/
 		this->var = interpreter.get_variable(this->id->getValue());
-		if (this->var ==  NULL) // TODO Not a VAR -> ERROR
+		if (this->var ==  NULL) 
 			return EXEC_RET_NOTAVAR;
 		std::istream in(buf);
 		std::cin.clear();
 		in >> *this->var;
-		/*int temp;
-		std::cin >> temp;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-		int temp2;
-		std::cin >> temp2;
-		DEBUGINFO("Read::execute OUT")*/
 	}
 	catch(std::exception &e) 
 	{

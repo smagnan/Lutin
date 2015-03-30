@@ -19,13 +19,3 @@ Instruction::~Instruction()
 {
 
 }
-
-// ============================
-// 	execute:
-//	executes the instruction
-//
-// ============================
-/*int Instruction::execute()
-{
-	
-}*/

@@ -240,7 +240,6 @@ void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 	else 
 	{
 		this->printer.printerr("Multiple definition of: ",name);
-		// ERROR: Multiple definition
 	}
 }
 
@@ -300,12 +299,6 @@ void Interpreter::print_declarations(std::ostream& out)
 	    }
 	    this->printer.endline();
 	}
-}
-
-void Interpreter::print_instructions(std::ostream& out)
-{
-	// TODO print instructions
-	this->printer.print(out,"");
 }
 
 double Interpreter::get_value(std::string id)

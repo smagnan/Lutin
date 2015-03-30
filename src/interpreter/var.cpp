@@ -39,7 +39,7 @@ std::istream &operator>>( std::istream  &input, Var& obj)
 void Var::setValue(double val)
 {
 	this->affected = true;
-	this->value = val; // TODO some checks ?
+	this->value = val; 
 }
 
 double Var::getValue() 
