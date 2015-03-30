@@ -26,13 +26,13 @@ std::string S_Ini::print() const
     return id->print() + " = " + num->print();
 }
 
-void S_Ini::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Ini::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
 	Variable idDeclared;
 	idDeclared.is_declared = true;
 	idDeclared.is_const = true;
 	if ((memId.insert( std::pair< std::string, Variable >(id->getValue(),idDeclared))).second == false)
 	{
-		log.push(ALREADY_DECLARED);
+		log.push_back(ALREADY_DECLARED + id->getValue());
 	}
 }

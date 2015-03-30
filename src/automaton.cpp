@@ -219,6 +219,11 @@ void Automaton::accept()
     // Do nothing, just end the process
 }
 
+void notifyMissingSymbol(Symbol* symbol)
+{
+    std::cerr << "Symbole manquant : " << *symbol << std::endl;
+}
+
 Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
 {
     if (symbols.size() != RULES[numRule-1])

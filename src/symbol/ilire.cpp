@@ -28,17 +28,17 @@ void S_Ilire::optimize()
 {
 }
 
-void S_Ilire::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
+void S_Ilire::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
 	std::map< std::string, Variable >::iterator it;
 	it=memId.find(id->getValue());
-	if (it == memId.end()) 
+	if (it == memId.end())
 	{
-		log.push(NOT_DECLARED);
+		log.push_back(NOT_DECLARED + id->getValue());
 	}
 	else if ( (it->second).is_assigned == false)
 	{
-		log.push(NOT_ASSIGNED);
+		log.push_back(NOT_ASSIGNED + id->getValue());
 	}
 	else
 	{

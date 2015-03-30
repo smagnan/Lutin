@@ -17,7 +17,7 @@
 
 #include <map>
 #include <vector>
-#include <stack> 
+#include <stack>
 #include <string>
 //#include "../debugger.h"
 
@@ -30,11 +30,11 @@ protected:
 public:
     S_Bditer();
     S_Bditer(S_Bd* bd, S_D* d);
-    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
     virtual ~S_Bditer();
     virtual std::string print() const;
     S_Bd * next() {return bd;};
-    S_D * get_declaration() { 
+    S_D * get_declaration() {
     	/*DEBUGERR("get_declaration IN")
     	TRACE(d << std::endl);
     	DEBUGERR("get_declaration OUT")*/
