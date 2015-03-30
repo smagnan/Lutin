@@ -47,7 +47,7 @@ Lexer::Lexer()
         // num 
         "([0-9]*\\.[0-9]+|[0-9]+)|"
         // everything else (matching error)
-        "(.*)";
+        "(.)";
     
     // Compile Regex:
     main_regex.assign(regex);
@@ -207,7 +207,7 @@ bool Lexer::hasNext()
 
 //-------------------------------------------------- Private Methods 
 
-bool Lexer::regex_callback(const boost::match_results<std::string::const_iterator>& str_found)
+void Lexer::regex_callback(const boost::match_results<std::string::const_iterator>& str_found)
 {
     // loop on all 17 symbols 
     for(int i = 1; i <= 17; i++)
@@ -218,15 +218,12 @@ bool Lexer::regex_callback(const boost::match_results<std::string::const_iterato
             if (i != 17) 
             {   // a pattern was matched.
                 patterns.push_back(make_pair(i, str_found[i].str()));
-                return true;
             }
             else 
             {   // something that was not a pattern was matched
-                std::cout << "MatchErr : " << str_found[i] << std::endl;
-                return false;
+                std::cout << "Forbidden symbol " << str_found[i] << std::endl;
             }
         }
     }
-    return false;
 }
 

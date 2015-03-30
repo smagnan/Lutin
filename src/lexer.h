@@ -64,7 +64,7 @@ private:
     // Will contain matching errors :
     matchError_vector matchErr; 
 
-    bool regex_callback(const boost::match_results<std::string::const_iterator>& str_found);
+    void regex_callback(const boost::match_results<std::string::const_iterator>& str_found);
 
 };
 
