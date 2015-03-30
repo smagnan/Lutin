@@ -1,0 +1,26 @@
+Test ID;Return code validation;Out result;StdErr result;File creation result;Global result
+01.NoArgument;Ok;Non testé;Ok;Non testé;Ok
+02.FichierInexistant;Ok;Non testé;Ok;Non testé;Ok
+03.FichierExistant;Ok;Non testé;Non testé;Non testé;Ok
+04.Affichage;Ok;Ok;Non testé;Non testé;Ok
+05.DoubleDeclaration;Ok;Non testé;Echec;Non testé;Echec
+06.1.AnalyseStatique;Ok;Non testé;Non testé;Non testé;Ok
+06.2.AnalyseStatique;Ok;Non testé;Non testé;Non testé;Ok
+06.3.AnalyseStatique;Ok;Non testé;Non testé;Non testé;Ok
+06.4.AnalyseStatique;Ok;Non testé;Non testé;Non testé;Ok
+07.Execution;Ok;Ok;Non testé;Non testé;Ok
+08.OPT.1.Optimisation;Ok;Echec;Non testé;Non testé;Echec
+08.OPT.2.Optimisation;Ok;Ok;Non testé;Non testé;Ok
+09.OPT.ErreurLexicale;Ok;Non testé;Non testé;Non testé;Ok
+10.OPT.ErreurSyntaxique;Ok;Non testé;Non testé;Non testé;Ok
+01.OptionInexistante;Ok;Non testé;Non testé;Non testé;Ok
+02.PrioritesOperateurs;Ok;Ok;Non testé;Non testé;Ok
+03.01.AnalyseStatique;Ok;Non testé;Non testé;Non testé;Ok
+03.02.AnalyseStatiqueSansErreur;Ok;Non testé;Non testé;Non testé;Ok
+04.NombresNegatifs;Ok;Echec;Non testé;Non testé;Echec
+05.NombresDecimaux;Ok;Ok;Non testé;Non testé;Ok
+06.MathsGeneral;Ok;Echec;Non testé;Non testé;Echec
+07.DivisionPar0;Ok;Non testé;Ok;Non testé;Ok
+08.OPT.GestionErreursLexicales;Ok;Echec;Non testé;Non testé;Echec
+09.OPT.GestionErreursSyntaxiques;Echec;Echec;Non testé;Non testé;Echec
+10.ErreurFrappe;Ok;Non testé;Echec;Non testé;Echec
