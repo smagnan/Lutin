@@ -51,10 +51,10 @@ void S_Fid::staticAnalysis(std::map< std::string, Variable > & memId ,std::vecto
 	else if ( ((it->second).is_const == false) && ((it->second).is_assigned == false))
 	{
 		log.push_back(NOT_ASSIGNED + id->getValue());
+		(it->second).is_used = true ;
 	}
 	else
 	{
-	    std::cout<<"EH LES COPAINS"<<std::endl;
 		(it->second).is_used = true ;
 	}
 }
