@@ -25,7 +25,8 @@ public:
     S_Tbin(S_T* t, S_F* f);
     virtual ~S_Tbin();
     virtual std::string print() const;
-	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
+    virtual void optimize(bool& is_opt, double& value);
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::stack<std::string> &log);
 };
 
 #endif // S_TBIN_H

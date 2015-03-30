@@ -27,3 +27,7 @@ std::string S_T::print() const
 {
     return "";
 }
+
+void S_T::optimize(bool& is_opt, double& value)
+{
+}

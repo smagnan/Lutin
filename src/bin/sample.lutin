@@ -1,2 +1,6 @@
-ecrire (1+7);
 
+ecrire (0+x);
+ecrire (x+0);
+ecrire x+0;
+
+ecrire (x*0+0+x*0-x);

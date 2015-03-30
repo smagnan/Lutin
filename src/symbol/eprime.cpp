@@ -32,11 +32,17 @@ void S_Eprime::optimize()
 {
     bool is_opt;
     double value;
-    e->optimize(is_opt, value);
+    S_E* e_ret = 0;
+    e->optimize(is_opt, value, &e_ret);
     if (is_opt)
     {
         delete e;
         e = new S_Et(new S_Tf(new S_Fnum(new S_Num(value))));
+    }
+    else if (e_ret)
+    {
+        delete e;
+        e = e_ret;
     }
     std::cout << value << " | " << is_opt << " | S_Eprime " << *this << std::endl;
 }

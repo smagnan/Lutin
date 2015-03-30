@@ -26,6 +26,10 @@ std::string S_Tbin::print() const
     return "";
 }
 
+void S_Tbin::optimize(bool& is_opt, double& value)
+{
+}
+
 void S_Tbin::staticAnalysis(std::map< std::string, Variable > & memId ,std::stack<std::string> &log)
 {
     this->t->staticAnalysis(memId ,log);

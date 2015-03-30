@@ -133,6 +133,7 @@ void Automaton::read()
 void Automaton::shift(Symbol * symbol, State * state)
 {
     DEBUGINFO("Automaton::shift");
+    TRACE(*symbol << "\n")
     
     // Push the elements on the stacks
     symbolStack.push(symbol);
@@ -303,9 +304,11 @@ Symbol* Automaton::getSymbol(int numRule, std::deque<Symbol*> & symbols)
             return new S_Fpar((S_E*)symbols[1]);
             
         case 20: // F → id
+            std::cout << "## F → id ##" << *symbols[0] << std::endl;
             return new S_Fid((S_Id*)symbols[0]);
             
         case 21: // F → num
+            std::cout << "## F → num ##" << *symbols[0] << std::endl;
             return new S_Fnum((S_Num*)symbols[0]);
             
         case 22: // BD → ɛ

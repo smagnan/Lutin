@@ -12,8 +12,8 @@
 
 
 #include "state31.h" 
-#include "state33.h" 
 #include "state32.h" 
+#include "state33.h" 
 #include "state38.h" 
 #include "state29.h" 
 #include "state30.h" 
@@ -37,11 +37,11 @@ bool State31::transition(Automaton & automaton, Symbol * s)
             break;
 
         case ID:
-            automaton.shift(s, new State33());
+            automaton.shift(s, new State32());
             break;
 
         case NUM:
-            automaton.shift(s, new State32());
+            automaton.shift(s, new State33());
             break;
 
         default:

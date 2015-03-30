@@ -26,8 +26,14 @@ std::string S_Fpar::print() const
 
 void S_Fpar::optimize(bool& is_opt, double& value)
 {
-    e->optimize(is_opt, value);
-    std::cout << value << " | " << is_opt << " | S_Fpar " << *this << std::endl;
+    S_E* ret = 0;
+    e->optimize(is_opt, value, &ret);
+    if (ret)
+    {
+        delete e;
+        e = ret;
+    }
+    std::cout << value << " | " << is_opt << " | S_Fpar " << *this << " | " << ret << std::endl;
 }
 
 double S_Fpar::eval(Interpreter& interpreter)

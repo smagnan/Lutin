@@ -27,3 +27,8 @@ std::string S_E::print() const
 {
     return "";
 }
+
+void S_E::optimize(bool& is_opt, double& value, S_E** ret)
+{
+    std::cout << value << " | " << is_opt << " | S_E " << *this << " | " << ret << std::endl;
+}
