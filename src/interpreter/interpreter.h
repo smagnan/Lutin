@@ -34,7 +34,7 @@ class Interpreter
 {
 private:
 	std::stack<Instruction*> instructions;            // because the symbols/instructions are in the opposite order in the tree 
-	std::map<std::string,Declaration*> declarations;  // http://bannalia.blogspot.fr/2014/05/fast-polymorphic-collections.html instead?
+	std::map<std::string,Declaration*> declarations;  
     Printer printer;
     Symbol* symbol_tree;
 protected:
