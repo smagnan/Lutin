@@ -42,6 +42,7 @@ void S_Iaff::staticAnalysis(std::map< std::string, Variable > & memId ,std::vect
 	else if ((it->second).is_const)
 	{
 		log.push_back(CONST_AFFECT + id->getValue());
+		(it->second).is_used = true;
 	}
 	else
 	{
