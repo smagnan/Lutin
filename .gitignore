@@ -30,5 +30,10 @@ lut
 # Backup files
 *~
 
+# Doc
+doc/html/
+doc/latex/
+doc/doxygen_sqlite3.db
+
 # Misc
 scripts_notes
