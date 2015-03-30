@@ -30,7 +30,7 @@ protected:
 public:
     S_Bditer();
     S_Bditer(S_Bd* bd, S_D* d);
-    virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
+    virtual void staticAnalysis(std::map< std::string, Variable > & memId);
     virtual ~S_Bditer();
     virtual std::string print() const;
     S_Bd * next() {return bd;};

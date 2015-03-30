@@ -31,8 +31,8 @@ void S_P::optimize()
     bi->optimize();
 }
 
-void S_P::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_P::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->bd->staticAnalysis(memId ,log);
-	this->bi->staticAnalysis(memId ,log);
+    this->bd->staticAnalysis(memId);
+	this->bi->staticAnalysis(memId);
 }

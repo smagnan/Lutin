@@ -20,7 +20,7 @@ public:
     S_Inil();
     virtual ~S_Inil();
     virtual std::string print() const;
-	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId);
 	virtual S_Inil* get_inil(){return NULL;};
 	virtual S_Ini* get_ini(){return NULL;};
 };

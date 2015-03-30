@@ -26,9 +26,9 @@ std::string S_Dvar::print() const
     return "var " + id->print() + idl->print();
 }
 
-void S_Dvar::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Dvar::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->idl->staticAnalysis(memId , log);
+    this->idl->staticAnalysis(memId);
 
     Variable var_info;
     var_info.is_const = false;
@@ -39,6 +39,6 @@ void S_Dvar::staticAnalysis(std::map< std::string, Variable > & memId ,std::vect
     // If the id is already in the map : double declaration
     if (!(memId.insert( std::pair< std::string, Variable >(id->getValue(),var_info))).second)
     {
-        log.push_back(ALREADY_DECLARED + id->getValue());
+        std::cerr << ALREADY_DECLARED << *id << std::endl;
     }
 }

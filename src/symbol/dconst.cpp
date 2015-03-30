@@ -26,8 +26,8 @@ std::string S_Dconst::print() const
     return "const " + ini->print() + inil->print();
 }
 
-void S_Dconst::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Dconst::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->ini->staticAnalysis(memId ,log);
-	this->inil->staticAnalysis(memId ,log);
+    this->ini->staticAnalysis(memId);
+	this->inil->staticAnalysis(memId);
 }

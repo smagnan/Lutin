@@ -63,7 +63,7 @@ double Symbol::eval()
     throw MathException(CANNOT_EVALUATE_ERROR);
 }
 
-void Symbol::staticAnalysis(std::map<std::string, Variable>& memId, std::vector<std::string>& log)
+void Symbol::staticAnalysis(std::map<std::string, Variable>& memId)
 {
 
 }

@@ -22,7 +22,7 @@ std::string S_Bi::print() const
     return "";
 }
 
-void S_Bi::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Bi::staticAnalysis(std::map< std::string, Variable > & memId)
 {
 
 }

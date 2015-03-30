@@ -24,7 +24,7 @@ public:
     virtual ~S_Eprime();
     virtual std::string print() const;
     virtual void optimize();
-	virtual void staticAnalysis(std::map< std::string, Variable > & memId, std::vector<std::string> &log);
+	virtual void staticAnalysis(std::map< std::string, Variable > & memId);
     virtual double eval(Interpreter& interpreter);
     virtual double eval();
 };

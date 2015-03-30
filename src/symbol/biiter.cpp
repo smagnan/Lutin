@@ -32,8 +32,8 @@ void S_Biiter::optimize()
     i->optimize();
 }
 
-void S_Biiter::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Biiter::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-	this->bi->staticAnalysis(memId , log);
-	this->i->staticAnalysis(memId , log);
+	this->bi->staticAnalysis(memId);
+	this->i->staticAnalysis(memId);
 }

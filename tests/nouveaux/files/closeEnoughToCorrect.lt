@@ -1,10 +1,10 @@
-var a,b; 
+var a,b#; 
 const c = 4;
 const d = 6;
-var e;
+var e#;
 a := (c+d)*3-5;
 lire b;
-%brouette%
+
 ecrire a*b;
 e := b+d;
 ecrire e;

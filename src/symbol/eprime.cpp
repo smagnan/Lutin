@@ -56,7 +56,7 @@ double S_Eprime::eval()
     return e->eval();
 }
 
-void S_Eprime::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Eprime::staticAnalysis(std::map< std::string, Variable > & memId)
 {
-    this->e->staticAnalysis(memId ,log);
+    this->e->staticAnalysis(memId);
 }

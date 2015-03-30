@@ -31,17 +31,17 @@ void S_Iaff::optimize()
     eprime->optimize();
 }
 
-void S_Iaff::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
+void S_Iaff::staticAnalysis(std::map< std::string, Variable > & memId)
 {
 	std::map< std::string, Variable >::iterator it = memId.find(id->getValue());
 
 	if (it == memId.end())
 	{
-		log.push_back(NOT_DECLARED + id->getValue());
+        std::cerr << NOT_DECLARED << *id << std::endl;
 	}
 	else if ((it->second).is_const)
 	{
-		log.push_back(CONST_AFFECT + id->getValue());
+        std::cerr << CONST_AFFECT << *id << std::endl;
 		(it->second).is_used = true;
 	}
 	else
@@ -49,4 +49,6 @@ void S_Iaff::staticAnalysis(std::map< std::string, Variable > & memId ,std::vect
 		(it->second).is_assigned = true ;
 		(it->second).is_used = true;
 	}
+    
+	this->eprime->staticAnalysis(memId);
 }
