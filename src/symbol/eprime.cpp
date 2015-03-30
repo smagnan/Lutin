@@ -44,7 +44,6 @@ void S_Eprime::optimize()
         delete e;
         e = e_ret;
     }
-    std::cout << value << " | " << is_opt << " | S_Eprime " << *this << std::endl;
 }
 
 double S_Eprime::eval(Interpreter& interpreter)

@@ -34,7 +34,6 @@ void S_Et::optimize(bool& is_opt, double& value, S_E** ret)
         delete t;
         t = t_ret;
     }
-    std::cout << value << " | " << is_opt << " | S_Et " << *this << std::endl;
 }
 
 double S_Et::eval(Interpreter& interpreter)

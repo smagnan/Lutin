@@ -32,6 +32,7 @@ void S_Idliter::staticAnalysis(std::map< std::string, Variable > & memId ,std::v
 
 	Variable idDeclared;
 	idDeclared.is_declared = true;
+	idDeclared.is_const = false;
 	if ((memId.insert( std::pair< std::string, Variable >(id->getValue(),idDeclared))).second == false)
 	{
 		log.push_back(ALREADY_DECLARED + id->getValue());

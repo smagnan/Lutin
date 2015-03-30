@@ -28,9 +28,7 @@ std::string S_Iaff::print() const
 
 void S_Iaff::optimize()
 {
-    std::cout << "S_Iaff::optimize()" << std::endl;
     eprime->optimize();
-    std::cout << "S_Iaff::optimize():END" << std::endl;
 }
 
 void S_Iaff::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
