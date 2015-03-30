@@ -33,14 +33,12 @@ void S_Iaff::optimize()
 
 void S_Iaff::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
-	std::map< std::string, Variable >::iterator it;
-	it=memId.find(id->getValue());
+	std::map< std::string, Variable >::iterator it = memId.find(id->getValue());
 
 	if (it == memId.end())
 	{
 		log.push_back(NOT_DECLARED + id->getValue());
 	}
-
 	else if ((it->second).is_const)
 	{
 		log.push_back(CONST_AFFECT + id->getValue());

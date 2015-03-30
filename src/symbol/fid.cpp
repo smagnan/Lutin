@@ -42,13 +42,13 @@ double S_Fid::eval()
 
 void S_Fid::staticAnalysis(std::map< std::string, Variable > & memId ,std::vector<std::string> &log)
 {
-    std::map< std::string, Variable >::iterator it;
-	it=memId.find(id->getValue());
+    std::map< std::string, Variable >::iterator it = memId.find(id->getValue());
+	
 	if (it == memId.end())
 	{
 		log.push_back(NOT_DECLARED + id->getValue());
 	}
-	else if ( ((it->second).is_const == false) && ((it->second).is_assigned == false))
+	else if (!(it->second).is_const && !(it->second).is_assigned)
 	{
 		log.push_back(NOT_ASSIGNED + id->getValue());
 		(it->second).is_used = true ;

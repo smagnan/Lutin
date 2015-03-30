@@ -107,6 +107,7 @@ bool ArgsManager::isError()
 
 void ArgsManager::manageError(std::string what)
 {
+	(void)what;
     error = true;
 }
 
