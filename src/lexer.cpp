@@ -37,7 +37,7 @@ Lexer::Lexer()
         // semicolon
         "\\s*(;)\\s*$|"
         // id
-        "(\\s*[a-zA-Z][a-zA-Z0-9_]*\\s*)|"
+        "\\s*([a-zA-Z][a-zA-Z0-9_]*)\\s*|"
         // vir 
         "\\s*(,)\\s*|"
         // egal
