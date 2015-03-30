@@ -75,7 +75,8 @@ ArgsManager::ArgsManager(int argc, const char* argv[]) :
     // ERROR : Default
     catch (po::error e)
     {
-        manageError("ERROR: please specify arguments");
+        //manageError("ERROR: please specify arguments");
+        manageError("Erreur, veuillez specifier des arguments\n  Utilisation :\n    ../lut [-p] [-a] [-e] [-o] source.lt\n      [-p] affiche le code source reconnu\n      [-a] analyse le programme de maniere statique\n      [-e] execute interactivement le programme\n      [-o] optimise les expressions et instructions");     
     }
 }
 
@@ -101,7 +102,7 @@ bool ArgsManager::isError()
 
 void ArgsManager::manageError(std::string what)
 {
-    std::cout << what << std::endl;
+    std::cerr << what << std::endl;
     error = true;
 }
 
