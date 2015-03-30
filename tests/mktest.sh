@@ -13,7 +13,7 @@ nMis=0
 for j in originaux nouveaux
 do
 	rm $j/lut
-	cp lut $j
+	cp ../src/bin/lut $j
 	cd $j
 	for i in ??.*
 	do
