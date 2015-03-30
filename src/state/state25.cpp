@@ -31,9 +31,7 @@ bool State25::transition(Automaton & automaton, Symbol * s)
             break;
 
         default:
-            Symbol* symbol = new S_Pv();
-            automaton.notifyMissingSymbol(symbol);
-            automaton.reduce(9);
+            automaton.error();
             break;
 
     }
