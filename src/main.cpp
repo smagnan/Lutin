@@ -37,11 +37,11 @@ namespace po =  boost::program_options;
 
 int main( int argc, const char* argv[] )
 {
-	std::ifstream t("../datas/logo.ascii");
+//	std::ifstream t("../datas/logo.ascii");
 	std::stringstream buffer;
-	buffer << t.rdbuf();
+//	buffer << t.rdbuf();
 
-	cout << buffer.str() << endl;
+//	cout << buffer.str() << endl;
 
 	ArgsManager am(argc, argv);
 
@@ -50,7 +50,7 @@ int main( int argc, const char* argv[] )
         return EXIT_FAILURE;
     }
 
-    Loader* loader 				= new Loader(am.getFilePath().c_str()); 
+    Loader* loader 				= new Loader(am.getFilePath().c_str());
     Lexer* lexer 				= new Lexer();
     if (!lexer->setProg(loader->string()))
     {
@@ -94,11 +94,13 @@ int main( int argc, const char* argv[] )
 
 	if (am.count("print"))
 	{
-        std::cout << *derivationTree << std::endl; 
+	    std::cout<<"PRINTING PROGRAM :"<<endl;
+        std::cout << *derivationTree << std::endl;
 	}
 
 	if (am.count("execute"))
 	{
+	    std::cout<<"EXECUTING PROGRAM :"<<endl;
         interpreter->load_declarations();
         interpreter->load_instructions();
         interpreter->run();
