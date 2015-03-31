@@ -17,10 +17,10 @@ Test ID;Return code validation;Out result;StdErr result;File creation result;Glo
 02.PrioritesOperateurs;Ok;Ok;Non testé;Non testé;Ok
 03.01.AnalyseStatique;Ok;Non testé;Non testé;Non testé;Ok
 03.02.AnalyseStatiqueSansErreur;Ok;Non testé;Non testé;Non testé;Ok
-04.NombresNegatifs;Ok;Echec;Non testé;Non testé;Echec
+04.NombresNegatifs;Ok;Ok;Non testé;Non testé;Ok
 05.NombresDecimaux;Ok;Ok;Non testé;Non testé;Ok
-06.MathsGeneral;Ok;Echec;Non testé;Non testé;Echec
+06.MathsGeneral;Ok;Ok;Non testé;Non testé;Ok
 07.DivisionPar0;Ok;Non testé;Ok;Non testé;Ok
-08.OPT.GestionErreursLexicales;Ok;Echec;Non testé;Non testé;Echec
-09.OPT.GestionErreursSyntaxiques;Echec;Echec;Non testé;Non testé;Echec
-10.ErreurFrappe;Ok;Non testé;Echec;Non testé;Echec
+08.OPT.GestionErreursLexicales;Ok;Ok;Non testé;Non testé;Ok
+09.OPT.GestionErreursSyntaxiques;Ok;Ok;Ok;Non testé;Ok
+10.ErreurFrappe;Ok;Ok;Non testé;Non testé;Ok

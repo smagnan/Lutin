@@ -1,9 +1,10 @@
 var a;
+var b;
+
+b := 0-5;
 lire a;
 ecrire a;
 ecrire 1/a;
-ecrire -1-a;
-ecrire -1+a;
-ecrire -1*a;
-ecrire -1/a;
+ecrire 1*a;
+ecrire a*b;
 
