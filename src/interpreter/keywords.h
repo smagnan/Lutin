@@ -11,7 +11,7 @@
 
 const std::string KEYWORD_VAR = 	"var";
 const std::string KEYWORD_CONST = 	"const";
-const std::string KEYWORD_VALUE = 	"value"; // not a real keyword XXX
+const std::string KEYWORD_VALUE = 	"value"; // not a real keyword
 const std::string KEYWORD_EQ = 		"=";
 const std::string KEYWORD_PLUS = 	"+";
 const std::string KEYWORD_MINUS = 	"-";

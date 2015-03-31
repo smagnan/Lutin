@@ -35,10 +35,10 @@ do
 		let "nOk=$nOk+1"
 		if [[ $i == ??".OPT."* ]]
 		then
-			let "nOptionalOk=$nOptionalKo+1"
+			let "nOptionalOk=$nOptionalOk+1"
 			let "nOptionalTotal=$nOptionalTotal+1"
 		else
-			let "nMandatoryOk=$nMandatoryKo+1"
+			let "nMandatoryOk=$nMandatoryOk+1"
 			let "nMandatoryTotal=$nMandatoryTotal+1"
 		fi
 	  else

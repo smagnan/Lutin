@@ -34,7 +34,6 @@ Printer::~Printer()
 
 void Printer::print(std::ostream& out,std::string str)
 {
-	// TODO to change? will depens on an external file and will not be hardcoded?
 	std::vector<std::string> lines;
 	std::vector<std::string> metawords;
 	std::vector<std::string> words;
@@ -103,41 +102,76 @@ void Printer::printString(int count, ...)
 
 std::string Printer::selectStyle(const std::string keyword) const
 {
-	if(!keyword.compare(KEYWORD_VAR)) {
+	if(!keyword.compare(KEYWORD_VAR)) 
+	{
 		return STYLE_VAR;
-	} else if(!keyword.compare(KEYWORD_CONST)) {
+	} 
+	else if(!keyword.compare(KEYWORD_CONST)) 
+	{
 		return STYLE_CONST;
-	} else if(!keyword.compare(KEYWORD_VALUE)) {
+	} 
+	else if(!keyword.compare(KEYWORD_VALUE)) 
+	{
 		return STYLE_VALUE;
-	} else if(!keyword.compare(KEYWORD_EQ)) {
+	} 
+	else if(!keyword.compare(KEYWORD_EQ)) 
+	{
 		return STYLE_EQ;
-	} else if(!keyword.compare(KEYWORD_PLUS)) {
+	} 
+	else if(!keyword.compare(KEYWORD_PLUS)) 
+	{
 		return STYLE_PLUS;
-	} else if(!keyword.compare(KEYWORD_MINUS)) {
+	} 
+	else if(!keyword.compare(KEYWORD_MINUS)) 
+	{
 		return STYLE_MINUS;
-	} else if(!keyword.compare(KEYWORD_MULT)) {
+	} 
+	else if(!keyword.compare(KEYWORD_MULT)) 
+	{
 		return STYLE_MULT;
-	} else if(!keyword.compare(KEYWORD_DIV)) {
+	} 
+	else if(!keyword.compare(KEYWORD_DIV)) 
+	{
 		return STYLE_DIV;
-	} else if(!keyword.compare(KEYWORD_LPAR)) {
+	} 
+	else if(!keyword.compare(KEYWORD_LPAR)) 
+	{
 		return STYLE_LPAR;
-	} else if(!keyword.compare(KEYWORD_RPAR)) {
+	} 
+	else if(!keyword.compare(KEYWORD_RPAR)) 
+	{
 		return STYLE_RPAR;
-	} else if(!keyword.compare(KEYWORD_ASSIGN)) {
+	} 
+	else if(!keyword.compare(KEYWORD_ASSIGN)) 
+	{
 		return STYLE_ASSIGN;
-	} else if(!keyword.compare(KEYWORD_READ)) {
+	} 
+	else if(!keyword.compare(KEYWORD_READ)) 
+	{
 		return STYLE_READ;
-	} else if(!keyword.compare(KEYWORD_WRITE)) {
+	} 
+	else if(!keyword.compare(KEYWORD_WRITE)) 
+	{
 		return STYLE_WRITE;
-	} else if(!keyword.compare(KEYWORD_END)) {
+	} 
+	else if(!keyword.compare(KEYWORD_END)) 
+	{
 		return STYLE_END;
-	} else if(!keyword.compare(KEYWORD_SPACE)) {
+	} 
+	else if(!keyword.compare(KEYWORD_SPACE)) 
+	{
 		return STYLE_SPACE;
-	} else if(!keyword.compare(KEYWORD_DOT)) {
+	} 
+	else if(!keyword.compare(KEYWORD_DOT)) 
+	{
 		return STYLE_DOT;
-	} else if(!keyword.compare(KEYWORD_COMA)) {
+	} 
+	else if(!keyword.compare(KEYWORD_COMA)) 
+	{
 		return STYLE_COMA;
-	} else {
+	} 
+	else 
+	{
 		return STYLE_OTHER;
 	}
 	return STYLE_OTHER;

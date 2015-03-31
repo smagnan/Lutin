@@ -26,6 +26,5 @@ Value::~Value()
 
 void Value::setValue(double val)
 {
-	//throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
-	// FIXME ^ calls terminate() if not catched
+
 }

@@ -30,7 +30,7 @@ int  Write::execute(Interpreter & interpreter)
 		std::ostream out(buf);
 		this->expr_value = this->expr->eval(interpreter);
 		out.precision(16);
-		out << std::fixed << this->expr_value << std::endl; // TODO keep the endl?
+		out << std::fixed << this->expr_value << std::endl; 
 	}
 	catch(std::exception &e) 
 	{
@@ -40,7 +40,6 @@ int  Write::execute(Interpreter & interpreter)
 }
 
 void Write::setAttributes(bool isFile,std::string filename,S_Eprime * ex)
-// TODO ? stream as param instead of that?
 {
 	if(isFile) 
 	{

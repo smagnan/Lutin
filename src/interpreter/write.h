@@ -20,8 +20,8 @@
 class Write : public Instruction
 {
 private:
-	std::streambuf * buf; // TODO move?
-	std::ofstream out_f;  // TODO move?
+	std::streambuf * buf;
+	std::ofstream out_f;
 	double expr_value;
 	S_Eprime * expr;
 protected:

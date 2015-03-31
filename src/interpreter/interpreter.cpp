@@ -27,8 +27,8 @@
 #include "../symbol/ilire.h"
 #include "../symbol/dconst.h"
 #include "../symbol/dvar.h"
-#include "../symbol/id.h"	// TODO useful?
-#include "../symbol/ini.h"	// TODO useful?
+#include "../symbol/id.h"
+#include "../symbol/ini.h"
 
 // Interpreter constructor
 Interpreter::Interpreter(Symbol* tree) 
@@ -42,7 +42,7 @@ Interpreter::~Interpreter()
 	clean_instructions();
 }
 
-void Interpreter::clean_declarations() // TODO: exceptions
+void Interpreter::clean_declarations() 
 {
 	typedef std::map<std::string, Declaration* >::iterator it_t;
 	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) 
@@ -51,7 +51,7 @@ void Interpreter::clean_declarations() // TODO: exceptions
 	}
 }
 
-void Interpreter::clean_instructions() // TODO: exceptions ... supposed to be useless?
+void Interpreter::clean_instructions() 
 {
 	while (!this->instructions.empty()) 
 	{
@@ -62,19 +62,12 @@ void Interpreter::clean_instructions() // TODO: exceptions ... supposed to be us
 
 void Interpreter::load_declarations()
 {
-	DEBUGINFO("load_declarations: START");
-	DEBUGWARN("load_declarations: 1");
 	S_Bd * current = (static_cast<S_P*>(this->symbol_tree))->get_S_Bd();
-	DEBUGWARN("load_declarations: 2");
 	S_Bd * next;
-	DEBUGWARN("load_declarations: 3");
-	TRACE(current << std::endl)
 	if (current == NULL || current->next() == NULL) // if NULL or Bd and not Bditer
 	{
-		DEBUGWARN("load_declarations: 3 ret");
-		return; // TODO ?
+		return;
 	}
-	DEBUGWARN("load_declarations: 5");
 	next = current;
 	S_D * curr_declar;
 	S_Dconst * d_const;
@@ -82,89 +75,59 @@ void Interpreter::load_declarations()
 	S_Idl * var_idl;
 	S_Inil * const_inil;
 	std::string className;
-	DEBUGWARN("load_declarations: 6");
 	do
 	{
-		DEBUGWARN("    load_declarations: 7");
 		current = next;
 		curr_declar = static_cast<S_D*>((static_cast<S_Bditer*>(current))->get_declaration());
-		TRACE("current                          : " << current << std::endl)
-		TRACE("static_cast<S_Bditer*>(current)  : " << static_cast<S_Bditer*>(current) << std::endl)
-		TRACE("_->get_declaration()             : " << (static_cast<S_Bditer*>(current))->get_declaration() << std::endl)
-		TRACE("curr_declar                      : " << curr_declar << std::endl)
 		className = typeid(*current).name(); 
-		DEBUGINFO(className)
 		if(!className.compare("4S_Bd")) // this means we reached the end of the branch: a Bd symbol (decorated name)
 			break;
-		DEBUGWARN("    load_declarations: 8");
 		d_const = dynamic_cast<S_Dconst*> (curr_declar);
-		DEBUGWARN("    load_declarations: 9");
 		if (d_const ==  NULL)
 		{
-			DEBUGWARN("        load_declarations: 10");
 			d_var = dynamic_cast<S_Dvar*> (curr_declar);
-			DEBUGWARN("        load_declarations: 11");
 			if (d_var ==  NULL)
 			{
-				// TODO ERROR
-				DEBUGERR("            load_declarations: 12");
+				// Do nothing, not a correct type
 			}	
 			else //  ------ var
 			{
-				DEBUGWARN("            load_declarations: 13");
-				TRACE("Var id: " << d_var->get_id()->getValue() << std::endl)
 				declare(d_var->get_id()->getValue());
 				var_idl = d_var->get_idl();
 				className = typeid(*var_idl).name(); 
-				DEBUGINFO(className)
 				if(className.compare("5S_Idl")) // end of the branch: a Idl symbol (decorated name)
 				{	
-					TRACE("Var idl 1: " << d_var->get_id()->getValue() << std::endl)
 					while(var_idl != NULL)
 					{
 						declare(var_idl->get_id()->getValue());
-						TRACE("Var idl n: " << var_idl->get_id() << std::endl)
 						var_idl = var_idl->get_idl();
 						className = typeid(*var_idl).name(); 
-						DEBUGINFO(className)
 						if(!className.compare("5S_Idl")) // end of the branch: a Idl symbol (decorated name)
 							break;
 					}
 				}
-				DEBUGWARN("            load_declarations: 14");
 			}
 		}
 		else // ----------- const
 		{
-			DEBUGWARN("        load_declarations: 15");
-			TRACE("Const id: " << d_const->get_ini()->getId() << std::endl)
-			TRACE("Const id: " << d_const->get_ini()->getNum() << std::endl)
 			declare(d_const->get_ini()->getId(),D_CONST,d_const->get_ini()->getNum());
 			const_inil = d_const->get_inil();
 			className = typeid(*const_inil).name(); 
-			DEBUGINFO(className)
 			if(className.compare("6S_Inil")) // end of the branch: a Inil symbol (decorated name)
 			{
 				while(const_inil != NULL)
 				{
 					declare(const_inil->get_ini()->getId(),D_CONST,const_inil->get_ini()->getNum());
-					TRACE("Var idl n: " << const_inil->get_ini()->getId() << std::endl)
-					TRACE("Var idl n: " << const_inil->get_ini()->getNum() << std::endl)
 					const_inil = const_inil->get_inil();
 					className = typeid(*const_inil).name(); 
-					DEBUGINFO(className)
 					if(!className.compare("6S_Inil")) // end of the branch: a Inil symbol (decorated name)
 						break;
 				}
 			}
-			DEBUGWARN("        load_declarations: 16");
 		}
-		DEBUGWARN("    load_declarations: 17");
 		next = current->next();
-		DEBUGWARN("    load_declarations: 18");
 	}
 	while(next != NULL);
-	DEBUGINFO("load_declarations: END");
 }
 
 void Interpreter::load_instructions()
@@ -186,7 +149,6 @@ void Interpreter::load_instructions()
 		className = typeid(*current).name(); 
 		if(!className.compare("4S_Bi")) // this means we reached the end of the branch: à Bi symbol (decorated name)
 			break;
-		// (: thx:  http://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
 		i_write = dynamic_cast<S_Iecrire*> (curr_instruction);
 		if (i_write ==  NULL)
 		{
@@ -196,15 +158,10 @@ void Interpreter::load_instructions()
 				i_aff = dynamic_cast<S_Iaff*> (curr_instruction);
 				if (i_aff ==  NULL)
 				{
-					// TODO ERROR
+					// Do nothing, not a correct type
 				}
 				else // --- aff
 				{
-					/*className = typeid(*i_aff->get_id()).name(); 
-					if(!className.compare("4S_Bi")) // to check if the id exists or not (like: used but not declared)
-					{
-						// TODO Stop exec and print message
-					}*/
 					if(declared(i_aff->get_id()->getValue())) // check that the var in which we store exists
 					{
 						Affectation * affect = new Affectation();
@@ -258,16 +215,15 @@ void Interpreter::run()
 		}
 		catch(std::exception &e) 
 		{
-			this->printer.printerr("Runtime problem ","problem with ...");
-			// TODO: add instruction causing the problem
+			this->printer.printerr("Runtime problem ","problem with current instruction");
 		}
 	}
 }
 
-void Interpreter::declare(const std::string &name, Declar_Type type, double val) // TODO: exceptions
+void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 {							// default value for VALUE type
-	if (this->declarations.find(name) == this->declarations.end()) 
-	{ // If key not found
+	if (this->declarations.find(name) == this->declarations.end()) // If key not found
+	{ 
 		switch(type) 
 		{
 			case D_VAR:
@@ -283,8 +239,7 @@ void Interpreter::declare(const std::string &name, Declar_Type type, double val)
 	}
 	else 
 	{
-		this->printer.printerr("Multiple definition","");
-		// ERROR: Multiple definition
+		this->printer.printerr("Multiple definition of: ",name);
 	}
 }
 
@@ -296,9 +251,7 @@ void Interpreter::declare(const std::string &name)
 	}
 	else 
 	{
-		this->printer.printerr("Declaration problem ","multiple definition of "+name);
-		// TODO error, already exists
-		// ERROR: Multiple definition
+		this->printer.printerr("Multiple definition of: ",name);
 	}
 }
 
@@ -307,24 +260,19 @@ void Interpreter::update_variable(std::string name, double val)
 	try 
 	{
 		Declaration * decl = this->declarations.find(name)->second;
-		if(!decl->getType().compare(KEYWORD_VAR)) 
-		{ // if type is VAR
+		if(!decl->getType().compare(KEYWORD_VAR)) // if type is VAR
+		{ 
 			decl->setValue(val);
 		} 
 		else 
 		{
-			//throw new OperationException(OperationException::SETCONST + Utils::doubleToString(val));
-			// TODO ^ FIXME & ugly
+			this->printer.printerr("Affectation problem - wrong type: ",name);
 		}
 
 	} 
 	catch(std::exception &e) 
 	{
-		this->printer.printerr("Affectation problem ","problem with ...");
-		// TODO: error if: name does not exist, exist but not a variable etc ...
-		// TODO: create custom exceptions
-		// TODO: calling setValue() if not a Var throws an error
-		// TODO print what causes the error and the "what"
+		this->printer.printerr("Affectation problem: ",name);
 	}
 }
 
@@ -338,7 +286,6 @@ void Interpreter::print_declarations(std::ostream& out)
 	typedef std::map<std::string, Declaration* >::iterator it_t;
 	for(it_t iterator = this->declarations.begin(); iterator != this->declarations.end(); iterator++) 
 	{
-	    // TODO: this is ugly
 	    this->printer.print(out,iterator->second->getType());
 	    this->printer.print(out,iterator->first);
 	    this->printer.print(out,"=");
@@ -354,12 +301,6 @@ void Interpreter::print_declarations(std::ostream& out)
 	}
 }
 
-void Interpreter::print_instructions(std::ostream& out)
-{
-	// TODO print instructions
-	this->printer.print(out,"");
-}
-
 double Interpreter::get_value(std::string id)
 {
 	try 
@@ -367,7 +308,7 @@ double Interpreter::get_value(std::string id)
 		if(this->declarations.find(id) == this->declarations.end())
 		{
 			this->printer.printerr("No such id: ",id);
-			return 0;
+			return DEFAULT_ELEM_VALUE;
 		}
 		else
 		{
@@ -377,9 +318,8 @@ double Interpreter::get_value(std::string id)
 	catch(std::exception &e) 
 	{
 		this->printer.printerr("Problem while getting value of: ",id);
-		// TODO: error if: name does not exist so can't get value
 	}
-	return 0; // TODO const or equiv.
+	return DEFAULT_ELEM_VALUE;
 }
 
 Var * Interpreter::get_variable(std::string id)
@@ -392,7 +332,7 @@ Var * Interpreter::get_variable(std::string id)
 		{
 			return static_cast<Var*>(decl);
 		}
-		else // TODO error if not VAR ?
+		else
 		{	
 			this->printer.printerr("Not a VAR: ",id);
 			return NULL;
@@ -401,7 +341,6 @@ Var * Interpreter::get_variable(std::string id)
 	catch(std::exception &e) 
 	{
 		this->printer.printerr("No such id: ",id);
-		// TODO: error if: name does not exist so can't get value
 	}
-	return NULL; // TODO const or equiv.
+	return NULL;
 }
